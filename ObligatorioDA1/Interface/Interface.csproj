@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddSphere.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AddSphere.Designer.cs">
+      <DependentUpon>AddSphere.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FigureList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FigureList.Designer.cs">
+      <DependentUpon>FigureList.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +66,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddSphere.resx">
+      <DependentUpon>AddSphere.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FigureList.resx">
+      <DependentUpon>FigureList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
