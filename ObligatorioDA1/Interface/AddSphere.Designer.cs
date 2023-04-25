@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtFigureName = new System.Windows.Forms.TextBox();
             this.lblFigureName = new System.Windows.Forms.Label();
             this.txtFigureRadius = new System.Windows.Forms.TextBox();
             this.lblFigureRadius = new System.Windows.Forms.Label();
             this.btnAddSphere = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.SuspendLayout();
             // 
             // txtFigureName
@@ -86,6 +88,10 @@
             this.btnCancel.Text = "Cancelar";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            // 
             // AddSphere
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -111,5 +117,6 @@
         private System.Windows.Forms.Label lblFigureRadius;
         private System.Windows.Forms.Button btnAddSphere;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
