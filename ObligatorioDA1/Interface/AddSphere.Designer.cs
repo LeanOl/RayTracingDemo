@@ -50,9 +50,9 @@
             this.lblFigureName.AutoSize = true;
             this.lblFigureName.Location = new System.Drawing.Point(53, 32);
             this.lblFigureName.Name = "lblFigureName";
-            this.lblFigureName.Size = new System.Drawing.Size(44, 13);
+            this.lblFigureName.Size = new System.Drawing.Size(35, 13);
             this.lblFigureName.TabIndex = 1;
-            this.lblFigureName.Text = "Nombre";
+            this.lblFigureName.Text = "Name";
             // 
             // txtFigureRadius
             // 
@@ -66,9 +66,9 @@
             this.lblFigureRadius.AutoSize = true;
             this.lblFigureRadius.Location = new System.Drawing.Point(53, 91);
             this.lblFigureRadius.Name = "lblFigureRadius";
-            this.lblFigureRadius.Size = new System.Drawing.Size(35, 13);
+            this.lblFigureRadius.Size = new System.Drawing.Size(40, 13);
             this.lblFigureRadius.TabIndex = 3;
-            this.lblFigureRadius.Text = "Radio";
+            this.lblFigureRadius.Text = "Radius";
             // 
             // btnAddSphere
             // 
@@ -76,7 +76,7 @@
             this.btnAddSphere.Name = "btnAddSphere";
             this.btnAddSphere.Size = new System.Drawing.Size(80, 34);
             this.btnAddSphere.TabIndex = 4;
-            this.btnAddSphere.Text = "Agregar";
+            this.btnAddSphere.Text = "Add";
             this.btnAddSphere.UseVisualStyleBackColor = true;
             // 
             // btnCancel
@@ -85,7 +85,7 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(80, 34);
             this.btnCancel.TabIndex = 5;
-            this.btnCancel.Text = "Cancelar";
+            this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // contextMenuStrip1

@@ -37,15 +37,15 @@
             this.btnAddNewFigure.Name = "btnAddNewFigure";
             this.btnAddNewFigure.Size = new System.Drawing.Size(155, 23);
             this.btnAddNewFigure.TabIndex = 0;
-            this.btnAddNewFigure.Text = "+ Agregar nueva figura";
+            this.btnAddNewFigure.Text = "+ Add New Figure";
             this.btnAddNewFigure.UseVisualStyleBackColor = true;
             // 
-            // FigureListMenu
+            // FigureList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnAddNewFigure);
-            this.Name = "FigureListMenu";
+            this.Name = "FigureList";
             this.Size = new System.Drawing.Size(476, 268);
             this.ResumeLayout(false);
 

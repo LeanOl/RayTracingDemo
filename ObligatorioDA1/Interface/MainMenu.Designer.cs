@@ -42,7 +42,7 @@
             this.btnFigures.Name = "btnFigures";
             this.btnFigures.Size = new System.Drawing.Size(81, 29);
             this.btnFigures.TabIndex = 0;
-            this.btnFigures.Text = "Figuras";
+            this.btnFigures.Text = "Figures";
             this.btnFigures.UseVisualStyleBackColor = true;
             // 
             // btnMaterials
@@ -51,7 +51,7 @@
             this.btnMaterials.Name = "btnMaterials";
             this.btnMaterials.Size = new System.Drawing.Size(81, 29);
             this.btnMaterials.TabIndex = 1;
-            this.btnMaterials.Text = "Materiales";
+            this.btnMaterials.Text = "Materials";
             this.btnMaterials.UseVisualStyleBackColor = true;
             // 
             // btnModels
@@ -60,7 +60,7 @@
             this.btnModels.Name = "btnModels";
             this.btnModels.Size = new System.Drawing.Size(81, 29);
             this.btnModels.TabIndex = 2;
-            this.btnModels.Text = "Modelos";
+            this.btnModels.Text = "Models";
             this.btnModels.UseVisualStyleBackColor = true;
             // 
             // btnScenes
@@ -69,7 +69,7 @@
             this.btnScenes.Name = "btnScenes";
             this.btnScenes.Size = new System.Drawing.Size(81, 29);
             this.btnScenes.TabIndex = 3;
-            this.btnScenes.Text = "Escenas";
+            this.btnScenes.Text = "Scenes";
             this.btnScenes.UseVisualStyleBackColor = true;
             // 
             // btnSignOut
@@ -100,7 +100,7 @@
             this.Controls.Add(this.btnMaterials);
             this.Controls.Add(this.btnFigures);
             this.Name = "MainMenu";
-            this.Text = "|";
+            this.Text = "RayTracing";
             this.ResumeLayout(false);
 
         }
