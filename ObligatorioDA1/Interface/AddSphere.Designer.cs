@@ -33,7 +33,7 @@
             this.lblFigureName = new System.Windows.Forms.Label();
             this.txtFigureRadius = new System.Windows.Forms.TextBox();
             this.lblFigureRadius = new System.Windows.Forms.Label();
-            this.btnAddSphere = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.SuspendLayout();
@@ -70,14 +70,14 @@
             this.lblFigureRadius.TabIndex = 3;
             this.lblFigureRadius.Text = "Radius";
             // 
-            // btnAddSphere
+            // btnAdd
             // 
-            this.btnAddSphere.Location = new System.Drawing.Point(97, 194);
-            this.btnAddSphere.Name = "btnAddSphere";
-            this.btnAddSphere.Size = new System.Drawing.Size(80, 34);
-            this.btnAddSphere.TabIndex = 4;
-            this.btnAddSphere.Text = "Add";
-            this.btnAddSphere.UseVisualStyleBackColor = true;
+            this.btnAdd.Location = new System.Drawing.Point(97, 194);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(80, 34);
+            this.btnAdd.TabIndex = 4;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
             // 
             // btnCancel
             // 
@@ -91,13 +91,14 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // AddSphere
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnAddSphere);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.lblFigureRadius);
             this.Controls.Add(this.txtFigureRadius);
             this.Controls.Add(this.lblFigureName);
@@ -115,7 +116,7 @@
         private System.Windows.Forms.Label lblFigureName;
         private System.Windows.Forms.TextBox txtFigureRadius;
         private System.Windows.Forms.Label lblFigureRadius;
-        private System.Windows.Forms.Button btnAddSphere;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }

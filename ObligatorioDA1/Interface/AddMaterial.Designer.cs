@@ -36,7 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtBlue = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnAddSphere = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -104,14 +104,14 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Blue";
             // 
-            // btnAddSphere
+            // btnAdd
             // 
-            this.btnAddSphere.Location = new System.Drawing.Point(62, 171);
-            this.btnAddSphere.Name = "btnAddSphere";
-            this.btnAddSphere.Size = new System.Drawing.Size(80, 34);
-            this.btnAddSphere.TabIndex = 9;
-            this.btnAddSphere.Text = "Add";
-            this.btnAddSphere.UseVisualStyleBackColor = true;
+            this.btnAdd.Location = new System.Drawing.Point(62, 171);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(80, 34);
+            this.btnAdd.TabIndex = 9;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
             // 
             // btnCancel
             // 
@@ -127,7 +127,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnAddSphere);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtBlue);
             this.Controls.Add(this.label2);
@@ -153,7 +153,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtBlue;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnAddSphere;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnCancel;
     }
 }

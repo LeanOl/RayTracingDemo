@@ -52,6 +52,12 @@
     <Compile Include="AddModel.Designer.cs">
       <DependentUpon>AddModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditScene.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EditScene.Designer.cs">
+      <DependentUpon>EditScene.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddSphere.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -90,11 +96,20 @@
     <Compile Include="AddMaterial.Designer.cs">
       <DependentUpon>AddMaterial.cs</DependentUpon>
     </Compile>
+    <Compile Include="SceneList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SceneList.Designer.cs">
+      <DependentUpon>SceneList.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddMaterial.resx">
       <DependentUpon>AddMaterial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddModel.resx">
       <DependentUpon>AddModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditScene.resx">
+      <DependentUpon>EditScene.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddSphere.resx">
       <DependentUpon>AddSphere.cs</DependentUpon>
@@ -120,6 +135,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SceneList.resx">
+      <DependentUpon>SceneList.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
