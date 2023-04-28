@@ -16,5 +16,10 @@ namespace Interface
         {
             InitializeComponent();
         }
+
+        private void lstbScenes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.btnAddNewMaterial = new System.Windows.Forms.Button();
+            this.lstbMaterial = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // btnAddNewMaterial
@@ -40,10 +41,20 @@
             this.btnAddNewMaterial.Text = "+ Add New Material";
             this.btnAddNewMaterial.UseVisualStyleBackColor = true;
             // 
+            // lstbMaterial
+            // 
+            this.lstbMaterial.FormattingEnabled = true;
+            this.lstbMaterial.Location = new System.Drawing.Point(91, 52);
+            this.lstbMaterial.Name = "lstbMaterial";
+            this.lstbMaterial.Size = new System.Drawing.Size(155, 147);
+            this.lstbMaterial.TabIndex = 4;
+            this.lstbMaterial.SelectedIndexChanged += new System.EventHandler(this.lstbScenes_SelectedIndexChanged);
+            // 
             // MaterialList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lstbMaterial);
             this.Controls.Add(this.btnAddNewMaterial);
             this.Name = "MaterialList";
             this.Size = new System.Drawing.Size(398, 266);
@@ -54,5 +65,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnAddNewMaterial;
+        private System.Windows.Forms.ListBox lstbMaterial;
     }
 }

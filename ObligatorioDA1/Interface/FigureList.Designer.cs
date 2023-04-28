@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.btnAddNewFigure = new System.Windows.Forms.Button();
+            this.lstbFigures = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // btnAddNewFigure
@@ -40,10 +41,19 @@
             this.btnAddNewFigure.Text = "+ Add New Figure";
             this.btnAddNewFigure.UseVisualStyleBackColor = true;
             // 
+            // lstbFigures
+            // 
+            this.lstbFigures.FormattingEnabled = true;
+            this.lstbFigures.Location = new System.Drawing.Point(132, 58);
+            this.lstbFigures.Name = "lstbFigures";
+            this.lstbFigures.Size = new System.Drawing.Size(155, 147);
+            this.lstbFigures.TabIndex = 4;
+            // 
             // FigureList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lstbFigures);
             this.Controls.Add(this.btnAddNewFigure);
             this.Name = "FigureList";
             this.Size = new System.Drawing.Size(476, 268);
@@ -54,5 +64,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnAddNewFigure;
+        private System.Windows.Forms.ListBox lstbFigures;
     }
 }
