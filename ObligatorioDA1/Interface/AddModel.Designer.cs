@@ -131,7 +131,7 @@
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.txtName);
             this.Name = "AddModel";
-            this.Size = new System.Drawing.Size(375, 277);
+            this.Size = new System.Drawing.Size(677, 351);
             this.ResumeLayout(false);
             this.PerformLayout();
 

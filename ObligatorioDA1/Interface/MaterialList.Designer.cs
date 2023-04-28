@@ -34,7 +34,7 @@
             // 
             // btnAddNewMaterial
             // 
-            this.btnAddNewMaterial.Location = new System.Drawing.Point(91, 23);
+            this.btnAddNewMaterial.Location = new System.Drawing.Point(243, 63);
             this.btnAddNewMaterial.Name = "btnAddNewMaterial";
             this.btnAddNewMaterial.Size = new System.Drawing.Size(155, 23);
             this.btnAddNewMaterial.TabIndex = 1;
@@ -44,9 +44,9 @@
             // lstbMaterial
             // 
             this.lstbMaterial.FormattingEnabled = true;
-            this.lstbMaterial.Location = new System.Drawing.Point(91, 52);
+            this.lstbMaterial.Location = new System.Drawing.Point(143, 92);
             this.lstbMaterial.Name = "lstbMaterial";
-            this.lstbMaterial.Size = new System.Drawing.Size(155, 147);
+            this.lstbMaterial.Size = new System.Drawing.Size(290, 147);
             this.lstbMaterial.TabIndex = 4;
             this.lstbMaterial.SelectedIndexChanged += new System.EventHandler(this.lstbScenes_SelectedIndexChanged);
             // 
@@ -57,7 +57,7 @@
             this.Controls.Add(this.lstbMaterial);
             this.Controls.Add(this.btnAddNewMaterial);
             this.Name = "MaterialList";
-            this.Size = new System.Drawing.Size(398, 266);
+            this.Size = new System.Drawing.Size(677, 351);
             this.ResumeLayout(false);
 
         }

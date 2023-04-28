@@ -104,7 +104,7 @@
             this.Controls.Add(this.lblFigureName);
             this.Controls.Add(this.txtFigureName);
             this.Name = "AddSphere";
-            this.Size = new System.Drawing.Size(470, 281);
+            this.Size = new System.Drawing.Size(677, 351);
             this.ResumeLayout(false);
             this.PerformLayout();
 

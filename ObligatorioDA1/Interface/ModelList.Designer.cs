@@ -34,7 +34,7 @@
             // 
             // btnAddNewModel
             // 
-            this.btnAddNewModel.Location = new System.Drawing.Point(123, 39);
+            this.btnAddNewModel.Location = new System.Drawing.Point(228, 57);
             this.btnAddNewModel.Name = "btnAddNewModel";
             this.btnAddNewModel.Size = new System.Drawing.Size(155, 23);
             this.btnAddNewModel.TabIndex = 1;
@@ -44,9 +44,9 @@
             // lstbModels
             // 
             this.lstbModels.FormattingEnabled = true;
-            this.lstbModels.Location = new System.Drawing.Point(123, 86);
+            this.lstbModels.Location = new System.Drawing.Point(185, 106);
             this.lstbModels.Name = "lstbModels";
-            this.lstbModels.Size = new System.Drawing.Size(155, 147);
+            this.lstbModels.Size = new System.Drawing.Size(289, 147);
             this.lstbModels.TabIndex = 4;
             // 
             // ModelList
@@ -56,7 +56,7 @@
             this.Controls.Add(this.lstbModels);
             this.Controls.Add(this.btnAddNewModel);
             this.Name = "ModelList";
-            this.Size = new System.Drawing.Size(469, 284);
+            this.Size = new System.Drawing.Size(677, 351);
             this.ResumeLayout(false);
 
         }

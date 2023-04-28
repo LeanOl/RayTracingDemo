@@ -35,7 +35,7 @@
             // 
             // btnAddNewScene
             // 
-            this.btnAddNewScene.Location = new System.Drawing.Point(115, 37);
+            this.btnAddNewScene.Location = new System.Drawing.Point(208, 67);
             this.btnAddNewScene.Name = "btnAddNewScene";
             this.btnAddNewScene.Size = new System.Drawing.Size(155, 23);
             this.btnAddNewScene.TabIndex = 2;
@@ -45,14 +45,14 @@
             // lstbScenes
             // 
             this.lstbScenes.FormattingEnabled = true;
-            this.lstbScenes.Location = new System.Drawing.Point(115, 76);
+            this.lstbScenes.Location = new System.Drawing.Point(208, 106);
             this.lstbScenes.Name = "lstbScenes";
             this.lstbScenes.Size = new System.Drawing.Size(155, 147);
             this.lstbScenes.TabIndex = 3;
             // 
             // btnDeleteSelected
             // 
-            this.btnDeleteSelected.Location = new System.Drawing.Point(308, 76);
+            this.btnDeleteSelected.Location = new System.Drawing.Point(401, 106);
             this.btnDeleteSelected.Name = "btnDeleteSelected";
             this.btnDeleteSelected.Size = new System.Drawing.Size(104, 23);
             this.btnDeleteSelected.TabIndex = 4;
@@ -67,7 +67,7 @@
             this.Controls.Add(this.lstbScenes);
             this.Controls.Add(this.btnAddNewScene);
             this.Name = "SceneList";
-            this.Size = new System.Drawing.Size(424, 262);
+            this.Size = new System.Drawing.Size(677, 351);
             this.ResumeLayout(false);
 
         }
