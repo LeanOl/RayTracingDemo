@@ -15,10 +15,7 @@ namespace Logic
         public void CreateClient(string username,string password )
         {
             ValidateUsername(username);
-            if (ClientRepository.GetClientByUsername(username) != null)
-            {
-                throw new DuplicateNameException("The Username already exists");
-            }
+           
             Client aClient = new Client()
             {
                 Username = username,
@@ -34,6 +31,15 @@ namespace Logic
             ValidateUsernameLengthBelowLimit(username);
 
             ValidateUsernameLengthAboveLimit(username);
+            ValidateDuplicateUsername(username);
+        }
+
+        private static void ValidateDuplicateUsername(string username)
+        {
+            if (ClientRepository.GetClientByUsername(username) != null)
+            {
+                throw new DuplicateNameException("The Username already exists");
+            }
         }
 
         private static void ValidateUsernameLengthAboveLimit(string username)
