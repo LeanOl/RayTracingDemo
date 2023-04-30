@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain;
+using Repository;
+
 
 namespace Logic
 {
@@ -12,12 +15,18 @@ namespace Logic
         public void CreateClient(string username,string password )
         {
             ValidateUsername(username);
+            if (ClientRepository.GetClientByUsername(username) != null)
+            {
+                throw new DuplicateNameException("The Username already exists");
+            }
             Client aClient = new Client()
             {
                 Username = username,
                 Password = password,
                 RegisterDate = DateTime.Today
             };
+            ClientRepository.AddClient( aClient );
+            
         }
 
         private static void ValidateUsername(string username)

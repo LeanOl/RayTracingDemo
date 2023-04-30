@@ -16,6 +16,7 @@ namespace DomainLogicTest
         private DateTime TestDate = DateTime.Now;
         private const string UsernameBelowCharLimitMessage = "Username has to be at least 3 characters long";
         private const string UsernameAboveCharLimitMessage = "Username has to be at most 20 characters long";
+        private const string UsernameDuplicatedMessage = "The Username already exists";
 
         [TestInitialize]
         public void TestInit()
@@ -44,13 +45,6 @@ namespace DomainLogicTest
         public void ClientUsernameBelowCharacterLimit_ThrowException()
         {
 
-            Client aClient = new Client()
-            {
-                Username = NameBelowCharLimit,
-                Password = ValidPassword,
-                RegisterDate = TestDate
-            };
-   
             try
             {
                 logic.CreateClient(NameBelowCharLimit,ValidPassword);
@@ -68,13 +62,6 @@ namespace DomainLogicTest
         public void ClientUsernameAboveCharacterLimit_ThrowException()
         {
 
-            Client aClient = new Client()
-            {
-                Username = NameAboveCharLimit,
-                Password = ValidPassword,
-                RegisterDate = TestDate
-            };
-
             try
             {
                 logic.CreateClient(NameAboveCharLimit,ValidPassword);
@@ -86,7 +73,25 @@ namespace DomainLogicTest
             }
 
         }
-       
+        [TestMethod]
+        public void ClientUsernameDuplicated_ThrowException()
+        {
+
+            logic.CreateClient(ValidName,ValidPassword);
+
+            try
+            {
+                logic.CreateClient(ValidName, ValidPassword);
+                Assert.Fail("Should throw exception");
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual(UsernameDuplicatedMessage, ex.Message);
+            }
+
+
+
+        }
 
 
     }

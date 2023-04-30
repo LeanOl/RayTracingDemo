@@ -22,7 +22,7 @@ namespace Repository
             Clients.Add(aClient);
         }
 
-        public static  Client GetClientByName(string username)
+        public static  Client GetClientByUsername(string username)
         {
             return Clients.FirstOrDefault(aClient => aClient.Username == username);
         }

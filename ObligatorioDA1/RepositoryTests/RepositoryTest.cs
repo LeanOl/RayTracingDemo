@@ -22,7 +22,7 @@ namespace RepositoryTests
                 RegisterDate = TestDate
             };
             ClientRepository.AddClient(aClient);
-            Assert.AreEqual(aClient, ClientRepository.GetClientByName(ValidUsername));
+            Assert.AreEqual(aClient, ClientRepository.GetClientByUsername(ValidUsername));
         }
     }
 }
