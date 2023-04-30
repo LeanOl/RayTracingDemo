@@ -23,7 +23,7 @@ namespace DomainLogicTest
             logic = new ClientLogic();
         }
         [TestMethod]
-        public void CreateClientSuccessfully()
+        public void CreateClientObjectSuccessfully()
         {
 
             Client aClient = new Client()
@@ -53,7 +53,7 @@ namespace DomainLogicTest
    
             try
             {
-                logic.CreateClient(aClient);
+                logic.CreateClient(NameBelowCharLimit,ValidPassword);
                 Assert.Fail("Should throw exception");
             }
             catch (Exception ex)
@@ -77,7 +77,7 @@ namespace DomainLogicTest
 
             try
             {
-                logic.CreateClient(aClient);
+                logic.CreateClient(NameAboveCharLimit,ValidPassword);
                 Assert.Fail("Should throw exception");
             }
             catch (Exception ex)
@@ -85,9 +85,8 @@ namespace DomainLogicTest
                 Assert.AreEqual(UsernameAboveCharLimitMessage,ex.Message );
             }
 
-
-
         }
+       
 
 
     }

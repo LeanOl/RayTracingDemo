@@ -9,15 +9,37 @@ namespace Logic
 {
     public class ClientLogic
     {
-        public void CreateClient(Client aClient)
+        public void CreateClient(string username,string password )
         {
-            if (aClient.Username.Length < 3)
+            ValidateUsername(username);
+            Client aClient = new Client()
             {
-                throw new ArgumentException( "Username has to be at least 3 characters long");
-            }
-            if (aClient.Username.Length >20)
+                Username = username,
+                Password = password,
+                RegisterDate = DateTime.Today
+            };
+        }
+
+        private static void ValidateUsername(string username)
+        {
+            ValidateUsernameLengthBelowLimit(username);
+
+            ValidateUsernameLengthAboveLimit(username);
+        }
+
+        private static void ValidateUsernameLengthAboveLimit(string username)
+        {
+            if (username.Length > 20)
             {
                 throw new ArgumentException("Username has to be at most 20 characters long");
+            }
+        }
+
+        private static void ValidateUsernameLengthBelowLimit(string username)
+        {
+            if (username.Length < 3)
+            {
+                throw new ArgumentException("Username has to be at least 3 characters long");
             }
         }
     }
