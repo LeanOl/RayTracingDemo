@@ -14,15 +14,15 @@ namespace RepositoryTests
         [TestMethod]
         public void AddClient()
         {
-            ClientRepository aRepository = new ClientRepository();
+            
             Client aClient = new Client()
             {
                 Username = ValidUsername,
                 Password = ValidUserPassword,
                 RegisterDate = TestDate
             };
-            aRepository.AddClient(aClient);
-            Assert.AreEqual(aRepository.GetClientByName(ValidUsername),aClient);
+            ClientRepository.AddClient(aClient);
+            Assert.AreEqual(aClient, ClientRepository.GetClientByName(ValidUsername));
         }
     }
 }

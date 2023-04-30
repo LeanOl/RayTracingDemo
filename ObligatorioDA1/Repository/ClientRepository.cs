@@ -9,20 +9,20 @@ using Domain;
 namespace Repository
 {
     
-    public class ClientRepository
+    public static class ClientRepository
     {
-        private List<Client> Clients { get; set; }
-        public ClientRepository()
+         private static List<Client> Clients { get; set; }
+         static ClientRepository()
         {
             Clients = new List<Client>();
         }
 
-        public void AddClient(Client aClient)
+        public static void AddClient(Client aClient)
         {
             Clients.Add(aClient);
         }
 
-        public Client GetClientByName(string username)
+        public static  Client GetClientByName(string username)
         {
             return Clients.FirstOrDefault(aClient => aClient.Username == username);
         }
