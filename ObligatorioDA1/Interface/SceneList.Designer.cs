@@ -41,6 +41,7 @@
             this.btnAddNewScene.TabIndex = 2;
             this.btnAddNewScene.Text = "+ Add New Scene";
             this.btnAddNewScene.UseVisualStyleBackColor = true;
+            this.btnAddNewScene.Click += new System.EventHandler(this.btnAddNewScene_Click);
             // 
             // lstbScenes
             // 

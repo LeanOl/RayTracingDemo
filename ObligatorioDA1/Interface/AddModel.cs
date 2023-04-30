@@ -16,5 +16,19 @@ namespace Interface
         {
             InitializeComponent();
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            UserControl aModelList = new ModelList();
+            Parent.Controls.Add(aModelList);
+            Parent.Controls.Remove(this);
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            UserControl aModelList = new ModelList();
+            Parent.Controls.Add(aModelList);
+            Parent.Controls.Remove(this);
+        }
     }
 }

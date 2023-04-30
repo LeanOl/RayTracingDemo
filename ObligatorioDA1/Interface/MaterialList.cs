@@ -17,9 +17,11 @@ namespace Interface
             InitializeComponent();
         }
 
-        private void lstbScenes_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnAddNewMaterial_Click(object sender, EventArgs e)
         {
-
+            UserControl anAddMaterial = new AddMaterial();
+            Parent.Controls.Add(anAddMaterial);
+            Parent.Controls.Remove(this);
         }
     }
 }

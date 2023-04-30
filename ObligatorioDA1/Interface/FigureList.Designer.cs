@@ -40,6 +40,7 @@
             this.btnAddNewFigure.TabIndex = 0;
             this.btnAddNewFigure.Text = "+ Add New Figure";
             this.btnAddNewFigure.UseVisualStyleBackColor = true;
+            this.btnAddNewFigure.Click += new System.EventHandler(this.btnAddNewFigure_Click);
             // 
             // lstbFigures
             // 

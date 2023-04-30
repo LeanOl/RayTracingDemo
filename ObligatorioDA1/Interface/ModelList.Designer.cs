@@ -40,6 +40,7 @@
             this.btnAddNewModel.TabIndex = 1;
             this.btnAddNewModel.Text = "+ Add New Model";
             this.btnAddNewModel.UseVisualStyleBackColor = true;
+            this.btnAddNewModel.Click += new System.EventHandler(this.btnAddNewModel_Click);
             // 
             // lstbModels
             // 

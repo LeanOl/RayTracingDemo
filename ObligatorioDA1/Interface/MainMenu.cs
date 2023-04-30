@@ -20,29 +20,29 @@ namespace Interface
         private void btnFigures_Click(object sender, EventArgs e)
         {
             controlPanel.Controls.Clear();
-            UserControl figureList = new FigureList();
-            controlPanel.Controls.Add(figureList);
+            UserControl aFigureList = new FigureList();
+            controlPanel.Controls.Add(aFigureList);
         }
 
         private void btnMaterials_Click(object sender, EventArgs e)
         {
             controlPanel.Controls.Clear();
-            UserControl materialList = new MaterialList();
-            controlPanel.Controls.Add(materialList);
+            UserControl aMaterialList = new MaterialList();
+            controlPanel.Controls.Add(aMaterialList);
         }
 
         private void btnModels_Click(object sender, EventArgs e)
         {
             controlPanel.Controls.Clear();
-            UserControl modelList = new ModelList();
-            controlPanel.Controls.Add(modelList);
+            UserControl aModelList = new ModelList();
+            controlPanel.Controls.Add(aModelList);
         }
 
         private void btnScenes_Click(object sender, EventArgs e)
         {
             controlPanel.Controls.Clear();
-            UserControl sceneList = new SceneList();
-            controlPanel.Controls.Add(sceneList);
+            UserControl aSceneList = new SceneList();
+            controlPanel.Controls.Add(aSceneList);
         }
     }
 }

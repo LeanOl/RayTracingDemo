@@ -40,6 +40,7 @@
             this.btnAddNewMaterial.TabIndex = 1;
             this.btnAddNewMaterial.Text = "+ Add New Material";
             this.btnAddNewMaterial.UseVisualStyleBackColor = true;
+            this.btnAddNewMaterial.Click += new System.EventHandler(this.btnAddNewMaterial_Click);
             // 
             // lstbMaterial
             // 
@@ -48,7 +49,6 @@
             this.lstbMaterial.Name = "lstbMaterial";
             this.lstbMaterial.Size = new System.Drawing.Size(290, 147);
             this.lstbMaterial.TabIndex = 4;
-            this.lstbMaterial.SelectedIndexChanged += new System.EventHandler(this.lstbScenes_SelectedIndexChanged);
             // 
             // MaterialList
             // 

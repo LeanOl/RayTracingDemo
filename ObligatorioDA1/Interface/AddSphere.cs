@@ -16,5 +16,19 @@ namespace Interface
         {
             InitializeComponent();
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            UserControl aFigureList = new FigureList();
+            Parent.Controls.Add(aFigureList);
+            Parent.Controls.Remove(this);
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            UserControl aFigureList = new FigureList();
+            Parent.Controls.Add(aFigureList);
+            Parent.Controls.Remove(this);
+        }
     }
 }
