@@ -11,9 +11,11 @@ namespace DomainLogicTest
         private ClientLogic logic;
         private const string ValidName = "John";
         private const string NameBelowCharLimit = "A5";
+        private const string NameAboveCharLimit = "abcdefdsddessssasddeeeeeeeeeeeee";
         private const string ValidPassword = "Abc12345";
         private DateTime TestDate = DateTime.Now;
         private const string UsernameBelowCharLimitMessage = "Username has to be at least 3 characters long";
+        private const string UsernameAboveCharLimitMessage = "Username has to be at most 20 characters long";
 
         [TestInitialize]
         public void TestInit()
@@ -30,11 +32,11 @@ namespace DomainLogicTest
                 Password = ValidPassword,
                 RegisterDate = TestDate
             };
-            
+           
             Assert.IsNotNull(aClient);
-            Assert.AreEqual(aClient.Username,ValidName);
-            Assert.AreEqual(aClient.Password,ValidPassword);
-            Assert.AreEqual(aClient.RegisterDate,TestDate);
+            Assert.AreEqual(ValidName, aClient.Username);
+            Assert.AreEqual(ValidPassword, aClient.Password);
+            Assert.AreEqual(TestDate, aClient.RegisterDate);
 
         }
        
@@ -48,7 +50,7 @@ namespace DomainLogicTest
                 Password = ValidPassword,
                 RegisterDate = TestDate
             };
-            logic = new ClientLogic();
+   
             try
             {
                 logic.CreateClient(aClient);
@@ -56,12 +58,37 @@ namespace DomainLogicTest
             }
             catch (Exception ex)
             {
-                Assert.AreEqual(ex.Message,UsernameBelowCharLimitMessage);
+                Assert.AreEqual(UsernameBelowCharLimitMessage, ex.Message);
             }
 
 
 
         }
+        [TestMethod]
+        public void ClientUsernameAboveCharacterLimit_ThrowException()
+        {
+
+            Client aClient = new Client()
+            {
+                Username = NameAboveCharLimit,
+                Password = ValidPassword,
+                RegisterDate = TestDate
+            };
+
+            try
+            {
+                logic.CreateClient(aClient);
+                Assert.Fail("Should throw exception");
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual(UsernameAboveCharLimitMessage,ex.Message );
+            }
+
+
+
+        }
+
 
     }
 

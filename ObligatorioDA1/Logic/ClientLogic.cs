@@ -15,6 +15,10 @@ namespace Logic
             {
                 throw new ArgumentException( "Username has to be at least 3 characters long");
             }
+            if (aClient.Username.Length >20)
+            {
+                throw new ArgumentException("Username has to be at most 20 characters long");
+            }
         }
     }
 }
