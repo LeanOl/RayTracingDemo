@@ -16,5 +16,12 @@ namespace Interface
         {
             InitializeComponent();
         }
+
+        private void btnAddNewScene_Click(object sender, EventArgs e)
+        {
+            UserControl anEditScene = new EditScene();
+            Parent.Controls.Add(anEditScene);
+            Parent.Controls.Remove(this);
+        }
     }
 }

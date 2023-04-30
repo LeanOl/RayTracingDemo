@@ -16,5 +16,12 @@ namespace Interface
         {
             InitializeComponent();
         }
+
+        private void btnAddNewModel_Click(object sender, EventArgs e)
+        {
+            UserControl anAddModel = new AddModel();
+            Parent.Controls.Add(anAddModel);
+            Parent.Controls.Remove(this);
+        }
     }
 }

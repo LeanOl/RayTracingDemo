@@ -16,5 +16,15 @@ namespace Interface
         {
             InitializeComponent();
         }
+
+        private void btnAddNewFigure_Click(object sender, EventArgs e)
+        {
+            
+            
+            UserControl anAddSphere = new AddSphere();
+            Parent.Controls.Add(anAddSphere);
+            Parent.Controls.Remove(this);
+
+        }
     }
 }

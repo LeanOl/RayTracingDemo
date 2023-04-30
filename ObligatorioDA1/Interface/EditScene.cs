@@ -16,5 +16,12 @@ namespace Interface
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            UserControl aSceneList= new SceneList();
+            Parent.Controls.Add(aSceneList);
+            Parent.Controls.Remove(this);
+        }
     }
 }

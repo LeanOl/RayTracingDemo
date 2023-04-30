@@ -42,7 +42,7 @@
             // 
             // txtMaterialName
             // 
-            this.txtMaterialName.Location = new System.Drawing.Point(62, 48);
+            this.txtMaterialName.Location = new System.Drawing.Point(196, 78);
             this.txtMaterialName.Name = "txtMaterialName";
             this.txtMaterialName.Size = new System.Drawing.Size(135, 20);
             this.txtMaterialName.TabIndex = 1;
@@ -50,7 +50,7 @@
             // lblMaterialName
             // 
             this.lblMaterialName.AutoSize = true;
-            this.lblMaterialName.Location = new System.Drawing.Point(59, 21);
+            this.lblMaterialName.Location = new System.Drawing.Point(193, 51);
             this.lblMaterialName.Name = "lblMaterialName";
             this.lblMaterialName.Size = new System.Drawing.Size(35, 13);
             this.lblMaterialName.TabIndex = 2;
@@ -58,7 +58,7 @@
             // 
             // txtRed
             // 
-            this.txtRed.Location = new System.Drawing.Point(62, 118);
+            this.txtRed.Location = new System.Drawing.Point(196, 148);
             this.txtRed.Name = "txtRed";
             this.txtRed.Size = new System.Drawing.Size(73, 20);
             this.txtRed.TabIndex = 3;
@@ -66,7 +66,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(59, 93);
+            this.label1.Location = new System.Drawing.Point(193, 123);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(27, 13);
             this.label1.TabIndex = 4;
@@ -74,7 +74,7 @@
             // 
             // txtGreen
             // 
-            this.txtGreen.Location = new System.Drawing.Point(141, 118);
+            this.txtGreen.Location = new System.Drawing.Point(275, 148);
             this.txtGreen.Name = "txtGreen";
             this.txtGreen.Size = new System.Drawing.Size(73, 20);
             this.txtGreen.TabIndex = 5;
@@ -82,7 +82,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(138, 93);
+            this.label2.Location = new System.Drawing.Point(272, 123);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 13);
             this.label2.TabIndex = 6;
@@ -90,7 +90,7 @@
             // 
             // txtBlue
             // 
-            this.txtBlue.Location = new System.Drawing.Point(220, 118);
+            this.txtBlue.Location = new System.Drawing.Point(354, 148);
             this.txtBlue.Name = "txtBlue";
             this.txtBlue.Size = new System.Drawing.Size(73, 20);
             this.txtBlue.TabIndex = 7;
@@ -98,7 +98,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(217, 93);
+            this.label3.Location = new System.Drawing.Point(351, 123);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(28, 13);
             this.label3.TabIndex = 8;
@@ -106,21 +106,23 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(62, 171);
+            this.btnAdd.Location = new System.Drawing.Point(196, 201);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(80, 34);
             this.btnAdd.TabIndex = 9;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(220, 171);
+            this.btnCancel.Location = new System.Drawing.Point(354, 201);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(80, 34);
             this.btnCancel.TabIndex = 10;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // AddMaterial
             // 
@@ -137,7 +139,7 @@
             this.Controls.Add(this.lblMaterialName);
             this.Controls.Add(this.txtMaterialName);
             this.Name = "AddMaterial";
-            this.Size = new System.Drawing.Size(389, 251);
+            this.Size = new System.Drawing.Size(677, 351);
             this.ResumeLayout(false);
             this.PerformLayout();
 
