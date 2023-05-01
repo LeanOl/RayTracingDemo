@@ -21,8 +21,9 @@ namespace RepositoryTests
                 Password = ValidUserPassword,
                 RegisterDate = TestDate
             };
-            ClientRepository.AddClient(aClient);
-            Assert.AreEqual(aClient, ClientRepository.GetClientByUsername(ValidUsername));
+            ClientRepository repository = new ClientRepository();
+            repository.AddClient(aClient);
+            Assert.AreEqual(aClient, repository.GetClientByUsername(ValidUsername));
         }
     }
 }

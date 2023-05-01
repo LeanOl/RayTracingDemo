@@ -10,8 +10,15 @@ using Repository;
 
 namespace Logic
 {
+    
     public class ClientLogic
     {
+        private ClientRepository _repository;
+
+        public ClientLogic()
+        {
+            _repository=new ClientRepository();
+        }
         public void CreateClient(string username,string password )
         {
             ValidateUsername(username);
@@ -22,11 +29,11 @@ namespace Logic
                 Password = password,
                 RegisterDate = DateTime.Today
             };
-            ClientRepository.AddClient( aClient );
+            _repository.AddClient( aClient );
             
         }
 
-        private static void ValidateUsername(string username)
+        private void ValidateUsername(string username)
         {
             ValidateUsernameLengthBelowLimit(username);
 
@@ -34,15 +41,15 @@ namespace Logic
             ValidateDuplicateUsername(username);
         }
 
-        private static void ValidateDuplicateUsername(string username)
+        private void ValidateDuplicateUsername(string username)
         {
-            if (ClientRepository.GetClientByUsername(username) != null)
+            if (_repository.GetClientByUsername(username) != null)
             {
                 throw new DuplicateNameException("The Username already exists");
             }
         }
 
-        private static void ValidateUsernameLengthAboveLimit(string username)
+        private void ValidateUsernameLengthAboveLimit(string username)
         {
             if (username.Length > 20)
             {
@@ -50,7 +57,7 @@ namespace Logic
             }
         }
 
-        private static void ValidateUsernameLengthBelowLimit(string username)
+        private void ValidateUsernameLengthBelowLimit(string username)
         {
             if (username.Length < 3)
             {
