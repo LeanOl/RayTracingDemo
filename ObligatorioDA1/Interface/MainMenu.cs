@@ -17,6 +17,18 @@ namespace Interface
             InitializeComponent();
         }
 
+
+        private void btnSignOut_Click(object sender, EventArgs e)
+        {
+            SignIn signIn = new SignIn();
+            Hide();
+            signIn.Show();
+        }
+
+        private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+
         private void btnFigures_Click(object sender, EventArgs e)
         {
             controlPanel.Controls.Clear();
@@ -43,6 +55,6 @@ namespace Interface
             controlPanel.Controls.Clear();
             UserControl aSceneList = new SceneList();
             controlPanel.Controls.Add(aSceneList);
-        }
+
     }
 }

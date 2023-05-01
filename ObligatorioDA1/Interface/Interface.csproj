@@ -70,6 +70,7 @@
     <Compile Include="FigureList.Designer.cs">
       <DependentUpon>FigureList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Instance.cs" />
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +102,18 @@
     </Compile>
     <Compile Include="SceneList.Designer.cs">
       <DependentUpon>SceneList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SignIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SignIn.Designer.cs">
+      <DependentUpon>SignIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SignUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SignUp.Designer.cs">
+      <DependentUpon>SignUp.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AddMaterial.resx">
       <DependentUpon>AddMaterial.cs</DependentUpon>
@@ -138,6 +151,12 @@
     <EmbeddedResource Include="SceneList.resx">
       <DependentUpon>SceneList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SignIn.resx">
+      <DependentUpon>SignIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SignUp.resx">
+      <DependentUpon>SignUp.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -150,6 +169,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Logic\Logic.csproj">
+      <Project>{B2F04C49-C11B-438A-87FE-340D00F212AF}</Project>
+      <Name>Logic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

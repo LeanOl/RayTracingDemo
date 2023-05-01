@@ -84,6 +84,7 @@
             this.btnSignOut.TabIndex = 4;
             this.btnSignOut.Text = "Sign Out";
             this.btnSignOut.UseVisualStyleBackColor = true;
+            this.btnSignOut.Click += new System.EventHandler(this.btnSignOut_Click);
             // 
             // controlPanel
             // 
@@ -105,6 +106,7 @@
             this.Controls.Add(this.btnFigures);
             this.Name = "MainMenu";
             this.Text = "RayTracing";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainMenu_FormClosed);
             this.ResumeLayout(false);
 
         }
