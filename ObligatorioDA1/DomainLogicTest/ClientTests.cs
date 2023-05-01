@@ -14,12 +14,13 @@ namespace DomainLogicTest
         private const string NameAboveCharLimit = "abcdefdsddessssasddeeeeeeeeeeeee";
         private const string ValidPassword = "Abc12345";
         private const string PasswordWithNoCaps = "abc12345";
+        private const string PasswordWithNoNumber = "Abcdefg";
         private DateTime TestDate = DateTime.Now;
         private const string UsernameBelowCharLimitMessage = "Username has to be at least 3 characters long";
         private const string UsernameAboveCharLimitMessage = "Username has to be at most 20 characters long";
         private const string UsernameDuplicatedMessage = "The Username already exists";
         private const string PasswordWithNoCapsMessage = "Your password has to have at least 1 Capital letter";
-
+        private const string PasswordWithNoNumberMessage = "Your password has to have at least 1 number";
         [TestInitialize]
         public void TestInit()
         {
@@ -112,6 +113,22 @@ namespace DomainLogicTest
             }
 
         }
+        [TestMethod]
+        public void ClientPasswordNoNumber_ThrowException()
+        {
+
+            try
+            {
+                logic.CreateClient(ValidName, PasswordWithNoNumber);
+                Assert.Fail("Should throw exception");
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual(PasswordWithNoNumberMessage, ex.Message);
+            }
+
+        }
+
 
 
     }

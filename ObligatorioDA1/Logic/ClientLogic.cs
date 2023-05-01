@@ -26,6 +26,11 @@ namespace Logic
             {
                 throw new ArgumentException("Your password has to have at least 1 Capital letter");
             }
+
+            if (!password.Any(Char.IsDigit))
+            {
+                throw new ArgumentException("Your password has to have at least 1 number");
+            }
             Client aClient = new Client()
             {
                 Username = username,
