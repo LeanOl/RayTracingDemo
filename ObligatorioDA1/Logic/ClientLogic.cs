@@ -22,7 +22,10 @@ namespace Logic
         public void CreateClient(string username,string password )
         {
             ValidateUsername(username);
-           
+            if (password == password.ToLower())
+            {
+                throw new ArgumentException("Your password has to have at least 1 Capital letter");
+            }
             Client aClient = new Client()
             {
                 Username = username,
