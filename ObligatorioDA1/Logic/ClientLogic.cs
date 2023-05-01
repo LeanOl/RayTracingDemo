@@ -24,10 +24,7 @@ namespace Logic
         {
             ValidateUsername(username);
             ValidatePassword(password);
-            if (!username.All(Char.IsLetterOrDigit))
-            {
-                throw new ArgumentException("Username has to be alphanumeric");
-            }
+            
             Client aClient = new Client()
             {
                 Username = username,
@@ -69,7 +66,8 @@ namespace Logic
 
         private void ValidatePasswordHasNumber(string password)
         {
-            if (!password.Any(Char.IsDigit))
+            bool passwordHasNumber = password.Any(Char.IsDigit);
+            if (!passwordHasNumber)
             {
                 throw new ArgumentException("Your password has to have at least 1 number");
             }
@@ -89,6 +87,16 @@ namespace Logic
 
             ValidateUsernameLengthAboveLimit(username);
             ValidateDuplicateUsername(username);
+            ValidateNotAlphanumericUsername(username);
+        }
+
+        private void ValidateNotAlphanumericUsername(string username)
+        {
+            bool isUsernameAlphanumeric = username.All(Char.IsLetterOrDigit);
+            if (!isUsernameAlphanumeric)
+            {
+                throw new ArgumentException("Username has to be alphanumeric");
+            }
         }
 
         private void ValidateDuplicateUsername(string username)
