@@ -15,12 +15,14 @@ namespace DomainLogicTest
         private const string ValidPassword = "Abc12345";
         private const string PasswordWithNoCaps = "abc12345";
         private const string PasswordWithNoNumber = "Abcdefg";
-        private DateTime TestDate = DateTime.Now;
+        private const string PasswordBelowCharLimit = "Ab1";
         private const string UsernameBelowCharLimitMessage = "Username has to be at least 3 characters long";
         private const string UsernameAboveCharLimitMessage = "Username has to be at most 20 characters long";
         private const string UsernameDuplicatedMessage = "The Username already exists";
         private const string PasswordWithNoCapsMessage = "Your password has to have at least 1 Capital letter";
         private const string PasswordWithNoNumberMessage = "Your password has to have at least 1 number";
+        private const string PasswordBelowCharLimitMessage = "Your password has to be at least 5 characters long";
+
         [TestInitialize]
         public void TestInit()
         {
@@ -35,18 +37,19 @@ namespace DomainLogicTest
         [TestMethod]
         public void CreateClientObjectSuccessfully()
         {
+            DateTime testDate = DateTime.Now;
 
             Client aClient = new Client()
-            {
-                Username = ValidName,
-                Password = ValidPassword,
-                RegisterDate = TestDate
-            };
-           
+                {
+                    Username = ValidName,
+                    Password = ValidPassword,
+                    RegisterDate = testDate
+                };
+               
             Assert.IsNotNull(aClient);
             Assert.AreEqual(ValidName, aClient.Username);
             Assert.AreEqual(ValidPassword, aClient.Password);
-            Assert.AreEqual(TestDate, aClient.RegisterDate);
+            Assert.AreEqual(testDate, aClient.RegisterDate);
 
         }
        
@@ -128,7 +131,21 @@ namespace DomainLogicTest
             }
 
         }
+        [TestMethod]
+        public void ClientPasswordBelowCharLimit_ThrowException()
+        {
 
+            try
+            {
+                logic.CreateClient(ValidName, PasswordBelowCharLimit);
+                Assert.Fail("Should throw exception");
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual(PasswordBelowCharLimitMessage, ex.Message);
+            }
+
+        }
 
 
     }
