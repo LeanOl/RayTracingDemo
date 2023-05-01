@@ -16,5 +16,17 @@ namespace Interface
         {
             InitializeComponent();
         }
+
+        private void btnSignOut_Click(object sender, EventArgs e)
+        {
+            SignIn signIn = new SignIn();
+            Hide();
+            signIn.Show();
+        }
+
+        private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
