@@ -36,6 +36,10 @@ namespace Logic
             {
                 throw new ArgumentException("Your password has to be at least 5 characters long");
             }
+            if (password.Length > 25)
+            {
+                throw new ArgumentException("Your password has to be at most 25 characters long");
+            }
             Client aClient = new Client()
             {
                 Username = username,

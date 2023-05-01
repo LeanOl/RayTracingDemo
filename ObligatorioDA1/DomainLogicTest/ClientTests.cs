@@ -16,12 +16,14 @@ namespace DomainLogicTest
         private const string PasswordWithNoCaps = "abc12345";
         private const string PasswordWithNoNumber = "Abcdefg";
         private const string PasswordBelowCharLimit = "Ab1";
+        private const string PasswordAboveCharLimit = "Ab1Ab1Ab1Ab1Ab1Ab1Ab1Ab1Ab1Ab1Ab1Ab1Ab1Ab1Ab1Ab1";
         private const string UsernameBelowCharLimitMessage = "Username has to be at least 3 characters long";
         private const string UsernameAboveCharLimitMessage = "Username has to be at most 20 characters long";
         private const string UsernameDuplicatedMessage = "The Username already exists";
         private const string PasswordWithNoCapsMessage = "Your password has to have at least 1 Capital letter";
         private const string PasswordWithNoNumberMessage = "Your password has to have at least 1 number";
         private const string PasswordBelowCharLimitMessage = "Your password has to be at least 5 characters long";
+        private const string PasswordAboveCharLimitMessage = "Your password has to be at most 25 characters long";
 
         [TestInitialize]
         public void TestInit()
@@ -143,6 +145,21 @@ namespace DomainLogicTest
             catch (Exception ex)
             {
                 Assert.AreEqual(PasswordBelowCharLimitMessage, ex.Message);
+            }
+
+        }
+        [TestMethod]
+        public void ClientPasswordAboveCharLimit_ThrowException()
+        {
+
+            try
+            {
+                logic.CreateClient(ValidName, PasswordAboveCharLimit);
+                Assert.Fail("Should throw exception");
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual(PasswordAboveCharLimitMessage, ex.Message);
             }
 
         }
