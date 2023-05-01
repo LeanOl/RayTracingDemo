@@ -182,6 +182,24 @@ namespace DomainLogicTest
 
         }
 
+        [TestMethod]
+        public void ClientConfirmPasswordDoesNotMatch_ThrowException()
+        {
+            const string password1= "Abc234";
+            const string password2 = "Abc235";
+            const string PasswordDoesNotMatchMessage = "Password does not match";
+            try
+            {
+                logic.ValidateConfirmPassword(password1, password2);
+                Assert.Fail("Should throw exception");
+
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual(PasswordDoesNotMatchMessage, ex.Message);
+            }
+        }
+
 
     }
 

@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Security.Policy;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Domain;
 using Repository;
@@ -23,6 +25,7 @@ namespace Logic
         public void CreateClient(string username,string password )
         {
             ValidateUsername(username);
+            ValidateDuplicateUsername(username);
             ValidatePassword(password);
             
             Client aClient = new Client()
@@ -35,7 +38,7 @@ namespace Logic
             
         }
 
-        private void ValidatePassword(string password)
+        public void ValidatePassword(string password)
         {
             ValidatePasswordHasCaps(password);
 
@@ -81,12 +84,12 @@ namespace Logic
             }
         }
 
-        private void ValidateUsername(string username)
+        public void ValidateUsername(string username)
         {
             ValidateUsernameLengthBelowLimit(username);
 
             ValidateUsernameLengthAboveLimit(username);
-            ValidateDuplicateUsername(username);
+            
             ValidateNotAlphanumericUsername(username);
         }
 
@@ -123,6 +126,15 @@ namespace Logic
             {
                 throw new ArgumentException($"Username has to be at least {minLength} characters long");
             }
+        }
+
+        public void ValidateConfirmPassword(string password1, string password2)
+        {
+            if (password1 != password2)
+            {
+                throw new ArgumentException("Password does not match");
+            }
+            
         }
     }
 }
