@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Security.Policy;
@@ -132,7 +133,7 @@ namespace Logic
         {
             if (password1 != password2)
             {
-                throw new ArgumentException("Password does not match");
+                throw new PasswordMismatchException("Password does not match");
             }
             
         }
