@@ -28,6 +28,7 @@ namespace Interface
         private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
 
         private void btnFigures_Click(object sender, EventArgs e)
         {
@@ -56,5 +57,6 @@ namespace Interface
             UserControl aSceneList = new SceneList();
             controlPanel.Controls.Add(aSceneList);
 
+        }
     }
 }
