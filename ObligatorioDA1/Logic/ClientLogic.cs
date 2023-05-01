@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using Domain;
@@ -23,6 +24,10 @@ namespace Logic
         {
             ValidateUsername(username);
             ValidatePassword(password);
+            if (!username.All(Char.IsLetterOrDigit))
+            {
+                throw new ArgumentException("Username has to be alphanumeric");
+            }
             Client aClient = new Client()
             {
                 Username = username,
