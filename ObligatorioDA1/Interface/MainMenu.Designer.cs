@@ -44,6 +44,7 @@
             this.btnFigures.TabIndex = 0;
             this.btnFigures.Text = "Figures";
             this.btnFigures.UseVisualStyleBackColor = true;
+            this.btnFigures.Click += new System.EventHandler(this.btnFigures_Click);
             // 
             // btnMaterials
             // 
@@ -53,6 +54,7 @@
             this.btnMaterials.TabIndex = 1;
             this.btnMaterials.Text = "Materials";
             this.btnMaterials.UseVisualStyleBackColor = true;
+            this.btnMaterials.Click += new System.EventHandler(this.btnMaterials_Click);
             // 
             // btnModels
             // 
@@ -62,6 +64,7 @@
             this.btnModels.TabIndex = 2;
             this.btnModels.Text = "Models";
             this.btnModels.UseVisualStyleBackColor = true;
+            this.btnModels.Click += new System.EventHandler(this.btnModels_Click);
             // 
             // btnScenes
             // 
@@ -71,6 +74,7 @@
             this.btnScenes.TabIndex = 3;
             this.btnScenes.Text = "Scenes";
             this.btnScenes.UseVisualStyleBackColor = true;
+            this.btnScenes.Click += new System.EventHandler(this.btnScenes_Click);
             // 
             // btnSignOut
             // 

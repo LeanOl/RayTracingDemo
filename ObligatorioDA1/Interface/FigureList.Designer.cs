@@ -34,17 +34,18 @@
             // 
             // btnAddNewFigure
             // 
-            this.btnAddNewFigure.Location = new System.Drawing.Point(132, 29);
+            this.btnAddNewFigure.Location = new System.Drawing.Point(254, 66);
             this.btnAddNewFigure.Name = "btnAddNewFigure";
             this.btnAddNewFigure.Size = new System.Drawing.Size(155, 23);
             this.btnAddNewFigure.TabIndex = 0;
             this.btnAddNewFigure.Text = "+ Add New Figure";
             this.btnAddNewFigure.UseVisualStyleBackColor = true;
+            this.btnAddNewFigure.Click += new System.EventHandler(this.btnAddNewFigure_Click);
             // 
             // lstbFigures
             // 
             this.lstbFigures.FormattingEnabled = true;
-            this.lstbFigures.Location = new System.Drawing.Point(132, 58);
+            this.lstbFigures.Location = new System.Drawing.Point(254, 95);
             this.lstbFigures.Name = "lstbFigures";
             this.lstbFigures.Size = new System.Drawing.Size(155, 147);
             this.lstbFigures.TabIndex = 4;
@@ -56,7 +57,7 @@
             this.Controls.Add(this.lstbFigures);
             this.Controls.Add(this.btnAddNewFigure);
             this.Name = "FigureList";
-            this.Size = new System.Drawing.Size(476, 268);
+            this.Size = new System.Drawing.Size(677, 351);
             this.ResumeLayout(false);
 
         }
