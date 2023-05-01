@@ -22,24 +22,7 @@ namespace Logic
         public void CreateClient(string username,string password )
         {
             ValidateUsername(username);
-            if (password == password.ToLower())
-            {
-                throw new ArgumentException("Your password has to have at least 1 Capital letter");
-            }
-
-            if (!password.Any(Char.IsDigit))
-            {
-                throw new ArgumentException("Your password has to have at least 1 number");
-            }
-
-            if (password.Length < 5)
-            {
-                throw new ArgumentException("Your password has to be at least 5 characters long");
-            }
-            if (password.Length > 25)
-            {
-                throw new ArgumentException("Your password has to be at most 25 characters long");
-            }
+            ValidatePassword(password);
             Client aClient = new Client()
             {
                 Username = username,
@@ -48,6 +31,51 @@ namespace Logic
             };
             _repository.AddClient( aClient );
             
+        }
+
+        private void ValidatePassword(string password)
+        {
+            ValidatePasswordHasCaps(password);
+
+            ValidatePasswordHasNumber(password);
+
+            ValidatePasswordLengthBelowLimit(password);
+
+            ValidatePasswordLengthAboveLimit(password);
+        }
+
+        private void ValidatePasswordLengthAboveLimit(string password)
+        {
+            const int maxLength = 25;
+            if (password.Length > maxLength)
+            {
+                throw new ArgumentException($"Your password has to be at most {maxLength} characters long");
+            }
+        }
+
+        private void ValidatePasswordLengthBelowLimit(string password)
+        {
+            const int minLength = 5;
+            if (password.Length < minLength)
+            {
+                throw new ArgumentException($"Your password has to be at least {minLength} characters long");
+            }
+        }
+
+        private void ValidatePasswordHasNumber(string password)
+        {
+            if (!password.Any(Char.IsDigit))
+            {
+                throw new ArgumentException("Your password has to have at least 1 number");
+            }
+        }
+
+        private void ValidatePasswordHasCaps(string password)
+        {
+            if (password == password.ToLower())
+            {
+                throw new ArgumentException("Your password has to have at least 1 Capital letter");
+            }
         }
 
         private void ValidateUsername(string username)
@@ -68,17 +96,19 @@ namespace Logic
 
         private void ValidateUsernameLengthAboveLimit(string username)
         {
-            if (username.Length > 20)
+            const int maxLength = 20;
+            if (username.Length > maxLength)
             {
-                throw new ArgumentException("Username has to be at most 20 characters long");
+                throw new ArgumentException($"Username has to be at most {maxLength} characters long");
             }
         }
 
         private void ValidateUsernameLengthBelowLimit(string username)
         {
-            if (username.Length < 3)
+            const int minLength = 3;
+            if (username.Length < minLength)
             {
-                throw new ArgumentException("Username has to be at least 3 characters long");
+                throw new ArgumentException($"Username has to be at least {minLength} characters long");
             }
         }
     }
