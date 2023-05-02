@@ -25,14 +25,25 @@ namespace Logic
         public void LogIn(string username, string password)
         {
             Client aClient = _repository.GetClientByUsername(username);
-            Authenticate(username,aClient);
-            if(aClient.Password != password)
-                throw new InvalidCredentialException("Incorrect user or password");
+            Authenticate(password,aClient);
+            
             _session.ActiveUser = aClient;
 
         }
 
-        private void Authenticate(string username, Client aClient)
+        private void Authenticate(string password,Client aClient)
+        {
+            VerifyUserExists(aClient);
+            VerifyPassword(password, aClient);
+        }
+
+        private void VerifyPassword(string password, Client aClient)
+        {
+            if (aClient.Password != password)
+                throw new InvalidCredentialException("Incorrect user or password");
+        }
+
+        private void VerifyUserExists(Client aClient)
         {
             if (aClient == null)
                 throw new InvalidCredentialException("Incorrect user or password");
