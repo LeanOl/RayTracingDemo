@@ -47,7 +47,7 @@ namespace DomainLogicTest
         }
 
         [TestMethod]
-        public void LogIntWithNonExistentUsername_ThrowException()
+        public void LogInWithNonExistentUsername_ThrowException()
         {
             const string WrongUsername = "BCDE123";
             
@@ -63,6 +63,23 @@ namespace DomainLogicTest
             }
             
         }
-        
+        [TestMethod]
+        public void LogInWithWrongPassword_ThrowException()
+        {
+            const string WrongPassword = "dasdasdasdad";
+
+            _clientLogic.CreateClient(Username, Password);
+            try
+            {
+                _sessionLogic.LogIn(Username, WrongPassword);
+                Assert.Fail("Should throw exception");
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual(WrongCredentialsMessage, ex.Message);
+            }
+
+        }
+
     }
 }

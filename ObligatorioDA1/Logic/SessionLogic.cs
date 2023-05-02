@@ -26,6 +26,8 @@ namespace Logic
         {
             Client aClient = _repository.GetClientByUsername(username);
             Authenticate(username,aClient);
+            if(aClient.Password != password)
+                throw new InvalidCredentialException("Incorrect user or password");
             _session.ActiveUser = aClient;
 
         }
