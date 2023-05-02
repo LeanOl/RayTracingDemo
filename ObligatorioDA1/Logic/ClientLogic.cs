@@ -23,6 +23,11 @@ namespace Logic
         {
             _repository=new ClientRepository();
         }
+        public ClientLogic(ClientRepository repository)
+        {
+            _repository = repository;
+        }
+
         public void CreateClient(string username,string password )
         {
             ValidateUsername(username);
