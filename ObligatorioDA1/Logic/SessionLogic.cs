@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Authentication;
 using System.Text;
 using System.Threading.Tasks;
 using Domain;
@@ -23,7 +24,8 @@ namespace Logic
 
         public void LogIn(string username, string password)
         {
-            
+            if (_repository.GetClientByUsername(username) == null)
+                throw new InvalidCredentialException("Incorrect user or password");
             _session.ActiveUser= _repository.GetClientByUsername(username);
 
         }

@@ -16,6 +16,7 @@ namespace DomainLogicTest
         private SessionLogic _sessionLogic;
         const string Username = "John";
         const string Password = "Abc12345";
+        const string WrongCredentialsMessage = "Incorrect user or password";
         [TestInitialize]
         public void Initialize()
         {
@@ -44,5 +45,24 @@ namespace DomainLogicTest
             Assert.AreEqual(activeUser,_aClient);
 
         }
+
+        [TestMethod]
+        public void LogIntWithNonExistentUsername_ThrowException()
+        {
+            const string WrongUsername = "BCDE123";
+            
+            _clientLogic.CreateClient(Username, Password);
+            try
+            {
+                _sessionLogic.LogIn(WrongUsername, Password);
+                Assert.Fail("Should throw exception");
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual(WrongCredentialsMessage, ex.Message);
+            }
+            
+        }
+        
     }
 }
