@@ -20,6 +20,7 @@ namespace Interface
 
         private void btnSignOut_Click(object sender, EventArgs e)
         {
+            Instance.InstanceSessionLogic.LogOut();
             SignIn signIn = new SignIn();
             Hide();
             signIn.Show();

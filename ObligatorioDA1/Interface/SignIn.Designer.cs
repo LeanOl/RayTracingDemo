@@ -34,6 +34,7 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnSignUp = new System.Windows.Forms.Button();
             this.btnSignIn = new System.Windows.Forms.Button();
+            this.lblSignInMessage = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblUsernameText
@@ -88,11 +89,22 @@
             this.btnSignIn.UseVisualStyleBackColor = true;
             this.btnSignIn.Click += new System.EventHandler(this.btnSignIn_Click);
             // 
+            // lblSignInMessage
+            // 
+            this.lblSignInMessage.AutoSize = true;
+            this.lblSignInMessage.ForeColor = System.Drawing.Color.Red;
+            this.lblSignInMessage.Location = new System.Drawing.Point(239, 184);
+            this.lblSignInMessage.Name = "lblSignInMessage";
+            this.lblSignInMessage.Size = new System.Drawing.Size(43, 13);
+            this.lblSignInMessage.TabIndex = 15;
+            this.lblSignInMessage.Text = "            ";
+            // 
             // SignIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(603, 321);
+            this.Controls.Add(this.lblSignInMessage);
             this.Controls.Add(this.btnSignIn);
             this.Controls.Add(this.btnSignUp);
             this.Controls.Add(this.label1);
@@ -115,5 +127,6 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button btnSignUp;
         private System.Windows.Forms.Button btnSignIn;
+        private System.Windows.Forms.Label lblSignInMessage;
     }
 }

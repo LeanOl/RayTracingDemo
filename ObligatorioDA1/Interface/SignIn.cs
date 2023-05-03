@@ -32,9 +32,20 @@ namespace Interface
 
         private void btnSignIn_Click(object sender, EventArgs e)
         {
-            MainMenu menu = new MainMenu();
-            Hide();
-            menu.Show();
+            try
+            {
+                string username = txtUseraname.Text;
+                string password = txtPassword.Text;
+                Instance.InstanceSessionLogic.LogIn(username,password);
+                MainMenu menu = new MainMenu();
+                Hide();
+                menu.Show();
+            }
+            catch (Exception ex)
+            {
+                lblSignInMessage.Text = ex.Message;
+            }
+           
             
         }
     
