@@ -53,6 +53,11 @@ namespace Logic
         {
             return _session.ActiveUser;
         }
+
+        public void LogOut()
+        {
+            _session.ActiveUser=null;
+        }
     }
 
 

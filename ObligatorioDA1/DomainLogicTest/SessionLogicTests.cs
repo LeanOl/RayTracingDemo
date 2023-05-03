@@ -81,5 +81,15 @@ namespace DomainLogicTest
 
         }
 
+        [TestMethod]
+        public void LogOutAfterLogInSuccessfully()
+        {
+            _clientLogic.CreateClient(Username, Password);
+            _sessionLogic.LogIn(Username, Password);
+            _sessionLogic.LogOut();
+            Assert.IsNull(_sessionLogic.GetActiveUser());
+
+        }
+
     }
 }
