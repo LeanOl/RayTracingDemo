@@ -6,7 +6,7 @@ using Repository;
 namespace RepositoryTests
 {
     [TestClass]
-    public class RepositoryTest
+    public class ClientRepositoryTest
     {
         private const string ValidUsername = "John";
         private const string ValidUserPassword = "Abc12345";
