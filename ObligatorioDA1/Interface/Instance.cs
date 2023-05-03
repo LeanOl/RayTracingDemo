@@ -8,11 +8,11 @@ using Logic;
 
 namespace Interface
 {
-    internal class Instance
+    static class Instance
     {
         public static ClientLogic InstanceClientLogic { get; } = new ClientLogic();
-
-
+        public static SessionLogic InstanceSessionLogic { get; } = new SessionLogic(InstanceClientLogic);
+        
 
     }
 }

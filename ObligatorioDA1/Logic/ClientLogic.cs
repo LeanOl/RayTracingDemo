@@ -23,6 +23,8 @@ namespace Logic
         {
             _repository=new ClientRepository();
         }
+       
+
         public void CreateClient(string username,string password )
         {
             ValidateUsername(username);
@@ -136,6 +138,11 @@ namespace Logic
                 throw new PasswordMismatchException("Password does not match");
             }
             
+        }
+
+        public Client GetClientByUsername(string validUsername)
+        {
+            return _repository.GetClientByUsername(validUsername);
         }
     }
 }
