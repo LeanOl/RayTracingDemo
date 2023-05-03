@@ -1,7 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using Domain;
-using Logic;
+
 
 namespace DomainLogicTest
 {
@@ -9,10 +8,6 @@ namespace DomainLogicTest
 
     public class FigureTests
     {
-
-
-        private FigureLogic logic;
-
         private Client someClient;
         private const string validName = "Ball";
         private const int validRadius = 10;
@@ -20,14 +15,11 @@ namespace DomainLogicTest
 
         [TestInitialize]
         public void TestInit()
-        {
-            logic = new FigureLogic();
-            
+        {            
             someClient = new Client()
             {
                 Username = someUsername
             };
-    
         }
 
         [TestMethod]
@@ -45,8 +37,5 @@ namespace DomainLogicTest
             Assert.AreEqual(validName, aSphere.Name);
             Assert.AreEqual(validRadius, aSphere.Radius);
         }
-
     }
-
-
 }
