@@ -29,10 +29,10 @@ namespace DomainLogicTest
                 Password = Password,
                 RegisterDate = testDate
             };
-            _clientRepository=new ClientRepository();
-            _clientLogic=new ClientLogic(_clientRepository);
-            _sessionLogic=new SessionLogic(_clientRepository);
-
+            
+            _clientLogic=new ClientLogic();
+            _sessionLogic=new SessionLogic(_clientLogic);
+            
             
         }
 

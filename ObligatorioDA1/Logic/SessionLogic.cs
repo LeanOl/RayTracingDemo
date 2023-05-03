@@ -11,20 +11,20 @@ namespace Logic
 {
     public class SessionLogic
     {
-        private readonly ClientRepository _repository;
+        private readonly ClientLogic _clientLogic;
         private Session _session;
         
 
-        public SessionLogic(ClientRepository clientRepository)
+        public SessionLogic(ClientLogic clientLogic)
         {
-            _repository=clientRepository;
+            _clientLogic=clientLogic;
             _session = new Session();
         }
 
 
         public void LogIn(string username, string password)
         {
-            Client aClient = _repository.GetClientByUsername(username);
+            Client aClient = _clientLogic.GetClientByUsername(username);
             Authenticate(password,aClient);
             
             _session.ActiveUser = aClient;
