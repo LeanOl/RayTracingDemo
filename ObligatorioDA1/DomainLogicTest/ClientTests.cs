@@ -199,6 +199,14 @@ namespace DomainLogicTest
                 Assert.AreEqual(PasswordDoesNotMatchMessage, ex.Message);
             }
         }
+        [TestMethod]
+        public void GetClientByUsernameSuccessfully()
+        {
+            logic.CreateClient(ValidUsername,ValidPassword);
+            Client resultClient=logic.GetClientByUsername(ValidUsername);
+            Assert.AreEqual(resultClient.Username,ValidUsername);
+        }
+
 
 
     }

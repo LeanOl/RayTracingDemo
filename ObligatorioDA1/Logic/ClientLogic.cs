@@ -142,5 +142,10 @@ namespace Logic
             }
             
         }
+
+        public Client GetClientByUsername(string validUsername)
+        {
+            return _repository.GetClientByUsername(validUsername);
+        }
     }
 }
