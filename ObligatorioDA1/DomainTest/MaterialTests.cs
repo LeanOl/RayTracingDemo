@@ -29,10 +29,10 @@ namespace DomainTest
 
         }
         [TestMethod]
-        public void CreateMaterialSuccessfully()
+        public void CreateLambertianMaterialSuccessfully()
         {
             Color materialColor = Color.FromArgb(205, 215, 235);
-            Material aMaterial = new Material()
+            Material aMaterial = new Lambertian()
             {
                 Owner = aClient,
                 Name = "New Color",
