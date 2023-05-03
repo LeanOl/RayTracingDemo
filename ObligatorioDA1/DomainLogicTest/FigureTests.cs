@@ -9,15 +9,25 @@ namespace DomainLogicTest
 
     public class FigureTests
     {
+
+
         private FigureLogic logic;
+
         private Client someClient;
         private const string validName = "Ball";
         private const int validRadius = 10;
+        private const string someUsername = "Pepito";
 
         [TestInitialize]
         public void TestInit()
         {
-            FigureLogic logic = new FigureLogic();
+            logic = new FigureLogic();
+            
+            someClient = new Client()
+            {
+                Username = someUsername
+            };
+    
         }
 
         [TestMethod]
