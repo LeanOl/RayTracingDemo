@@ -12,10 +12,8 @@ namespace Logic
         private const string NameStartsWithWhitespaceMessage = "Figure name should not start or end with whitespaces";
         public void CreateLambertian(Client someClient, string name, Color color)
         {
-            ValidateEmptyName(name);
-            ValidateStartWithWhitespace(name);
-            if (name.EndsWith(" "))
-                throw new ArgumentException("Figure name should not start or end with whitespaces");
+            ValidateName(name);
+       
 
             Material materialToAdd = new Lambertian()
             {
@@ -26,9 +24,15 @@ namespace Logic
             _repository.Add(materialToAdd);
         }
 
-        private void ValidateStartWithWhitespace(string name)
+        private void ValidateName(string name)
         {
-            if (name.StartsWith(" "))
+            ValidateEmptyName(name);
+            ValidateStartsOrEndsWithWhitespace(name);
+        }
+
+        private void ValidateStartsOrEndsWithWhitespace(string name)
+        {
+            if (name.StartsWith(" ") || name.EndsWith(" "))
             {
                 
                 throw new ArgumentException(NameStartsWithWhitespaceMessage);
