@@ -12,6 +12,10 @@ namespace Logic
         public void CreateLambertian(Client someClient, string name, Color color)
         {
             ValidateEmptyName(name);
+            if (name.StartsWith(" "))
+            {
+                throw new ArgumentException("Figure name should not start or end with whitespaces");
+            }
 
             Material materialToAdd = new Lambertian()
             {

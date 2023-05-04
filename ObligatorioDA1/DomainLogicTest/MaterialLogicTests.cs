@@ -14,6 +14,7 @@ namespace DomainLogicTest
         private Color _color;
         private const string ValidName = "Figure";
         private const string EmptyNameMessage = "Figure name should not be empty";
+        private const string StartsOrEndsWithWhitespaceMessage = "Figure name should not start or end with whitespaces";
 
         [TestInitialize]
         public void Initialize()
@@ -61,10 +62,24 @@ namespace DomainLogicTest
 
             }
             
-            
+        }
+        [TestMethod]
+        public void CreateLambertianBeginsWithWhitespace_ThrowException()
+        {
+            const string whitespaceFirstName = "  Figure";
+            try
+            {
+                _logic.CreateLambertian(_someClient, whitespaceFirstName, _color);
+                Assert.Fail("Should throw exception");
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual(StartsOrEndsWithWhitespaceMessage, ex.Message);
+
+            }
 
         }
 
-        
+
     }
 }
