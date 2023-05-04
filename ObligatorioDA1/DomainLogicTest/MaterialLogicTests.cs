@@ -13,7 +13,8 @@ namespace DomainLogicTest
         private MaterialLogic _logic;
         private Color _color;
         private const string ValidName = "Figure";
-        
+        private const string EmptyNameMessage = "Figure name should not be empty";
+
         [TestInitialize]
         public void Initialize()
         {
@@ -43,6 +44,27 @@ namespace DomainLogicTest
             };
             _logic.CreateLambertian(_someClient, ValidName, _color);
             Assert.AreEqual(testMaterial,_logic.GetMaterialByName(ValidName));
+            
         }
+        [TestMethod]
+        public void CreateLambertianEmptyName_ThrowException()
+        {
+            const string emptyName = "   ";
+            try
+            { 
+                _logic.CreateLambertian(_someClient, emptyName, _color);
+                Assert.Fail("Should throw exception");
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual(EmptyNameMessage,ex.Message);
+
+            }
+            
+            
+
+        }
+
+        
     }
 }

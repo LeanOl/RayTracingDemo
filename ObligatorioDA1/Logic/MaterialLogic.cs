@@ -10,6 +10,9 @@ namespace Logic
         private MaterialRepository _repository = new MaterialRepository();
         public void CreateLambertian(Client someClient, string name, Color color)
         {
+            if (String.IsNullOrWhiteSpace(name))
+                throw new ArgumentException("Figure name should not be empty");
+
             Material materialToAdd = new Lambertian()
             {
                 Owner = someClient,
