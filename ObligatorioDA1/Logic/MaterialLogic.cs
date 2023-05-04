@@ -8,10 +8,10 @@ namespace Logic
     public class MaterialLogic
     {
         private MaterialRepository _repository = new MaterialRepository();
+        private const string FigureNameEmptyMessage = "Figure name should not be empty";
         public void CreateLambertian(Client someClient, string name, Color color)
         {
-            if (String.IsNullOrWhiteSpace(name))
-                throw new ArgumentException("Figure name should not be empty");
+            ValidateEmptyName(name);
 
             Material materialToAdd = new Lambertian()
             {
@@ -20,6 +20,15 @@ namespace Logic
                 Color = color
             };
             _repository.Add(materialToAdd);
+        }
+
+        private void ValidateEmptyName(string name)
+        {
+            if (String.IsNullOrWhiteSpace(name))
+            {
+                
+                throw new ArgumentException(FigureNameEmptyMessage);
+            }
         }
 
         public Material GetMaterialByName(string name)
