@@ -9,13 +9,11 @@ namespace Logic
     {
         private MaterialRepository _repository = new MaterialRepository();
         private const string FigureNameEmptyMessage = "Figure name should not be empty";
+        private const string NameStartsWithWhitespaceMessage = "Figure name should not start or end with whitespaces";
         public void CreateLambertian(Client someClient, string name, Color color)
         {
             ValidateEmptyName(name);
-            if (name.StartsWith(" "))
-            {
-                throw new ArgumentException("Figure name should not start or end with whitespaces");
-            }
+            ValidateStartWithWhitespace(name);
 
             Material materialToAdd = new Lambertian()
             {
@@ -24,6 +22,15 @@ namespace Logic
                 Color = color
             };
             _repository.Add(materialToAdd);
+        }
+
+        private void ValidateStartWithWhitespace(string name)
+        {
+            if (name.StartsWith(" "))
+            {
+                
+                throw new ArgumentException(NameStartsWithWhitespaceMessage);
+            }
         }
 
         private void ValidateEmptyName(string name)
