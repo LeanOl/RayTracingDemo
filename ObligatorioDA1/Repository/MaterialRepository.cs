@@ -21,7 +21,7 @@ namespace Repository
             return Materials.FirstOrDefault(someMaterial => someMaterial.Name == name);
         }
 
-        public ICollection getMaterialsByClient(Client someClient)
+        public List<Material> GetMaterialsByClient(Client someClient)
         {
             return Materials.FindAll(someMaterial => someMaterial.Owner.Equals(someClient));
         }

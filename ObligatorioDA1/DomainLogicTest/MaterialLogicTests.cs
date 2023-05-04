@@ -15,6 +15,7 @@ namespace DomainLogicTest
         private const string ValidName = "Figure";
         private const string EmptyNameMessage = "Figure name should not be empty";
         private const string StartsOrEndsWithWhitespaceMessage = "Figure name should not start or end with whitespaces";
+        private const string DuplicateNameMessage = "There is already a figure with this name";
 
         [TestInitialize]
         public void Initialize()
@@ -90,6 +91,21 @@ namespace DomainLogicTest
             catch (Exception ex)
             {
                 Assert.AreEqual(StartsOrEndsWithWhitespaceMessage, ex.Message);
+
+            }
+        }
+        [TestMethod]
+        public void CreateLambertianDuplicatedName_ThrowException()
+        {
+            _logic.CreateLambertian(_someClient, ValidName, _color);
+            try
+            {
+                _logic.CreateLambertian(_someClient, ValidName, _color);
+                Assert.Fail("Should throw exception");
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual(DuplicateNameMessage, ex.Message);
 
             }
         }

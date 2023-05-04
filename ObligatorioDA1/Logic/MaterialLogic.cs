@@ -1,6 +1,8 @@
 ﻿using Domain;
 using System;
+using System.Data;
 using System.Drawing;
+using System.Linq;
 using Repository;
 
 namespace Logic
@@ -13,8 +15,8 @@ namespace Logic
         public void CreateLambertian(Client someClient, string name, Color color)
         {
             ValidateName(name);
-       
-
+            if (_repository.GetMaterialsByClient(someClient).Find(someMaterial => someMaterial.Name == name) != null)
+                throw new DuplicateNameException("There is already a figure with this name");
             Material materialToAdd = new Lambertian()
             {
                 Owner = someClient,
