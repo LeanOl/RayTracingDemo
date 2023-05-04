@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 
 namespace Domain
 {
@@ -7,5 +8,18 @@ namespace Domain
         public Client Owner { get; set; }
         public string Name { get; set; }
         public Color Color { get; set; }
+        public override bool Equals(Object obj)
+        {
+            Material materialToCompare = obj as Material;
+            if (obj == null)
+            {
+                return false;
+            }
+            else
+            {
+                return Name == materialToCompare.Name;
+            }
+        }
+
     }
 }

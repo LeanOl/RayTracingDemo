@@ -13,14 +13,15 @@ namespace Domain
         public DateTime RegisterDate { get; set; }
         public override bool Equals(Object obj)
         {
-            if ((obj == null) || !(obj is Client))
+            Client clientToCompare = obj as Client;
+            if (obj == null)
             {
                 return false;
             }
             else
             {
-                Client client = (Client)obj;
-                return Username == client.Username;
+                
+                return Username == clientToCompare.Username;
             }
         }
     }

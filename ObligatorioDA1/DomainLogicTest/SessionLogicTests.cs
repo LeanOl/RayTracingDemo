@@ -11,7 +11,6 @@ namespace DomainLogicTest
     public class SessionLogicTests
     {
         private Client _aClient;
-        private ClientRepository _clientRepository;
         private ClientLogic _clientLogic;
         private SessionLogic _sessionLogic;
         const string Username = "John";
