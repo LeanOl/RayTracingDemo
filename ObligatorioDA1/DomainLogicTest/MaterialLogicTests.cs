@@ -77,9 +77,22 @@ namespace DomainLogicTest
                 Assert.AreEqual(StartsOrEndsWithWhitespaceMessage, ex.Message);
 
             }
-
         }
+        [TestMethod]
+        public void CreateLambertianEndsWithWhitespace_ThrowException()
+        {
+            const string whitespaceAtEndName = "Figure  ";
+            try
+            {
+                _logic.CreateLambertian(_someClient, whitespaceAtEndName, _color);
+                Assert.Fail("Should throw exception");
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual(StartsOrEndsWithWhitespaceMessage, ex.Message);
 
+            }
+        }
 
     }
 }

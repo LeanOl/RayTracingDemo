@@ -14,6 +14,8 @@ namespace Logic
         {
             ValidateEmptyName(name);
             ValidateStartWithWhitespace(name);
+            if (name.EndsWith(" "))
+                throw new ArgumentException("Figure name should not start or end with whitespaces");
 
             Material materialToAdd = new Lambertian()
             {
