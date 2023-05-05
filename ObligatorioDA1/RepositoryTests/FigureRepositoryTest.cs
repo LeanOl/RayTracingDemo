@@ -44,9 +44,39 @@ namespace RepositoryTests
         }
 
         [TestMethod]
+        public void DetectingFigureDoesntExist()
+        {
+            FigureRepository repository = new FigureRepository();
+
+            Assert.IsFalse(repository.FigureExists());
+        }
+    
+
+    [TestMethod]
+        public void DetectingFigureExists()
+        {
+            Client aClient = new Client()
+            {
+                Username = ValidUsername
+            };
+
+            Figure aFigure = new Sphere()
+            {
+                Propietary = aClient,
+                Name = ValidFigureName,
+                Radius = ValidRadius
+            };
+
+            FigureRepository repository = new FigureRepository();
+            repository.AddFigure(aFigure);
+
+            Assert.IsTrue(repository.FigureExists());
+        }
+    
+
+    [TestMethod]
         public void RemoveFigureTest()
         {
-            Exception exceptionCaught = null;
 
             Client aClient = new Client()
             {
