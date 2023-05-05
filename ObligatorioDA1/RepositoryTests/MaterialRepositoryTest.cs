@@ -36,7 +36,7 @@ namespace RepositoryTests
             Color materialColor = Color.FromArgb(205, 215, 235);
             Material someMaterial = new Lambertian()
             {
-                Owner = _someClient,
+                Proprietary = _someClient,
                 Name = "New Material",
                 Color = materialColor
 
@@ -53,7 +53,7 @@ namespace RepositoryTests
             Color materialColor = Color.FromArgb(205, 215, 235);
             Material someMaterial = new Lambertian()
             {
-                Owner = _someClient,
+                Proprietary = _someClient,
                 Name = "New Material",
                 Color = materialColor
 
@@ -62,7 +62,7 @@ namespace RepositoryTests
             clientMaterials.Add(someMaterial);
             Material someMaterial2 = new Lambertian()
             {
-                Owner = _someClient,
+                Proprietary = _someClient,
                 Name = "New Material2",
                 Color = materialColor
 

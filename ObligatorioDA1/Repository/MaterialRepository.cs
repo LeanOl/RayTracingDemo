@@ -23,7 +23,7 @@ namespace Repository
 
         public List<Material> GetMaterialsByClient(Client someClient)
         {
-            return Materials.FindAll(someMaterial => someMaterial.Owner.Equals(someClient));
+            return Materials.FindAll(someMaterial => someMaterial.Proprietary.Equals(someClient));
         }
     }
 }

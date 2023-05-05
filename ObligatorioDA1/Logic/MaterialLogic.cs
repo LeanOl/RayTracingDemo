@@ -13,32 +13,32 @@ namespace Logic
         private MaterialRepository _repository = new MaterialRepository();
         private const string FigureNameEmptyMessage = "Figure name should not be empty";
         private const string NameStartsWithWhitespaceMessage = "Figure name should not start or end with whitespaces";
-        public void CreateLambertian(Client owner, string name, Color color)
+        public void CreateLambertian(Client proprietary, string name, Color color)
         {
-            ValidateName(name,owner);
+            ValidateName(name,proprietary);
             
             Material materialToAdd = new Lambertian()
             {
-                Owner = owner,
+                Proprietary = proprietary,
                 Name = name,
                 Color = color
             };
             _repository.Add(materialToAdd);
         }
 
-        private void ValidateDuplicateName(Client owner, string name)
+        private void ValidateDuplicateName(Client proprietary, string name)
         {
-            List<Material> clientMaterials = _repository.GetMaterialsByClient(owner);
+            List<Material> clientMaterials = _repository.GetMaterialsByClient(proprietary);
             Material materialWithSameName = clientMaterials.Find(someMaterial => someMaterial.Name == name);
             if ( materialWithSameName != null)
                 throw new DuplicateNameException("There is already a figure with this name");
         }
 
-        private void ValidateName(string name,Client owner)
+        private void ValidateName(string name,Client proprietary)
         {
             ValidateEmptyName(name);
             ValidateStartsOrEndsWithWhitespace(name);
-            ValidateDuplicateName(owner, name);
+            ValidateDuplicateName(proprietary, name);
         }
 
         private void ValidateStartsOrEndsWithWhitespace(string name)
