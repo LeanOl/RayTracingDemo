@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface", "Interface\Interface.csproj", "{C4A94DD9-7672-4C52-A6E9-285AFD79CBF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainLogicTest", "DomainLogicTest\DomainLogicTest.csproj", "{06BC633B-9265-4421-8F2A-A09428709154}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicTest", "DomainLogicTest\LogicTest.csproj", "{06BC633B-9265-4421-8F2A-A09428709154}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{BB322CEA-D52C-4BD3-BA3A-46AA38956999}"
 EndProject

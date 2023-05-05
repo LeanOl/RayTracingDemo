@@ -6,7 +6,7 @@ using Logic;
 namespace DomainLogicTest
 {
     [TestClass]
-    public class ClientTests
+    public class ClientLogicTests
     {
         private ClientLogic logic;
         private const string ValidUsername = "John";

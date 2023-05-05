@@ -50,6 +50,7 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FigureTests.cs" />
     <Compile Include="MaterialTests.cs" />
     <Compile Include="SessionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

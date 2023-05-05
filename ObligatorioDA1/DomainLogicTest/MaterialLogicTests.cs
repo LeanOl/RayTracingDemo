@@ -40,7 +40,7 @@ namespace DomainLogicTest
         {
             Material testMaterial = new Lambertian()
             {
-                Proprietary = _someClient,
+                Propietary = _someClient,
                 Name = ValidName,
                 Color = _color
             };
