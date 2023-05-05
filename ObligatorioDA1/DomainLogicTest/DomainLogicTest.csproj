@@ -47,11 +47,13 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FigureLogic.cs" />
     <Compile Include="FigureTests.cs" />
     <Compile Include="ClientTests.cs" />
+    <Compile Include="MaterialLogicTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionLogicTests.cs" />
   </ItemGroup>

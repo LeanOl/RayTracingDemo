@@ -47,8 +47,12 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
+
+    <Compile Include="ClientRepositoryTest.cs" />
+    <Compile Include="MaterialRepositoryTest.cs" />
     <Compile Include="FigureRepositoryTest.cs" />
     <Compile Include="RepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

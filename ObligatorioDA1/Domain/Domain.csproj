@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,7 +43,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
+
+    <Compile Include="Lambertian.cs" />
+    <Compile Include="Material.cs" />
     <Compile Include="Figure.cs" />
+
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sphere.cs" />
     <Compile Include="Session.cs" />
