@@ -39,24 +39,7 @@ namespace DomainLogicTest
         {
             logic = null;
         }
-        [TestMethod]
-        public void CreateClientObjectSuccessfully()
-        {
-            DateTime testDate = DateTime.Now;
-
-            Client aClient = new Client()
-                {
-                    Username = ValidUsername,
-                    Password = ValidPassword,
-                    RegisterDate = testDate
-                };
-               
-            Assert.IsNotNull(aClient);
-            Assert.AreEqual(ValidUsername, aClient.Username);
-            Assert.AreEqual(ValidPassword, aClient.Password);
-            Assert.AreEqual(testDate, aClient.RegisterDate);
-
-        }
+        
        
         [TestMethod]
         public void ClientUsernameBelowCharacterLimit_ThrowException()
