@@ -1,7 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Domain;
 
-
 namespace DomainLogicTest
 {
     [TestClass]

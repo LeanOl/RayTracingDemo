@@ -1,11 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Domain;
 using Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RepositoryTests
 {
@@ -24,7 +19,6 @@ namespace RepositoryTests
             {
                 Username = ValidUsername
             };
-
             Figure aFigure = new Sphere()
             {
                 Propietary = aClient,
@@ -35,6 +29,8 @@ namespace RepositoryTests
             FigureRepository repository = new FigureRepository();
             repository.AddFigure(aFigure);
             Figure storedFigure = repository.GetFigureByName(ValidFigureName);
+
+            Assert.IsNotNull(storedFigure);
             Assert.AreEqual(aClient.Username, storedFigure.Propietary.Username);
             Assert.AreEqual(ValidFigureName, storedFigure.Name);
             Assert.AreEqual(ValidRadius, ((Sphere)storedFigure).Radius);

@@ -1,9 +1,6 @@
 ﻿using Domain;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Repository
 {
@@ -22,7 +19,7 @@ namespace Repository
 
         public Figure GetFigureByName(string name)
         {
-            return _figures.FirstOrDefault(x => x.Name == name);
+            return _figures.FirstOrDefault(aFigure => aFigure.Name == name);
         }
     }
 }
