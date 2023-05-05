@@ -13,26 +13,27 @@ namespace RepositoryTests
         private const string ValidUsername = "John";
         private int ValidRadius = 5;
 
+        private Client aClient;
+        private Figure aFigure;
+
         [TestInitialize]
         public void initialize()
         {
-
-        }
-
-        [TestMethod]
-        public void AddFigureTest()
-        {
-            Client aClient = new Client()
+            aClient = new Client()
             {
                 Username = ValidUsername
             };
-            Figure aFigure = new Sphere()
+            aFigure = new Sphere()
             {
                 Propietary = aClient,
                 Name = ValidFigureName,
                 Radius = ValidRadius
             };
+        }
 
+        [TestMethod]
+        public void AddFigureTest()
+        {
             FigureRepository repository = new FigureRepository();
             repository.AddFigure(aFigure);
             Figure storedFigure = repository.GetFigureByName(ValidFigureName);
@@ -55,18 +56,6 @@ namespace RepositoryTests
     [TestMethod]
         public void DetectingFigureExists()
         {
-            Client aClient = new Client()
-            {
-                Username = ValidUsername
-            };
-
-            Figure aFigure = new Sphere()
-            {
-                Propietary = aClient,
-                Name = ValidFigureName,
-                Radius = ValidRadius
-            };
-
             FigureRepository repository = new FigureRepository();
             repository.AddFigure(aFigure);
 
@@ -77,25 +66,12 @@ namespace RepositoryTests
     [TestMethod]
         public void RemoveFigureTest()
         {
-
-            Client aClient = new Client()
-            {
-                Username = ValidUsername
-            };
-
-            Figure aFigure = new Sphere()
-            {
-                Propietary = aClient,
-                Name = ValidFigureName,
-                Radius = ValidRadius
-            };
-
             FigureRepository repository = new FigureRepository();
             repository.AddFigure(aFigure);
 
             Assert.IsTrue(repository.FigureExists(ValidFigureName));
 
-            repository.removeFigureByName(ValidFigureName);
+            repository.RemoveFigureByName(ValidFigureName);
 
             Assert.IsFalse(repository.FigureExists(ValidFigureName));
         }
