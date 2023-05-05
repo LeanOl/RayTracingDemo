@@ -24,9 +24,16 @@ namespace Repository
             return _figures.FirstOrDefault(aFigure => aFigure.Name == name);
         }
 
-        public bool FigureExists()
+        public bool FigureExists(string name)
         {
-            throw new NotImplementedException();
+            foreach(Figure aFigure in _figures)
+            {
+                if(aFigure.Name == name)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public void removeFigureByName()
