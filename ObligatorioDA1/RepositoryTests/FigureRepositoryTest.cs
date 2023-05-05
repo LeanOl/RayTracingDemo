@@ -95,7 +95,7 @@ namespace RepositoryTests
 
             Assert.IsTrue(repository.FigureExists(ValidFigureName));
 
-            repository.removeFigureByName();
+            repository.removeFigureByName(ValidFigureName);
 
             Assert.IsFalse(repository.FigureExists(ValidFigureName));
         }

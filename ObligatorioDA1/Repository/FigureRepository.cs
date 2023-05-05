@@ -26,9 +26,9 @@ namespace Repository
 
         public bool FigureExists(string name)
         {
-            foreach(Figure aFigure in _figures)
+            foreach (Figure aFigure in _figures)
             {
-                if(aFigure.Name == name)
+                if (aFigure.Name == name)
                 {
                     return true;
                 }
@@ -36,9 +36,9 @@ namespace Repository
             return false;
         }
 
-        public void removeFigureByName()
+        public void removeFigureByName(string name)
         {
-            throw new NotImplementedException();
+            _figures.Remove(GetFigureByName(name));
         }
     }
 }
