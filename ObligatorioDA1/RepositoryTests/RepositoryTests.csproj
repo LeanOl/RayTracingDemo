@@ -50,8 +50,11 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
+
     <Compile Include="ClientRepositoryTest.cs" />
     <Compile Include="MaterialRepositoryTest.cs" />
+    <Compile Include="FigureRepositoryTest.cs" />
+    <Compile Include="RepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -59,7 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">
-      <Project>{BB322CEA-D52C-4BD3-BA3A-46AA38956999}</Project>
+      <Project>{bb322cea-d52c-4bd3-ba3a-46aa38956999}</Project>
       <Name>Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Repository\Repository.csproj">
