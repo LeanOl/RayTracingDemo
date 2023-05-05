@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Domain;
@@ -21,6 +22,16 @@ namespace Repository
         public Figure GetFigureByName(string name)
         {
             return _figures.FirstOrDefault(aFigure => aFigure.Name == name);
+        }
+
+        public bool FigureExists()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void removeFigureByName()
+        {
+            throw new NotImplementedException();
         }
     }
 }
