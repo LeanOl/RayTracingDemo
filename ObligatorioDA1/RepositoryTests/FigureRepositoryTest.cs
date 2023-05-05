@@ -13,47 +13,31 @@ namespace RepositoryTests
     [TestClass]
     public class FigureRepositoryTest
     {
-        FigureRepository repository;
-        Client aClient;
-        Figure aFigure; 
         private const string ValidFigureName = "Ball";
         private const string ValidUsername = "John";
         private int ValidRadius = 5;
 
-        [TestInitialize]
-        public void TestInit()
+        [TestMethod]
+        public void AddFigureTest()
         {
-            repository = new FigureRepository();
-
-            aClient = new Client()
+            Client aClient = new Client()
             {
                 Username = ValidUsername
             };
 
-            aFigure = new Sphere()
+            Figure aFigure = new Sphere()
             {
                 Propietary = aClient,
                 Name = ValidFigureName,
                 Radius = ValidRadius
             };
-        }
 
-        [TestCleanup]
-        public void Cleanup()
-        {
-           repository = null;
-           aClient = null;
-           aFigure = null;
-        }
-
-        [TestMethod]
-        public void AddFigure()
-        {
+            FigureRepository repository = new FigureRepository();
             repository.AddFigure(aFigure);
-            Figure storedFigure = repository.GetFigureByName();
-            Assert.AreEqual(aClient, storedFigure.getPropietary());
-            Assert.AreEqual(ValidFigureName, storedFigure.getName());
-            Assert.AreEqual(ValidRadius, storedFigure.getRadius());
+            Figure storedFigure = repository.GetFigureByName(ValidFigureName);
+            Assert.AreEqual(aClient.Username, storedFigure.Propietary.Username);
+            Assert.AreEqual(ValidFigureName, storedFigure.Name);
+            Assert.AreEqual(ValidRadius, ((Sphere)storedFigure).Radius);
         }
     }
 }

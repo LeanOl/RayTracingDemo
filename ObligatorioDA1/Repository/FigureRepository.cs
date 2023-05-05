@@ -9,14 +9,20 @@ namespace Repository
 {
     public class FigureRepository
     {
+        private List<Figure> _figures { get; set; }
+
+        public FigureRepository()
+        {
+            _figures = new List<Figure>();
+        }
         public void AddFigure(Figure aFigure)
         {
-            throw new NotImplementedException();
+            _figures.Add(aFigure);
         }
 
-        public Figure GetFigureByName()
+        public Figure GetFigureByName(string name)
         {
-            throw new NotImplementedException();
+            return _figures.FirstOrDefault(x => x.Name == name);
         }
     }
 }
