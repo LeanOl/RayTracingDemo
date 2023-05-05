@@ -54,7 +54,6 @@ namespace Logic
         {
             if (String.IsNullOrWhiteSpace(name))
             {
-                
                 throw new ArgumentException(FigureNameEmptyMessage);
             }
         }
