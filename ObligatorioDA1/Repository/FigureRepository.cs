@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Domain;
@@ -21,6 +22,23 @@ namespace Repository
         public Figure GetFigureByName(string name)
         {
             return _figures.FirstOrDefault(aFigure => aFigure.Name == name);
+        }
+
+        public bool FigureExists(string name)
+        {
+            foreach (Figure aFigure in _figures)
+            {
+                if (aFigure.Name == name)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void RemoveFigureByName(string name)
+        {
+            _figures.Remove(GetFigureByName(name));
         }
     }
 }
