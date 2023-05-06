@@ -30,6 +30,14 @@ namespace DomainLogicTest
             return _repository.FigureExists(name);
         }
 
+        public void CreateSphere()
+        {
+            throw new NotImplementedException();
+        }
 
+        public void RemoveFigure(string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
