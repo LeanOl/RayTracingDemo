@@ -137,6 +137,25 @@ namespace DomainLogicTest
             CollectionAssert.AreEquivalent(clientMaterials,_logic.GetClientMaterials(_someClient));
 
         }
+        [TestMethod]
+        public void DeleteMaterialSuccessfully()
+        {
+
+            Color materialColor = Color.FromArgb(205, 215, 235);
+            Material someMaterial = new Lambertian()
+            {
+                Proprietary = _someClient,
+                Name = "Material1",
+                Color = materialColor
+
+            };
+            _logic.CreateLambertian(_someClient,"Material1",materialColor);
+            _logic.CreateLambertian(_someClient, "Material2", materialColor);
+
+
+            _logic.DeleteMaterial(someMaterial);
+            CollectionAssert.DoesNotContain(_logic.GetClientMaterials(_someClient), someMaterial);
+        }
 
     }
 }
