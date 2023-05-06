@@ -10,17 +10,17 @@ namespace DomainLogicTest
 
         public FigureLogic()
         {
-            FigureRepository _repository = new FigureRepository();
+            _repository = new FigureRepository();
         }
 
         public void CreateFigure(Figure aFigure)
         {
-            throw new NotImplementedException();
+            _repository.AddFigure(aFigure);
         }
 
         public bool FigureExists(string name)
         {
-            throw new NotImplementedException();
+            return _repository.FigureExists(name);
         }
 
     }

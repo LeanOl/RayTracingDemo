@@ -38,7 +38,6 @@ namespace DomainLogicTest
             try
             {
                 logic.CreateFigure(aFigure);
-
                 figureWasCreated = logic.FigureExists(aFigure.Name);
             }catch (Exception ex)
             {
@@ -49,6 +48,7 @@ namespace DomainLogicTest
             Assert.IsTrue(figureWasCreated);
         }
 
+        [TestMethod]
         public void CheckIfFigureDoesNotExist()
         {
             Exception exceptionCaught = null;
