@@ -15,13 +15,21 @@ namespace DomainLogicTest
 
         public void CreateFigure(Figure aFigure)
         {
-            _repository.AddFigure(aFigure);
+            if (!FigureExists(aFigure.Name))
+            {
+                _repository.AddFigure(aFigure);
+            }
+            else
+            {
+                //Exception (This comment is temporary)
+            }
         }
 
         public bool FigureExists(string name)
         {
             return _repository.FigureExists(name);
         }
+
 
     }
 }

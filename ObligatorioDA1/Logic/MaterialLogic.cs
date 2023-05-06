@@ -13,13 +13,13 @@ namespace Logic
         private MaterialRepository _repository = new MaterialRepository();
         private const string FigureNameEmptyMessage = "Figure name should not be empty";
         private const string NameStartsWithWhitespaceMessage = "Figure name should not start or end with whitespaces";
-        public void CreateLambertian(Client propietary, string name, Color color)
+        public void CreateLambertian(Client proprietary, string name, Color color)
         {
-            ValidateName(name,propietary);
+            ValidateName(name,proprietary);
             
             Material materialToAdd = new Lambertian()
             {
-                Propietary = propietary,
+                Propietary = proprietary,
                 Name = name,
                 Color = color
             };
