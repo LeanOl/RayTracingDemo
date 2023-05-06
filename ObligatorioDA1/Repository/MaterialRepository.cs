@@ -25,5 +25,10 @@ namespace Repository
         {
             return Materials.FindAll(someMaterial => someMaterial.Proprietary.Equals(someClient));
         }
+
+        public void Delete(Material someMaterial)
+        {
+            Materials.Remove(someMaterial);
+        }
     }
 }
