@@ -70,7 +70,7 @@ namespace RepositoryTests
             _repository.Add(someMaterial2);
             clientMaterials.Add(someMaterial2);
 
-            CollectionAssert.AreEquivalent(_repository.GetMaterialsByClient(_someClient),clientMaterials);
+            CollectionAssert.AreEquivalent(clientMaterials, _repository.GetMaterialsByClient(_someClient));
         }
     }
 }

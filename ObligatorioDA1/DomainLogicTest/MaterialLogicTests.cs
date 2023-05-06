@@ -3,6 +3,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Drawing;
 using Logic;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DomainLogicTest
 {
@@ -108,6 +110,32 @@ namespace DomainLogicTest
                 Assert.AreEqual(DuplicateNameMessage, ex.Message);
 
             }
+        }
+        [TestMethod]
+        public void GetClientMaterialsSuccessfully()
+        {
+            List<Material> clientMaterials = new List<Material>();
+            Material someMaterial = new Lambertian()
+            {
+                Proprietary = _someClient,
+                Name = "Material1",
+                Color = _color
+
+            };
+            clientMaterials.Add(someMaterial);
+            Material someMaterial2 = new Lambertian()
+            {
+                Proprietary = _someClient,
+                Name = "Material2",
+                Color = _color
+
+            };
+            clientMaterials.Add(someMaterial2);
+            _logic.CreateLambertian(_someClient, "Material1", _color);
+            _logic.CreateLambertian(_someClient, "Material2", _color);
+            
+            CollectionAssert.AreEquivalent(clientMaterials,_logic.GetClientMaterials(_someClient));
+
         }
 
     }

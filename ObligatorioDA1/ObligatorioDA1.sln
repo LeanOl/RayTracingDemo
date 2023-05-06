@@ -10,22 +10,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{BB322CEA-D52C-4BD3-BA3A-46AA38956999}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{B2F04C49-C11B-438A-87FE-340D00F212AF}"
-	ProjectSection(ProjectDependencies) = postProject
-		{BB322CEA-D52C-4BD3-BA3A-46AA38956999} = {BB322CEA-D52C-4BD3-BA3A-46AA38956999}
-		{2B86E8ED-CFCD-4AD1-87F6-4CDF66C55755} = {2B86E8ED-CFCD-4AD1-87F6-4CDF66C55755}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryTests", "RepositoryTests\RepositoryTests.csproj", "{2B86E8ED-CFCD-4AD1-87F6-4CDF66C55755}"
-	ProjectSection(ProjectDependencies) = postProject
-		{BB322CEA-D52C-4BD3-BA3A-46AA38956999} = {BB322CEA-D52C-4BD3-BA3A-46AA38956999}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{25B2BB0C-BA9A-4F48-BFA9-AA490ACC54D5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainTest", "DomainTest\DomainTest.csproj", "{1E1AE84F-3FED-492B-857E-7C35E4E8EB5F}"
-	ProjectSection(ProjectDependencies) = postProject
-		{BB322CEA-D52C-4BD3-BA3A-46AA38956999} = {BB322CEA-D52C-4BD3-BA3A-46AA38956999}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

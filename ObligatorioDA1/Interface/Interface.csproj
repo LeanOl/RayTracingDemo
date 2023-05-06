@@ -83,6 +83,12 @@
     <Compile Include="MaterialList.Designer.cs">
       <DependentUpon>MaterialList.cs</DependentUpon>
     </Compile>
+    <Compile Include="MaterialListElement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MaterialListElement.Designer.cs">
+      <DependentUpon>MaterialListElement.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModelList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -135,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MaterialList.resx">
       <DependentUpon>MaterialList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaterialListElement.resx">
+      <DependentUpon>MaterialListElement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModelList.resx">
       <DependentUpon>ModelList.cs</DependentUpon>
