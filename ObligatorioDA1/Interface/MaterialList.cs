@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Domain;
 
 namespace Interface
 {
@@ -22,6 +23,18 @@ namespace Interface
             UserControl anAddMaterial = new AddMaterial();
             Parent.Controls.Add(anAddMaterial);
             Parent.Controls.Remove(this);
+        }
+
+        private void MaterialList_Load(object sender, EventArgs e)
+        {
+            Client activeUser = Instance.InstanceSessionLogic.GetActiveUser();
+            List<Material> materials= Instance.MateriaLogic.GetClientMaterials(activeUser);
+            foreach (var material in materials)
+            {
+                MaterialListElement newMaterial = new MaterialListElement(material);
+                flpMaterials.Controls.Add(newMaterial);
+            }
+            
         }
     }
 }
