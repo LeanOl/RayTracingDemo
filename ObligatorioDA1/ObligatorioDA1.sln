@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainTest", "DomainTest\Do
 		{BB322CEA-D52C-4BD3-BA3A-46AA38956999} = {BB322CEA-D52C-4BD3-BA3A-46AA38956999}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exceptions", "Exceptions\Exceptions.csproj", "{01CB7785-4D81-411D-B434-D32AEE70E883}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{1E1AE84F-3FED-492B-857E-7C35E4E8EB5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E1AE84F-3FED-492B-857E-7C35E4E8EB5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E1AE84F-3FED-492B-857E-7C35E4E8EB5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01CB7785-4D81-411D-B434-D32AEE70E883}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01CB7785-4D81-411D-B434-D32AEE70E883}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01CB7785-4D81-411D-B434-D32AEE70E883}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01CB7785-4D81-411D-B434-D32AEE70E883}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
