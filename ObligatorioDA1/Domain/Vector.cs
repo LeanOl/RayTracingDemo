@@ -17,14 +17,15 @@
             return resultVector;
         }
 
-        public Vector Subtract(Vector vector2)
+        public Vector Subtract(Vector vectorToSubtract)
         {
-            return new Vector()
+            Vector resultVector = new Vector()
             {
-                X = X - vector2.X,
-                Y = Y - vector2.Y,
-                Z = Z - vector2.Z
-            };  
+                X = X - vectorToSubtract.X,
+                Y = Y - vectorToSubtract.Y,
+                Z = Z - vectorToSubtract.Z
+            };
+            return resultVector;
         }
     }
 }
