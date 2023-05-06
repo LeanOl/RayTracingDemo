@@ -6,14 +6,15 @@
         public int Y { get; set; }
         public int Z { get; set; }
 
-        public Vector Add(Vector vector2)
+        public Vector Add(Vector vectorToAdd)
         {
-            return new Vector()
+            Vector resultVector = new Vector()
             {
-                X = X + vector2.X,
-                Y = Y + vector2.Y,
-                Z = Z + vector2.Z
+                X = X + vectorToAdd.X,
+                Y = Y + vectorToAdd.Y,
+                Z = Z + vectorToAdd.Z
             };
+            return resultVector;
         }
     }
 }
