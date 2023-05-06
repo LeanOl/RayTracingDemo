@@ -2,9 +2,9 @@
 {
     public class Vector
     {
-        public int X { get; set; }
-        public int Y { get; set; }
-        public int Z { get; set; }
+        public decimal X { get; set; }
+        public decimal Y { get; set; }
+        public decimal Z { get; set; }
 
         public Vector Add(Vector vectorToAdd)
         {
