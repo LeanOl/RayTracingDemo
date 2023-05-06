@@ -13,7 +13,7 @@ namespace Interface
         public static ClientLogic InstanceClientLogic { get; } = new ClientLogic();
         public static SessionLogic InstanceSessionLogic { get; } = new SessionLogic(InstanceClientLogic);
 
-        public static MaterialLogic MateriaLogic { get; } = new MaterialLogic();
+        public static MaterialLogic InstanceMaterialLogic { get; } = new MaterialLogic();
 
 
     }

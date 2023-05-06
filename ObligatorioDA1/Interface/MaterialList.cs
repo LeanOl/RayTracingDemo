@@ -28,7 +28,7 @@ namespace Interface
         private void MaterialList_Load(object sender, EventArgs e)
         {
             Client activeUser = Instance.InstanceSessionLogic.GetActiveUser();
-            List<Material> materials= Instance.MateriaLogic.GetClientMaterials(activeUser);
+            List<Material> materials= Instance.InstanceMaterialLogic.GetClientMaterials(activeUser);
             foreach (var material in materials)
             {
                 MaterialListElement newMaterial = new MaterialListElement(material);

@@ -48,6 +48,7 @@
             this.btnDelete.TabIndex = 0;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // lblMaterialName
             // 
@@ -143,7 +144,6 @@
             this.Controls.Add(this.btnDelete);
             this.Name = "MaterialListElement";
             this.Size = new System.Drawing.Size(288, 131);
-            this.Load += new System.EventHandler(this.MaterialListElement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picColorPreview)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

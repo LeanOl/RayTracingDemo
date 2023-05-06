@@ -29,7 +29,7 @@ namespace Interface
                 string materialName = txtMaterialName.Text;
 
                 Color materialColor = Color.FromArgb(red, green, blue);
-                Instance.MateriaLogic.CreateLambertian(proprietary, materialName, materialColor);
+                Instance.InstanceMaterialLogic.CreateLambertian(proprietary, materialName, materialColor);
                 UserControl aMaterialList = new MaterialList();
                 Parent.Controls.Add(aMaterialList);
                 Parent.Controls.Remove(this);

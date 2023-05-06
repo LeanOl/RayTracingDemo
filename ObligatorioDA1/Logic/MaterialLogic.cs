@@ -68,5 +68,10 @@ namespace Logic
         {
             return _repository.GetMaterialsByClient(proprietary);
         }
+
+        public void DeleteMaterial(Material materialToDelete)
+        {
+            _repository.Delete(materialToDelete);
+        }
     }
 }
