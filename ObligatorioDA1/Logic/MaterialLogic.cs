@@ -20,7 +20,7 @@ namespace Logic
             
             Material materialToAdd = new Lambertian()
             {
-                Propietary = propietary,
+                Proprietary = propietary,
                 Name = name,
                 Color = color
             };

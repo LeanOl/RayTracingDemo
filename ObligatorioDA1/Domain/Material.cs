@@ -5,7 +5,7 @@ namespace Domain
 {
     public abstract class Material
     {
-        public Client Propietary { get; set; }
+        public Client Proprietary { get; set; }
         public string Name { get; set; }
         public Color Color { get; set; }
         public override bool Equals(Object obj)

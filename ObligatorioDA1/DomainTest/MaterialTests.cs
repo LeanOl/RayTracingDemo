@@ -34,14 +34,14 @@ namespace DomainTest
             Color materialColor = Color.FromArgb(205, 215, 235);
             Material aMaterial = new Lambertian()
             {
-                Propietary = aClient,
+                Proprietary = aClient,
                 Name = "New Color",
                 Color= materialColor
 
             };
             Assert.IsNotNull(aMaterial);
             Assert.AreEqual(materialColor, aMaterial.Color);
-            Assert.AreEqual(aClient,aMaterial.Propietary);
+            Assert.AreEqual(aClient,aMaterial.Proprietary);
             
         }
 
