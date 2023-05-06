@@ -12,7 +12,7 @@ namespace DomainTest
     [TestClass]
     public class MaterialTests
     {
-        private Client aClient;
+        private Client _aClient;
         [TestInitialize]
         public void Initialize()
         {
@@ -20,7 +20,7 @@ namespace DomainTest
             const string ValidPassword = "Abc12345";
             DateTime testDate = DateTime.Now;
 
-            aClient = new Client()
+            _aClient = new Client()
             {
                 Username = ValidUsername,
                 Password = ValidPassword,
@@ -34,14 +34,14 @@ namespace DomainTest
             Color materialColor = Color.FromArgb(205, 215, 235);
             Material aMaterial = new Lambertian()
             {
-                Proprietary = aClient,
+                Proprietary = _aClient,
                 Name = "New Color",
                 Color= materialColor
 
             };
             Assert.IsNotNull(aMaterial);
             Assert.AreEqual(materialColor, aMaterial.Color);
-            Assert.AreEqual(aClient,aMaterial.Proprietary);
+            Assert.AreEqual(_aClient,aMaterial.Proprietary);
             
         }
 
@@ -51,7 +51,7 @@ namespace DomainTest
             Color materialColor = Color.FromArgb(205, 215, 235);
             Material aMaterial = new Lambertian()
             {
-                Proprietary = aClient,
+                Proprietary = _aClient,
                 Name = "New Color",
                 Color = materialColor
 
@@ -59,7 +59,7 @@ namespace DomainTest
 
             Material aMaterial2 = new Lambertian()
             {
-                Proprietary = aClient,
+                Proprietary = _aClient,
                 Name = "New Color",
                 Color = materialColor
 
