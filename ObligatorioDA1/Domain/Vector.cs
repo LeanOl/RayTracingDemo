@@ -8,7 +8,7 @@
 
         public Vector Add(Vector vectorToAdd)
         {
-            Vector resultVector = new Vector()
+            Vector resultVector = new Vector
             {
                 X = X + vectorToAdd.X,
                 Y = Y + vectorToAdd.Y,
@@ -19,13 +19,23 @@
 
         public Vector Subtract(Vector vectorToSubtract)
         {
-            Vector resultVector = new Vector()
+            Vector resultVector = new Vector
             {
                 X = X - vectorToSubtract.X,
                 Y = Y - vectorToSubtract.Y,
                 Z = Z - vectorToSubtract.Z
             };
             return resultVector;
+        }
+
+        public Vector Multiply(decimal i)
+        {
+            return new Vector
+            {
+                X = X * i,
+                Y = Y * i,
+                Z = Z * i
+            };
         }
     }
 }

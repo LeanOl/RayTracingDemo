@@ -10,7 +10,7 @@ namespace DomainTest
         [TestMethod]
         public void CreateVectorSuccessfully()
         {
-            Vector vector = new Vector()
+            Vector vector = new Vector
             {
                 X = 1,
                 Y = 2,
@@ -22,13 +22,13 @@ namespace DomainTest
         [TestMethod]
         public void AddTwoVectorsSuccessfully()
         {
-            Vector vector1 = new Vector()
+            Vector vector1 = new Vector
             {
                 X = 1,
                 Y = 2,
                 Z = 3
             };
-            Vector vector2 = new Vector()
+            Vector vector2 = new Vector
             {
                 X = 1,
                 Y = 2,
@@ -43,13 +43,13 @@ namespace DomainTest
         [TestMethod]
         public void SubstractTwoVectorsSuccessfully()
         {
-                        Vector vector1 = new Vector()
-                        {
+            Vector vector1 = new Vector
+            {
                 X = 1,
                 Y = 2,
                 Z = 3
             };
-            Vector vector2 = new Vector()
+            Vector vector2 = new Vector
             {
                 X = 2,
                 Y = 2,
@@ -60,6 +60,22 @@ namespace DomainTest
             Assert.AreEqual(0, vector3.Y);
             Assert.AreEqual(1, vector3.Z);
         }
+
+        [TestMethod]
+        public void MultipyVectorNumber()
+        {
+            Vector vector1 = new Vector
+            {
+                X = 1,
+                Y = 2,
+                Z = 3
+            };
+            Vector vector2 = vector1.Multiply(2);
+            Assert.AreEqual(2, vector2.X);
+            Assert.AreEqual(4, vector2.Y);
+            Assert.AreEqual(6, vector2.Z);
+        }
+        
     }
 }
 
