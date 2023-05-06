@@ -16,5 +16,15 @@
             };
             return resultVector;
         }
+
+        public Vector Subtract(Vector vector2)
+        {
+            return new Vector()
+            {
+                X = X - vector2.X,
+                Y = Y - vector2.Y,
+                Z = Z - vector2.Z
+            };  
+        }
     }
 }
