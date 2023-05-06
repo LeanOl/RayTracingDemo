@@ -1,5 +1,6 @@
 ﻿using Domain;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
@@ -61,6 +62,11 @@ namespace Logic
         public Material GetMaterialByName(string name)
         {
             return _repository.GetByName(name);
+        }
+
+        public List<Material> GetClientMaterials(Client proprietary)
+        {
+            return _repository.GetMaterialsByClient(proprietary);
         }
     }
 }

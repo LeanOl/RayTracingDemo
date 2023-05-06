@@ -11,14 +11,19 @@ namespace Domain
         public override bool Equals(Object obj)
         {
             Material materialToCompare = obj as Material;
-            if (obj == null)
+            if (materialToCompare == null)
             {
                 return false;
             }
             else
             {
-                return Name == materialToCompare.Name;
+                return (Name == materialToCompare.Name) && (Proprietary.Equals(materialToCompare.Proprietary)) ;
             }
+        }
+
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode();
         }
 
     }

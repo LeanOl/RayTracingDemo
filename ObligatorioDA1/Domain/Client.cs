@@ -14,7 +14,7 @@ namespace Domain
         public override bool Equals(Object obj)
         {
             Client clientToCompare = obj as Client;
-            if (obj == null)
+            if (clientToCompare == null)
             {
                 return false;
             }
@@ -23,6 +23,11 @@ namespace Domain
                 
                 return Username == clientToCompare.Username;
             }
+        }
+
+        public override int GetHashCode()
+        {
+            return Username.GetHashCode();
         }
     }
     

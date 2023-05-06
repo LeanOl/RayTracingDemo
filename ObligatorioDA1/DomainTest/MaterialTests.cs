@@ -44,5 +44,29 @@ namespace DomainTest
             Assert.AreEqual(aClient,aMaterial.Proprietary);
             
         }
+
+        [TestMethod]
+        public void EqualMaterialsTrue()
+        {
+            Color materialColor = Color.FromArgb(205, 215, 235);
+            Material aMaterial = new Lambertian()
+            {
+                Proprietary = aClient,
+                Name = "New Color",
+                Color = materialColor
+
+            };
+
+            Material aMaterial2 = new Lambertian()
+            {
+                Proprietary = aClient,
+                Name = "New Color",
+                Color = materialColor
+
+            };
+
+            Assert.AreEqual(aMaterial,aMaterial2);
+            
+        }
     }
 }
