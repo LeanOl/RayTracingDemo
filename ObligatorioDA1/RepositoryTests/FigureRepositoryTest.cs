@@ -70,7 +70,7 @@ namespace RepositoryTests
 
             Assert.IsTrue(repository.FigureExists(ValidFigureName, aFigure.Propietary.Username));
 
-            repository.RemoveFigureByName(ValidFigureName);
+            repository.RemoveFigureByName(ValidFigureName, aFigure.Propietary.Username);
 
             Assert.IsFalse(repository.FigureExists(ValidFigureName, aFigure.Propietary.Username));
         }

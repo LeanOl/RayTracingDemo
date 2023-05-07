@@ -36,9 +36,10 @@ namespace Repository
             return false;
         }
 
-        public void RemoveFigureByName(string name)
+        public void RemoveFigureByName(string name, string username)
         {
             _figures.Remove(GetFigureByName(name));
         }
+
     }
 }

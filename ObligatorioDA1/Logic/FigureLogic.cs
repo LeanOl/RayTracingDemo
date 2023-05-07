@@ -35,9 +35,9 @@ namespace DomainLogicTest
             }
         }
 
-        public void RemoveFigure(string name)
+        public void RemoveFigure(string name, string username)
         {
-            _repository.RemoveFigureByName(name);
+            _repository.RemoveFigureByName(name, username);
         }
 
         private bool ValidSphere(Sphere aSphere)

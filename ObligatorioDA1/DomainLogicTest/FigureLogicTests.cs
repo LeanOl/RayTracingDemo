@@ -257,7 +257,7 @@ namespace DomainLogicTest
             itExists = logic.FigureExists(aFigure.Name, aFigure.Propietary.Username);
             Assert.IsTrue(itExists);
 
-            logic.RemoveFigure(aFigure.Name);
+            logic.RemoveFigure(aFigure.Name, aFigure.Propietary.Username);
  
             itExists = logic.FigureExists(aFigure.Name, aFigure.Propietary.Username);
             Assert.IsFalse(itExists);
@@ -280,7 +280,7 @@ namespace DomainLogicTest
 
             try
             {
-                logic.RemoveFigure(aFigure.Name);
+                logic.RemoveFigure(aFigure.Name, aFigure.Propietary.Username);
             }
             catch (Exception ex)
             {
