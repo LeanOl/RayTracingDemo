@@ -293,7 +293,7 @@ namespace DomainLogicTest
             Assert.IsNotNull(exceptionCaught);
             Assert.IsInstanceOfType(exceptionCaught, typeof(CannotDeleteException));
             Assert.AreEqual(exceptionCaught.Message, figuredIsUsedByModelMessage);
-
+             
         }
     }   
 }
