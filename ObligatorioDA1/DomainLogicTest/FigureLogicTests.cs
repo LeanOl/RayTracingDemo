@@ -243,7 +243,7 @@ namespace DomainLogicTest
             Assert.IsNotNull(exceptionCaught);
             Assert.IsInstanceOfType(exceptionCaught, typeof(ArgumentException));
             Assert.AreEqual(exceptionCaught.Message, invalidRadiusMessage);
-
+             
         }
 
         [TestMethod]
@@ -261,6 +261,7 @@ namespace DomainLogicTest
  
             itExists = logic.FigureExists(aFigure.Name);
             Assert.IsFalse(itExists);
+
         }
     
 
