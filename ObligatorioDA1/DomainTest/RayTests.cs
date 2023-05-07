@@ -22,7 +22,20 @@ namespace DomainTest
             Assert.AreEqual(4, testRay.Direction.X);
             Assert.AreEqual(5, testRay.Direction.Y);
             Assert.AreEqual(6, testRay.Direction.Z);
+        }
 
+        [TestMethod]
+        public void PointAtTest()
+        {
+            Ray testRay = new Ray
+            {
+                Origin = new Vector { X = 1, Y = 2, Z = 3 },
+                Direction = new Vector { X = 4, Y = 5, Z = 6 }
+            };
+            Vector testVector = testRay.PointAt(2);
+            Assert.AreEqual(9, testVector.X);
+            Assert.AreEqual(12, testVector.Y);
+            Assert.AreEqual(15, testVector.Z);
         }
     }
 }
