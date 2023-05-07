@@ -42,7 +42,7 @@ namespace DomainLogicTest
             Exception exceptionCaught = null;
             bool figureWasCreated = false;
             FigureLogic logic = new FigureLogic();
-
+             
             try
             {
                 logic.CreateFigure(aFigure);
