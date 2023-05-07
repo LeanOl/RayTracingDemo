@@ -1,8 +1,25 @@
-﻿namespace Domain
+﻿using System;
+
+namespace Domain
 {
     public class GraphicsEngine
     {
-        public int Resolution { get; set; } = 200;
+        private int _resolution = 300;
+        private int _samplesPerPixel;
+        private int _maxDepth;
+
+        public int Resolution
+        {
+            get => _resolution;
+            set
+            {
+                if (value < 1)
+                    throw new ArgumentOutOfRangeException();
+                _resolution = value;
+            }
+        }
+    
+
         public int SamplesPerPixel { get; set; } = 50;
         public int MaxDepth { get; set; } = 20;
     }

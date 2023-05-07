@@ -12,9 +12,16 @@ namespace DomainTest
         {
             GraphicsEngine engine = new GraphicsEngine();
             Assert.IsNotNull(engine);
-            Assert.AreEqual(200, engine.Resolution);
+            Assert.AreEqual(300, engine.Resolution);
             Assert.AreEqual(50, engine.SamplesPerPixel);
             Assert.AreEqual(20,engine.MaxDepth);
+        }
+
+        [TestMethod]
+        public void GraphicsEngineResolutionLessThan1_Exception()
+        {
+            GraphicsEngine engine = new GraphicsEngine();
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => engine.Resolution = 0);
         }
     }
 }
