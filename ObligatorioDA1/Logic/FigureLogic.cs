@@ -16,31 +16,9 @@ namespace DomainLogicTest
 
         public void CreateFigure(Figure aFigure)
         {
-            string figureAlreadyExistsMessage = "A figure with that name already exists";
-            string invalidNameWithSpacesMessage = "Name must not start or end with spaces";
-            string invalidEmptyNameMessage = "The name must not be empty";
-
-            if (!FigureExists(aFigure.Name))
+            if (ValidFigure(aFigure))
             {
-                if(aFigure.Name.Length > 0)
-                {
-                    if(!aFigure.Name.StartsWith(" ") && !aFigure.Name.StartsWith(" "))
-                    {
-                        _repository.AddFigure(aFigure);
-                    }
-                    else
-                    {
-                        throw new ArgumentException(invalidNameWithSpacesMessage);
-                    }
-                }
-                else
-                {
-                    throw new ArgumentException(invalidEmptyNameMessage);
-                }
-            }
-            else
-            {
-                throw new ElementAlreadyExistsException(figureAlreadyExistsMessage);
+                _repository.AddFigure(aFigure);
             }
         }
 
@@ -72,6 +50,38 @@ namespace DomainLogicTest
             {
                 string invalidRadiusMessage = "Radius must be a positive decimal number";
                 throw new ArgumentException(invalidRadiusMessage);
+            }
+        }
+
+        private bool ValidFigure(Figure aFigure)
+        {
+            NameNotEmpty(aFigure.Name);
+            NameDoesntStartWithNameOrSpaces(aFigure.Name);
+
+            if (_repository.FigureExists(aFigure.Name))
+            {
+                string figureAlreadyExistsMessage = "A figure with that name already exists";
+                throw new ElementAlreadyExistsException(figureAlreadyExistsMessage);
+            }
+            
+            return true;
+        }
+
+        private void NameNotEmpty(string name)
+        {
+            if (name.Length <= 0)
+            {
+                string invalidEmptyNameMessage = "The name must not be empty";
+                throw new ArgumentException(invalidEmptyNameMessage);
+            }
+        }
+            
+        private void NameDoesntStartWithNameOrSpaces(string name)
+        {
+            if (name.StartsWith(" ") || name.EndsWith(" "))
+            {
+                string invalidNameWithSpacesMessage = "Name must not start or end with spaces";
+                throw new ArgumentException(invalidNameWithSpacesMessage);
             }
         }
 

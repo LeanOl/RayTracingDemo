@@ -84,12 +84,13 @@ namespace DomainLogicTest
             Exception exceptionCaught = null;
 
             FigureLogic logic = new FigureLogic();
+            logic.CreateFigure(aFigure);
 
             try
             {
-                
-
-            }catch (Exception ex)
+                logic.CreateFigure(aFigure);
+            }
+            catch (Exception ex)
             {
                 exceptionCaught = ex;
             }
@@ -97,7 +98,6 @@ namespace DomainLogicTest
             Assert.IsNotNull(exceptionCaught);
             Assert.IsInstanceOfType(exceptionCaught, typeof(ElementAlreadyExistsException));
             Assert.AreEqual(exceptionCaught.Message, figureAlreadyExistsMessage);
-
         }
 
         [TestMethod]
