@@ -123,9 +123,24 @@ namespace DomainTest
                 Y = 2,
                 Z = 3
             };
-            decimal squaredLength = vector1.GetSquaredLength();
+            decimal squaredLength = vector1.SquaredLength();
             Assert.AreEqual(14m, squaredLength);
         }
+
+        [TestMethod]
+        public void GetLength()
+        {
+            Vector vector1 = new Vector
+            {
+                X = 2,
+                Y = 2,
+                Z = 1
+            };
+            decimal length = vector1.Length();
+            Assert.AreEqual(3m, length);
+        }
+
+       
     }
 }
 

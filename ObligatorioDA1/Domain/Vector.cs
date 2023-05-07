@@ -57,9 +57,14 @@
             Z += addedVector.Z;
         }
 
-        public decimal GetSquaredLength()
+        public decimal SquaredLength()
         {
             return X * X + Y * Y + Z * Z;
+        }
+
+        public decimal Length()
+        {
+            return (decimal)System.Math.Sqrt((double)SquaredLength());
         }
     }
 }
