@@ -28,24 +28,24 @@
             return resultVector;
         }
 
-        public Vector Multiply(decimal i)
+        public Vector Multiply(decimal multiplicand)
         {
             Vector resultVector = new Vector
             {
-                X = X * i,
-                Y = Y * i,
-                Z = Z * i
+                X = X * multiplicand,
+                Y = Y * multiplicand,
+                Z = Z * multiplicand
             };
             return resultVector;
         }
 
-        public Vector Divide(int i)
+        public Vector Divide(int divisor)
         {
             Vector resultVector = new Vector
             {
-                X = X / i,
-                Y = Y / i,
-                Z = Z / i
+                X = X / divisor,
+                Y = Y / divisor,
+                Z = Z / divisor
             };
             return resultVector;
         }
