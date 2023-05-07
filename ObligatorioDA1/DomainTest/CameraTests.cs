@@ -26,13 +26,13 @@ namespace DomainTest
         public void GetRayFromCameraSuccessfully()
         {
             Camera testCamera = new Camera
-            {
-                AspectRatio = 600 / 600,
-                FieldOfView = 40,
-                LookAt = new Vector { X = 0, Y = 0.5m, Z = -2 },
-                LookFrom = new Vector { X = 4, Y = 2, Z = 8 },
-                Up = new Vector { X = 0, Y = 1, Z = 0 }
-            };
+            (
+                aspectRatio:  600 / 600,
+                fieldOfView:  40,
+                lookAt: new Vector { X = 0, Y = 0.5m, Z = -2 },
+                lookFrom: new Vector { X = 4, Y = 2, Z = 8 },
+                up: new Vector { X = 0, Y = 1, Z = 0 }
+            );
             int fiveDecimals= 100000;
             Ray testRay = testCamera.GetRay(1, 1);
             Assert.AreEqual(4m, testRay.Origin.X);
