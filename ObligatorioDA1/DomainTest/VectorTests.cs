@@ -140,7 +140,21 @@ namespace DomainTest
             Assert.AreEqual(3m, length);
         }
 
-       
+        [TestMethod]
+        public void GetUnit()
+        {
+            Vector vector1 = new Vector
+            {
+                X = 3,
+                Y = 4,
+                Z = 5
+            };
+            Vector unitVector = vector1.Unit();
+            Assert.AreEqual(0.424264m, Math.Round(unitVector.X, 6));
+            Assert.AreEqual(0.565685m, Math.Round(unitVector.Y, 6));
+            Assert.AreEqual(0.707107m, Math.Round(unitVector.Z, 6));
+            
+        }
     }
 }
 

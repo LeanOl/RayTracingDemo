@@ -39,7 +39,7 @@
             return resultVector;
         }
 
-        public Vector Divide(int divisor)
+        public Vector Divide(decimal divisor)
         {
             Vector resultVector = new Vector
             {
@@ -65,6 +65,11 @@
         public decimal Length()
         {
             return (decimal)System.Math.Sqrt((double)SquaredLength());
+        }
+
+        public Vector Unit()
+        {
+            return Divide(Length());
         }
     }
 }
