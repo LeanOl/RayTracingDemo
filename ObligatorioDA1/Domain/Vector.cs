@@ -38,5 +38,16 @@
             };
             return resultVector;
         }
+
+        public Vector Divide(int i)
+        {
+            Vector resultVector = new Vector
+            {
+                X = X / i,
+                Y = Y / i,
+                Z = Z / i
+            };
+            return resultVector;
+        }
     }
 }

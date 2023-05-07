@@ -62,7 +62,7 @@ namespace DomainTest
         }
 
         [TestMethod]
-        public void MultipyVectorNumber()
+        public void MultiplyVectorNumber()
         {
             Vector vector1 = new Vector
             {
@@ -75,7 +75,22 @@ namespace DomainTest
             Assert.AreEqual(4, vector2.Y);
             Assert.AreEqual(6, vector2.Z);
         }
-        
+
+        [TestMethod]
+        public void DivideVectorNumber()
+        {
+            Vector vector1 = new Vector
+            {
+                X = 1,
+                Y = 2,
+                Z = 3
+            };
+            
+            Vector vector2 = vector1.Divide(2);
+            Assert.AreEqual(0.5m, vector2.X);
+            Assert.AreEqual(1m, vector2.Y);
+            Assert.AreEqual(1.5m, vector2.Z);
+        }   
     }
 }
 
