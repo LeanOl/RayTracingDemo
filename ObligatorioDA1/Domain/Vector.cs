@@ -50,6 +50,7 @@
             return resultVector;
         }
 
+
         public void AddTo(Vector addedVector)
         {
             X += addedVector.X;
