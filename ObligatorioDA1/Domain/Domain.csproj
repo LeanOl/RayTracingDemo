@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Camera.cs" />
     <Compile Include="Client.cs" />
+    <Compile Include="GraphicsEngine.cs" />
     <Compile Include="Materials\Lambertian.cs" />
     <Compile Include="Material.cs" />
     <Compile Include="Figure.cs" />
