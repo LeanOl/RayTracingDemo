@@ -23,5 +23,19 @@ namespace DomainTest
             GraphicsEngine engine = new GraphicsEngine();
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => engine.Resolution = 0);
         }
+        [TestMethod]
+        public void GraphicsEngineSamplesPerPixelLessThan1_Exception()
+        {
+            GraphicsEngine engine = new GraphicsEngine();
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => engine.SamplesPerPixel = 0);
+        }
+
+        [TestMethod]
+        public void GraphicsEngineMaxDepthLessThan1_Exception()
+        {
+            GraphicsEngine engine = new GraphicsEngine();
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => engine.MaxDepth = 0);
+        }
+        
     }
 }

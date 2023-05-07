@@ -5,8 +5,8 @@ namespace Domain
     public class GraphicsEngine
     {
         private int _resolution = 300;
-        private int _samplesPerPixel;
-        private int _maxDepth;
+        private int _samplesPerPixel=50;
+        private int _maxDepth=20;
 
         public int Resolution
         {
@@ -18,9 +18,28 @@ namespace Domain
                 _resolution = value;
             }
         }
-    
 
-        public int SamplesPerPixel { get; set; } = 50;
-        public int MaxDepth { get; set; } = 20;
+
+        public int SamplesPerPixel
+        {
+            get=>_samplesPerPixel;
+            set
+            {
+                if (value < 1)
+                    throw new ArgumentOutOfRangeException();
+                _samplesPerPixel = value;
+            }
+        }
+
+        public int MaxDepth
+        {
+            get=>_maxDepth;
+            set
+            {
+                if (value < 1)
+                    throw new ArgumentOutOfRangeException();
+                _maxDepth = value;
+            }
+        }
     }
 }
