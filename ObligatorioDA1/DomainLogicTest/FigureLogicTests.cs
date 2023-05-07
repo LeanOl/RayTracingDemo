@@ -35,7 +35,7 @@ namespace DomainLogicTest
                 Radius = validRadius
             };
         }
-
+         
         [TestMethod]
         public void CreateFigureTestAndCheckIfItExists()
         {
@@ -232,7 +232,7 @@ namespace DomainLogicTest
 
             try
             {
-                logic.CreateSphere();
+                logic.CreateSphere(invalidFigure);
 
             }
             catch (Exception ex)

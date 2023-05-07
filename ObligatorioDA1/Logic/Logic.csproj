@@ -50,6 +50,10 @@
     <Compile Include="SessionLogic.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\Exceptions.csproj">
+      <Project>{49936AB5-2D38-47DF-8709-A98E436A4188}</Project>
+      <Name>Exceptions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{bb322cea-d52c-4bd3-ba3a-46aa38956999}</Project>
       <Name>Domain</Name>

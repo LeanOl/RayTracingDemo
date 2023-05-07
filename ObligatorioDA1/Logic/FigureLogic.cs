@@ -1,4 +1,5 @@
 ﻿using Domain;
+using Exceptions;
 using Repository;
 using System;
 
@@ -15,13 +16,31 @@ namespace DomainLogicTest
 
         public void CreateFigure(Figure aFigure)
         {
+            string figureAlreadyExistsMessage = "A figure with that name already exists";
+            string invalidNameWithSpacesMessage = "Name must not start or end with spaces";
+            string invalidEmptyNameMessage = "The name must not be empty";
+
             if (!FigureExists(aFigure.Name))
             {
-                _repository.AddFigure(aFigure);
+                if(aFigure.Name.Length > 0)
+                {
+                    if(!aFigure.Name.StartsWith(" ") && !aFigure.Name.StartsWith(" "))
+                    {
+                        _repository.AddFigure(aFigure);
+                    }
+                    else
+                    {
+                        throw new ArgumentException(invalidNameWithSpacesMessage);
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException(invalidEmptyNameMessage);
+                }
             }
             else
             {
-                //Exception (This comment is temporary)
+                throw new ElementAlreadyExistsException(figureAlreadyExistsMessage);
             }
         }
 
@@ -30,14 +49,18 @@ namespace DomainLogicTest
             return _repository.FigureExists(name);
         }
 
-        public void CreateSphere()
+        public void CreateSphere(Sphere aSphere)
         {
-            throw new NotImplementedException();
+            if (aSphere.Radius < 0)
+            {
+                string invalidRadiusMessage = "Radius must be a positive decimal number";
+                throw new ArgumentException(invalidRadiusMessage);
+            }
         }
 
         public void RemoveFigure(string name)
         {
-            throw new NotImplementedException();
+            _repository.RemoveFigureByName(name);
         }
     }
 }
