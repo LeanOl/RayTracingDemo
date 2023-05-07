@@ -46,7 +46,7 @@ namespace DomainLogicTest
             try
             {
                 logic.CreateFigure(aFigure);
-                figureWasCreated = logic.FigureExists(aFigure.Name);
+                figureWasCreated = logic.FigureExists(aFigure.Name, aFigure.Propietary.Username);
             }catch (Exception ex)
             {
                 exceptionCaught = ex;
@@ -68,7 +68,7 @@ namespace DomainLogicTest
 
             try
             {
-                figureWasCreated = logic.FigureExists(aFigure.Name);
+                figureWasCreated = logic.FigureExists(aFigure.Name, aFigure.Propietary.Username);
             }
             catch (Exception ex)
             {
@@ -254,12 +254,12 @@ namespace DomainLogicTest
 
             logic.CreateFigure(aFigure);
             
-            itExists = logic.FigureExists(aFigure.Name);
+            itExists = logic.FigureExists(aFigure.Name, aFigure.Propietary.Username);
             Assert.IsTrue(itExists);
 
             logic.RemoveFigure(aFigure.Name);
  
-            itExists = logic.FigureExists(aFigure.Name);
+            itExists = logic.FigureExists(aFigure.Name, aFigure.Propietary.Username);
             Assert.IsFalse(itExists);
 
         }
@@ -275,7 +275,7 @@ namespace DomainLogicTest
 
             logic.CreateFigure(aFigure);
 
-            bool itExists = logic.FigureExists(aFigure.Name);
+            bool itExists = logic.FigureExists(aFigure.Name, aFigure.Propietary.Username);
             Assert.IsTrue(itExists);
 
             try
@@ -287,7 +287,7 @@ namespace DomainLogicTest
                 exceptionCaught = ex;
             }
 
-            itExists = logic.FigureExists(aFigure.Name);
+            itExists = logic.FigureExists(aFigure.Name, aFigure.Propietary.Username);
             Assert.IsTrue(itExists);
 
             Assert.IsNotNull(exceptionCaught);

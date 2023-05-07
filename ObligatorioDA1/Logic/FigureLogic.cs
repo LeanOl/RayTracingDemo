@@ -22,9 +22,9 @@ namespace DomainLogicTest
             }
         }
 
-        public bool FigureExists(string name)
+        public bool FigureExists(string name, string username)
         {
-            return _repository.FigureExists(name);
+            return _repository.FigureExists(name, username);
         }
 
         public void CreateSphere(Sphere aSphere)
@@ -58,7 +58,7 @@ namespace DomainLogicTest
             NameNotEmpty(aFigure.Name);
             NameDoesntStartWithNameOrSpaces(aFigure.Name);
 
-            if (_repository.FigureExists(aFigure.Name))
+            if (_repository.FigureExists(aFigure.Name, aFigure.Propietary.Username))
             {
                 string figureAlreadyExistsMessage = "A figure with that name already exists";
                 throw new ElementAlreadyExistsException(figureAlreadyExistsMessage);

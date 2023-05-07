@@ -24,11 +24,11 @@ namespace Repository
             return _figures.FirstOrDefault(aFigure => aFigure.Name == name);
         }
 
-        public bool FigureExists(string name)
+        public bool FigureExists(string name, string username)
         {
             foreach (Figure aFigure in _figures)
             {
-                if (aFigure.Name == name)
+                if (aFigure.Name == name && aFigure.Propietary.Username == username)
                 {
                     return true;
                 }

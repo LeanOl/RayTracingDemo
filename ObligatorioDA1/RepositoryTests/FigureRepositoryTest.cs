@@ -49,7 +49,7 @@ namespace RepositoryTests
         {
             FigureRepository repository = new FigureRepository();
 
-            Assert.IsFalse(repository.FigureExists(ValidFigureName));
+            Assert.IsFalse(repository.FigureExists(ValidFigureName, ValidUsername));
         }
     
 
@@ -59,9 +59,8 @@ namespace RepositoryTests
             FigureRepository repository = new FigureRepository();
             repository.AddFigure(aFigure);
 
-            Assert.IsTrue(repository.FigureExists(ValidFigureName));
+            Assert.IsTrue(repository.FigureExists(ValidFigureName, aFigure.Propietary.Username));
         }
-    
 
     [TestMethod]
         public void RemoveFigureTest()
@@ -69,11 +68,11 @@ namespace RepositoryTests
             FigureRepository repository = new FigureRepository();
             repository.AddFigure(aFigure);
 
-            Assert.IsTrue(repository.FigureExists(ValidFigureName));
+            Assert.IsTrue(repository.FigureExists(ValidFigureName, aFigure.Propietary.Username));
 
             repository.RemoveFigureByName(ValidFigureName);
 
-            Assert.IsFalse(repository.FigureExists(ValidFigureName));
+            Assert.IsFalse(repository.FigureExists(ValidFigureName, aFigure.Propietary.Username));
         }
     }
 }
