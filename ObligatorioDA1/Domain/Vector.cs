@@ -50,11 +50,11 @@
             return resultVector;
         }
 
-        public void AddTo(Vector vector2)
+        public void AddTo(Vector addedVector)
         {
-            X += vector2.X;
-            Y += vector2.Y;
-            Z += vector2.Z;
+            X += addedVector.X;
+            Y += addedVector.Y;
+            Z += addedVector.Z;
         }
     }
 }
