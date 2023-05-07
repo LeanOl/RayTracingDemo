@@ -126,7 +126,7 @@ namespace DomainLogicTest
             Assert.IsNotNull(exceptionCaught);
             Assert.IsInstanceOfType(exceptionCaught, typeof(ArgumentException));
             Assert.AreEqual(exceptionCaught.Message, invalidEmptyNameMessage);
-
+             
         }
 
         [TestMethod]
