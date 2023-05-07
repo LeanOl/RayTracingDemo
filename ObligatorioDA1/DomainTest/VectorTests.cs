@@ -90,7 +90,29 @@ namespace DomainTest
             Assert.AreEqual(0.5m, vector2.X);
             Assert.AreEqual(1m, vector2.Y);
             Assert.AreEqual(1.5m, vector2.Z);
-        }   
+        }
+
+        [TestMethod]
+        public void AddToVector()
+        {
+            Vector vector1 = new Vector
+            {
+                X = 1,
+                Y = 2,
+                Z = 3
+            };
+            Vector vector2 = new Vector
+            {
+                X = 1,
+                Y = 2,
+                Z = 3
+            };
+            vector1.AddTo(vector2);
+            Assert.AreEqual(2, vector1.X);
+            Assert.AreEqual(4, vector1.Y);
+            Assert.AreEqual(6, vector1.Z);
+        
+        }
     }
 }
 

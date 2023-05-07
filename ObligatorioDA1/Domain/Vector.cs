@@ -49,5 +49,12 @@
             };
             return resultVector;
         }
+
+        public void AddTo(Vector vector2)
+        {
+            X += vector2.X;
+            Y += vector2.Y;
+            Z += vector2.Z;
+        }
     }
 }
