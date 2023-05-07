@@ -59,6 +59,7 @@
     <Compile Include="SceneTests.cs" />
     <Compile Include="PositionedModelTest.cs" />
     <Compile Include="CameraTests.cs" />
+    <Compile Include="RayTests.cs" />
     <Compile Include="VectorTests.cs" />
   </ItemGroup>
   <ItemGroup>
