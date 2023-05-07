@@ -155,6 +155,25 @@ namespace DomainTest
             Assert.AreEqual(0.707107m, Math.Round(unitVector.Z, 6));
             
         }
+
+        [TestMethod]
+        public void GetDotProduct()
+        {
+            Vector vector1 = new Vector
+            {
+                X = 1,
+                Y = 2,
+                Z = 3
+            };
+            Vector vector2 = new Vector
+            {
+                X = 1,
+                Y = 2,
+                Z = 3
+            };
+            decimal dotProduct = vector1.DotProduct(vector2);
+            Assert.AreEqual(14m, dotProduct);
+        }
     }
 }
 

@@ -71,5 +71,10 @@
         {
             return Divide(Length());
         }
+
+        public decimal DotProduct(Vector vector2)
+        {
+            return X * vector2.X + Y * vector2.Y + Z * vector2.Z;
+        }
     }
 }
