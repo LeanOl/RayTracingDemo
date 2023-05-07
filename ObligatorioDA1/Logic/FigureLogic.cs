@@ -55,7 +55,7 @@ namespace DomainLogicTest
             {
                 string invalidRadiusMessage = "Radius must be a positive decimal number";
                 throw new ArgumentException(invalidRadiusMessage);
-            }
+            } 
         }
 
         public void RemoveFigure(string name)
