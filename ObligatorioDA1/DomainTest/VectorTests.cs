@@ -113,6 +113,19 @@ namespace DomainTest
             Assert.AreEqual(6, vector1.Z);
         
         }
+
+        [TestMethod]
+        public void GetSquaredLength()
+        {
+            Vector vector1 = new Vector
+            {
+                X = 1,
+                Y = 2,
+                Z = 3
+            };
+            decimal squaredLength = vector1.GetSquaredLength();
+            Assert.AreEqual(14m, squaredLength);
+        }
     }
 }
 

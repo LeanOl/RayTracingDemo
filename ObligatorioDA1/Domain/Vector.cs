@@ -56,5 +56,10 @@
             Y += addedVector.Y;
             Z += addedVector.Z;
         }
+
+        public decimal GetSquaredLength()
+        {
+            return X * X + Y * Y + Z * Z;
+        }
     }
 }
