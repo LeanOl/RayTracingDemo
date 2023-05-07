@@ -28,7 +28,7 @@ namespace Repository
         {
             foreach (Figure aFigure in _figures)
             {
-                if (aFigure.Name == name && aFigure.Propietary.Username == username)
+                if (figureNameAndUsernameMatch(aFigure, name, username))
                 {
                     return true;
                 }
@@ -41,5 +41,11 @@ namespace Repository
             _figures.Remove(GetFigureByName(name));
         }
 
+        private bool figureNameAndUsernameMatch(Figure aFigure, string name, string username)
+        {
+            string figureClientUsername = aFigure.Propietary.Username;
+            string figureName = aFigure.Name;
+            return ((figureName == name) && (figureClientUsername == username));
+        }
     }
 }
