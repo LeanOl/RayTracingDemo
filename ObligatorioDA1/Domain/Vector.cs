@@ -79,11 +79,14 @@
 
         public Vector CrossProduct(Vector vector2)
         {
+            decimal x = Y * vector2.Z - Z * vector2.Y;
+            decimal y = Z * vector2.X - X * vector2.Z;
+            decimal z = X * vector2.Y - Y * vector2.X;
             return new Vector
             {
-                X = Y * vector2.Z - Z * vector2.Y,
-                Y = Z * vector2.X - X * vector2.Z,
-                Z = X * vector2.Y - Y * vector2.X
+                X = x,
+                Y = y,
+                Z = z
             };
         }
     }
