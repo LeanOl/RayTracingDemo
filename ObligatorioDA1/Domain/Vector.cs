@@ -76,5 +76,15 @@
         {
             return X * vector2.X + Y * vector2.Y + Z * vector2.Z;
         }
+
+        public Vector CrossProduct(Vector vector2)
+        {
+            return new Vector
+            {
+                X = Y * vector2.Z - Z * vector2.Y,
+                Y = Z * vector2.X - X * vector2.Z,
+                Z = X * vector2.Y - Y * vector2.X
+            };
+        }
     }
 }

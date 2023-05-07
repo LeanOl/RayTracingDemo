@@ -174,6 +174,27 @@ namespace DomainTest
             decimal dotProduct = vector1.DotProduct(vector2);
             Assert.AreEqual(14m, dotProduct);
         }
+
+        [TestMethod]
+        public void GetCrossProduct()
+        {
+            Vector vector1 = new Vector
+            {
+                X = 1,
+                Y = 2,
+                Z = 3
+            };
+            Vector vector2 = new Vector
+            {
+                X = 1,
+                Y = 3,
+                Z = 3
+            };
+            Vector crossProduct = vector1.CrossProduct(vector2);
+            Assert.AreEqual(-3m, crossProduct.X);
+            Assert.AreEqual(0m, crossProduct.Y);
+            Assert.AreEqual(1m, crossProduct.Z);
+        }
     }
 }
 
