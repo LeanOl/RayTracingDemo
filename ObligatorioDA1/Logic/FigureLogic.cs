@@ -51,16 +51,29 @@ namespace DomainLogicTest
 
         public void CreateSphere(Sphere aSphere)
         {
-            if (aSphere.Radius < 0)
+            if (ValidSphere(aSphere))
             {
-                string invalidRadiusMessage = "Radius must be a positive decimal number";
-                throw new ArgumentException(invalidRadiusMessage);
-            } 
+                CreateFigure(aSphere);
+            }
         }
 
         public void RemoveFigure(string name)
         {
             _repository.RemoveFigureByName(name);
         }
+
+        private bool ValidSphere(Sphere aSphere)
+        {
+            if(aSphere.Radius > 0)
+            {
+                return true;
+            }
+            else
+            {
+                string invalidRadiusMessage = "Radius must be a positive decimal number";
+                throw new ArgumentException(invalidRadiusMessage);
+            }
+        }
+
     }
 }
