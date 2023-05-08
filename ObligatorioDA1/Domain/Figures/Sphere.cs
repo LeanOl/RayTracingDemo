@@ -2,6 +2,6 @@
 {
     public class Sphere : Figure
     {
-        public int Radius { get; set; }
+        public decimal Radius { get; set; }
     }
 }

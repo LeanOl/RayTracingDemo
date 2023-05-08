@@ -2,6 +2,7 @@
 using Domain;
 using Repository;
 using System;
+using System.Collections.Generic;
 
 namespace RepositoryTests
 {
@@ -11,7 +12,7 @@ namespace RepositoryTests
     {
         private const string ValidFigureName = "Ball";
         private const string ValidUsername = "John";
-        private int ValidRadius = 5;
+        private decimal ValidRadius = 5;
 
         private Client aClient;
         private Figure aFigure;
@@ -29,6 +30,7 @@ namespace RepositoryTests
                 Name = ValidFigureName,
                 Radius = ValidRadius
             };
+
         }
 
         [TestMethod]
@@ -53,7 +55,7 @@ namespace RepositoryTests
         }
     
 
-    [TestMethod]
+        [TestMethod]
         public void DetectingFigureExists()
         {
             FigureRepository repository = new FigureRepository();
@@ -62,7 +64,7 @@ namespace RepositoryTests
             Assert.IsTrue(repository.FigureExists(ValidFigureName, aFigure.Propietary.Username));
         }
 
-    [TestMethod]
+        [TestMethod]
         public void RemoveFigureTest()
         {
             FigureRepository repository = new FigureRepository();
@@ -74,5 +76,19 @@ namespace RepositoryTests
 
             Assert.IsFalse(repository.FigureExists(ValidFigureName, aFigure.Propietary.Username));
         }
-    }
+    
+
+        [TestMethod]
+        public void GetFiguresByClientSuccessfully()
+        {
+            FigureRepository repository = new FigureRepository();
+            List<Figure> repositoryCollection = repository.GetFiguresByClient(aClient);
+
+            List<Figure> figureCollection = new List<Figure>();
+
+            repository.AddFigure(aFigure);
+
+            CollectionAssert.AreEquivalent(figureCollection, repositoryCollection);
+        }
+}
 }

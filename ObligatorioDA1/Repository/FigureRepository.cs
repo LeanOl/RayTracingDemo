@@ -41,10 +41,16 @@ namespace Repository
             _figures.Remove(GetFigureByName(name));
         }
 
+        public List<Figure> GetFiguresByClient(Client client)
+        {
+            return _figures.FindAll(figure => figure.Propietary.Equals(client));
+        }
+
         private bool figureNameAndUsernameMatch(Figure aFigure, string name, string username)
         {
             string figureClientUsername = aFigure.Propietary.Username;
             string figureName = aFigure.Name;
+
             return ((figureName == name) && (figureClientUsername == username));
         }
     }

@@ -2,8 +2,9 @@
 using Exceptions;
 using Repository;
 using System;
+using System.Collections.Generic;
 
-namespace DomainLogicTest
+namespace Logic
 {
     public class FigureLogic
     {
@@ -38,6 +39,11 @@ namespace DomainLogicTest
         public void RemoveFigure(string name, string username)
         {
             _repository.RemoveFigureByName(name, username);
+        }
+
+        public List<Figure> GetFiguresByClient(Client proprietary)
+        {
+            return _repository.GetFiguresByClient(proprietary);
         }
 
         private bool ValidSphere(Sphere aSphere)

@@ -2,6 +2,9 @@
 using Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using Logic;
+using Repository;
+using System.Collections.Generic;
 
 namespace DomainLogicTest
 {
@@ -12,8 +15,8 @@ namespace DomainLogicTest
         private Figure aFigure;
         private const string validFigureName = "Ball";
         private const string validUsername = "John";
-        private int validRadius = 5;
-        private const int negativeRadius = -5;
+        private decimal validRadius = 5;
+        private const decimal negativeRadius = -5;
         
         private const string invalidRadiusMessage = "Radius must be a positive decimal number";
         private const string invalidEmptyNameMessage = "The name must not be empty";
@@ -294,6 +297,19 @@ namespace DomainLogicTest
             Assert.IsInstanceOfType(exceptionCaught, typeof(CannotDeleteException));
             Assert.AreEqual(exceptionCaught.Message, figuredIsUsedByModelMessage);
              
+        }
+
+        [TestMethod]
+        public void GetFiguresByClientSuccessfully()
+        {
+            FigureLogic logic = new FigureLogic();
+            List<Figure> repositoryCollection = logic.GetFiguresByClient(aClient);
+
+            List<Figure> figureCollection = new List<Figure>();
+
+            logic.CreateFigure(aFigure);
+
+            CollectionAssert.AreEquivalent(figureCollection, repositoryCollection);
         }
     }   
 }
