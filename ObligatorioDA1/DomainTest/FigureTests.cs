@@ -45,14 +45,14 @@ namespace DomainLogicTest
             {
                 Propietary = someClient,
                 Name = validName,
-                Radius = validRadius
+                Radius = 0.5m
             };
             Ray aRay = new Ray()
             {
                 Origin = new Vector { X = 0, Y = 0, Z = 0 },
-                Direction = new Vector { X = 1, Y = 1, Z = 1 }
+                Direction = new Vector { X = 0, Y = 0.56m, Z = -1 }
             };
-            Vector center = new Vector { X = 1, Y = 1, Z = 1 };
+            Vector center = new Vector { X = 0, Y = 0, Z = -1 };
             HitRecord hit = aSphere.Hit(aRay, 0, 5, center);
             Assert.IsNotNull(hit);
         }
@@ -127,7 +127,24 @@ namespace DomainLogicTest
             HitRecord hit = aSphere.Hit(aRay, 0.7m, 5, center);
             Assert.IsNull(hit);
         }
-        
-
+        [TestMethod]
+        public void SphereHitReturnNullTIsMoreThanTmax()
+        {
+            Sphere aSphere = new Sphere()
+            {
+                Propietary = someClient,
+                Name = validName,
+                Radius = 0.5m
+            };
+            Ray aRay = new Ray()
+            {
+                Origin = new Vector { X = 0, Y = 0, Z = 0 },
+                Direction = new Vector { X = 0, Y = 0.56m, Z = -1 }
+            };
+            Vector center = new Vector { X = 0, Y = 0, Z = -1 };
+            HitRecord hit = aSphere.Hit(aRay, 0, 0.5m, center);
+            Assert.IsNull(hit);
         }
+
+    }
 }

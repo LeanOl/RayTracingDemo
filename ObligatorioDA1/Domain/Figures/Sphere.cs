@@ -16,7 +16,7 @@
                 decimal t = (-b - (decimal)System.Math.Sqrt((double)discriminant)) / (2 * a);
                 Vector intersectionPoint = aRay.PointAt(t);
                 Vector normal = intersectionPoint.Subtract(center).Divide(Radius);
-                if (t > tMin)
+                if (t < tMax && t > tMin)
                 {
                     return new HitRecord { T = t, IntersectionPoint = intersectionPoint, Normal = normal };
                 }
