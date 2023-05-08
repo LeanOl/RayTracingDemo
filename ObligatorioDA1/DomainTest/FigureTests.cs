@@ -109,7 +109,25 @@ namespace DomainLogicTest
             Assert.AreEqual(expectedNormalZ, Math.Truncate(hit.Normal.Z*fiveDecimals)/fiveDecimals);
 
         }
-
+        [TestMethod]
+        public void SphereHitReturnNullTIsLessThanTmin()
+        {
+            Sphere aSphere = new Sphere()
+            {
+                Propietary = someClient,
+                Name = validName,
+                Radius = 0.5m
+            };
+            Ray aRay = new Ray()
+            {
+                Origin = new Vector { X = 0, Y = 0, Z = 0 },
+                Direction = new Vector { X = 0, Y = 0.56m, Z = -1 }
+            };
+            Vector center = new Vector { X = 0, Y = 0, Z = -1 };
+            HitRecord hit = aSphere.Hit(aRay, 0.7m, 5, center);
+            Assert.IsNull(hit);
+        }
         
-    }
+
+        }
 }
