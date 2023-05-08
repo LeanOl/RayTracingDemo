@@ -1,4 +1,6 @@
-﻿namespace Domain
+﻿using System;
+
+namespace Domain
 {
     public class Vector
     {
@@ -89,6 +91,26 @@
                 Y = y,
                 Z = z
             };
+        }
+
+        public static Vector RandomInUnitSphere()
+        {
+            Random randomGenerator= new Random();
+            Vector randomVector;
+            do
+            {
+                Vector tempVector = new Vector
+                {
+                    X = (decimal)randomGenerator.NextDouble(),
+                    Y = (decimal)randomGenerator.NextDouble(),
+                    Z = (decimal)randomGenerator.NextDouble()
+
+                };
+                randomVector = tempVector.Multiply(2).Subtract(new Vector { X = 1, Y = 1, Z = 1 });
+            } while (randomVector.SquaredLength() >= 1);
+            
+
+            return randomVector;
         }
     }
 }

@@ -68,5 +68,11 @@ namespace DomainTest
             Assert.AreEqual(aMaterial,aMaterial2);
             
         }
+
+        [TestMethod]
+        public void LambertianCalculateColor()
+        {
+
+        }
     }
 }

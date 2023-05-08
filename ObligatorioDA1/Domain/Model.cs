@@ -10,4 +10,6 @@ namespace Domain
         public Material Material { get; set; }
         public Image Preview { get; set; }
     }
+    
+    
 }
