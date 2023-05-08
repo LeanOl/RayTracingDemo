@@ -13,7 +13,10 @@
             decimal discriminant = b * b - 4 * a * c;
             if (discriminant > 0)
             {
-                return new HitRecord();
+                decimal t = (-b - (decimal)System.Math.Sqrt((double)discriminant)) / (2 * a);
+                Vector intersectionPoint = aRay.PointAt(t);
+                Vector normal = intersectionPoint.Subtract(center).Divide(Radius);
+                return new HitRecord { T = t, IntersectionPoint = intersectionPoint, Normal = normal };
             }
             else
             {
