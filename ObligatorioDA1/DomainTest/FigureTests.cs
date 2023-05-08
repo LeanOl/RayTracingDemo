@@ -54,7 +54,25 @@ namespace DomainLogicTest
             Vector center = new Vector { X = 1, Y = 1, Z = 1 };
             HitRecord hit = aSphere.Hit(aRay, 0, 5, center);
             Assert.IsNotNull(hit);
+        }
 
+        [TestMethod]
+        public void SphereHitReturnNullWhenNotHit()
+        {
+            Sphere aSphere = new Sphere()
+            {
+                Propietary = someClient,
+                Name = validName,
+                Radius = 0.5m
+            };
+            Ray aRay = new Ray()
+            {
+                Origin = new Vector { X = 0, Y = 0, Z = 0 },
+                Direction = new Vector { X = -2, Y = 0.98m, Z = -1 }
+            };
+            Vector center = new Vector { X = 0, Y = 0, Z = -1 };
+            HitRecord hit = aSphere.Hit(aRay, 0, 5, center);
+            Assert.IsNull(hit);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Domain
 {
-    public struct HitRecord
+    public class HitRecord
     {
         public int T;
         public Vector IntersectionPoint;
