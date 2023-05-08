@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Domain;
 
 namespace Interface
 {
@@ -19,9 +20,31 @@ namespace Interface
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            UserControl aFigureList = new FigureList();
-            Parent.Controls.Add(aFigureList);
-            Parent.Controls.Remove(this);
+            
+            try
+            {
+                Client proprietary = Instance.InstanceSessionLogic.GetActiveUser();
+                string name = txtFigureName.Text;
+                decimal radius = decimal.Parse(txtFigureRadius.Text);
+
+                Sphere aSphere = new Sphere()
+                {
+                    Propietary = proprietary,
+                    Name = name,
+                    Radius = radius
+                };
+            
+                Instance.InstanceFigureLogic.CreateSphere(aSphere);
+
+                UserControl aFigureList = new FigureList();
+                Parent.Controls.Add(aFigureList);
+                Parent.Controls.Remove(this);
+            }
+            catch (Exception ex)
+            {
+                lblErrorMessage.Text = ex.Message;
+            }
+            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -29,6 +52,11 @@ namespace Interface
             UserControl aFigureList = new FigureList();
             Parent.Controls.Add(aFigureList);
             Parent.Controls.Remove(this);
+        }
+
+        private void AddSphere_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

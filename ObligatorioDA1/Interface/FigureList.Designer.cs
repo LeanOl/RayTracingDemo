@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btnAddNewFigure = new System.Windows.Forms.Button();
-            this.lstbFigures = new System.Windows.Forms.ListBox();
+            this.flpFigures = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // btnAddNewFigure
@@ -42,22 +42,23 @@
             this.btnAddNewFigure.UseVisualStyleBackColor = true;
             this.btnAddNewFigure.Click += new System.EventHandler(this.btnAddNewFigure_Click);
             // 
-            // lstbFigures
+            // flpFigures
             // 
-            this.lstbFigures.FormattingEnabled = true;
-            this.lstbFigures.Location = new System.Drawing.Point(254, 95);
-            this.lstbFigures.Name = "lstbFigures";
-            this.lstbFigures.Size = new System.Drawing.Size(155, 147);
-            this.lstbFigures.TabIndex = 4;
+            this.flpFigures.Location = new System.Drawing.Point(151, 110);
+            this.flpFigures.Name = "flpFigures";
+            this.flpFigures.Size = new System.Drawing.Size(362, 241);
+            this.flpFigures.TabIndex = 1;
+            this.flpFigures.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // FigureList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.lstbFigures);
+            this.Controls.Add(this.flpFigures);
             this.Controls.Add(this.btnAddNewFigure);
             this.Name = "FigureList";
             this.Size = new System.Drawing.Size(677, 351);
+            this.Load += new System.EventHandler(this.FigureList_Load);
             this.ResumeLayout(false);
 
         }
@@ -65,6 +66,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnAddNewFigure;
-        private System.Windows.Forms.ListBox lstbFigures;
+        private System.Windows.Forms.FlowLayoutPanel flpFigures;
     }
 }
