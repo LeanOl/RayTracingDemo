@@ -4,7 +4,7 @@
     {
         public decimal Radius { get; set; }
 
-        public HitRecord Hit(Ray aRay, decimal tMin, decimal tMax, Vector center)
+        public override HitRecord Hit(Ray aRay, decimal tMin, decimal tMax, Vector center)
         {
             Vector originCenter = aRay.Origin.Subtract(center);
             decimal a = aRay.Direction.DotProduct(aRay.Direction);
@@ -29,8 +29,6 @@
             {
                 return null;
             }
-            
-
         }
     }
 }
