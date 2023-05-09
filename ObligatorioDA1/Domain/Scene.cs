@@ -15,7 +15,23 @@ namespace Domain
         public DateTime LastModified { get; set; }
         public DateTime LastRendered { get; set; }
 
+        public override bool Equals(object obj)
+        {
+            Material materialToCompare = obj as Material;
+            if (materialToCompare == null)
+            {
+                return false;
+            }
+            else
+            {
+                return (Name == materialToCompare.Name) && (Proprietary.Equals(materialToCompare.Proprietary));
+            }
+        }
+        public override int GetHashCode()
+        {
+            return Proprietary.GetHashCode();
+        }
     }
+}
 
     
-}
