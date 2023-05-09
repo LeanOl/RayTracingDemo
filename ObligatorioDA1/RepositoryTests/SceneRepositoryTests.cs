@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Repository;
 using System;
+using System.Collections.Generic;
 
 namespace RepositoryTests
 {
@@ -12,7 +13,7 @@ namespace RepositoryTests
         private Client _someClient;
         private SceneRepository _repository;
         [TestMethod]
-        public void AddSeneSuccessfully()
+        public void AddSceneSuccessfully()
         {
             _repository= new SceneRepository();
             const string username = "John";
@@ -26,6 +27,48 @@ namespace RepositoryTests
             };
             _repository.Add(testScene);
             Assert.AreEqual(testScene, _repository.GetByName("New Scene"));
+
+        }
+        [TestMethod]
+        public void GetClientScenes()
+        {
+            _repository = new SceneRepository();
+            const string username = "John";
+            const string username2 = "Alan";
+            _someClient = new Client()
+            {
+                Username = username,
+            };
+            Client someClient2 = new Client()
+            {
+                Username = username2,
+            };
+            Scene testScene = new Scene
+            {
+                Name = "New Scene",
+                Proprietary=_someClient
+            };
+            Scene testScene2 = new Scene
+            {
+                Name = "New Scene 1",
+                Proprietary = _someClient
+            };
+            Scene testScene3 = new Scene
+            {
+                Name = "New Scene 2",
+                Proprietary = someClient2
+            };
+            _repository.Add(testScene);
+            _repository.Add(testScene2);
+            _repository.Add(testScene3);
+            List<Scene> client1Scenes = new List<Scene>
+            {
+                testScene,
+                testScene2,
+            };
+
+            CollectionAssert.AreEquivalent(client1Scenes,
+                _repository.GetScenesByClient(_someClient));
 
         }
     }
