@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Xml.Linq;
 
 namespace Domain
 {
@@ -20,5 +21,27 @@ namespace Domain
         {
             return Model.GetColor();
         }
+        public override bool Equals(object obj)
+        {
+            PositionedModel modelToCompare = obj as PositionedModel;
+            if (modelToCompare == null)
+            {
+                return false;
+            }
+            else
+            {
+                return Model.Equals(modelToCompare.Model) 
+                       && Position.X == modelToCompare.Position.X
+                       && Position.Y == modelToCompare.Position.Y
+                       && Position.Z == modelToCompare.Position.Z;
+                       
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            return Model.GetHashCode();
+        }
+
     }
 }
