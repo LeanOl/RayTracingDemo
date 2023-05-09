@@ -19,5 +19,12 @@ namespace Repository
         {
             return _scenes.FirstOrDefault(x => x.Name == newScene);
         }
+
+        public object GetByName(string sceneDefaultName, Client proprietary)
+        {
+            return _scenes.FirstOrDefault(x => 
+                x.Name == sceneDefaultName &&
+                x.Proprietary.Equals(proprietary));
+        }
     }
 }
