@@ -189,6 +189,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\Exceptions.csproj">
+      <Project>{49936ab5-2d38-47df-8709-a98e436a4188}</Project>
+      <Name>Exceptions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{BB322CEA-D52C-4BD3-BA3A-46AA38956999}</Project>
       <Name>Domain</Name>

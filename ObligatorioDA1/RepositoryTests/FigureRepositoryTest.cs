@@ -90,5 +90,5 @@ namespace RepositoryTests
 
             CollectionAssert.AreEquivalent(figureCollection, repositoryCollection);
         }
-}
+    }
 }

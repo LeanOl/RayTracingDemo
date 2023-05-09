@@ -3,7 +3,7 @@ using System;
 using Domain;
 using Logic;
 
-namespace DomainLogicTest
+namespace LogicTest
 {
     [TestClass]
     public class ClientLogicTests

@@ -6,7 +6,7 @@ using Logic;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DomainLogicTest
+namespace LogicTest
 {
     [TestClass]
     public class MaterialLogicTests

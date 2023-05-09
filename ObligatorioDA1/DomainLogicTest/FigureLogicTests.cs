@@ -6,7 +6,7 @@ using Logic;
 using Repository;
 using System.Collections.Generic;
 
-namespace DomainLogicTest
+namespace LogicTest
 {
     [TestClass]
     public class FigureLogicTests
