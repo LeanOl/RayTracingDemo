@@ -34,7 +34,8 @@ namespace Domain
 
         public void AddPositionedModel(Model model, Vector position)
         {
-            ModelList.Add(new PositionedModel{Model = model, Position = position});
+            PositionedModel modelToAdd = new PositionedModel { Model = model, Position = position };
+            ModelList.Add(modelToAdd);
         }
     }
 }
