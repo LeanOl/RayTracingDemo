@@ -31,6 +31,11 @@ namespace Domain
         {
             return Proprietary.GetHashCode();
         }
+
+        public void AddPositionedModel(Model model, Vector position)
+        {
+            ModelList.Add(new PositionedModel{Model = model, Position = position});
+        }
     }
 }
 
