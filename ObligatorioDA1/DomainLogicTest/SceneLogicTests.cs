@@ -16,5 +16,16 @@ namespace DomainLogicTest
             _logic.CreateEmptyScene(_proprietary);
             Assert.IsNotNull(_logic.GetSceneByName("Empty Scene"));
         }
+
+        [TestMethod]
+        public void CreateThreeEmptyScenesSuccessfully()
+        {
+            _logic.CreateEmptyScene(_proprietary);
+            _logic.CreateEmptyScene(_proprietary);
+            _logic.CreateEmptyScene(_proprietary);
+            Assert.IsNotNull(_logic.GetSceneByName("Empty Scene"));
+            Assert.IsNotNull(_logic.GetSceneByName("Empty Scene 1"));
+            Assert.IsNotNull(_logic.GetSceneByName("Empty Scene 2"));
+        }
     }
 }
