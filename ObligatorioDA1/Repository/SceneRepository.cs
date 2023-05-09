@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,11 @@ namespace Repository
             return _scenes.FirstOrDefault(x => 
                 x.Name == sceneDefaultName &&
                 x.Proprietary.Equals(proprietary));
+        }
+
+        public List<Scene> GetScenesByClient(Client someClient)
+        {
+            return _scenes.FindAll(x => x.Proprietary.Equals(someClient));
         }
     }
 }

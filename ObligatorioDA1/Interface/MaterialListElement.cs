@@ -24,7 +24,8 @@ namespace Interface
                 lblRed.Text = value.Color.R.ToString();
                 lblGreen.Text= value.Color.G.ToString();
                 picColorPreview.BackColor = value.Color;
-            } }
+            }
+        }
         public MaterialListElement(Material material)
         {
             InitializeComponent();

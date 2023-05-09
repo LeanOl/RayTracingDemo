@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             this.btnAddNewScene = new System.Windows.Forms.Button();
-            this.lstbScenes = new System.Windows.Forms.ListBox();
-            this.btnDeleteSelected = new System.Windows.Forms.Button();
+            this.flpMaterials = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // btnAddNewScene
             // 
-            this.btnAddNewScene.Location = new System.Drawing.Point(208, 27);
+            this.btnAddNewScene.Location = new System.Drawing.Point(255, 31);
             this.btnAddNewScene.Name = "btnAddNewScene";
             this.btnAddNewScene.Size = new System.Drawing.Size(155, 23);
             this.btnAddNewScene.TabIndex = 2;
@@ -43,32 +42,25 @@
             this.btnAddNewScene.UseVisualStyleBackColor = true;
             this.btnAddNewScene.Click += new System.EventHandler(this.btnAddNewScene_Click);
             // 
-            // lstbScenes
+            // flpMaterials
             // 
-            this.lstbScenes.FormattingEnabled = true;
-            this.lstbScenes.Location = new System.Drawing.Point(208, 106);
-            this.lstbScenes.Name = "lstbScenes";
-            this.lstbScenes.Size = new System.Drawing.Size(155, 147);
-            this.lstbScenes.TabIndex = 3;
-            // 
-            // btnDeleteSelected
-            // 
-            this.btnDeleteSelected.Location = new System.Drawing.Point(401, 106);
-            this.btnDeleteSelected.Name = "btnDeleteSelected";
-            this.btnDeleteSelected.Size = new System.Drawing.Size(104, 23);
-            this.btnDeleteSelected.TabIndex = 4;
-            this.btnDeleteSelected.Text = "- Delete Selected ";
-            this.btnDeleteSelected.UseVisualStyleBackColor = true;
+            this.flpMaterials.AutoScroll = true;
+            this.flpMaterials.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flpMaterials.Location = new System.Drawing.Point(135, 104);
+            this.flpMaterials.Name = "flpMaterials";
+            this.flpMaterials.Size = new System.Drawing.Size(368, 229);
+            this.flpMaterials.TabIndex = 5;
+            this.flpMaterials.WrapContents = false;
             // 
             // SceneList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnDeleteSelected);
-            this.Controls.Add(this.lstbScenes);
+            this.Controls.Add(this.flpMaterials);
             this.Controls.Add(this.btnAddNewScene);
             this.Name = "SceneList";
             this.Size = new System.Drawing.Size(677, 351);
+            this.Load += new System.EventHandler(this.SceneList_Load);
             this.ResumeLayout(false);
 
         }
@@ -76,7 +68,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnAddNewScene;
-        private System.Windows.Forms.ListBox lstbScenes;
-        private System.Windows.Forms.Button btnDeleteSelected;
+        private System.Windows.Forms.FlowLayoutPanel flpMaterials;
     }
 }

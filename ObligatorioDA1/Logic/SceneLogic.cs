@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
 using Domain;
 using Repository;
@@ -12,7 +13,7 @@ namespace Logic
         {
             Scene emptyScene;
             Camera sceneCamera = new Camera();
-            Bitmap defaultPreview = new Bitmap(50, 50);
+            Bitmap defaultPreview = new Bitmap(300, 200);
             Graphics gfx = Graphics.FromImage(defaultPreview);
             gfx.Clear(Color.Gray);
             string sceneDefaultName= GenerateSceneDefaultName(proprietary);
@@ -52,6 +53,11 @@ namespace Logic
         public Scene GetSceneByName(string emptyScene)
         {
             return _repository.GetByName(emptyScene);
+        }
+
+        public List<Scene> GetClientScenes(Client proprietary)
+        {
+            return _repository.GetScenesByClient(proprietary);
         }
     }
 }

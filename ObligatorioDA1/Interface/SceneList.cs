@@ -22,9 +22,28 @@ namespace Interface
         {
             Client proprietary = Instance.InstanceSessionLogic.GetActiveUser();
             Instance.InstanceSceneLogic.CreateEmptyScene(proprietary);
+            LoadScenePanel();
             //UserControl anEditScene = new EditScene();
             //Parent.Controls.Add(anEditScene);
             //Parent.Controls.Remove(this);
+        }
+
+        private void SceneList_Load(object sender, EventArgs e)
+        {
+            LoadScenePanel();
+        }
+
+        private void LoadScenePanel()
+        {
+            flpMaterials.Controls.Clear();
+            Client activeUser = Instance.InstanceSessionLogic.GetActiveUser();
+            List<Scene> scenes = Instance.InstanceSceneLogic.GetClientScenes(activeUser);
+            scenes = scenes.OrderByDescending(scene => scene.LastModified).ToList();
+            foreach (var scene in scenes)
+            {
+                SceneListElement newScene = new SceneListElement(scene);
+                flpMaterials.Controls.Add(newScene);
+            }
         }
     }
 }
