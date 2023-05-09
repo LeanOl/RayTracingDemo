@@ -5,7 +5,7 @@ using Logic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Repository;
 
-namespace DomainLogicTest
+namespace LogicTest
 {
     [TestClass]
     public class SessionLogicTests
