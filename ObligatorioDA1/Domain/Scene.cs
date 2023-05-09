@@ -38,9 +38,9 @@ namespace Domain
             ModelList.Add(modelToAdd);
         }
 
-        public void RemovePositionedModel(PositionedModel testPositionedModel)
+        public void RemovePositionedModel(PositionedModel model)
         {
-            ModelList.Remove(testPositionedModel);
+            ModelList.Remove(model);
         }
     }
 }
