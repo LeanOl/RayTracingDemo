@@ -51,7 +51,7 @@ namespace Domain
             decimal tMax = decimal.MaxValue; 
             foreach (PositionedModel model in elements)
             {
-                HitRecord hit = model.Model.Figure.Hit(ray, 0.001m, tMax, model.Position);
+                HitRecord hit = model.Hit(ray, 0.001m, tMax, model.Position);
                 if (hit != null)
                 {
                     tMax = hit.T;
@@ -64,9 +64,9 @@ namespace Domain
             {
                 if (depth > 0)
                 {
-                    Ray scatteredRay = hitModel.Model.Material.Scatter(hitRecord);
+                    Ray scatteredRay = hitModel.Scatter(hitRecord);
                     Color color = ObtainColor(scatteredRay, depth - 1, elements);
-                    Color attenuation = hitModel.Model.Material.Color;
+                    Color attenuation = hitModel.GetColor();
                     int red= (int) (((color.R / 255m) * (attenuation.R / 255m))*255);
                     int green= (int) (((color.G / 255m) * (attenuation.G / 255m))*255);
                     int blue= (int) (((color.B / 255m) * (attenuation.B / 255m))*255);

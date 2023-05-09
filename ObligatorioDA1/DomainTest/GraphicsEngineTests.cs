@@ -60,7 +60,7 @@ namespace DomainTest
             Assert.IsTrue(Math.Abs(color.G - 36) < tolerance);
             Assert.IsTrue(Math.Abs(color.B - 127) < tolerance);
         }
-       
+        
 
     }
 }
