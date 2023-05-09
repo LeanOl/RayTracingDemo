@@ -115,6 +115,12 @@
     <Compile Include="SceneList.Designer.cs">
       <DependentUpon>SceneList.cs</DependentUpon>
     </Compile>
+    <Compile Include="SceneListElement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SceneListElement.Designer.cs">
+      <DependentUpon>SceneListElement.cs</DependentUpon>
+    </Compile>
     <Compile Include="SignIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +174,9 @@
     </Compile>
     <EmbeddedResource Include="SceneList.resx">
       <DependentUpon>SceneList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SceneListElement.resx">
+      <DependentUpon>SceneListElement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SignIn.resx">
       <DependentUpon>SignIn.cs</DependentUpon>
