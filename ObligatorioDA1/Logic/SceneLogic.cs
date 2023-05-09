@@ -13,7 +13,7 @@ namespace Logic
         {
             Scene emptyScene;
             Camera sceneCamera = new Camera();
-            Bitmap defaultPreview = new Bitmap(50, 50);
+            Bitmap defaultPreview = new Bitmap(300, 200);
             Graphics gfx = Graphics.FromImage(defaultPreview);
             gfx.Clear(Color.Gray);
             string sceneDefaultName= GenerateSceneDefaultName(proprietary);
