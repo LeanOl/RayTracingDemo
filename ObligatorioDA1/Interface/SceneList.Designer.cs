@@ -35,7 +35,7 @@
             // 
             // btnAddNewScene
             // 
-            this.btnAddNewScene.Location = new System.Drawing.Point(208, 67);
+            this.btnAddNewScene.Location = new System.Drawing.Point(208, 27);
             this.btnAddNewScene.Name = "btnAddNewScene";
             this.btnAddNewScene.Size = new System.Drawing.Size(155, 23);
             this.btnAddNewScene.TabIndex = 2;

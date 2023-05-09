@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Domain;
 
 namespace Interface
 {
@@ -19,9 +20,11 @@ namespace Interface
 
         private void btnAddNewScene_Click(object sender, EventArgs e)
         {
-            UserControl anEditScene = new EditScene();
-            Parent.Controls.Add(anEditScene);
-            Parent.Controls.Remove(this);
+            Client proprietary = Instance.InstanceSessionLogic.GetActiveUser();
+            Instance.InstanceSceneLogic.CreateEmptyScene(proprietary);
+            //UserControl anEditScene = new EditScene();
+            //Parent.Controls.Add(anEditScene);
+            //Parent.Controls.Remove(this);
         }
     }
 }
