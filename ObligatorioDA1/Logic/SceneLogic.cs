@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
 using Domain;
 using Repository;
@@ -52,6 +53,11 @@ namespace Logic
         public Scene GetSceneByName(string emptyScene)
         {
             return _repository.GetByName(emptyScene);
+        }
+
+        public List<Scene> GetClientScenes(Client proprietary)
+        {
+            return _repository.GetScenesByClient(proprietary);
         }
     }
 }
