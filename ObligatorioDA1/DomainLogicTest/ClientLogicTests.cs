@@ -55,13 +55,10 @@ namespace DomainLogicTest
                 Assert.AreEqual(UsernameBelowCharLimitMessage, ex.Message);
             }
 
-
-
         }
         [TestMethod]
         public void ClientUsernameAboveCharacterLimit_ThrowException()
         {
-
             try
             {
                 logic.CreateClient(UsernameAboveCharLimit,ValidPassword);
@@ -71,7 +68,6 @@ namespace DomainLogicTest
             {
                 Assert.AreEqual(UsernameAboveCharLimitMessage,ex.Message );
             }
-
         }
         [TestMethod]
         public void ClientUsernameDuplicated_ThrowException()

@@ -70,6 +70,12 @@
     <Compile Include="FigureList.Designer.cs">
       <DependentUpon>FigureList.cs</DependentUpon>
     </Compile>
+    <Compile Include="FigureListElement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FigureListElement.Designer.cs">
+      <DependentUpon>FigureListElement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Instance.cs" />
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
@@ -135,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FigureList.resx">
       <DependentUpon>FigureList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FigureListElement.resx">
+      <DependentUpon>FigureListElement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
