@@ -3,6 +3,7 @@ using System;
 using Domain;
 using Logic;
 using System.Collections.Generic;
+using System.Dynamic;
 
 namespace DomainLogicTest
 {
@@ -36,17 +37,17 @@ namespace DomainLogicTest
             _logic.CreateEmptyScene(_proprietary);
             Scene testScene = new Scene
             {
-                Name = "New Scene",
+                Name = "Empty Scene",
                 Proprietary = _proprietary
             };
             Scene testScene2 = new Scene
             {
-                Name = "New Scene 1",
+                Name = "Empty Scene 1",
                 Proprietary = _proprietary
             };
             Scene testScene3 = new Scene
             {
-                Name = "New Scene 2",
+                Name = "Empty Scene 2",
                 Proprietary = _proprietary
             };
             List<Scene> clientScenes = new List<Scene>
@@ -73,5 +74,27 @@ namespace DomainLogicTest
 
            
         }
+
+        [TestMethod]
+        public void DeleteModelFromScene()
+        {
+            _logic.CreateEmptyScene(_proprietary);
+            Scene testScene = _logic.GetSceneByName("Empty Scene");
+            Model testModel = new Model
+            {
+                Name = "New Model",
+                Proprietary = _proprietary,
+            };
+            Vector position = new Vector { X = 0, Y = 0, Z = 0 };
+            PositionedModel testPositionedModel = new PositionedModel
+            {
+                Model = testModel,
+                Position = position
+            };
+            _logic.AddModelToScene(testScene, testModel, position);
+            _logic.DeleteModelFromScene(testScene, testPositionedModel);
+            Assert.IsTrue(testScene.ModelList.Count == 0);
+        }
+        
     }
 }

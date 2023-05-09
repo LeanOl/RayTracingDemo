@@ -64,5 +64,10 @@ namespace Logic
         {
             testScene.AddPositionedModel(testModel, position);
         }
+
+        public void DeleteModelFromScene(Scene scene, PositionedModel model)
+        {
+            scene.RemovePositionedModel(model);
+        }
     }
 }
