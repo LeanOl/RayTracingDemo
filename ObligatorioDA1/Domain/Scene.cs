@@ -14,5 +14,8 @@ namespace Domain
         public Camera Camera { get; set; }
         public DateTime LastModified { get; set; }
         public DateTime LastRendered { get; set; }
+
     }
+
+    
 }
