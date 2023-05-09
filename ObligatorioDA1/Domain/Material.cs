@@ -26,5 +26,6 @@ namespace Domain
             return Name.GetHashCode();
         }
 
+        public abstract Ray Scatter(HitRecord hitRecord);
     }
 }
