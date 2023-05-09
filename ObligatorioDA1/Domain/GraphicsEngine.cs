@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 
 namespace Domain
 {
     public class GraphicsEngine
     {
         private int _resolution = 300;
-        private int _samplesPerPixel=50;
-        private int _maxDepth=20;
+        private int _height = 200;
+        private int _samplesPerPixel = 50;
+        private int _maxDepth = 20;
+        private const double AspectRatio = 2d/3d;
 
         public int Resolution
         {
@@ -18,13 +21,14 @@ namespace Domain
                 if (value < 1)
                     throw new ArgumentOutOfRangeException();
                 _resolution = value;
+                _height = (int)((double)_resolution * AspectRatio);
             }
         }
 
 
         public int SamplesPerPixel
         {
-            get=>_samplesPerPixel;
+            get => _samplesPerPixel;
             set
             {
                 if (value < 1)
@@ -35,7 +39,7 @@ namespace Domain
 
         public int MaxDepth
         {
-            get=>_maxDepth;
+            get => _maxDepth;
             set
             {
                 if (value < 1)
@@ -48,7 +52,7 @@ namespace Domain
         {
             HitRecord hitRecord = null;
             PositionedModel hitModel = null;
-            decimal tMax = decimal.MaxValue; 
+            decimal tMax = decimal.MaxValue;
             foreach (PositionedModel model in elements)
             {
                 HitRecord hit = model.Hit(ray, 0.001m, tMax, model.Position);
@@ -67,10 +71,10 @@ namespace Domain
                     Ray scatteredRay = hitModel.Scatter(hitRecord);
                     Color color = ObtainColor(scatteredRay, depth - 1, elements);
                     Color attenuation = hitModel.GetColor();
-                    int red= (int) (((color.R / 255m) * (attenuation.R / 255m))*255);
-                    int green= (int) (((color.G / 255m) * (attenuation.G / 255m))*255);
-                    int blue= (int) (((color.B / 255m) * (attenuation.B / 255m))*255);
-                    return Color.FromArgb(red,green,blue);
+                    int red = (int)(((color.R / 255m) * (attenuation.R / 255m)) * 255);
+                    int green = (int)(((color.G / 255m) * (attenuation.G / 255m)) * 255);
+                    int blue = (int)(((color.B / 255m) * (attenuation.B / 255m)) * 255);
+                    return Color.FromArgb(red, green, blue);
                 }
                 else
                 {
@@ -79,14 +83,84 @@ namespace Domain
             }
             else
             {
-                Vector directionUnit=ray.Direction.Unit();
+                Vector directionUnit = ray.Direction.Unit();
                 decimal posY = 0.5m * (directionUnit.Y + 1);
-                Vector colorStart=new Vector { X=1,Y=1,Z=1};
-                Vector colorEnd=new Vector { X=0.5m,Y=0.7m,Z=1};
-                Vector colorToReturn = colorStart.Multiply(1-posY).Add(colorEnd.Multiply(posY));
-                return Color.FromArgb((int)(colorToReturn.X*255),(int)(colorToReturn.Y*255),(int)(colorToReturn.Z*255));
-                
-            };
+                Vector colorStart = new Vector { X = 1, Y = 1, Z = 1 };
+                Vector colorEnd = new Vector { X = 0.5m, Y = 0.7m, Z = 1 };
+                Vector colorToReturn = colorStart.Multiply(1 - posY).Add(colorEnd.Multiply(posY));
+                return Color.FromArgb((int)(colorToReturn.X * 255), (int)(colorToReturn.Y * 255),
+                    (int)(colorToReturn.Z * 255));
+
+            }
+
+            ;
+        }
+
+        public Bitmap RenderScene(Scene testScene)
+        {
+            Bitmap bitmapToReturn = new Bitmap(_resolution, _height);
+            Random random = new Random();
+            for (int row = _height - 1; row >= 0; row--)
+            {
+                for (int column = 0; column < _resolution; column++)
+                {
+                    Vector pixelColor= new Vector{X=0,Y=0,Z=0};
+                    for (int sample = 0; sample < _samplesPerPixel; sample++)
+                    {
+                        decimal u = (column + (decimal)random.NextDouble()) / _resolution;
+                        decimal v = (row + (decimal)random.NextDouble()) / _height;
+                        Ray ray = testScene.Camera.GetRay(u, v);
+                        Color obtainedColor = ObtainColor(ray, _maxDepth, testScene.ModelList);
+                        pixelColor.AddTo(new Vector
+                            { X = obtainedColor.R / 255m, Y = obtainedColor.G / 255m, Z = obtainedColor.B / 255m });
+                    }
+                    pixelColor=pixelColor.Divide((decimal)_samplesPerPixel);
+                    int red = (int)(pixelColor.X * 255);
+                    int green = (int)(pixelColor.Y * 255);
+                    int blue = (int)(pixelColor.Z * 255);
+                    bitmapToReturn.SetPixel(column, row, Color.FromArgb(red, green, blue));
+                    
+                }
+            }
+            bitmapToReturn.RotateFlip(RotateFlipType.RotateNoneFlipY);
+            return bitmapToReturn;
+        }
+
+        public static Bitmap PpmToBitmap(string ppm)
+        {
+            using (var reader = new StringReader(ppm))
+            {
+
+                string magicNumber = reader.ReadLine();
+
+                string size = reader.ReadLine();
+                string maxColorValue = reader.ReadLine();
+
+
+                string[] sizeParts = size.Split(' ');
+                int width = int.Parse(sizeParts[0]);
+                int height = int.Parse(sizeParts[1]);
+
+
+                Bitmap bitmap = new Bitmap(width, height);
+
+
+                for (int y = 0; y < height; y++)
+                {
+                    for (int x = 0; x < width; x++)
+                    {
+                        string pixelColor = reader.ReadLine();
+                        string[] pixelColorParts = pixelColor.Split(' ');
+                        int r = int.Parse(pixelColorParts[0]);
+                        int g = int.Parse(pixelColorParts[1]);
+                        int b = int.Parse(pixelColorParts[2]);
+
+
+                        bitmap.SetPixel(x, y, Color.FromArgb(r, g, b));
+                    }
+                }
+                return bitmap;
+            }
         }
     }
 }

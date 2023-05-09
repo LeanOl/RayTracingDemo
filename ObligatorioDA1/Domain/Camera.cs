@@ -37,7 +37,7 @@ namespace Domain
             
         }
 
-        public Ray GetRay(int u, int v)
+        public Ray GetRay(decimal u, decimal v)
         {
 
             Vector horizontalPosition = _horizontal.Multiply(u);
