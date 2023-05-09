@@ -59,5 +59,10 @@ namespace Logic
         {
             return _repository.GetScenesByClient(proprietary);
         }
+
+        public void AddModelToScene(Scene testScene, Model testModel, Vector position)
+        {
+            testScene.AddPositionedModel(testModel, position);
+        }
     }
 }

@@ -57,5 +57,21 @@ namespace DomainLogicTest
             };
             CollectionAssert.AreEquivalent(clientScenes, _logic.GetClientScenes(_proprietary));
         }
+
+        [TestMethod]
+        public void AddModelToSceneSuccessfully()
+        {
+            _logic.CreateEmptyScene(_proprietary);
+            Scene testScene =  _logic.GetSceneByName("Empty Scene");
+            Model testModel = new Model
+            {
+                Name = "New Model",
+                Proprietary = _proprietary,
+            };
+            Vector position = new Vector{X=0,Y=0,Z=0};
+            _logic.AddModelToScene(testScene, testModel,position);
+
+           
+        }
     }
 }
