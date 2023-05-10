@@ -12,7 +12,8 @@ namespace Logic
         public void CreateModel(string name, Client proprietary, Figure figure, Material material)
         {
             ValidateEmptyName(name);
-
+            if (name.StartsWith(" "))
+                throw new ArgumentException("Model name should not start or end with whitespaces");
             Model model = new Model()
             {
                 Name = name,

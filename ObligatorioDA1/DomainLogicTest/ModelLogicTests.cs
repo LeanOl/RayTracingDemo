@@ -42,5 +42,19 @@ namespace DomainLogicTest
                 Assert.AreEqual("Model name should not be empty", e.Message);
             }
         }
+
+        [TestMethod]
+        public void ModelNameStartsWhitespace_ThrowException()
+        {
+            try
+            {
+                _modelLogic.CreateModel(" Model1", _proprietary, _figure, _material);
+                Assert.Fail("Should throw exception");
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual("Model name should not start or end with whitespaces", e.Message);
+            }
+        }
     }
 }
