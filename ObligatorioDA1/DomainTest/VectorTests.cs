@@ -195,6 +195,20 @@ namespace DomainTest
             Assert.AreEqual(0m, crossProduct.Y);
             Assert.AreEqual(1m, crossProduct.Z);
         }
+
+        [TestMethod]
+        public void VectorToString()
+        {
+            Vector vector1 = new Vector
+            {
+                X = 1,
+                Y = 2,
+                Z = 3
+            };
+            string vectorString = vector1.ToString();
+            Assert.AreEqual("(1, 2, 3)", vectorString);
+        }
+        
     }
 }
 

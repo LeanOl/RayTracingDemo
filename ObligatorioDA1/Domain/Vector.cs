@@ -112,5 +112,10 @@ namespace Domain
 
             return randomVector;
         }
+
+        public override string ToString()
+        {
+            return $"({X}, {Y}, {Z})";
+        }
     }
 }
