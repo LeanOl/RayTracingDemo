@@ -12,10 +12,7 @@ namespace Logic
         public void CreateModel(string name, Client proprietary, Figure figure, Material material)
         {
             ValidateEmptyName(name);
-            if (name.StartsWith(" "))
-                throw new ArgumentException("Model name should not start or end with whitespaces");
-            if (name.EndsWith(" "))
-                throw new ArgumentException("Model name should not start or end with whitespaces");
+            ValidateWhitespaces(name);
             Model model = new Model()
             {
                 Name = name,
@@ -24,6 +21,12 @@ namespace Logic
                 Material = material
             };
             _modelRepository.AddModel(model);
+        }
+
+        private static void ValidateWhitespaces(string name)
+        {
+            if (name.StartsWith(" ") || name.EndsWith(" "))
+                throw new ArgumentException("Model name should not start or end with whitespaces");
         }
 
         private static void ValidateEmptyName(string model1)
