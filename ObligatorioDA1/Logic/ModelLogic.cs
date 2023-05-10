@@ -14,6 +14,8 @@ namespace Logic
             ValidateEmptyName(name);
             if (name.StartsWith(" "))
                 throw new ArgumentException("Model name should not start or end with whitespaces");
+            if (name.EndsWith(" "))
+                throw new ArgumentException("Model name should not start or end with whitespaces");
             Model model = new Model()
             {
                 Name = name,
