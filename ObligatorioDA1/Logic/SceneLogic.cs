@@ -59,5 +59,25 @@ namespace Logic
         {
             return _repository.GetScenesByClient(proprietary);
         }
+
+        public void AddModelToScene(Scene testScene, Model testModel, Vector position)
+        {
+            testScene.AddPositionedModel(testModel, position);
+        }
+
+        public void DeleteModelFromScene(Scene scene, PositionedModel model)
+        {
+            scene.RemovePositionedModel(model);
+        }
+
+        public void UpdateCameraSettings(Scene scene, Vector lookFrom, Vector lookAt, int fov)
+        {
+            scene.UpdateCameraSettings(lookFrom, lookAt, fov);
+        }
+
+        public void UpdatePreview(Scene scene)
+        {
+            scene.RenderPreview();
+        }
     }
 }

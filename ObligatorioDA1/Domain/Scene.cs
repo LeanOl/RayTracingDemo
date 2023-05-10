@@ -17,19 +17,43 @@ namespace Domain
 
         public override bool Equals(object obj)
         {
-            Material materialToCompare = obj as Material;
-            if (materialToCompare == null)
+            Scene sceneToCompare = obj as Scene;
+            if (sceneToCompare == null)
             {
                 return false;
             }
             else
             {
-                return (Name == materialToCompare.Name) && (Proprietary.Equals(materialToCompare.Proprietary));
+                return (Name == sceneToCompare.Name) && (Proprietary.Equals(sceneToCompare.Proprietary));
             }
         }
         public override int GetHashCode()
         {
-            return Proprietary.GetHashCode();
+            return Name.GetHashCode() + Proprietary.GetHashCode();
+        }
+
+        public void AddPositionedModel(Model model, Vector position)
+        {
+            PositionedModel modelToAdd = new PositionedModel { Model = model, Position = position };
+            ModelList.Add(modelToAdd);
+        }
+
+        public void RemovePositionedModel(PositionedModel model)
+        {
+            ModelList.Remove(model);
+        }
+
+        public void UpdateCameraSettings(Vector lookFrom, Vector lookAt, int fov)
+        {
+            Camera.LookFrom = lookFrom;
+            Camera.LookAt = lookAt;
+            Camera.FieldOfView = fov;
+        }
+
+        public void RenderPreview()
+        {
+            GraphicsEngine graphics = new GraphicsEngine();
+            Preview= graphics.RenderScene(this);
         }
     }
 }

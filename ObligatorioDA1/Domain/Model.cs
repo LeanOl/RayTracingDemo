@@ -24,6 +24,24 @@ namespace Domain
         {
             return Material.Color;
         }
+
+        public override bool Equals(object obj)
+        {
+            Model modelToCompare = obj as Model;
+            if (modelToCompare == null)
+            {
+                return false;
+            }
+            else
+            {
+                return (Name == modelToCompare.Name) && (Proprietary.Equals(modelToCompare.Proprietary));
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode();
+        }
     }
     
     

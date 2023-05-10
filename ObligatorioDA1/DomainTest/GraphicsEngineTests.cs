@@ -71,15 +71,7 @@ namespace DomainTest
             {
                 aPositionedModel
             };
-            Camera testCamera = new Camera
-            (
-                lookFrom: new Vector { X = 0, Y = 2, Z = 0 },
-                lookAt: new Vector { X = 0, Y = 2, Z = 5 },
-                up: new Vector { X = 0, Y = 1, Z = 0 },
-                aspectRatio: 3d / 2d,
-                fieldOfView: 30
-
-            );
+            Camera testCamera = new Camera();
             Scene testScene= new Scene { ModelList= elements,Camera = testCamera};
             
             GraphicsEngine engine = new GraphicsEngine{MaxDepth = 3,Resolution = 45,SamplesPerPixel = 10};
