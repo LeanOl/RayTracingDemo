@@ -92,6 +92,10 @@ namespace Logic
             return _modelRepository.GetModelByName(model1);
         }
 
-        
+
+        public List<Model> GetClientModels(Client proprietary)
+        {
+           return _modelRepository.GetClientModels(proprietary);
+        }
     }
 }

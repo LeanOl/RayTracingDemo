@@ -1,0 +1,40 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Domain;
+
+namespace Interface
+{
+    public partial class ModelListElement : UserControl
+    {
+        private Model _model;
+
+        public Model ModelToDisplay
+        {
+            set
+            {
+                _model = value;
+                lblModelName.Text = value.Name;
+                lblFigure.Text = value.Figure.Name;
+                lblMaterial.Text = value.Material.Name;
+                picPreview.Image = value.Preview;
+            }
+        }
+        public ModelListElement(Model model)
+        {
+            InitializeComponent();
+            ModelToDisplay = model;
+        }
+
+        private void ModelListElement_Load(object sender, EventArgs e)
+        {
+            
+        }
+    }
+}
