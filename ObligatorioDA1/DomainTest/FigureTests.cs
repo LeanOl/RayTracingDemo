@@ -146,5 +146,19 @@ namespace LogicTest
             Assert.IsNull(hit);
         }
 
+        [TestMethod]
+        public void GeneratePreviewFigureSphere()
+        {
+            Figure aSphere = new Sphere()
+            {
+                Propietary = someClient,
+                Name = validName,
+                Radius = 0.5m
+            };
+            Figure previewSphere = aSphere.GeneratePreviewFigure();
+            Assert.IsNotNull(previewSphere);
+            
+        }
+
     }
 }
