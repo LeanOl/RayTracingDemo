@@ -29,13 +29,13 @@ namespace Logic
             _modelRepository.AddModel(model);
         }
 
-        private static void ValidateMaterial(Material material)
+        private void ValidateMaterial(Material material)
         {
             if (material == null)
                 throw new ArgumentException(NullMaterialMessage);
         }
 
-        private static void ValidateFigure(Figure figure)
+        private void ValidateFigure(Figure figure)
         {
             if (figure == null)
                 throw new ArgumentException(NullFigureMessage);
@@ -56,13 +56,13 @@ namespace Logic
                 throw new ArgumentException(DulplicateNameMessage);
         }
 
-        private static void ValidateWhitespaces(string name)
+        private void ValidateWhitespaces(string name)
         {
             if (name.StartsWith(" ") || name.EndsWith(" "))
                 throw new ArgumentException(NameEndsOrStartsWhitespaceMessage);
         }
 
-        private static void ValidateEmptyName(string model1)
+        private void ValidateEmptyName(string model1)
         {
             if (string.IsNullOrWhiteSpace(model1))
             {
