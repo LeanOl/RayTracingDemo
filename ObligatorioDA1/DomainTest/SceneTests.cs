@@ -105,6 +105,6 @@ namespace DomainTest
                           && scene.Camera.LookAt.Z == lookAt.Z
                           && scene.Camera.FieldOfView == fov);
         }
-        
+
     }
 }

@@ -49,6 +49,12 @@ namespace Domain
             Camera.LookAt = lookAt;
             Camera.FieldOfView = fov;
         }
+
+        public void RenderPreview()
+        {
+            GraphicsEngine graphics = new GraphicsEngine();
+            Preview= graphics.RenderScene(this);
+        }
     }
 }
 

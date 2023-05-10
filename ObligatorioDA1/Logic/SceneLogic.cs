@@ -74,5 +74,10 @@ namespace Logic
         {
             scene.UpdateCameraSettings(lookFrom, lookAt, fov);
         }
+
+        public void UpdatePreview(Scene scene)
+        {
+            scene.RenderPreview();
+        }
     }
 }

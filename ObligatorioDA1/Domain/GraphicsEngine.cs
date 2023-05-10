@@ -125,7 +125,7 @@ namespace Domain
             bitmapToReturn.RotateFlip(RotateFlipType.RotateNoneFlipY);
             return bitmapToReturn;
         }
-
+        
         public static Bitmap PpmToBitmap(string ppm)
         {
             using (var reader = new StringReader(ppm))

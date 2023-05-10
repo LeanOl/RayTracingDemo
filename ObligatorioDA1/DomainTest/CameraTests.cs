@@ -42,5 +42,6 @@ namespace DomainTest
             Assert.AreEqual(-1.10139m, Math.Truncate(testRay.Direction.Z * fiveDecimals) / fiveDecimals);
 
         }
+
     }
 }
