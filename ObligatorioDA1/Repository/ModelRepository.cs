@@ -22,5 +22,10 @@ namespace Repository
         {
             return models.FindAll(model => model.Proprietary.Equals(proprietary));
         }
+
+        public void DeleteModel(Model testModel)
+        {
+            models.Remove(testModel);
+        }
     }
 }

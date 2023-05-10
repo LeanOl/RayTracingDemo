@@ -97,5 +97,10 @@ namespace Logic
         {
            return _modelRepository.GetClientModels(proprietary);
         }
+
+        public void DeleteModel(Model getModelByName)
+        {
+            _modelRepository.DeleteModel(getModelByName);
+        }
     }
 }

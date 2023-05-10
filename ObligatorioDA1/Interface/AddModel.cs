@@ -37,16 +37,17 @@ namespace Interface
                         cbxFigure.SelectedValue as Figure,
                         cbxMaterial.SelectedValue as Material);
                 }
-                
-                
+                UserControl aModelList = new ModelList();
+                Parent.Controls.Add(aModelList);
+                Parent.Controls.Remove(this);
+
+
             }
             catch (Exception exception)
             {
                 lblErrorMessage.Text = exception.Message;
             }
-            UserControl aModelList = new ModelList();
-            Parent.Controls.Add(aModelList);
-            Parent.Controls.Remove(this);
+            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

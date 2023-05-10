@@ -32,9 +32,10 @@ namespace Interface
             ModelToDisplay = model;
         }
 
-        private void ModelListElement_Load(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
         {
-            
+            Instance.InstanceModelLogic.DeleteModel(_model);
+            Dispose();
         }
     }
 }

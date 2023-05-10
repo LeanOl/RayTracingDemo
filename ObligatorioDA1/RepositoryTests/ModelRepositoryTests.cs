@@ -36,9 +36,17 @@ namespace RepositoryTests
             };
             _repository.AddModel(testModel);
             CollectionAssert.AreEqual(clientModels,_repository.GetClientModels(testClient));
-            
-            
         }
-        
+
+        [TestMethod]
+        public void DeleteModel()
+        {
+            Client testClient = new Client { Username = "John" };
+            Model testModel = new Model { Name = "Model",Proprietary = testClient};
+            _repository.AddModel(testModel);
+            _repository.DeleteModel(testModel);
+            Assert.IsNull(_repository.GetModelByName("Model"));
+        }
+
     }
 }
