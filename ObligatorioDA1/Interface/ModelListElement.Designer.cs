@@ -104,6 +104,7 @@
             this.btnDelete.TabIndex = 9;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // ModelListElement
             // 
@@ -118,7 +119,6 @@
             this.Controls.Add(this.btnDelete);
             this.Name = "ModelListElement";
             this.Size = new System.Drawing.Size(282, 122);
-            this.Load += new System.EventHandler(this.ModelListElement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picPreview)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
