@@ -12,13 +12,13 @@ namespace Logic
         private const string NullFigureMessage = "Figure should not be null";
         private const string DulplicateNameMessage = "There is already a model with this name";
         private const string NameEndsOrStartsWhitespaceMessage = "Model name should not start or end with whitespaces";
+        private const string NullMaterialMessage = "Material should not be null";
 
         public void CreateModel(string name, Client proprietary, Figure figure, Material material)
         {
             ValidateName(name, proprietary);
             ValidateFigure(figure);
-            if(material == null)
-                throw new ArgumentException("Material should not be null");
+            ValidateMaterial(material);
             Model model = new Model()
             {
                 Name = name,
@@ -27,6 +27,12 @@ namespace Logic
                 Material = material
             };
             _modelRepository.AddModel(model);
+        }
+
+        private static void ValidateMaterial(Material material)
+        {
+            if (material == null)
+                throw new ArgumentException(NullMaterialMessage);
         }
 
         private static void ValidateFigure(Figure figure)
