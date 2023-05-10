@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.picRenderedImage = new System.Windows.Forms.PictureBox();
-            this.lstbPositionedModels = new System.Windows.Forms.ListBox();
-            this.lstbModels = new System.Windows.Forms.ListBox();
             this.lblPositionedModels = new System.Windows.Forms.Label();
             this.lblModels = new System.Windows.Forms.Label();
             this.btnRender = new System.Windows.Forms.Button();
@@ -55,37 +53,23 @@
             this.label10 = new System.Windows.Forms.Label();
             this.lblLastRendered = new System.Windows.Forms.Label();
             this.lblOutdatedWarning = new System.Windows.Forms.Label();
+            this.flpModels = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpPositionedModels = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.picRenderedImage)).BeginInit();
             this.SuspendLayout();
             // 
             // picRenderedImage
             // 
-            this.picRenderedImage.Location = new System.Drawing.Point(154, 101);
+            this.picRenderedImage.Location = new System.Drawing.Point(192, 88);
             this.picRenderedImage.Name = "picRenderedImage";
             this.picRenderedImage.Size = new System.Drawing.Size(300, 200);
             this.picRenderedImage.TabIndex = 0;
             this.picRenderedImage.TabStop = false;
             // 
-            // lstbPositionedModels
-            // 
-            this.lstbPositionedModels.FormattingEnabled = true;
-            this.lstbPositionedModels.Location = new System.Drawing.Point(558, 115);
-            this.lstbPositionedModels.Name = "lstbPositionedModels";
-            this.lstbPositionedModels.Size = new System.Drawing.Size(101, 134);
-            this.lstbPositionedModels.TabIndex = 1;
-            // 
-            // lstbModels
-            // 
-            this.lstbModels.FormattingEnabled = true;
-            this.lstbModels.Location = new System.Drawing.Point(18, 115);
-            this.lstbModels.Name = "lstbModels";
-            this.lstbModels.Size = new System.Drawing.Size(101, 134);
-            this.lstbModels.TabIndex = 2;
-            // 
             // lblPositionedModels
             // 
             this.lblPositionedModels.AutoSize = true;
-            this.lblPositionedModels.Location = new System.Drawing.Point(555, 99);
+            this.lblPositionedModels.Location = new System.Drawing.Point(560, 79);
             this.lblPositionedModels.Name = "lblPositionedModels";
             this.lblPositionedModels.Size = new System.Drawing.Size(93, 13);
             this.lblPositionedModels.TabIndex = 3;
@@ -94,7 +78,7 @@
             // lblModels
             // 
             this.lblModels.AutoSize = true;
-            this.lblModels.Location = new System.Drawing.Point(21, 99);
+            this.lblModels.Location = new System.Drawing.Point(22, 79);
             this.lblModels.Name = "lblModels";
             this.lblModels.Size = new System.Drawing.Size(87, 13);
             this.lblModels.TabIndex = 4;
@@ -102,12 +86,13 @@
             // 
             // btnRender
             // 
-            this.btnRender.Location = new System.Drawing.Point(452, 74);
+            this.btnRender.Location = new System.Drawing.Point(454, 64);
             this.btnRender.Name = "btnRender";
             this.btnRender.Size = new System.Drawing.Size(75, 23);
             this.btnRender.TabIndex = 5;
             this.btnRender.Text = "Render";
             this.btnRender.UseVisualStyleBackColor = true;
+            this.btnRender.Click += new System.EventHandler(this.btnRender_Click);
             // 
             // textBox1
             // 
@@ -263,7 +248,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(214, 304);
+            this.label10.Location = new System.Drawing.Point(214, 306);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(80, 13);
             this.label10.TabIndex = 24;
@@ -272,7 +257,7 @@
             // lblLastRendered
             // 
             this.lblLastRendered.AutoSize = true;
-            this.lblLastRendered.Location = new System.Drawing.Point(300, 304);
+            this.lblLastRendered.Location = new System.Drawing.Point(300, 306);
             this.lblLastRendered.Name = "lblLastRendered";
             this.lblLastRendered.Size = new System.Drawing.Size(36, 13);
             this.lblLastRendered.TabIndex = 25;
@@ -282,17 +267,33 @@
             // 
             this.lblOutdatedWarning.AutoSize = true;
             this.lblOutdatedWarning.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.lblOutdatedWarning.Location = new System.Drawing.Point(214, 329);
+            this.lblOutdatedWarning.Location = new System.Drawing.Point(214, 331);
             this.lblOutdatedWarning.Name = "lblOutdatedWarning";
             this.lblOutdatedWarning.Size = new System.Drawing.Size(119, 13);
             this.lblOutdatedWarning.TabIndex = 26;
             this.lblOutdatedWarning.Text = "⚠️ OUTDATED IMAGE";
             this.lblOutdatedWarning.Visible = false;
             // 
+            // flpModels
+            // 
+            this.flpModels.Location = new System.Drawing.Point(3, 95);
+            this.flpModels.Name = "flpModels";
+            this.flpModels.Size = new System.Drawing.Size(183, 241);
+            this.flpModels.TabIndex = 27;
+            // 
+            // flpPositionedModels
+            // 
+            this.flpPositionedModels.Location = new System.Drawing.Point(498, 95);
+            this.flpPositionedModels.Name = "flpPositionedModels";
+            this.flpPositionedModels.Size = new System.Drawing.Size(244, 241);
+            this.flpPositionedModels.TabIndex = 28;
+            // 
             // EditScene
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.flpPositionedModels);
+            this.Controls.Add(this.flpModels);
             this.Controls.Add(this.lblOutdatedWarning);
             this.Controls.Add(this.lblLastRendered);
             this.Controls.Add(this.label10);
@@ -317,11 +318,10 @@
             this.Controls.Add(this.btnRender);
             this.Controls.Add(this.lblModels);
             this.Controls.Add(this.lblPositionedModels);
-            this.Controls.Add(this.lstbModels);
-            this.Controls.Add(this.lstbPositionedModels);
             this.Controls.Add(this.picRenderedImage);
             this.Name = "EditScene";
-            this.Size = new System.Drawing.Size(677, 351);
+            this.Size = new System.Drawing.Size(760, 383);
+            this.Load += new System.EventHandler(this.EditScene_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picRenderedImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -331,8 +331,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox picRenderedImage;
-        private System.Windows.Forms.ListBox lstbPositionedModels;
-        private System.Windows.Forms.ListBox lstbModels;
         private System.Windows.Forms.Label lblPositionedModels;
         private System.Windows.Forms.Label lblModels;
         private System.Windows.Forms.Button btnRender;
@@ -357,5 +355,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label lblLastRendered;
         private System.Windows.Forms.Label lblOutdatedWarning;
+        private System.Windows.Forms.FlowLayoutPanel flpModels;
+        private System.Windows.Forms.FlowLayoutPanel flpPositionedModels;
     }
 }

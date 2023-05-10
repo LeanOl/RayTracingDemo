@@ -35,6 +35,14 @@ namespace Interface
             SceneToDisplay = scene;
         }
 
-        
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            Control parentControl = Parent.Parent;
+            parentControl.Controls.Clear();
+            UserControl anEditScene = new EditScene(_scene);
+            parentControl.Controls.Add(anEditScene);
+            
+            
+        }
     }
 }
