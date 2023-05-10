@@ -13,6 +13,8 @@ namespace Logic
         public void CreateModel(string name, Client proprietary, Figure figure, Material material)
         {
             ValidateName(name, proprietary);
+            if(figure == null)
+                throw new ArgumentException("Figure should not be null");
             Model model = new Model()
             {
                 Name = name,
