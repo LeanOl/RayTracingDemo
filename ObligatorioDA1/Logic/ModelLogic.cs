@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Domain;
 using Repository;
 
@@ -11,10 +12,7 @@ namespace Logic
         
         public void CreateModel(string name, Client proprietary, Figure figure, Material material)
         {
-            ValidateEmptyName(name);
-            ValidateWhitespaces(name);
-            if (_modelRepository.GetClientModels(proprietary).Exists(m => m.Name == name))
-                throw new ArgumentException("There is already a model with this name");
+            ValidateName(name, proprietary);
             Model model = new Model()
             {
                 Name = name,
@@ -23,6 +21,21 @@ namespace Logic
                 Material = material
             };
             _modelRepository.AddModel(model);
+        }
+
+        private void ValidateName(string name, Client proprietary)
+        {
+            ValidateEmptyName(name);
+            ValidateWhitespaces(name);
+            ValidateDuplicateName(name, proprietary);
+        }
+
+        private void ValidateDuplicateName(string name, Client proprietary)
+        {
+            List<Model> clientModels= _modelRepository.GetClientModels(proprietary);
+            bool isNameDuplicated = clientModels.Exists(m => m.Name == name);
+            if (isNameDuplicated)
+                throw new ArgumentException("There is already a model with this name");
         }
 
         private static void ValidateWhitespaces(string name)
