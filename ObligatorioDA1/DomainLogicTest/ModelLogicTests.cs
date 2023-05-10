@@ -101,5 +101,20 @@ namespace DomainLogicTest
             }
         
         }
+
+        [TestMethod]
+        public void ModelMaterialNull_ThrowException()
+        {
+            try
+            {
+                _modelLogic.CreateModel("Model1", _proprietary, _figure, null);
+                Assert.Fail("Should throw exception");
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual("Material should not be null", e.Message);
+            }
+        
+        }
     }
 }

@@ -17,6 +17,8 @@ namespace Logic
         {
             ValidateName(name, proprietary);
             ValidateFigure(figure);
+            if(material == null)
+                throw new ArgumentException("Material should not be null");
             Model model = new Model()
             {
                 Name = name,
