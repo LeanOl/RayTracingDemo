@@ -27,5 +27,20 @@ namespace DomainLogicTest
             _modelLogic.CreateModel("Model1", _proprietary,_figure,_material);
             Assert.IsNotNull(_modelLogic.GetModelByName("Model1"));
         }
+
+        [TestMethod]
+        
+        public void CreateModelEmptyName_ThrowException()
+        {
+            try
+            {
+                _modelLogic.CreateModel("", _proprietary, _figure, _material);
+                Assert.Fail("Should throw exception");
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual("Model name should not be empty", e.Message);
+            }
+        }
     }
 }
