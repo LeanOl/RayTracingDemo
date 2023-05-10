@@ -70,7 +70,7 @@ namespace Logic
             scene.RemovePositionedModel(model);
         }
 
-        public void ChangeCameraSettings(Scene scene, Vector lookFrom, Vector lookAt, int fov)
+        public void UpdateCameraSettings(Scene scene, Vector lookFrom, Vector lookAt, int fov)
         {
             scene.UpdateCameraSettings(lookFrom, lookAt, fov);
         }
