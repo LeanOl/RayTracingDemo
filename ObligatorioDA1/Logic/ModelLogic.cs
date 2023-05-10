@@ -13,6 +13,8 @@ namespace Logic
         {
             ValidateEmptyName(name);
             ValidateWhitespaces(name);
+            if (_modelRepository.GetClientModels(proprietary).Exists(m => m.Name == name))
+                throw new ArgumentException("There is already a model with this name");
             Model model = new Model()
             {
                 Name = name,

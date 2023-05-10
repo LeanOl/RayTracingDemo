@@ -70,5 +70,21 @@ namespace DomainLogicTest
                 Assert.AreEqual("Model name should not start or end with whitespaces", e.Message);
             }
         }
+
+        [TestMethod]
+        public void DuplicatedModelName_ThrowException()
+        {
+            _modelLogic.CreateModel("Model1", _proprietary, _figure, _material);
+            try
+            {
+                _modelLogic.CreateModel("Model1", _proprietary, _figure, _material);
+                Assert.Fail("Should throw exception");
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual("There is already a model with this name", e.Message);
+            }
+        
+        }
     }
 }
