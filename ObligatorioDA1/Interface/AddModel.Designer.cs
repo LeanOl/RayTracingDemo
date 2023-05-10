@@ -58,6 +58,7 @@
             // 
             // cbxFigure
             // 
+            this.cbxFigure.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxFigure.FormattingEnabled = true;
             this.cbxFigure.Location = new System.Drawing.Point(45, 93);
             this.cbxFigure.Name = "cbxFigure";
@@ -66,6 +67,7 @@
             // 
             // cbxMaterial
             // 
+            this.cbxMaterial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxMaterial.FormattingEnabled = true;
             this.cbxMaterial.Location = new System.Drawing.Point(45, 141);
             this.cbxMaterial.Name = "cbxMaterial";
