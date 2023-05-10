@@ -1,4 +1,4 @@
-﻿using System.Drawing;
+using System.Drawing;
 
 namespace Domain
 {
@@ -55,8 +55,8 @@ namespace Domain
                 Position = new Vector
                 {
                     X = 0,
-                    Y = 2,
-                    Z = 5
+                    Y = 0,
+                    Z = -1
                 }
             };
             GraphicsEngine graphics = new GraphicsEngine

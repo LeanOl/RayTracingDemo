@@ -116,5 +116,13 @@ namespace DomainLogicTest
             }
         
         }
+
+        [TestMethod]
+        public void CreateModelWithPreviewOk()
+        {
+            _modelLogic.CreateModelWithPreview("Model1", _proprietary, _figure, _material);
+            Assert.IsNotNull(_modelLogic.GetModelByName("Model1").Preview);
+        }
+        
     }
 }

@@ -33,7 +33,7 @@ namespace Domain
 
         public override Figure GeneratePreviewFigure()
         {
-            return new Sphere { Radius = 1.15m };
+            return new Sphere { Radius = 0.65m };
         }
     }
 }

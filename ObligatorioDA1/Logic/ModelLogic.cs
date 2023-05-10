@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using Domain;
 using Repository;
 
@@ -27,6 +28,22 @@ namespace Logic
                 Material = material
             };
             _modelRepository.AddModel(model);
+        }
+        public void CreateModelWithPreview(string name, Client proprietary, Figure figure, Material material)
+        {
+            ValidateName(name, proprietary);
+            ValidateFigure(figure);
+            ValidateMaterial(material);
+            Model model = new Model()
+            {
+                Name = name,
+                Proprietary = proprietary,
+                Figure = figure,
+                Material = material,
+            };
+            model.GeneratePreview();
+            _modelRepository.AddModel(model);
+
         }
 
         private void ValidateMaterial(Material material)
@@ -74,5 +91,7 @@ namespace Logic
         {
             return _modelRepository.GetModelByName(model1);
         }
+
+        
     }
 }
