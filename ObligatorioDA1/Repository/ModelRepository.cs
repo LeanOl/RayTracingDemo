@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Domain;
 
@@ -15,6 +16,11 @@ namespace Repository
         public void AddModel(Model model)
         {
             models.Add(model);
+        }
+
+        public List<Model> GetClientModels(Client proprietary)
+        {
+            return models.FindAll(model => model.Proprietary.Equals(proprietary));
         }
     }
 }
