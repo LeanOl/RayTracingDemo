@@ -30,5 +30,10 @@ namespace Domain
                 return null;
             }
         }
+
+        public override Figure GeneratePreviewFigure()
+        {
+            return new Sphere { Radius = 0.65m };
+        }
     }
 }

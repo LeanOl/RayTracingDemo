@@ -62,5 +62,21 @@ namespace DomainTest
             Assert.AreEqual(preview, model.Preview);
 
         }
+
+        [TestMethod]
+        public void GeneratePreviewOk()
+        {
+            Image preview = null;
+            Model model = new Model()
+            {
+                Proprietary = _proprietary,
+                Name = "Modelo",
+                Figure = _figure,
+                Material = _material,
+                Preview = preview
+            };
+            model.GeneratePreview();
+            Assert.IsNotNull(model.Preview);
+        }
     }
 }

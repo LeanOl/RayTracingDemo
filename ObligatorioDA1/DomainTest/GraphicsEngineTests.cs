@@ -60,6 +60,25 @@ namespace DomainTest
             Assert.IsTrue(Math.Abs(color.G - 36) < tolerance);
             Assert.IsTrue(Math.Abs(color.B - 127) < tolerance);
         }
+
+        [TestMethod]
+        public void RenderModelSuccessfully()
+        {
+            Figure testSphere = new Sphere { Radius = 0.5m };
+            Material testLambertian = new Lambertian { Color = Color.FromArgb(25, 51, 127) };
+            Model testModel = new Model { Figure = testSphere, Material = testLambertian };
+            PositionedModel testPositionedModel = new PositionedModel { Model = testModel, Position = new Vector { X = 0, Y = 0.5m, Z = -2 } };
+            GraphicsEngine engine = new GraphicsEngine
+            {
+                MaxDepth = 25,
+                Resolution=75,
+                SamplesPerPixel=10
+            };
+            Bitmap bitmap = engine.RenderModel(testPositionedModel);
+            Assert.IsNotNull(bitmap);
+        }
+       
+
         [TestMethod]
         public void RenderSceneSuccessfully()
         {

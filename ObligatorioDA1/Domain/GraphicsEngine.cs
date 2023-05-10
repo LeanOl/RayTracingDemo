@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Xml.Linq;
 
 namespace Domain
 {
@@ -160,6 +161,90 @@ namespace Domain
                     }
                 }
                 return bitmap;
+            }
+        }
+
+        public Bitmap RenderModel(PositionedModel positionedModel)
+        {
+            Bitmap bitmapToReturn = new Bitmap(_resolution, _height);
+            Vector vectorHorizontal = new Vector { X = 4, Y = 0, Z = 0 };
+            Vector vectorVertical = new Vector { X = 0, Y = 2, Z = 0 };
+            Vector vectorLowerLeftCorner = new Vector { X = -2, Y = -1, Z = -1 };
+            Vector origin= new Vector { X = 0, Y = 0, Z = 0 };
+
+            Random random = new Random();
+            for (int row = _height - 1; row >= 0; row--)
+            {
+                for (int column = 0; column < _resolution; column++)
+                {
+                    Vector pixelColor = new Vector { X = 0, Y = 0, Z = 0 };
+                    for (int sample = 0; sample < _samplesPerPixel; sample++)
+                    {
+                        decimal u = (column + (decimal)random.NextDouble()) / _resolution;
+                        decimal v = (row + (decimal)random.NextDouble()) / _height;
+                       
+                        Vector horizontalPosition = vectorHorizontal.Multiply(u);
+                        Vector verticalPosition = vectorVertical.Multiply(v);
+                        var pointPosition = vectorLowerLeftCorner.Add(horizontalPosition).Add(verticalPosition);
+                        Ray ray = new Ray{Origin = origin , Direction = pointPosition};
+                        Color obtainedColor = ObtainColor(ray, _maxDepth, positionedModel);
+                        pixelColor.AddTo(new Vector
+                            { X = obtainedColor.R / 255m, Y = obtainedColor.G / 255m, Z = obtainedColor.B / 255m });
+                    }
+                    pixelColor = pixelColor.Divide((decimal)_samplesPerPixel);
+                    int red = (int)(pixelColor.X * 255);
+                    int green = (int)(pixelColor.Y * 255);
+                    int blue = (int)(pixelColor.Z * 255);
+                    bitmapToReturn.SetPixel(column, row, Color.FromArgb(red, green, blue));
+
+                }
+            }
+            bitmapToReturn.RotateFlip(RotateFlipType.RotateNoneFlipY);
+            return bitmapToReturn;
+        }
+
+        private Color ObtainColor(Ray ray, int depth, PositionedModel model)
+        {
+            HitRecord hitRecord = null;
+            PositionedModel hitModel = null;
+            decimal tMax = decimal.MaxValue;
+            
+            HitRecord hit = model.Hit(ray, 0.001m, tMax, model.Position);
+            if (hit != null)
+            {
+                tMax = hit.T;
+                hitRecord = hit;
+                hitModel = model;
+            }
+            
+
+            if (hitRecord != null)
+            {
+                if (depth > 0)
+                {
+                    Ray scatteredRay = hitModel.Scatter(hitRecord);
+                    Color color = ObtainColor(scatteredRay, depth - 1, model);
+                    Color attenuation = hitModel.GetColor();
+                    int red = (int)(((color.R / 255m) * (attenuation.R / 255m)) * 255);
+                    int green = (int)(((color.G / 255m) * (attenuation.G / 255m)) * 255);
+                    int blue = (int)(((color.B / 255m) * (attenuation.B / 255m)) * 255);
+                    return Color.FromArgb(red, green, blue);
+                }
+                else
+                {
+                    return Color.FromArgb(0, 0, 0);
+                }
+            }
+            else
+            {
+                Vector directionUnit = ray.Direction.Unit();
+                decimal posY = 0.5m * (directionUnit.Y + 1);
+                Vector colorStart = new Vector { X = 1, Y = 1, Z = 1 };
+                Vector colorEnd = new Vector { X = 0.5m, Y = 0.7m, Z = 1 };
+                Vector colorToReturn = colorStart.Multiply(1 - posY).Add(colorEnd.Multiply(posY));
+                return Color.FromArgb((int)(colorToReturn.X * 255), (int)(colorToReturn.Y * 255),
+                    (int)(colorToReturn.Z * 255));
+
             }
         }
     }

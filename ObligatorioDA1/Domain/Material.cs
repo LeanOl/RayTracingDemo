@@ -27,5 +27,8 @@ namespace Domain
         }
 
         public abstract Ray Scatter(HitRecord hitRecord);
+
+        
+
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Domain;
 
 namespace Interface
 {
@@ -19,6 +20,30 @@ namespace Interface
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            Client user = Instance.InstanceSessionLogic.GetActiveUser();
+            try
+            {
+                if (chkPreview.Checked)
+                {
+                    Instance.InstanceModelLogic.CreateModelWithPreview(txtName.Text,
+                        user,
+                        cbxFigure.SelectedValue as Figure,
+                        cbxMaterial.SelectedValue as Material);
+                }
+                else
+                {
+                    Instance.InstanceModelLogic.CreateModel(txtName.Text,
+                        user,
+                        cbxFigure.SelectedValue as Figure,
+                        cbxMaterial.SelectedValue as Material);
+                }
+                
+                
+            }
+            catch (Exception exception)
+            {
+                lblErrorMessage.Text = exception.Message;
+            }
             UserControl aModelList = new ModelList();
             Parent.Controls.Add(aModelList);
             Parent.Controls.Remove(this);
@@ -29,6 +54,17 @@ namespace Interface
             UserControl aModelList = new ModelList();
             Parent.Controls.Add(aModelList);
             Parent.Controls.Remove(this);
+        }
+
+        private void AddModel_Load(object sender, EventArgs e)
+        {
+            Client user = Instance.InstanceSessionLogic.GetActiveUser();
+            cbxFigure.DataSource = Instance.InstanceFigureLogic.GetFiguresByClient(user);
+            cbxFigure.DisplayMember = "Name";
+            cbxFigure.ValueMember = null;
+            cbxMaterial.DataSource = Instance.InstanceMaterialLogic.GetClientMaterials(user);
+            cbxMaterial.DisplayMember = "Name";
+            cbxFigure.ValueMember = null;
         }
     }
 }

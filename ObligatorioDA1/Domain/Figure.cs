@@ -8,5 +8,7 @@ namespace Domain
         public string Name { get; set; }
 
         public abstract HitRecord Hit(Ray aRay, decimal tMin, decimal tMax, Vector center);
+
+        public abstract Figure GeneratePreviewFigure();
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.Drawing;
+using System.Drawing;
 
 namespace Domain
 {
@@ -41,6 +41,31 @@ namespace Domain
         public override int GetHashCode()
         {
             return Name.GetHashCode();
+        }
+
+        public void GeneratePreview()
+        {
+            PositionedModel positionedPreview = new PositionedModel
+            {
+                Model = new Model()
+                {
+                    Figure= this.Figure.GeneratePreviewFigure(),
+                    Material = this.Material,
+                },
+                Position = new Vector
+                {
+                    X = 0,
+                    Y = 0,
+                    Z = -1
+                }
+            };
+            GraphicsEngine graphics = new GraphicsEngine
+            {
+                Resolution = 75,
+                MaxDepth = 30,
+                SamplesPerPixel = 50
+            };
+            Preview = graphics.RenderModel(positionedPreview);
         }
     }
     

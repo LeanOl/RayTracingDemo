@@ -34,9 +34,10 @@
             this.cbxMaterial = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.chk = new System.Windows.Forms.CheckBox();
+            this.chkPreview = new System.Windows.Forms.CheckBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.lblErrorMessage = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtName
@@ -57,6 +58,7 @@
             // 
             // cbxFigure
             // 
+            this.cbxFigure.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxFigure.FormattingEnabled = true;
             this.cbxFigure.Location = new System.Drawing.Point(45, 93);
             this.cbxFigure.Name = "cbxFigure";
@@ -65,6 +67,7 @@
             // 
             // cbxMaterial
             // 
+            this.cbxMaterial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxMaterial.FormattingEnabled = true;
             this.cbxMaterial.Location = new System.Drawing.Point(45, 141);
             this.cbxMaterial.Name = "cbxMaterial";
@@ -89,15 +92,15 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Material";
             // 
-            // chk
+            // chkPreview
             // 
-            this.chk.AutoSize = true;
-            this.chk.Location = new System.Drawing.Point(45, 187);
-            this.chk.Name = "chk";
-            this.chk.Size = new System.Drawing.Size(108, 17);
-            this.chk.TabIndex = 6;
-            this.chk.Text = "GeneratePreview";
-            this.chk.UseVisualStyleBackColor = true;
+            this.chkPreview.AutoSize = true;
+            this.chkPreview.Location = new System.Drawing.Point(45, 187);
+            this.chkPreview.Name = "chkPreview";
+            this.chkPreview.Size = new System.Drawing.Size(108, 17);
+            this.chkPreview.TabIndex = 6;
+            this.chkPreview.Text = "GeneratePreview";
+            this.chkPreview.UseVisualStyleBackColor = true;
             // 
             // btnAdd
             // 
@@ -119,13 +122,25 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // lblErrorMessage
+            // 
+            this.lblErrorMessage.AutoSize = true;
+            this.lblErrorMessage.BackColor = System.Drawing.Color.Transparent;
+            this.lblErrorMessage.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorMessage.Location = new System.Drawing.Point(284, 101);
+            this.lblErrorMessage.Name = "lblErrorMessage";
+            this.lblErrorMessage.Size = new System.Drawing.Size(82, 13);
+            this.lblErrorMessage.TabIndex = 12;
+            this.lblErrorMessage.Text = "                         ";
+            // 
             // AddModel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblErrorMessage);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.chk);
+            this.Controls.Add(this.chkPreview);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbxMaterial);
@@ -134,6 +149,7 @@
             this.Controls.Add(this.txtName);
             this.Name = "AddModel";
             this.Size = new System.Drawing.Size(677, 351);
+            this.Load += new System.EventHandler(this.AddModel_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,8 +163,9 @@
         private System.Windows.Forms.ComboBox cbxMaterial;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox chk;
+        private System.Windows.Forms.CheckBox chkPreview;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Label lblErrorMessage;
     }
 }
