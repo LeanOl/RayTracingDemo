@@ -124,12 +124,20 @@ namespace DomainLogicTest
             Assert.IsNotNull(_modelLogic.GetModelByName("Model1").Preview);
         }
 
-        [TestInitialize]
+        [TestMethod]
         public void GetClientModels()
         {
             _modelLogic.CreateModel("Model1", _proprietary, _figure, _material);
             _modelLogic.CreateModel("Model2", _proprietary, _figure, _material);
             Assert.AreEqual(2, _modelLogic.GetClientModels(_proprietary).Count);
+        }
+
+        [TestMethod]
+        public void DeleteModel()
+        {
+            _modelLogic.CreateModel("Model1", _proprietary, _figure, _material);
+            _modelLogic.DeleteModel(_modelLogic.GetModelByName("Model1"));
+            Assert.IsNull(_modelLogic.GetModelByName("Model1"));
         }
     }
 }
