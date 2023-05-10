@@ -11,13 +11,12 @@ namespace DomainTest
         [TestMethod]
         public void CreateCameraSuccessfully()
         {
-            Camera camera = new Camera
+            Camera camera = new Camera()
             {
-                LookFrom = new Vector(),
-                LookAt = new Vector(),
-                Up = new Vector(),
+                LookFrom = new Vector{X=0,Y=0,Z=0},
+                LookAt = new Vector { X = 0, Y = 0, Z = 0 },
                 FieldOfView = 1,
-                AspectRatio = 1
+
             };
             Assert.IsNotNull(camera);
         }

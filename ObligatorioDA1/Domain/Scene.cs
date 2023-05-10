@@ -45,7 +45,9 @@ namespace Domain
 
         public void UpdateCameraSettings(Vector lookFrom, Vector lookAt, int fov)
         {
-            Camera = new Camera(lookAt,lookFrom,fov);
+            Camera.LookFrom = lookFrom;
+            Camera.LookAt = lookAt;
+            Camera.FieldOfView = fov;
         }
     }
 }

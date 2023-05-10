@@ -72,7 +72,7 @@ namespace Domain
 
         public Vector Unit()
         {
-            return Divide(Length());
+            return Length() != 0 ? Divide(Length()) : new Vector{ X = 0, Y = 0, Z = 0 };
         }
 
         public decimal DotProduct(Vector vector2)
