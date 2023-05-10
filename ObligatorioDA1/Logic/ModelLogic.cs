@@ -9,20 +9,26 @@ namespace Logic
         private ModelRepository _modelRepository = new ModelRepository();
         private const string EmptyNameMessage = "Model name should not be empty";
         
-        public void CreateModel(string model1, Client proprietary, Figure figure, Material material)
+        public void CreateModel(string name, Client proprietary, Figure figure, Material material)
         {
-            if (string.IsNullOrWhiteSpace(model1))
-            {
-                throw new ArgumentException(EmptyNameMessage);
-            }
+            ValidateEmptyName(name);
+
             Model model = new Model()
             {
-                Name = model1,
+                Name = name,
                 Proprietary = proprietary,
                 Figure = figure,
                 Material = material
             };
             _modelRepository.AddModel(model);
+        }
+
+        private static void ValidateEmptyName(string model1)
+        {
+            if (string.IsNullOrWhiteSpace(model1))
+            {
+                throw new ArgumentException(EmptyNameMessage);
+            }
         }
 
         public Model GetModelByName(string model1)
