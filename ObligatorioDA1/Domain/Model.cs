@@ -42,6 +42,31 @@ namespace Domain
         {
             return Name.GetHashCode();
         }
+
+        public void GeneratePreview()
+        {
+            PositionedModel positionedPreview = new PositionedModel
+            {
+                Model = new Model()
+                {
+                    Figure= this.Figure.GeneratePreviewFigure(),
+                    Material = this.Material,
+                },
+                Position = new Vector
+                {
+                    X = 0,
+                    Y = 2,
+                    Z = 5
+                }
+            };
+            GraphicsEngine graphics = new GraphicsEngine
+            {
+                Resolution = 75,
+                MaxDepth = 30,
+                SamplesPerPixel = 50
+            };
+            Preview = graphics.RenderModel(positionedPreview);
+        }
     }
     
     
