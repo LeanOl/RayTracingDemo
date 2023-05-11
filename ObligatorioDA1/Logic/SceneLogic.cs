@@ -79,5 +79,10 @@ namespace Logic
         {
             scene.RenderPreview();
         }
+
+        public void DeleteScene(Scene testScene)
+        {
+            _repository.Delete(testScene);
+        }
     }
 }

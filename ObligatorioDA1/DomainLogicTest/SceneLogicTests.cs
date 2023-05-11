@@ -108,6 +108,16 @@ namespace DomainLogicTest
             Assert.IsTrue(testScene.Camera.LookAt == lookAt);
             Assert.IsTrue(testScene.Camera.FieldOfView == 25);
         }
+
+        [TestMethod]
+        public void DeleteScene()
+        {
+            _logic.CreateEmptyScene(_proprietary);
+            Scene testScene = _logic.GetSceneByName("Empty Scene");
+            _logic.DeleteScene(testScene);
+            Assert.IsTrue(_logic.GetSceneByName("Empty Scene") == null);
+        
+        }
         
     }
 }
