@@ -32,13 +32,13 @@
             this.lblPositionedModels = new System.Windows.Forms.Label();
             this.lblModels = new System.Windows.Forms.Label();
             this.btnRender = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtLookFromX = new System.Windows.Forms.TextBox();
+            this.txtLookFromY = new System.Windows.Forms.TextBox();
+            this.txtLookFromZ = new System.Windows.Forms.TextBox();
+            this.txtLookAtZ = new System.Windows.Forms.TextBox();
+            this.txtLookAtY = new System.Windows.Forms.TextBox();
+            this.txtLookAtX = new System.Windows.Forms.TextBox();
+            this.txtFov = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -55,6 +55,7 @@
             this.lblOutdatedWarning = new System.Windows.Forms.Label();
             this.flpModels = new System.Windows.Forms.FlowLayoutPanel();
             this.flpPositionedModels = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnUpdateCamera = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picRenderedImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,7 +87,7 @@
             // 
             // btnRender
             // 
-            this.btnRender.Location = new System.Drawing.Point(454, 64);
+            this.btnRender.Location = new System.Drawing.Point(374, 321);
             this.btnRender.Name = "btnRender";
             this.btnRender.Size = new System.Drawing.Size(75, 23);
             this.btnRender.TabIndex = 5;
@@ -94,54 +95,54 @@
             this.btnRender.UseVisualStyleBackColor = true;
             this.btnRender.Click += new System.EventHandler(this.btnRender_Click);
             // 
-            // textBox1
+            // txtLookFromX
             // 
-            this.textBox1.Location = new System.Drawing.Point(156, 51);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(23, 20);
-            this.textBox1.TabIndex = 6;
+            this.txtLookFromX.Location = new System.Drawing.Point(156, 51);
+            this.txtLookFromX.Name = "txtLookFromX";
+            this.txtLookFromX.Size = new System.Drawing.Size(23, 20);
+            this.txtLookFromX.TabIndex = 6;
             // 
-            // textBox2
+            // txtLookFromY
             // 
-            this.textBox2.Location = new System.Drawing.Point(185, 51);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(23, 20);
-            this.textBox2.TabIndex = 7;
+            this.txtLookFromY.Location = new System.Drawing.Point(185, 51);
+            this.txtLookFromY.Name = "txtLookFromY";
+            this.txtLookFromY.Size = new System.Drawing.Size(23, 20);
+            this.txtLookFromY.TabIndex = 7;
             // 
-            // textBox3
+            // txtLookFromZ
             // 
-            this.textBox3.Location = new System.Drawing.Point(214, 51);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(23, 20);
-            this.textBox3.TabIndex = 8;
+            this.txtLookFromZ.Location = new System.Drawing.Point(214, 51);
+            this.txtLookFromZ.Name = "txtLookFromZ";
+            this.txtLookFromZ.Size = new System.Drawing.Size(23, 20);
+            this.txtLookFromZ.TabIndex = 8;
             // 
-            // textBox4
+            // txtLookAtZ
             // 
-            this.textBox4.Location = new System.Drawing.Point(313, 51);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(23, 20);
-            this.textBox4.TabIndex = 11;
+            this.txtLookAtZ.Location = new System.Drawing.Point(313, 51);
+            this.txtLookAtZ.Name = "txtLookAtZ";
+            this.txtLookAtZ.Size = new System.Drawing.Size(23, 20);
+            this.txtLookAtZ.TabIndex = 11;
             // 
-            // textBox5
+            // txtLookAtY
             // 
-            this.textBox5.Location = new System.Drawing.Point(284, 51);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(23, 20);
-            this.textBox5.TabIndex = 10;
+            this.txtLookAtY.Location = new System.Drawing.Point(284, 51);
+            this.txtLookAtY.Name = "txtLookAtY";
+            this.txtLookAtY.Size = new System.Drawing.Size(23, 20);
+            this.txtLookAtY.TabIndex = 10;
             // 
-            // textBox6
+            // txtLookAtX
             // 
-            this.textBox6.Location = new System.Drawing.Point(255, 51);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(23, 20);
-            this.textBox6.TabIndex = 9;
+            this.txtLookAtX.Location = new System.Drawing.Point(255, 51);
+            this.txtLookAtX.Name = "txtLookAtX";
+            this.txtLookAtX.Size = new System.Drawing.Size(23, 20);
+            this.txtLookAtX.TabIndex = 9;
             // 
-            // textBox7
+            // txtFov
             // 
-            this.textBox7.Location = new System.Drawing.Point(359, 51);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(62, 20);
-            this.textBox7.TabIndex = 12;
+            this.txtFov.Location = new System.Drawing.Point(359, 51);
+            this.txtFov.Name = "txtFov";
+            this.txtFov.Size = new System.Drawing.Size(62, 20);
+            this.txtFov.TabIndex = 12;
             // 
             // label1
             // 
@@ -288,10 +289,21 @@
             this.flpPositionedModels.Size = new System.Drawing.Size(244, 241);
             this.flpPositionedModels.TabIndex = 28;
             // 
+            // btnUpdateCamera
+            // 
+            this.btnUpdateCamera.Location = new System.Drawing.Point(427, 49);
+            this.btnUpdateCamera.Name = "btnUpdateCamera";
+            this.btnUpdateCamera.Size = new System.Drawing.Size(96, 23);
+            this.btnUpdateCamera.TabIndex = 29;
+            this.btnUpdateCamera.Text = "Update Values";
+            this.btnUpdateCamera.UseVisualStyleBackColor = true;
+            this.btnUpdateCamera.Click += new System.EventHandler(this.btnUpdateCamera_Click);
+            // 
             // EditScene
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnUpdateCamera);
             this.Controls.Add(this.flpPositionedModels);
             this.Controls.Add(this.flpModels);
             this.Controls.Add(this.lblOutdatedWarning);
@@ -308,13 +320,13 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtFov);
+            this.Controls.Add(this.txtLookAtZ);
+            this.Controls.Add(this.txtLookAtY);
+            this.Controls.Add(this.txtLookAtX);
+            this.Controls.Add(this.txtLookFromZ);
+            this.Controls.Add(this.txtLookFromY);
+            this.Controls.Add(this.txtLookFromX);
             this.Controls.Add(this.btnRender);
             this.Controls.Add(this.lblModels);
             this.Controls.Add(this.lblPositionedModels);
@@ -334,13 +346,13 @@
         private System.Windows.Forms.Label lblPositionedModels;
         private System.Windows.Forms.Label lblModels;
         private System.Windows.Forms.Button btnRender;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtLookFromX;
+        private System.Windows.Forms.TextBox txtLookFromY;
+        private System.Windows.Forms.TextBox txtLookFromZ;
+        private System.Windows.Forms.TextBox txtLookAtZ;
+        private System.Windows.Forms.TextBox txtLookAtY;
+        private System.Windows.Forms.TextBox txtLookAtX;
+        private System.Windows.Forms.TextBox txtFov;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -357,5 +369,6 @@
         private System.Windows.Forms.Label lblOutdatedWarning;
         private System.Windows.Forms.FlowLayoutPanel flpModels;
         private System.Windows.Forms.FlowLayoutPanel flpPositionedModels;
+        private System.Windows.Forms.Button btnUpdateCamera;
     }
 }

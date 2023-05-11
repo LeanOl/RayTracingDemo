@@ -85,5 +85,49 @@ namespace Interface
                 flpPositionedModels.Controls.Add(newElement);
             }
         }
+
+        public void MakeWarningVisible()
+        {
+            lblOutdatedWarning.Visible = true;
+        }
+
+        private void btnUpdateCamera_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int fov = Convert.ToInt32(txtFov.Text);
+                decimal lookFromX = Convert.ToDecimal(txtLookFromX.Text);
+                decimal lookFromY = Convert.ToDecimal(txtLookFromY.Text);
+                decimal lookFromZ = Convert.ToDecimal(txtLookFromZ.Text);
+                Vector lookFrom= new Vector{X= lookFromX, Y= lookFromY, Z= lookFromZ};
+                decimal lookAtX = Convert.ToDecimal(txtLookAtX.Text);
+                decimal lookAtY = Convert.ToDecimal(txtLookAtY.Text);
+                decimal lookAtZ = Convert.ToDecimal(txtLookAtZ.Text);
+                Vector lookAt = new Vector { X = lookAtX, Y = lookAtY, Z = lookAtZ };
+                Instance.InstanceSceneLogic.UpdateCameraSettings(SceneToEdit, lookFrom, lookAt, fov);
+                ClearTextboxes();
+                SceneToEdit.LastModified = DateTime.Now;
+                lblOutdatedWarning.Visible = true;
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                MessageBox.Show("ERROR: FOV should be between 1 and 160");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR: " + ex.Message);
+            }
+        }
+
+        private void ClearTextboxes()
+        {
+            txtFov.Text = "";
+            txtLookFromX.Text = "";
+            txtLookFromY.Text = "";
+            txtLookFromZ.Text = "";
+            txtLookAtX.Text = "";
+            txtLookAtY.Text = "";
+            txtLookAtZ.Text = "";
+        }
     }
 }

@@ -45,8 +45,10 @@ namespace Interface
             decimal z = Convert.ToDecimal(inputZ);
             Vector position = new Vector{X=x,Y=y,Z=z};
             ParentScene.AddPositionedModel(ModelToDisplay,position);
+            ParentScene.LastModified = DateTime.Now;
             EditScene editScene= Parent.Parent as EditScene;
             editScene.UpdatePositionedModels();
+            editScene.MakeWarningVisible();
         }
 
     }

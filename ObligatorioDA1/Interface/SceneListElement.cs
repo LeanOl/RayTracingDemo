@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Domain;
+using Logic;
 
 namespace Interface
 {
@@ -43,6 +44,12 @@ namespace Interface
             parentControl.Controls.Add(anEditScene);
             
             
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            Instance.InstanceSceneLogic.DeleteScene(_scene);
+            Dispose();
         }
     }
 }
