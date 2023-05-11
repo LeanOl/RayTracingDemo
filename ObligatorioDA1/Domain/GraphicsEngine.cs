@@ -127,42 +127,6 @@ namespace Domain
             return bitmapToReturn;
         }
         
-        public static Bitmap PpmToBitmap(string ppm)
-        {
-            using (var reader = new StringReader(ppm))
-            {
-
-                string magicNumber = reader.ReadLine();
-
-                string size = reader.ReadLine();
-                string maxColorValue = reader.ReadLine();
-
-
-                string[] sizeParts = size.Split(' ');
-                int width = int.Parse(sizeParts[0]);
-                int height = int.Parse(sizeParts[1]);
-
-
-                Bitmap bitmap = new Bitmap(width, height);
-
-
-                for (int y = 0; y < height; y++)
-                {
-                    for (int x = 0; x < width; x++)
-                    {
-                        string pixelColor = reader.ReadLine();
-                        string[] pixelColorParts = pixelColor.Split(' ');
-                        int r = int.Parse(pixelColorParts[0]);
-                        int g = int.Parse(pixelColorParts[1]);
-                        int b = int.Parse(pixelColorParts[2]);
-
-
-                        bitmap.SetPixel(x, y, Color.FromArgb(r, g, b));
-                    }
-                }
-                return bitmap;
-            }
-        }
 
         public Bitmap RenderModel(PositionedModel positionedModel)
         {

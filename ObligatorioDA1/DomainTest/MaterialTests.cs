@@ -69,10 +69,5 @@ namespace DomainTest
             
         }
 
-        [TestMethod]
-        public void LambertianCalculateColor()
-        {
-
-        }
     }
 }
