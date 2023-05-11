@@ -72,6 +72,8 @@ namespace Logic
 
         public void UpdateCameraSettings(Scene scene, Vector lookFrom, Vector lookAt, int fov)
         {
+            if (fov < 1 )
+                throw new System.ArgumentOutOfRangeException("FieldOfView", "FOV must be at least 1");
             scene.UpdateCameraSettings(lookFrom, lookAt, fov);
         }
 
