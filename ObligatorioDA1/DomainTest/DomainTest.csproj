@@ -64,6 +64,9 @@
     <Compile Include="VectorTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="resources\expectedPpm.ppm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

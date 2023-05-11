@@ -32,5 +32,10 @@ namespace Repository
         {
             return _scenes.FindAll(x => x.Proprietary.Equals(someClient));
         }
+
+        public void Delete(Scene testScene)
+        {
+            _scenes.Remove(testScene);
+        }
     }
 }

@@ -71,6 +71,25 @@ namespace RepositoryTests
                 _repository.GetScenesByClient(_someClient));
 
         }
+
+        [TestMethod]
+        public void DeleteSceneSuccessfully()
+        {
+            _repository = new SceneRepository();
+            const string username = "John";
+            _someClient = new Client()
+            {
+                Username = username,
+            };
+            Scene testScene = new Scene
+            {
+                Name = "New Scene",
+                Proprietary = _someClient
+            };
+            _repository.Add(testScene);
+            _repository.Delete(testScene);
+            Assert.IsNull(_repository.GetByName("New Scene"));
+        }
     }
 }
 

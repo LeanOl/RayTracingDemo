@@ -31,6 +31,7 @@ namespace Interface
         private void SceneList_Load(object sender, EventArgs e)
         {
             LoadScenePanel();
+            flpMaterials.Parent = this;
         }
 
         private void LoadScenePanel()

@@ -108,6 +108,36 @@ namespace DomainLogicTest
             Assert.IsTrue(testScene.Camera.LookAt == lookAt);
             Assert.IsTrue(testScene.Camera.FieldOfView == 25);
         }
+
+        [TestMethod]
+        public void ChangeCameraFovLessThanOne_ThrowException()
+        {
+            _logic.CreateEmptyScene(_proprietary);
+            Scene testScene = _logic.GetSceneByName("Empty Scene");
+            Vector lookFrom = new Vector { X = 2, Y = 2, Z = 2 };
+            Vector lookAt = new Vector { X = 3, Y = 3, Z = 3 };
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => _logic.UpdateCameraSettings(testScene, lookFrom, lookAt, 0));
+        
+        }
+        [TestMethod]
+        public void ChangeCameraFovMoreThan160_ThrowException()
+        {
+            _logic.CreateEmptyScene(_proprietary);
+            Scene testScene = _logic.GetSceneByName("Empty Scene");
+            Vector lookFrom = new Vector { X = 2, Y = 2, Z = 2 };
+            Vector lookAt = new Vector { X = 3, Y = 3, Z = 3 };
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => _logic.UpdateCameraSettings(testScene, lookFrom, lookAt, 161));
+        }
+
+        [TestMethod]
+        public void DeleteScene()
+        {
+            _logic.CreateEmptyScene(_proprietary);
+            Scene testScene = _logic.GetSceneByName("Empty Scene");
+            _logic.DeleteScene(testScene);
+            Assert.IsTrue(_logic.GetSceneByName("Empty Scene") == null);
+        
+        }
         
     }
 }
