@@ -119,7 +119,6 @@ namespace DomainLogicTest
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => _logic.UpdateCameraSettings(testScene, lookFrom, lookAt, 0));
         
         }
-
         [TestMethod]
         public void ChangeCameraFovMoreThan160_ThrowException()
         {
