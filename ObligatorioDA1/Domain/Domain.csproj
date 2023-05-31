@@ -49,6 +49,7 @@
     <Compile Include="Materials\Lambertian.cs" />
     <Compile Include="Material.cs" />
     <Compile Include="Figure.cs" />
+    <Compile Include="Materials\Metallic.cs" />
     <Compile Include="PositionedModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Figures\Sphere.cs" />
