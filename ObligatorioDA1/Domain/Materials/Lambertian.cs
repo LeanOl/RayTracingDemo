@@ -4,7 +4,7 @@
     {
         public override Ray Scatter(HitRecord hitRecord, Ray ray)
         {
-            Vector target = hitRecord.IntersectionPoint.Add(hitRecord.Normal).Add(Vector.RandomInUnitSphere());
+            Vector target = hitRecord.IntersectionPoint.Add(hitRecord.Normal).Add(Vector.RandomInUnitHemisphere(hitRecord.Normal));
             Vector scatterDirection = target.Subtract(hitRecord.IntersectionPoint);
             Ray scatteredRay = new Ray { Origin = hitRecord.IntersectionPoint, Direction = scatterDirection };
             return scatteredRay;

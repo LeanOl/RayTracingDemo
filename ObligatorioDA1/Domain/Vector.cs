@@ -93,9 +93,9 @@ namespace Domain
             };
         }
 
-        public static Vector RandomInUnitSphere()
+        public static Vector RandomInUnitHemisphere(Vector normal)
         {
-            Random randomGenerator= new Random();
+            Random randomGenerator = new Random();
             Vector randomVector;
             do
             {
@@ -104,13 +104,24 @@ namespace Domain
                     X = (decimal)randomGenerator.NextDouble(),
                     Y = (decimal)randomGenerator.NextDouble(),
                     Z = (decimal)randomGenerator.NextDouble()
-
                 };
                 randomVector = tempVector.Multiply(2).Subtract(new Vector { X = 1, Y = 1, Z = 1 });
             } while (randomVector.SquaredLength() >= 1);
-            
+
+            if (randomVector.DotProduct(normal) < 0)
+            {
+                randomVector.Negate();
+            }
 
             return randomVector;
+        }
+
+        private void Negate()
+        {
+            X = X * (-1);
+            Y = Y * (-1);
+            Z = Z * (-1);
+
         }
 
         public override string ToString()

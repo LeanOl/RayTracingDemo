@@ -15,7 +15,7 @@ namespace Domain
             };
             Vector reflected = Reflect(rayIn.Direction.Unit(), hitRecord.Normal);
             rayScattered.Origin = hitRecord.IntersectionPoint;
-            rayScattered.Direction = reflected.Add(Vector.RandomInUnitSphere().Multiply(Roughness));
+            rayScattered.Direction = reflected.Add(Vector.RandomInUnitHemisphere(hitRecord.Normal).Multiply(Roughness));
             if (rayScattered.Direction.DotProduct(hitRecord.Normal) > 0)
             {
                 return rayScattered;
