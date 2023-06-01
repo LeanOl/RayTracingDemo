@@ -44,6 +44,7 @@
             // 
             // flpFigures
             // 
+            this.flpFigures.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpFigures.Location = new System.Drawing.Point(151, 110);
             this.flpFigures.Name = "flpFigures";
             this.flpFigures.Size = new System.Drawing.Size(362, 241);

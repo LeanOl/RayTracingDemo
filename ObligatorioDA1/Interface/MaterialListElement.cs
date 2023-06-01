@@ -17,6 +17,12 @@ namespace Interface
                 lblRed.Text = value.Color.R.ToString();
                 lblGreen.Text= value.Color.G.ToString();
                 picColorPreview.BackColor = value.Color;
+                if (_material is Metallic)
+                {
+                    Metallic aMetallic = _material as Metallic;
+                    lblRoughness.Text = $@"Roughness: {aMetallic.Roughness}";
+                }
+                lblType.Text= value.GetType().Name;
             }
         }
         public MaterialListElement(Material material)
