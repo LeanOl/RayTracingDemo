@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 
 namespace Domain
 {
@@ -30,6 +31,17 @@ namespace Domain
         {
             decimal dotN = vectorN.DotProduct(vectorV);
             return vectorV.Subtract(vectorN.Multiply(2 * dotN));
+        }
+
+        public override void Validate()
+        {
+            ValidateName(Name);
+            ValidateRoughness(this);
+        }
+        private static void ValidateRoughness(Metallic testMaterial)
+        {
+            if (testMaterial.Roughness < 0)
+                throw new ArgumentException("Roughness should be more than 0");
         }
     }
 }

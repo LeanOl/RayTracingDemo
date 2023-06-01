@@ -9,5 +9,10 @@
             Ray scatteredRay = new Ray { Origin = hitRecord.IntersectionPoint, Direction = scatterDirection };
             return scatteredRay;
         }
+
+        public override void Validate()
+        {
+            ValidateName(this.Name);
+        }
     }
 }
