@@ -4,7 +4,6 @@ using System;
 using System.Drawing;
 using Logic;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace LogicTest
 {
@@ -156,6 +155,43 @@ namespace LogicTest
             _logic.DeleteMaterial(someMaterial);
             CollectionAssert.DoesNotContain(_logic.GetClientMaterials(_someClient), someMaterial);
         }
+
+        [TestMethod]
+        public void CreateMetallicSuccessfully()
+        {
+            Metallic testMaterial = new Metallic()
+            {
+                Proprietary = _someClient,
+                Name = ValidName,
+                Color = _color,
+                Roughness = 0.5m
+            };
+            _logic.CreateMetallic(testMaterial);
+            Assert.AreEqual(testMaterial, _logic.GetMaterialByName(ValidName));
+        }
+
+        [TestMethod]
+        public void CreateMetallicRoughnessLessThanZero_ThrowException()
+        {
+            Metallic testMaterial = new Metallic()
+            {
+                Proprietary = _someClient,
+                Name = ValidName,
+                Color = _color,
+                Roughness = -0.5m
+            };
+            try
+            {
+                _logic.CreateMetallic(testMaterial);
+                Assert.Fail("Should throw exception");
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual("Roughness should be more than 0", ex.Message);
+            }
+        }
+
+        
 
     }
 }

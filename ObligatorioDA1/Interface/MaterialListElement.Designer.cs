@@ -37,6 +37,8 @@
             this.lblGreen = new System.Windows.Forms.Label();
             this.lblBlue = new System.Windows.Forms.Label();
             this.picColorPreview = new System.Windows.Forms.PictureBox();
+            this.lblRoughness = new System.Windows.Forms.Label();
+            this.lblType = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picColorPreview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -128,11 +130,33 @@
             this.picColorPreview.TabIndex = 8;
             this.picColorPreview.TabStop = false;
             // 
+            // lblRoughness
+            // 
+            this.lblRoughness.AutoSize = true;
+            this.lblRoughness.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.lblRoughness.Location = new System.Drawing.Point(74, 61);
+            this.lblRoughness.Name = "lblRoughness";
+            this.lblRoughness.Size = new System.Drawing.Size(108, 18);
+            this.lblRoughness.TabIndex = 9;
+            this.lblRoughness.Text = "                         ";
+            // 
+            // lblType
+            // 
+            this.lblType.AutoSize = true;
+            this.lblType.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.lblType.Location = new System.Drawing.Point(170, 25);
+            this.lblType.Name = "lblType";
+            this.lblType.Size = new System.Drawing.Size(108, 18);
+            this.lblType.TabIndex = 10;
+            this.lblType.Text = "                         ";
+            // 
             // MaterialListElement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.lblType);
+            this.Controls.Add(this.lblRoughness);
             this.Controls.Add(this.picColorPreview);
             this.Controls.Add(this.lblBlue);
             this.Controls.Add(this.lblGreen);
@@ -161,5 +185,7 @@
         private System.Windows.Forms.Label lblGreen;
         private System.Windows.Forms.Label lblBlue;
         private System.Windows.Forms.PictureBox picColorPreview;
+        private System.Windows.Forms.Label lblRoughness;
+        private System.Windows.Forms.Label lblType;
     }
 }

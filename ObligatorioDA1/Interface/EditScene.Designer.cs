@@ -70,7 +70,7 @@
             // lblPositionedModels
             // 
             this.lblPositionedModels.AutoSize = true;
-            this.lblPositionedModels.Location = new System.Drawing.Point(560, 79);
+            this.lblPositionedModels.Location = new System.Drawing.Point(594, 75);
             this.lblPositionedModels.Name = "lblPositionedModels";
             this.lblPositionedModels.Size = new System.Drawing.Size(93, 13);
             this.lblPositionedModels.TabIndex = 3;
@@ -277,6 +277,8 @@
             // 
             // flpModels
             // 
+            this.flpModels.AutoScroll = true;
+            this.flpModels.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpModels.Location = new System.Drawing.Point(3, 95);
             this.flpModels.Name = "flpModels";
             this.flpModels.Size = new System.Drawing.Size(183, 241);
@@ -284,7 +286,9 @@
             // 
             // flpPositionedModels
             // 
-            this.flpPositionedModels.Location = new System.Drawing.Point(498, 95);
+            this.flpPositionedModels.AutoScroll = true;
+            this.flpPositionedModels.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flpPositionedModels.Location = new System.Drawing.Point(509, 95);
             this.flpPositionedModels.Name = "flpPositionedModels";
             this.flpPositionedModels.Size = new System.Drawing.Size(244, 241);
             this.flpPositionedModels.TabIndex = 28;

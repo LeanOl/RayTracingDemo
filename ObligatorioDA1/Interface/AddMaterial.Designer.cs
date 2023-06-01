@@ -39,6 +39,12 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.lblErrorMessage = new System.Windows.Forms.Label();
+            this.rbMetallic = new System.Windows.Forms.RadioButton();
+            this.rbLambertian = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblRoughness = new System.Windows.Forms.Label();
+            this.txtRoughness = new System.Windows.Forms.TextBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtMaterialName
@@ -107,7 +113,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(196, 201);
+            this.btnAdd.Location = new System.Drawing.Point(196, 250);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(80, 34);
             this.btnAdd.TabIndex = 9;
@@ -118,7 +124,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(354, 201);
+            this.btnCancel.Location = new System.Drawing.Point(354, 250);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(80, 34);
             this.btnCancel.TabIndex = 10;
@@ -137,10 +143,63 @@
             this.lblErrorMessage.TabIndex = 11;
             this.lblErrorMessage.Text = "                         ";
             // 
+            // rbMetallic
+            // 
+            this.rbMetallic.AutoSize = true;
+            this.rbMetallic.Location = new System.Drawing.Point(37, 65);
+            this.rbMetallic.Name = "rbMetallic";
+            this.rbMetallic.Size = new System.Drawing.Size(61, 17);
+            this.rbMetallic.TabIndex = 13;
+            this.rbMetallic.Text = "Metallic";
+            this.rbMetallic.UseVisualStyleBackColor = true;
+            this.rbMetallic.CheckedChanged += new System.EventHandler(this.rbMetallic_CheckedChanged);
+            // 
+            // rbLambertian
+            // 
+            this.rbLambertian.AutoSize = true;
+            this.rbLambertian.Checked = true;
+            this.rbLambertian.Location = new System.Drawing.Point(37, 42);
+            this.rbLambertian.Name = "rbLambertian";
+            this.rbLambertian.Size = new System.Drawing.Size(77, 17);
+            this.rbLambertian.TabIndex = 14;
+            this.rbLambertian.TabStop = true;
+            this.rbLambertian.Text = "Lambertian";
+            this.rbLambertian.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rbMetallic);
+            this.groupBox1.Controls.Add(this.rbLambertian);
+            this.groupBox1.Location = new System.Drawing.Point(455, 45);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(197, 102);
+            this.groupBox1.TabIndex = 15;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Select material Type";
+            // 
+            // lblRoughness
+            // 
+            this.lblRoughness.AutoSize = true;
+            this.lblRoughness.Location = new System.Drawing.Point(198, 185);
+            this.lblRoughness.Name = "lblRoughness";
+            this.lblRoughness.Size = new System.Drawing.Size(61, 13);
+            this.lblRoughness.TabIndex = 16;
+            this.lblRoughness.Text = "Roughness";
+            // 
+            // txtRoughness
+            // 
+            this.txtRoughness.Location = new System.Drawing.Point(196, 210);
+            this.txtRoughness.Name = "txtRoughness";
+            this.txtRoughness.Size = new System.Drawing.Size(73, 20);
+            this.txtRoughness.TabIndex = 17;
+            // 
             // AddMaterial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtRoughness);
+            this.Controls.Add(this.lblRoughness);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblErrorMessage);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);
@@ -154,6 +213,8 @@
             this.Controls.Add(this.txtMaterialName);
             this.Name = "AddMaterial";
             this.Size = new System.Drawing.Size(677, 351);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,5 +233,10 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label lblErrorMessage;
+        private System.Windows.Forms.RadioButton rbMetallic;
+        private System.Windows.Forms.RadioButton rbLambertian;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lblRoughness;
+        private System.Windows.Forms.TextBox txtRoughness;
     }
 }

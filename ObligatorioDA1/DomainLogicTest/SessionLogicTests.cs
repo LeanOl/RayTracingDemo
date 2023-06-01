@@ -3,7 +3,6 @@ using System;
 using Domain;
 using Logic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Repository;
 
 namespace LogicTest
 {

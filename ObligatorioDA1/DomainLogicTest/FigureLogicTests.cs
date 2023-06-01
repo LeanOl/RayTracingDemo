@@ -3,7 +3,6 @@ using Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Logic;
-using Repository;
 using System.Collections.Generic;
 
 namespace LogicTest

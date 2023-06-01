@@ -1,5 +1,4 @@
 ﻿using System.Drawing;
-using System.Xml.Linq;
 
 namespace Domain
 {
@@ -12,9 +11,9 @@ namespace Domain
         {
             return Model.Hit(ray, tMin, tMax, position);
         }
-        public Ray Scatter(HitRecord hitRecord)
+        public Ray Scatter(HitRecord hitRecord, Ray ray)
         {
-            return Model.Scatter(hitRecord);
+            return Model.Scatter(hitRecord,ray);
         }
 
         public Color GetColor()
