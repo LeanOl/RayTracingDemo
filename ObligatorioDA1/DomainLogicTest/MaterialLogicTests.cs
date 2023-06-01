@@ -4,7 +4,6 @@ using System;
 using System.Drawing;
 using Logic;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace LogicTest
 {
