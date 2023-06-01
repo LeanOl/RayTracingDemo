@@ -76,7 +76,14 @@ namespace Logic
 
         public void CreateMetallic(Metallic testMaterial)
         {
+            ValidateRoughness(testMaterial);
             _repository.Add(testMaterial);
+        }
+
+        private static void ValidateRoughness(Metallic testMaterial)
+        {
+            if (testMaterial.Roughness < 0)
+                throw new ArgumentException("Roughness should be more than 0");
         }
     }
 }

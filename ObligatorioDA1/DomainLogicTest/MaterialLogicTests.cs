@@ -170,6 +170,28 @@ namespace LogicTest
             _logic.CreateMetallic(testMaterial);
             Assert.AreEqual(testMaterial, _logic.GetMaterialByName(ValidName));
         }
+
+        [TestMethod]
+        public void CreateMetallicRoughnessLessThanZero_ThrowException()
+        {
+            Metallic testMaterial = new Metallic()
+            {
+                Proprietary = _someClient,
+                Name = ValidName,
+                Color = _color,
+                Roughness = -0.5m
+            };
+            try
+            {
+                _logic.CreateMetallic(testMaterial);
+                Assert.Fail("Should throw exception");
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual("Roughness should be more than 0", ex.Message);
+            }
+        }
+
         
 
     }
