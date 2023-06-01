@@ -73,5 +73,10 @@ namespace Logic
         {
             _repository.Delete(materialToDelete);
         }
+
+        public void CreateMetallic(Metallic testMaterial)
+        {
+            _repository.Add(testMaterial);
+        }
     }
 }

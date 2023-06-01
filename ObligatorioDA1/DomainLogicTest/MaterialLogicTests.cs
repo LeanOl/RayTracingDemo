@@ -157,5 +157,20 @@ namespace LogicTest
             CollectionAssert.DoesNotContain(_logic.GetClientMaterials(_someClient), someMaterial);
         }
 
+        [TestMethod]
+        public void CreateMetallicSuccessfully()
+        {
+            Metallic testMaterial = new Metallic()
+            {
+                Proprietary = _someClient,
+                Name = ValidName,
+                Color = _color,
+                Roughness = 0.5m
+            };
+            _logic.CreateMetallic(testMaterial);
+            Assert.AreEqual(testMaterial, _logic.GetMaterialByName(ValidName));
+        }
+        
+
     }
 }
