@@ -15,9 +15,9 @@ namespace Domain
             return Figure.Hit(ray, tMin, tMax, position);
         }
 
-        public Ray Scatter( HitRecord hitRecord)
+        public Ray Scatter(HitRecord hitRecord, Ray ray)
         {
-            return Material.Scatter( hitRecord);
+            return Material.Scatter( hitRecord,ray);
         }
 
         public Color GetColor()

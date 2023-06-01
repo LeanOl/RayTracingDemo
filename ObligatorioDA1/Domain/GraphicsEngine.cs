@@ -69,7 +69,7 @@ namespace Domain
             {
                 if (depth > 0)
                 {
-                    Ray scatteredRay = hitModel.Scatter(hitRecord);
+                    Ray scatteredRay = hitModel.Scatter(hitRecord,ray);
                     Color color = ObtainColor(scatteredRay, depth - 1, elements);
                     Color attenuation = hitModel.GetColor();
                     int red = (int)(((color.R / 255m) * (attenuation.R / 255m)) * 255);
@@ -186,7 +186,7 @@ namespace Domain
             {
                 if (depth > 0)
                 {
-                    Ray scatteredRay = hitModel.Scatter(hitRecord);
+                    Ray scatteredRay = hitModel.Scatter(hitRecord,ray);
                     Color color = ObtainColor(scatteredRay, depth - 1, model);
                     Color attenuation = hitModel.GetColor();
                     int red = (int)(((color.R / 255m) * (attenuation.R / 255m)) * 255);

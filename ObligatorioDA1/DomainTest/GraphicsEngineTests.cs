@@ -118,12 +118,14 @@ namespace DomainTest
             {
                 aPositionedModel,
                 aPositionedModel1
+                
             };
             Camera testCamera = new Camera();
             Scene testScene = new Scene { ModelList = elements, Camera = testCamera };
 
-            GraphicsEngine engine = new GraphicsEngine { MaxDepth = 3, Resolution = 45, SamplesPerPixel = 10 };
+            GraphicsEngine engine = new GraphicsEngine { MaxDepth = 50, Resolution = 45, SamplesPerPixel = 20 };
             Bitmap bitmap = engine.RenderScene(testScene);
+            bitmap.Save("resources/actualPpmMetallic.ppm");
             Bitmap expectedBitmap = PpmToBitmap("resources/expectedPpmMetallic.ppm");
             double acceptedDifference = 300;
             Assert.IsTrue(BitmapCompare(bitmap, expectedBitmap) < acceptedDifference); ;

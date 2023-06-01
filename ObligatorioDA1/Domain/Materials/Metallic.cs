@@ -1,11 +1,35 @@
-﻿namespace Domain
+﻿using System.Reflection;
+
+namespace Domain
 {
     public class Metallic:Material
     {
         public decimal Roughness { get; set; }
-        public override Ray Scatter(HitRecord hitRecord)
+        public override Ray Scatter(HitRecord hitRecord, Ray rayIn)
         {
-            throw new System.NotImplementedException();
+            Ray rayScattered = new Ray
+            {
+                Origin=new Vector {X=0,Y=0,Z=0}, 
+                Direction = new Vector { X=0,Y=0,Z=0}
+                    
+            };
+            Vector reflected = Reflect(rayIn.Direction.Unit(), hitRecord.Normal);
+            rayScattered.Origin = hitRecord.IntersectionPoint;
+            rayScattered.Direction = reflected.Add(Vector.RandomInUnitSphere().Multiply(Roughness));
+            if (rayScattered.Direction.DotProduct(hitRecord.Normal) > 0)
+            {
+                return rayScattered;
+            }
+            else
+            {
+                return null;
+            }   
+        }
+
+        private Vector Reflect(Vector vectorV, Vector vectorN)
+        {
+            decimal dotN = vectorN.DotProduct(vectorV);
+            return vectorV.Subtract(vectorN.Multiply(2 * dotN));
         }
     }
 }
