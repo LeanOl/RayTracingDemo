@@ -6,7 +6,7 @@
         {
             Vector target = hitRecord.IntersectionPoint.Add(hitRecord.Normal).Add(Vector.RandomInUnitSphere());
             Vector scatterDirection = target.Subtract(hitRecord.IntersectionPoint);
-            Ray scatteredRay = new Ray { Direction = hitRecord.IntersectionPoint, Origin = scatterDirection };
+            Ray scatteredRay = new Ray { Origin = hitRecord.IntersectionPoint, Direction = scatterDirection };
             return scatteredRay;
         }
     }
