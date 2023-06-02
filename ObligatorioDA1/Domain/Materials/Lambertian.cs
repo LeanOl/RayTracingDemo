@@ -1,10 +1,13 @@
-﻿namespace Domain
+﻿using System;
+
+namespace Domain
 {
     public class Lambertian : Material
     {
+        private Random _random = new Random();
         public override Ray Scatter(HitRecord hitRecord, Ray ray)
         {
-            Vector target = hitRecord.IntersectionPoint.Add(hitRecord.Normal).Add(Vector.RandomInUnitHemisphere(hitRecord.Normal));
+            Vector target = hitRecord.IntersectionPoint.Add(hitRecord.Normal).Add(Vector.RandomInUnitSphere(_random));
             Vector scatterDirection = target.Subtract(hitRecord.IntersectionPoint);
             Ray scatteredRay = new Ray { Origin = hitRecord.IntersectionPoint, Direction = scatterDirection };
             return scatteredRay;

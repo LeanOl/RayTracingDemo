@@ -93,9 +93,9 @@ namespace Domain
             };
         }
 
-        public static Vector RandomInUnitHemisphere(Vector normal)
+        public static Vector RandomInUnitSphere(Random randomGenerator)
         {
-            Random randomGenerator = new Random();
+            
             Vector randomVector;
             do
             {
@@ -108,10 +108,6 @@ namespace Domain
                 randomVector = tempVector.Multiply(2).Subtract(new Vector { X = 1, Y = 1, Z = 1 });
             } while (randomVector.SquaredLength() >= 1);
 
-            if (randomVector.DotProduct(normal) < 0)
-            {
-                randomVector.Negate();
-            }
 
             return randomVector;
         }

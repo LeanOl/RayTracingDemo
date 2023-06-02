@@ -4,6 +4,7 @@ namespace Domain
 {
     public class Metallic:Material
     {
+        private Random _random = new Random();
         public decimal Roughness { get; set; }
         public override Ray Scatter(HitRecord hitRecord, Ray rayIn)
         {
@@ -15,7 +16,7 @@ namespace Domain
             };
             Vector reflected = Reflect(rayIn.Direction.Unit(), hitRecord.Normal);
             rayScattered.Origin = hitRecord.IntersectionPoint;
-            rayScattered.Direction = reflected.Add(Vector.RandomInUnitHemisphere(hitRecord.Normal).Multiply(Roughness));
+            rayScattered.Direction = reflected.Add(Vector.RandomInUnitSphere(_random).Multiply(Roughness));
             if (rayScattered.Direction.DotProduct(hitRecord.Normal) > 0)
             {
                 return rayScattered;
