@@ -283,6 +283,7 @@
             this.flpModels.Name = "flpModels";
             this.flpModels.Size = new System.Drawing.Size(183, 241);
             this.flpModels.TabIndex = 27;
+            this.flpModels.WrapContents = false;
             // 
             // flpPositionedModels
             // 
@@ -292,6 +293,7 @@
             this.flpPositionedModels.Name = "flpPositionedModels";
             this.flpPositionedModels.Size = new System.Drawing.Size(244, 241);
             this.flpPositionedModels.TabIndex = 28;
+            this.flpPositionedModels.WrapContents = false;
             // 
             // btnUpdateCamera
             // 
