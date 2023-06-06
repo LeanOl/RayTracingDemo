@@ -13,23 +13,9 @@ namespace Domain
         public Vector LookAt { get; set; } = new Vector { X = 0, Y = 2, Z = 5 };
         public int FieldOfView { get; set; } = 30;
         public Vector Up { get; } = new Vector { X = 0, Y = 1, Z = 0 };
-        public double AspectRatio { get;} = 3d / 2d;
+        public double AspectRatio { get; set; } = 3d / 2d;
 
         public double Aperture { get; set; } = 0.5;
-
-        public Camera(Vector lookAt,Vector lookFrom,Vector up,int fieldOfView,double aspectRatio)
-        {
-            LookAt = lookAt;
-            LookFrom = lookFrom;
-            Up = up;
-            FieldOfView = fieldOfView;
-            AspectRatio = aspectRatio;
-            
-        }
-        public Camera()
-        {
-           
-        }
 
         private void CalculateValues()
         {

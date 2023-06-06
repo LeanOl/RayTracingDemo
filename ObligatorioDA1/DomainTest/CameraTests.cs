@@ -23,14 +23,14 @@ namespace DomainTest
         [TestMethod]
         public void GetRayFromCameraSuccessfully()
         {
-            Camera testCamera = new Camera
-            (
-                aspectRatio:  600 / 600,
-                fieldOfView:  40,
-                lookAt: new Vector { X = 0, Y = 0.5m, Z = -2 },
-                lookFrom: new Vector { X = 4, Y = 2, Z = 8 },
-                up: new Vector { X = 0, Y = 1, Z = 0 }
-            );
+            Camera testCamera = new Camera()
+            {
+                LookFrom = new Vector { X = 4, Y = 2, Z = 8 },
+                LookAt = new Vector { X = 0, Y = 0.5m, Z = -2 },
+                FieldOfView = 40,
+                AspectRatio = 600 / 600,
+            };
+
             int fiveDecimals= 100000;
             Ray testRay = testCamera.GetRay(1, 1);
             Assert.AreEqual(4m, testRay.Origin.X);
