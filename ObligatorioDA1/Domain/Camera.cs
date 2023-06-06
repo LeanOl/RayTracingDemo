@@ -7,37 +7,15 @@ namespace Domain
         private Vector _cornerLowerLeft;
         private Vector _horizontal;
         private Vector _vertical;
-        private Vector _lookFrom = new Vector { X = 0, Y = 2, Z = 0 };
-        private Vector _lookAt = new Vector { X = 0, Y = 2, Z = 5 };
-        private int _fieldOfView = 30;
+  
 
-        public Vector LookFrom {
-            get => _lookFrom;
-            set
-            { _lookFrom = value; 
-                CalculateValues();
-            }
-        }
-
-        public Vector LookAt
-        {
-            get => _lookAt;
-            set
-            {
-                _lookAt = value;
-                CalculateValues();
-            }
-        }
-        public int FieldOfView { 
-            get => _fieldOfView;
-            set
-            {
-                _fieldOfView = value;
-                CalculateValues();
-            }
-        }
+        public Vector LookFrom { get; set; } = new Vector { X = 0, Y = 2, Z = 0 };
+        public Vector LookAt { get; set; } = new Vector { X = 0, Y = 2, Z = 5 };
+        public int FieldOfView { get; set; } = 30;
         public Vector Up { get; } = new Vector { X = 0, Y = 1, Z = 0 };
         public double AspectRatio { get;} = 3d / 2d;
+
+        public double Aperture { get; set; } = 0.5;
 
         public Camera(Vector lookAt,Vector lookFrom,Vector up,int fieldOfView,double aspectRatio)
         {
@@ -46,11 +24,11 @@ namespace Domain
             Up = up;
             FieldOfView = fieldOfView;
             AspectRatio = aspectRatio;
-            CalculateValues();
+            
         }
         public Camera()
         {
-            CalculateValues();
+           
         }
 
         private void CalculateValues()
@@ -69,7 +47,7 @@ namespace Domain
 
         public Ray GetRay(decimal u, decimal v)
         {
-
+            CalculateValues();
             Vector horizontalPosition = _horizontal.Multiply(u);
             Vector verticalPosition = _vertical.Multiply(v);
 
