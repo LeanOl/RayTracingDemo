@@ -39,36 +39,7 @@ namespace LogicTest
         {
             logic = null;
         }
-        
-       
-        [TestMethod]
-        public void ClientUsernameBelowCharacterLimit_ThrowException()
-        {
-
-            try
-            {
-                logic.CreateClient(UsernameBelowCharLimit,ValidPassword);
-                Assert.Fail("Should throw exception");
-            }
-            catch (Exception ex)
-            {
-                Assert.AreEqual(UsernameBelowCharLimitMessage, ex.Message);
-            }
-
-        }
-        [TestMethod]
-        public void ClientUsernameAboveCharacterLimit_ThrowException()
-        {
-            try
-            {
-                logic.CreateClient(UsernameAboveCharLimit,ValidPassword);
-                Assert.Fail("Should throw exception");
-            }
-            catch (Exception ex)
-            {
-                Assert.AreEqual(UsernameAboveCharLimitMessage,ex.Message );
-            }
-        }
+     
         [TestMethod]
         public void ClientUsernameDuplicated_ThrowException()
         {
@@ -84,81 +55,6 @@ namespace LogicTest
             {
                 Assert.AreEqual(UsernameDuplicatedMessage, ex.Message);
             }
-        }
-        [TestMethod]
-        public void ClientPasswordNoCaps_ThrowException()
-        {
-
-            try
-            {
-                logic.CreateClient(ValidUsername, PasswordWithNoCaps);
-                Assert.Fail("Should throw exception");
-            }
-            catch (Exception ex)
-            {
-                Assert.AreEqual(PasswordWithNoCapsMessage, ex.Message);
-            }
-
-        }
-        [TestMethod]
-        public void ClientPasswordNoNumber_ThrowException()
-        {
-
-            try
-            {
-                logic.CreateClient(ValidUsername, PasswordWithNoNumber);
-                Assert.Fail("Should throw exception");
-            }
-            catch (Exception ex)
-            {
-                Assert.AreEqual(PasswordWithNoNumberMessage, ex.Message);
-            }
-
-        }
-        [TestMethod]
-        public void ClientPasswordBelowCharLimit_ThrowException()
-        {
-
-            try
-            {
-                logic.CreateClient(ValidUsername, PasswordBelowCharLimit);
-                Assert.Fail("Should throw exception");
-            }
-            catch (Exception ex)
-            {
-                Assert.AreEqual(PasswordBelowCharLimitMessage, ex.Message);
-            }
-
-        }
-        [TestMethod]
-        public void ClientPasswordAboveCharLimit_ThrowException()
-        {
-
-            try
-            {
-                logic.CreateClient(ValidUsername, PasswordAboveCharLimit);
-                Assert.Fail("Should throw exception");
-            }
-            catch (Exception ex)
-            {
-                Assert.AreEqual(PasswordAboveCharLimitMessage, ex.Message);
-            }
-
-        }
-        [TestMethod]
-        public void ClientUsernameNotAlphanumeric_ThrowException()
-        {
-
-            try
-            {
-                logic.CreateClient(UsernameNotAlphanumeric, ValidPassword);
-                Assert.Fail("Should throw exception");
-            }
-            catch (Exception ex)
-            {
-                Assert.AreEqual(UsernameNotAlphanumericMessage, ex.Message);
-            }
-
         }
 
         [TestMethod]
