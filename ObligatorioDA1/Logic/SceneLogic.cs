@@ -22,7 +22,6 @@ namespace Logic
             {
                 Name = sceneDefaultName,
                 Proprietary = proprietary,
-                CameraWithNoDefocus = sceneCamera,
                 CreationDate = System.DateTime.Now,
                 LastModified = System.DateTime.Now,
                 LastRendered = System.DateTime.Now,

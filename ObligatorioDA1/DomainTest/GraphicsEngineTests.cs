@@ -125,7 +125,6 @@ namespace DomainTest
 
             GraphicsEngine engine = new GraphicsEngine { MaxDepth = 50, Resolution = 45, SamplesPerPixel = 20 };
             Bitmap bitmap = engine.RenderScene(testScene);
-            bitmap.Save("resources/actualPpmMetallic.ppm");
             Bitmap expectedBitmap = PpmToBitmap("resources/expectedPpmMetallic.ppm");
             double acceptedDifference = 300;
             Assert.IsTrue(BitmapCompare(bitmap, expectedBitmap) < acceptedDifference); ;
