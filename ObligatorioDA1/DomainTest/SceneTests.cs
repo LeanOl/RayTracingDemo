@@ -93,14 +93,16 @@ namespace DomainTest
             Vector lookFrom = new Vector { X = 2, Y = 2, Z = 2 };
             Vector lookAt = new Vector { X = 3, Y = 3, Z = 3 };
             int fov = 45;
-            scene.UpdateCameraSettings(lookFrom, lookAt,fov);
+            double aperture = 1;
+            scene.UpdateCameraSettings(lookFrom, lookAt,fov, aperture);
             Assert.IsTrue(scene.CameraLookFrom.X == lookFrom.X && 
                           scene.CameraLookFrom.Y == lookFrom.Y && 
                           scene.CameraLookFrom.Z == lookFrom.Z
                           && scene.CameraLookAt.X == lookAt.X 
                           && scene.CameraLookAt.Y == lookAt.Y 
                           && scene.CameraLookAt.Z == lookAt.Z
-                          && scene.CameraFov == fov);
+                          && scene.CameraFov == fov
+                          && scene.CameraAperture == aperture);
         }
 
     }

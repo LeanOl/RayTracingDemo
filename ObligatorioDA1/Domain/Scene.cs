@@ -47,11 +47,12 @@ namespace Domain
             ModelList.Remove(model);
         }
 
-        public void UpdateCameraSettings(Vector lookFrom, Vector lookAt, int fov)
+        public void UpdateCameraSettings(Vector lookFrom, Vector lookAt, int fov, double aperture)
         {
             CameraLookFrom = lookFrom;
             CameraLookAt = lookAt;
             CameraFov = fov;
+            CameraAperture = aperture;
         }
 
         public void RenderPreviewNoDefocus()

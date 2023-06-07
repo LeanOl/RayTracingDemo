@@ -98,7 +98,7 @@ namespace Interface
                 decimal lookAtY = Convert.ToDecimal(txtLookAtY.Text);
                 decimal lookAtZ = Convert.ToDecimal(txtLookAtZ.Text);
                 Vector lookAt = new Vector { X = lookAtX, Y = lookAtY, Z = lookAtZ };
-                Instance.InstanceSceneLogic.UpdateCameraSettings(SceneToEdit, lookFrom, lookAt, fov);
+                Instance.InstanceSceneLogic.UpdateCameraSettings(SceneToEdit, lookFrom, lookAt, fov, 0);
                 ClearTextboxes();
                 SceneToEdit.LastModified = DateTime.Now;
                 lblOutdatedWarning.Visible = true;
