@@ -10,7 +10,7 @@ namespace DomainTest
         [TestMethod]
         public void CreateCameraSuccessfully()
         {
-            Camera camera = new Camera()
+            Camera camera = new NoDefocusCamera()
             {
                 LookFrom = new Vector{X=0,Y=0,Z=0},
                 LookAt = new Vector { X = 0, Y = 0, Z = 0 },
@@ -23,7 +23,7 @@ namespace DomainTest
         [TestMethod]
         public void GetRayFromCameraSuccessfully()
         {
-            Camera testCamera = new Camera()
+            Camera testCamera = new NoDefocusCamera
             {
                 LookFrom = new Vector { X = 4, Y = 2, Z = 8 },
                 LookAt = new Vector { X = 0, Y = 0.5m, Z = -2 },

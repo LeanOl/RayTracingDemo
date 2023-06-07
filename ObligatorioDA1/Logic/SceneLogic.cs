@@ -11,7 +11,7 @@ namespace Logic
         public void CreateEmptyScene(Client proprietary)
         {
             Scene emptyScene;
-            Camera sceneCamera = new Camera();
+            Camera sceneCamera = new NoDefocusCamera();
             Bitmap defaultPreview = new Bitmap(300, 200);
             Graphics gfx = Graphics.FromImage(defaultPreview);
             gfx.Clear(Color.Gray);
@@ -22,7 +22,7 @@ namespace Logic
             {
                 Name = sceneDefaultName,
                 Proprietary = proprietary,
-                Camera = sceneCamera,
+                CameraWithNoDefocus = sceneCamera,
                 CreationDate = System.DateTime.Now,
                 LastModified = System.DateTime.Now,
                 LastRendered = System.DateTime.Now,
@@ -83,7 +83,7 @@ namespace Logic
 
         public void UpdatePreview(Scene scene)
         {
-            scene.RenderPreview();
+            scene.RenderPreviewNoDefocus();
         }
 
         public void DeleteScene(Scene testScene)

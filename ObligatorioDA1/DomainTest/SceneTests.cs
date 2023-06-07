@@ -19,7 +19,7 @@ namespace DomainTest
                 Name = "Scene",
                 CreationDate = DateTime.Now,
                 ModelList= new List<PositionedModel>(),
-                Camera = new Camera(),
+                CameraWithNoDefocus = new NoDefocusCamera(),
                 LastModified= DateTime.Now,
                 LastRendered= DateTime.Now,
                 Preview= preview
@@ -37,7 +37,7 @@ namespace DomainTest
                 Name = "Scene",
                 CreationDate = DateTime.Now,
                 ModelList = new List<PositionedModel>(),
-                Camera = new Camera(),
+                CameraWithNoDefocus = new NoDefocusCamera(),
                 LastModified = DateTime.Now,
                 LastRendered = DateTime.Now,
                 Preview = preview
@@ -59,7 +59,7 @@ namespace DomainTest
                 Name = "Scene",
                 CreationDate = DateTime.Now,
                 ModelList = new List<PositionedModel>(),
-                Camera = new Camera(),
+                CameraWithNoDefocus = new NoDefocusCamera(),
                 LastModified = DateTime.Now,
                 LastRendered = DateTime.Now,
                 Preview = preview
@@ -88,7 +88,7 @@ namespace DomainTest
                 Name = "Scene",
                 CreationDate = DateTime.Now,
                 ModelList = new List<PositionedModel>(),
-                Camera = new Camera(),
+                CameraWithNoDefocus = new NoDefocusCamera(),
                 LastModified = DateTime.Now,
                 LastRendered = DateTime.Now,
                 Preview = preview
@@ -97,13 +97,13 @@ namespace DomainTest
             Vector lookAt = new Vector { X = 3, Y = 3, Z = 3 };
             int fov = 45;
             scene.UpdateCameraSettings(lookFrom, lookAt,fov);
-            Assert.IsTrue(scene.Camera.LookFrom.X == lookFrom.X && 
-                          scene.Camera.LookFrom.Y == lookFrom.Y && 
-                          scene.Camera.LookFrom.Z == lookFrom.Z
-                          && scene.Camera.LookAt.X == lookAt.X 
-                          && scene.Camera.LookAt.Y == lookAt.Y 
-                          && scene.Camera.LookAt.Z == lookAt.Z
-                          && scene.Camera.FieldOfView == fov);
+            Assert.IsTrue(scene.CameraWithNoDefocus.LookFrom.X == lookFrom.X && 
+                          scene.CameraWithNoDefocus.LookFrom.Y == lookFrom.Y && 
+                          scene.CameraWithNoDefocus.LookFrom.Z == lookFrom.Z
+                          && scene.CameraWithNoDefocus.LookAt.X == lookAt.X 
+                          && scene.CameraWithNoDefocus.LookAt.Y == lookAt.Y 
+                          && scene.CameraWithNoDefocus.LookAt.Z == lookAt.Z
+                          && scene.CameraWithNoDefocus.FieldOfView == fov);
         }
 
     }

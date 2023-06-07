@@ -11,7 +11,8 @@ namespace Domain
         public string Name { get; set; }
         public DateTime CreationDate { get; set; }
         public List<PositionedModel> ModelList { get; set; }
-        public Camera Camera { get; set; }
+        public Camera CameraWithNoDefocus { get; set; }
+        public Camera ActiveCamera { get; set; }
         public DateTime LastModified { get; set; }
         public DateTime LastRendered { get; set; }
 
@@ -45,13 +46,14 @@ namespace Domain
 
         public void UpdateCameraSettings(Vector lookFrom, Vector lookAt, int fov)
         {
-            Camera.LookFrom = lookFrom;
-            Camera.LookAt = lookAt;
-            Camera.FieldOfView = fov;
+            CameraWithNoDefocus.LookFrom = lookFrom;
+            CameraWithNoDefocus.LookAt = lookAt;
+            CameraWithNoDefocus.FieldOfView = fov;
         }
 
-        public void RenderPreview()
+        public void RenderPreviewNoDefocus()
         {
+            ActiveCamera = CameraWithNoDefocus;
             GraphicsEngine graphics = new GraphicsEngine();
             Preview= graphics.RenderScene(this);
         }

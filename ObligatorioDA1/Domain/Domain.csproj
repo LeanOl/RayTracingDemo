@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Camera.cs" />
+    <Compile Include="Cameras\NoDefocusCamera.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="GraphicsEngine.cs" />
     <Compile Include="HitRecord.cs" />
@@ -59,5 +60,6 @@
     <Compile Include="Session.cs" />
     <Compile Include="Vector.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

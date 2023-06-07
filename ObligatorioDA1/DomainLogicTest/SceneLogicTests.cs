@@ -103,9 +103,9 @@ namespace DomainLogicTest
             Vector lookFrom = new Vector { X = 2, Y = 2, Z = 2 };
             Vector lookAt = new Vector { X = 3, Y = 3, Z = 3 };
             _logic.UpdateCameraSettings(testScene, lookFrom, lookAt, 25);
-            Assert.IsTrue(testScene.Camera.LookFrom == lookFrom);
-            Assert.IsTrue(testScene.Camera.LookAt == lookAt);
-            Assert.IsTrue(testScene.Camera.FieldOfView == 25);
+            Assert.IsTrue(testScene.CameraWithNoDefocus.LookFrom == lookFrom);
+            Assert.IsTrue(testScene.CameraWithNoDefocus.LookAt == lookAt);
+            Assert.IsTrue(testScene.CameraWithNoDefocus.FieldOfView == 25);
         }
 
         [TestMethod]
