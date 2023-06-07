@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Camera.cs" />
+    <Compile Include="Cameras\DefocusCamera.cs" />
     <Compile Include="Cameras\NoDefocusCamera.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="GraphicsEngine.cs" />
