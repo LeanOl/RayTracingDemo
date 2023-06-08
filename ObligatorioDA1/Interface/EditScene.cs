@@ -132,5 +132,34 @@ namespace Interface
             lblLastRendered.Text = SceneToEdit.LastRendered.ToString();
             lblOutdatedWarning.Visible = false;
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "JPeg Image |*.jpg|Png Image|*.png|Ppm Image|*.ppm";
+            saveFileDialog1.Title = "Save an Image File";
+            saveFileDialog1.ShowDialog();
+            try
+            {
+
+                switch (saveFileDialog1.FilterIndex)
+                {
+                    case 1:
+                        Instance.InstanceSceneLogic.SavePreviewAsJpg(SceneToEdit, saveFileDialog1.FileName);
+                        break;
+                    case 2:
+                        Instance.InstanceSceneLogic.SavePreviewAsPng(SceneToEdit, saveFileDialog1.FileName);
+                        break;
+                    case 3:
+                        Instance.InstanceSceneLogic.SavePreviewAsPpm(SceneToEdit, saveFileDialog1.FileName);
+                        break;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

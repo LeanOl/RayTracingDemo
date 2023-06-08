@@ -87,5 +87,20 @@ namespace Logic
         {
             _repository.Delete(testScene);
         }
+
+        public void SavePreviewAsPpm(Scene scene, string path)
+        {
+            scene.SavePreviewAsPpm(path);
+        }
+
+        public void SavePreviewAsPng(Scene scene, string path)
+        {
+            scene.SavePreviewAsPng(path);
+        }
+
+        public void SavePreviewAsJpg(Scene scene, string path)
+        {
+            scene.SavePreviewAsJpg(path);
+        }
     }
 }
