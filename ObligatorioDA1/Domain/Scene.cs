@@ -97,6 +97,21 @@ namespace Domain
             GraphicsEngine graphics = new GraphicsEngine();
             Preview = graphics.RenderScene(this);
         }
+
+        public void SavePreviewAsJpg(string path)
+        {
+            Utilities.ImageSaver.SaveImageAsJpg(path, Preview);
+        }
+
+        public void SavePreviewAsPng(string path)
+        {
+            Utilities.ImageSaver.SaveImageAsPng(path, Preview);
+        }
+
+        public void SavePreviewAsPpm(string path)
+        {
+            Utilities.ImageSaver.SaveImageAsPpm(path, Preview);
+        }
     }
 }
 
