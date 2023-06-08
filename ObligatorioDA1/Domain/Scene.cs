@@ -49,14 +49,17 @@ namespace Domain
 
         public void UpdateCameraSettings(Vector lookFrom, Vector lookAt, int fov, double aperture)
         {
-            if (aperture < 0)
-                throw new System.ArgumentOutOfRangeException("Aperture", "Aperture must be a positive number");
-            if (aperture > 3)
-                throw new System.ArgumentOutOfRangeException("Aperture", "Aperture must be less or equal than 3");
+            ValidateAperture(aperture);
             CameraLookFrom = lookFrom;
             CameraLookAt = lookAt;
             CameraFov = fov;
             CameraAperture = aperture;
+        }
+
+        private void ValidateAperture(double aperture)
+        {
+            if (aperture < 0 || aperture > 3)
+                throw new System.ArgumentOutOfRangeException("Aperture", "Aperture must be a between 0 and 3");
         }
 
         public void RenderPreviewNoDefocus()
