@@ -88,6 +88,7 @@
             // 
             // controlPanel
             // 
+            this.controlPanel.AutoSize = true;
             this.controlPanel.Location = new System.Drawing.Point(121, 0);
             this.controlPanel.Name = "controlPanel";
             this.controlPanel.Size = new System.Drawing.Size(677, 351);
@@ -108,6 +109,7 @@
             this.Text = "RayTracing";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainMenu_FormClosed);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
