@@ -19,12 +19,12 @@ namespace DomainTest
                 Name = "Scene",
                 CreationDate = DateTime.Now,
                 ModelList= new List<PositionedModel>(),
-                Camera = new Camera(),
                 LastModified= DateTime.Now,
                 LastRendered= DateTime.Now,
                 Preview= preview
                 
             };
+            Assert.IsNotNull(scene);
         }
 
         [TestMethod]
@@ -37,7 +37,6 @@ namespace DomainTest
                 Name = "Scene",
                 CreationDate = DateTime.Now,
                 ModelList = new List<PositionedModel>(),
-                Camera = new Camera(),
                 LastModified = DateTime.Now,
                 LastRendered = DateTime.Now,
                 Preview = preview
@@ -59,7 +58,6 @@ namespace DomainTest
                 Name = "Scene",
                 CreationDate = DateTime.Now,
                 ModelList = new List<PositionedModel>(),
-                Camera = new Camera(),
                 LastModified = DateTime.Now,
                 LastRendered = DateTime.Now,
                 Preview = preview
@@ -88,7 +86,6 @@ namespace DomainTest
                 Name = "Scene",
                 CreationDate = DateTime.Now,
                 ModelList = new List<PositionedModel>(),
-                Camera = new Camera(),
                 LastModified = DateTime.Now,
                 LastRendered = DateTime.Now,
                 Preview = preview
@@ -96,14 +93,16 @@ namespace DomainTest
             Vector lookFrom = new Vector { X = 2, Y = 2, Z = 2 };
             Vector lookAt = new Vector { X = 3, Y = 3, Z = 3 };
             int fov = 45;
-            scene.UpdateCameraSettings(lookFrom, lookAt,fov);
-            Assert.IsTrue(scene.Camera.LookFrom.X == lookFrom.X && 
-                          scene.Camera.LookFrom.Y == lookFrom.Y && 
-                          scene.Camera.LookFrom.Z == lookFrom.Z
-                          && scene.Camera.LookAt.X == lookAt.X 
-                          && scene.Camera.LookAt.Y == lookAt.Y 
-                          && scene.Camera.LookAt.Z == lookAt.Z
-                          && scene.Camera.FieldOfView == fov);
+            double aperture = 1;
+            scene.UpdateCameraSettings(lookFrom, lookAt,fov, aperture);
+            Assert.IsTrue(scene.CameraLookFrom.X == lookFrom.X && 
+                          scene.CameraLookFrom.Y == lookFrom.Y && 
+                          scene.CameraLookFrom.Z == lookFrom.Z
+                          && scene.CameraLookAt.X == lookAt.X 
+                          && scene.CameraLookAt.Y == lookAt.Y 
+                          && scene.CameraLookAt.Z == lookAt.Z
+                          && scene.CameraFov == fov
+                          && scene.CameraAperture == aperture);
         }
 
     }

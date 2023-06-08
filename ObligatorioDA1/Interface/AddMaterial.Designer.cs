@@ -185,6 +185,7 @@
             this.lblRoughness.Size = new System.Drawing.Size(61, 13);
             this.lblRoughness.TabIndex = 16;
             this.lblRoughness.Text = "Roughness";
+            this.lblRoughness.Visible = false;
             // 
             // txtRoughness
             // 
@@ -192,6 +193,7 @@
             this.txtRoughness.Name = "txtRoughness";
             this.txtRoughness.Size = new System.Drawing.Size(73, 20);
             this.txtRoughness.TabIndex = 17;
+            this.txtRoughness.Visible = false;
             // 
             // AddMaterial
             // 
