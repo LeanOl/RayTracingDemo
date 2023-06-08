@@ -1,9 +1,12 @@
+using System;
+
 namespace Domain
 {
     public class Sphere : Figure
     {
         public decimal Radius { get; set; }
 
+        private string invalidRadiusMessage = "Radius must be a positive decimal number";
         public override HitRecord Hit(Ray aRay, decimal tMin, decimal tMax, Vector center)
         {
             Vector originCenter = aRay.Origin.Subtract(center);
@@ -34,6 +37,15 @@ namespace Domain
         public override Figure GeneratePreviewFigure()
         {
             return new Sphere { Radius = 0.65m };
+        }
+
+        public override void Validate()
+        {
+            base.Validate();
+            if (Radius <= 0)
+            {
+                throw new ArgumentException(invalidRadiusMessage);
+            }
         }
     }
 }

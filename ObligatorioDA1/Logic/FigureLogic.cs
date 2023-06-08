@@ -30,10 +30,8 @@ namespace Logic
 
         public void CreateSphere(Sphere aSphere)
         {
-            if (ValidSphere(aSphere))
-            {
-                CreateFigure(aSphere);
-            }
+            aSphere.Validate();
+            CreateFigure(aSphere);
         }
 
         public void RemoveFigure(string name, string username)
@@ -46,23 +44,9 @@ namespace Logic
             return _repository.GetFiguresByClient(proprietary);
         }
 
-        private bool ValidSphere(Sphere aSphere)
-        {
-            if(aSphere.Radius > 0)
-            {
-                return true;
-            }
-            else
-            {
-                string invalidRadiusMessage = "Radius must be a positive decimal number";
-                throw new ArgumentException(invalidRadiusMessage);
-            }
-        }
-
         private bool ValidFigure(Figure aFigure)
         {
-            NameNotEmpty(aFigure.Name);
-            NameDoesntStartWithNameOrSpaces(aFigure.Name);
+            aFigure.Validate();
 
             if (_repository.FigureExists(aFigure.Name, aFigure.Propietary.Username))
             {
@@ -72,24 +56,5 @@ namespace Logic
             
             return true;
         }
-
-        private void NameNotEmpty(string name)
-        {
-            if (name.Length <= 0)
-            {
-                string invalidEmptyNameMessage = "The name must not be empty";
-                throw new ArgumentException(invalidEmptyNameMessage);
-            }
-        }
-            
-        private void NameDoesntStartWithNameOrSpaces(string name)
-        {
-            if (name.StartsWith(" ") || name.EndsWith(" "))
-            {
-                string invalidNameWithSpacesMessage = "Name must not start or end with spaces";
-                throw new ArgumentException(invalidNameWithSpacesMessage);
-            }
-        }
-
     }
 }
