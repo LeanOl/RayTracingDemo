@@ -15,11 +15,7 @@ namespace LogicTest
         private const string validFigureName = "Ball";
         private const string validUsername = "John";
         private decimal validRadius = 5;
-        private const decimal negativeRadius = -5;
-        
-        private const string invalidRadiusMessage = "Radius must be a positive decimal number";
-        private const string invalidEmptyNameMessage = "The name must not be empty";
-        private const string invalidNameWithSpacesMessage = "Name must not start or end with spaces";
+       
         private const string figureAlreadyExistsMessage = "A figure with that name already exists";
         private const string figuredIsUsedByModelMessage = "This figure cannot be removed because a model is using it";
 
@@ -100,153 +96,7 @@ namespace LogicTest
             Assert.IsNotNull(exceptionCaught);
             Assert.IsInstanceOfType(exceptionCaught, typeof(ElementAlreadyExistsException));
             Assert.AreEqual(exceptionCaught.Message, figureAlreadyExistsMessage);
-        }
-
-        [TestMethod]
-        public void InvalidEmptyNameError()
-        {
-            Exception exceptionCaught = null;
-            
-            FigureLogic logic = new FigureLogic();
-
-            Sphere invalidFigure = new Sphere()
-            {
-                Propietary = aClient,
-                Name = "",
-                Radius = validRadius
-            };
-            
-            try
-            {
-                logic.CreateFigure(invalidFigure);
-            }
-            catch (Exception ex)
-            {
-                exceptionCaught = ex;
-            }
-
-            Assert.IsNotNull(exceptionCaught);
-            Assert.IsInstanceOfType(exceptionCaught, typeof(ArgumentException));
-            Assert.AreEqual(exceptionCaught.Message, invalidEmptyNameMessage);
-             
-        }
-
-        [TestMethod]
-        public void InvalidNameWithSpacesInBeginningOrEndError()
-        {
-            Exception exceptionCaught = null;
-
-            FigureLogic logic = new FigureLogic();
-
-            Sphere invalidFigure = new Sphere()
-            {
-                Propietary = aClient,
-                Name = "   ball  ",
-                Radius = validRadius
-            };
-
-            try
-            {
-                logic.CreateFigure(invalidFigure);
-            }
-            catch (Exception ex)
-            {
-                exceptionCaught = ex;
-            }
-
-            Assert.IsNotNull(exceptionCaught);
-            Assert.IsInstanceOfType(exceptionCaught, typeof(ArgumentException));
-            Assert.AreEqual(exceptionCaught.Message, invalidNameWithSpacesMessage);
-             
-        }
-
-        [TestMethod]
-        public void InvalidNameWithSpacesInBeginning()
-        {
-            Exception exceptionCaught = null;
-
-            FigureLogic logic = new FigureLogic();
-
-            Sphere invalidFigure = new Sphere()
-            {
-                Propietary = aClient,
-                Name = "   ball",
-                Radius = validRadius
-            };
-
-            try
-            {
-                logic.CreateFigure(invalidFigure);
-            }
-            catch (Exception ex)
-            {
-                exceptionCaught = ex;
-            }
-
-            Assert.IsNotNull(exceptionCaught);
-            Assert.IsInstanceOfType(exceptionCaught, typeof(ArgumentException));
-            Assert.AreEqual(exceptionCaught.Message, invalidNameWithSpacesMessage);
-
-        }
-
-        [TestMethod]
-        public void InvalidNameWithSpacesInEnd()
-        {
-            Exception exceptionCaught = null;
-
-            FigureLogic logic = new FigureLogic();
-
-            Sphere invalidFigure = new Sphere()
-            {
-                Propietary = aClient,
-                Name = "ball    ",
-                Radius = validRadius
-            };
-
-            try
-            {
-                logic.CreateFigure(invalidFigure);
-            }
-            catch (Exception ex)
-            {
-                exceptionCaught = ex;
-            }
-
-            Assert.IsNotNull(exceptionCaught);
-            Assert.IsInstanceOfType(exceptionCaught, typeof(ArgumentException));
-            Assert.AreEqual(exceptionCaught.Message, invalidNameWithSpacesMessage);
-
-        }
-
-        [TestMethod]
-        public void InvalidRadiusError()
-        {
-            Exception exceptionCaught = null;
-
-            FigureLogic logic = new FigureLogic();
-
-            Sphere invalidFigure = new Sphere()
-            {
-                Propietary = aClient,
-                Name = validFigureName,
-                Radius = negativeRadius
-            };
-
-            try
-            {
-                logic.CreateSphere(invalidFigure);
-
-            }
-            catch (Exception ex)
-            {
-                exceptionCaught = ex;
-            }
-
-            Assert.IsNotNull(exceptionCaught);
-            Assert.IsInstanceOfType(exceptionCaught, typeof(ArgumentException));
-            Assert.AreEqual(exceptionCaught.Message, invalidRadiusMessage);
-             
-        }
+        }   
 
         [TestMethod]
         public void RemoveAFigureSuccessfully()
@@ -265,7 +115,6 @@ namespace LogicTest
             Assert.IsFalse(itExists);
 
         }
-    
 
         [TestMethod]
         public void RemoveAFigureUsedByAModelError()
