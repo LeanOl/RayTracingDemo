@@ -98,7 +98,8 @@ namespace Interface
                 decimal lookAtY = Convert.ToDecimal(txtLookAtY.Text);
                 decimal lookAtZ = Convert.ToDecimal(txtLookAtZ.Text);
                 Vector lookAt = new Vector { X = lookAtX, Y = lookAtY, Z = lookAtZ };
-                Instance.InstanceSceneLogic.UpdateCameraSettings(SceneToEdit, lookFrom, lookAt, fov, 0);
+                double aperture = Convert.ToDouble(txtAperture.Text);
+                Instance.InstanceSceneLogic.UpdateCameraSettings(SceneToEdit, lookFrom, lookAt, fov, aperture);
                 ClearTextboxes();
                 SceneToEdit.LastModified = DateTime.Now;
                 lblOutdatedWarning.Visible = true;
@@ -122,6 +123,14 @@ namespace Interface
             txtLookAtX.Text = "";
             txtLookAtY.Text = "";
             txtLookAtZ.Text = "";
+        }
+
+        private void btnRenderDefocus_Click(object sender, EventArgs e)
+        {
+            Instance.InstanceSceneLogic.UpdatePreviewDefocus(SceneToEdit);
+            picRenderedImage.Image = SceneToEdit.Preview;
+            lblLastRendered.Text = SceneToEdit.LastRendered.ToString();
+            lblOutdatedWarning.Visible = false;
         }
     }
 }

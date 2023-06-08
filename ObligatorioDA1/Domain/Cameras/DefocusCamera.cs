@@ -1,4 +1,5 @@
 ﻿using System;
+using Domain.Utilities;
 
 namespace Domain
 {
@@ -8,7 +9,7 @@ namespace Domain
         private decimal _focalDistance;
         private Vector _vectorU;
         private Vector _vectorV;
-        public Random RandomGenerator { get; set; } = new Random();
+        public Random Random { get; set; } = RandomGenerator.RandomInstance;
 
         private void CalculateValues()
         {
@@ -33,7 +34,7 @@ namespace Domain
         public override Ray GetRay(decimal u, decimal v)
         {
             CalculateValues();
-            Vector randomVector = Vector.RandomInUnitSphere(RandomGenerator).Multiply(_lensRadius);
+            Vector randomVector = Vector.RandomInUnitSphere(Random).Multiply(_lensRadius);
             Vector offset = _vectorU.Multiply(randomVector.X).Add(_vectorV.Multiply(randomVector.Y));
             Vector horizontalPosition = _horizontal.Multiply(u);
             Vector verticalPosition = _vertical.Multiply(v);

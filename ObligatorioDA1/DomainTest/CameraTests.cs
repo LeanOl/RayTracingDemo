@@ -51,7 +51,7 @@ namespace DomainTest
                 FieldOfView = 30,
                 AspectRatio = 75d / 50d,
                 Aperture = 0.5,
-                RandomGenerator = new Random(456)
+                Random = new Random(456)
             };
 
             int fiveDecimals = 100000;

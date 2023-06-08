@@ -56,6 +56,9 @@
             this.flpModels = new System.Windows.Forms.FlowLayoutPanel();
             this.flpPositionedModels = new System.Windows.Forms.FlowLayoutPanel();
             this.btnUpdateCamera = new System.Windows.Forms.Button();
+            this.txtAperture = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.btnRenderDefocus = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picRenderedImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,7 +90,7 @@
             // 
             // btnRender
             // 
-            this.btnRender.Location = new System.Drawing.Point(374, 321);
+            this.btnRender.Location = new System.Drawing.Point(374, 294);
             this.btnRender.Name = "btnRender";
             this.btnRender.Size = new System.Drawing.Size(75, 23);
             this.btnRender.TabIndex = 5;
@@ -141,7 +144,7 @@
             // 
             this.txtFov.Location = new System.Drawing.Point(359, 51);
             this.txtFov.Name = "txtFov";
-            this.txtFov.Size = new System.Drawing.Size(62, 20);
+            this.txtFov.Size = new System.Drawing.Size(49, 20);
             this.txtFov.TabIndex = 12;
             // 
             // label1
@@ -297,7 +300,7 @@
             // 
             // btnUpdateCamera
             // 
-            this.btnUpdateCamera.Location = new System.Drawing.Point(427, 49);
+            this.btnUpdateCamera.Location = new System.Drawing.Point(482, 48);
             this.btnUpdateCamera.Name = "btnUpdateCamera";
             this.btnUpdateCamera.Size = new System.Drawing.Size(96, 23);
             this.btnUpdateCamera.TabIndex = 29;
@@ -305,10 +308,39 @@
             this.btnUpdateCamera.UseVisualStyleBackColor = true;
             this.btnUpdateCamera.Click += new System.EventHandler(this.btnUpdateCamera_Click);
             // 
+            // txtAperture
+            // 
+            this.txtAperture.Location = new System.Drawing.Point(422, 51);
+            this.txtAperture.Name = "txtAperture";
+            this.txtAperture.Size = new System.Drawing.Size(49, 20);
+            this.txtAperture.TabIndex = 30;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(421, 35);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(47, 13);
+            this.label11.TabIndex = 31;
+            this.label11.Text = "Aperture";
+            // 
+            // btnRenderDefocus
+            // 
+            this.btnRenderDefocus.Location = new System.Drawing.Point(374, 323);
+            this.btnRenderDefocus.Name = "btnRenderDefocus";
+            this.btnRenderDefocus.Size = new System.Drawing.Size(118, 23);
+            this.btnRenderDefocus.TabIndex = 32;
+            this.btnRenderDefocus.Text = "Render with defocus";
+            this.btnRenderDefocus.UseVisualStyleBackColor = true;
+            this.btnRenderDefocus.Click += new System.EventHandler(this.btnRenderDefocus_Click);
+            // 
             // EditScene
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnRenderDefocus);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.txtAperture);
             this.Controls.Add(this.btnUpdateCamera);
             this.Controls.Add(this.flpPositionedModels);
             this.Controls.Add(this.flpModels);
@@ -376,5 +408,8 @@
         private System.Windows.Forms.FlowLayoutPanel flpModels;
         private System.Windows.Forms.FlowLayoutPanel flpPositionedModels;
         private System.Windows.Forms.Button btnUpdateCamera;
+        private System.Windows.Forms.TextBox txtAperture;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnRenderDefocus;
     }
 }

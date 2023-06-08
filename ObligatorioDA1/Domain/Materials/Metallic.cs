@@ -1,10 +1,11 @@
 ﻿using System;
+using Domain.Utilities;
 
 namespace Domain
 {
     public class Metallic:Material
     {
-        private Random _random = new Random();
+        private Random _random = RandomGenerator.RandomInstance;
         public decimal Roughness { get; set; }
         public override Ray Scatter(HitRecord hitRecord, Ray rayIn)
         {
