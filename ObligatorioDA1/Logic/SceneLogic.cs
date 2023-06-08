@@ -70,15 +70,8 @@ namespace Logic
 
         public void UpdateCameraSettings(Scene scene, Vector lookFrom, Vector lookAt, int fov,int aperture)
         {
-            ValidateFov(fov);
-           
+            
             scene.UpdateCameraSettings(lookFrom, lookAt, fov, aperture);
-        }
-
-        private void ValidateFov(int fov)
-        {
-            if (fov < 1 || fov > 160)
-                throw new System.ArgumentOutOfRangeException("FieldOfView", "FOV must be between 1 and 160");
         }
 
         public void UpdatePreview(Scene scene)

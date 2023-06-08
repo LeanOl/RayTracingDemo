@@ -49,6 +49,7 @@ namespace Domain
 
         public void UpdateCameraSettings(Vector lookFrom, Vector lookAt, int fov, double aperture)
         {
+            ValidateFov(fov);
             ValidateAperture(aperture);
             CameraLookFrom = lookFrom;
             CameraLookAt = lookAt;
@@ -60,6 +61,11 @@ namespace Domain
         {
             if (aperture < 0 || aperture > 3)
                 throw new System.ArgumentOutOfRangeException("Aperture", "Aperture must be a between 0 and 3");
+        }
+        private void ValidateFov(int fov)
+        {
+            if (fov < 1 || fov > 160)
+                throw new System.ArgumentOutOfRangeException("FieldOfView", "FOV must be between 1 and 160");
         }
 
         public void RenderPreviewNoDefocus()
