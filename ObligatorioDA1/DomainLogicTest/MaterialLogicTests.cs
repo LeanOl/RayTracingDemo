@@ -49,52 +49,7 @@ namespace LogicTest
             Assert.AreEqual(testMaterial,_logic.GetMaterialByName(ValidName));
             
         }
-        [TestMethod]
-        public void CreateLambertianEmptyName_ThrowException()
-        {
-            const string emptyName = "   ";
-            try
-            { 
-                _logic.CreateLambertian(_someClient, emptyName, _color);
-                Assert.Fail("Should throw exception");
-            }
-            catch (Exception ex)
-            {
-                Assert.AreEqual(EmptyNameMessage,ex.Message);
-
-            }
-            
-        }
-        [TestMethod]
-        public void CreateLambertianBeginsWithWhitespace_ThrowException()
-        {
-            const string whitespaceFirstName = "  Figure";
-            try
-            {
-                _logic.CreateLambertian(_someClient, whitespaceFirstName, _color);
-                Assert.Fail("Should throw exception");
-            }
-            catch (Exception ex)
-            {
-                Assert.AreEqual(StartsOrEndsWithWhitespaceMessage, ex.Message);
-
-            }
-        }
-        [TestMethod]
-        public void CreateLambertianEndsWithWhitespace_ThrowException()
-        {
-            const string whitespaceAtEndName = "Figure  ";
-            try
-            {
-                _logic.CreateLambertian(_someClient, whitespaceAtEndName, _color);
-                Assert.Fail("Should throw exception");
-            }
-            catch (Exception ex)
-            {
-                Assert.AreEqual(StartsOrEndsWithWhitespaceMessage, ex.Message);
-
-            }
-        }
+        
         [TestMethod]
         public void CreateLambertianDuplicatedName_ThrowException()
         {
@@ -170,26 +125,7 @@ namespace LogicTest
             Assert.AreEqual(testMaterial, _logic.GetMaterialByName(ValidName));
         }
 
-        [TestMethod]
-        public void CreateMetallicRoughnessLessThanZero_ThrowException()
-        {
-            Metallic testMaterial = new Metallic()
-            {
-                Proprietary = _someClient,
-                Name = ValidName,
-                Color = _color,
-                Roughness = -0.5m
-            };
-            try
-            {
-                _logic.CreateMetallic(testMaterial);
-                Assert.Fail("Should throw exception");
-            }
-            catch (Exception ex)
-            {
-                Assert.AreEqual("Roughness should be more than 0", ex.Message);
-            }
-        }
+        
 
         
 

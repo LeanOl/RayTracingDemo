@@ -65,5 +65,54 @@ namespace DomainTest
             
         }
 
+        [TestMethod]
+        public void CreateLambertianEmptyName_ThrowException()
+        {
+            const string emptyName = "   ";
+            try
+            {
+                _logic.CreateLambertian(_someClient, emptyName, _color);
+                Assert.Fail("Should throw exception");
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual(EmptyNameMessage, ex.Message);
+
+            }
+
+        }
+
+        [TestMethod]
+        public void CreateLambertianEndsWithWhitespace_ThrowException()
+        {
+            const string whitespaceAtEndName = "Figure  ";
+            try
+            {
+                _logic.CreateLambertian(_someClient, whitespaceAtEndName, _color);
+                Assert.Fail("Should throw exception");
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual(StartsOrEndsWithWhitespaceMessage, ex.Message);
+
+            }
+        }
+
+        [TestMethod]
+        public void CreateLambertianBeginsWithWhitespace_ThrowException()
+        {
+            const string whitespaceFirstName = "  Figure";
+            try
+            {
+                _logic.CreateLambertian(_someClient, whitespaceFirstName, _color);
+                Assert.Fail("Should throw exception");
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual(StartsOrEndsWithWhitespaceMessage, ex.Message);
+
+            }
+        }
+
     }
 }
