@@ -156,6 +156,17 @@ namespace DomainLogicTest
             Assert.IsTrue(_logic.GetSceneByName("Empty Scene") == null);
         
         }
-        
+
+        [TestMethod]
+        public void ChangeApertureUsesOnlyOneDecimal()
+        {
+            _logic.CreateEmptyScene(_proprietary);
+            Scene testScene = _logic.GetSceneByName("Empty Scene");
+            Vector lookFrom = new Vector { X = 2, Y = 2, Z = 2 };
+            Vector lookAt = new Vector { X = 3, Y = 3, Z = 3 };
+            _logic.UpdateCameraSettings(testScene, lookFrom, lookAt, 25, 1.234);
+            Assert.IsTrue(testScene.CameraAperture == 1.2);
+        }
+
     }
 }

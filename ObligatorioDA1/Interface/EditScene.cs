@@ -62,7 +62,7 @@ namespace Interface
 
         private void btnRender_Click(object sender, EventArgs e)
         {
-            Instance.InstanceSceneLogic.UpdatePreview(SceneToEdit);
+            Instance.InstanceSceneLogic.UpdatePreviewNoDefocus(SceneToEdit);
             picRenderedImage.Image = SceneToEdit.Preview;
             lblLastRendered.Text = SceneToEdit.LastRendered.ToString();
             lblOutdatedWarning.Visible= false;

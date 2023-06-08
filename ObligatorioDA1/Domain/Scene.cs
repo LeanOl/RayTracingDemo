@@ -54,7 +54,7 @@ namespace Domain
             CameraLookFrom = lookFrom;
             CameraLookAt = lookAt;
             CameraFov = fov;
-            CameraAperture = aperture;
+            CameraAperture = Math.Truncate(aperture*10) / 10;
         }
 
         private void ValidateAperture(double aperture)
@@ -81,6 +81,21 @@ namespace Domain
 
             GraphicsEngine graphics = new GraphicsEngine();
             Preview= graphics.RenderScene(this);
+        }
+
+        public void RenderPreviewDefocus()
+        {
+            ActiveCamera = new DefocusCamera();
+            if (CameraFov != -1)
+                ActiveCamera.FieldOfView = CameraFov;
+            if (CameraLookFrom != null)
+                ActiveCamera.LookFrom = CameraLookFrom;
+            if (CameraLookAt != null)
+                ActiveCamera.LookAt = CameraLookAt;
+            if (CameraAperture != -1)
+                ActiveCamera.Aperture = CameraAperture;
+            GraphicsEngine graphics = new GraphicsEngine();
+            Preview = graphics.RenderScene(this);
         }
     }
 }

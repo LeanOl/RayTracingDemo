@@ -68,17 +68,21 @@ namespace Logic
             scene.RemovePositionedModel(model);
         }
 
-        public void UpdateCameraSettings(Scene scene, Vector lookFrom, Vector lookAt, int fov,int aperture)
+        public void UpdateCameraSettings(Scene scene, Vector lookFrom, Vector lookAt, int fov,double aperture)
         {
             
             scene.UpdateCameraSettings(lookFrom, lookAt, fov, aperture);
         }
 
-        public void UpdatePreview(Scene scene)
+        public void UpdatePreviewNoDefocus(Scene scene)
         {
             scene.RenderPreviewNoDefocus();
         }
 
+        public void UpdatePreviewDefocus(Scene scene)
+        {
+            scene.RenderPreviewDefocus();
+        }
         public void DeleteScene(Scene testScene)
         {
             _repository.Delete(testScene);
