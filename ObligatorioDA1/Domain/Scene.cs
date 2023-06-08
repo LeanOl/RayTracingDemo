@@ -51,6 +51,8 @@ namespace Domain
         {
             if (aperture < 0)
                 throw new System.ArgumentOutOfRangeException("Aperture", "Aperture must be a positive number");
+            if (aperture > 3)
+                throw new System.ArgumentOutOfRangeException("Aperture", "Aperture must be less or equal than 3");
             CameraLookFrom = lookFrom;
             CameraLookAt = lookAt;
             CameraFov = fov;
