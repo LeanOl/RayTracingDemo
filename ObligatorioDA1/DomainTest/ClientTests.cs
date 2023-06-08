@@ -77,15 +77,13 @@ namespace DomainTest
             }
         }
 
-       
-
         [TestMethod]
         public void ClientPasswordNoCaps_ThrowException()
         {
             Client aClient = new Client()
             {
                 Username = ValidUsername,
-                Password = ValidPassword,
+                Password = PasswordWithNoCaps,
                 RegisterDate = testDate
             };
 
@@ -104,6 +102,12 @@ namespace DomainTest
         [TestMethod]
         public void ClientPasswordNoNumber_ThrowException()
         {
+            Client aClient = new Client()
+            {
+                Username = ValidUsername,
+                Password = PasswordWithNoNumber,
+                RegisterDate = testDate
+            };
 
             try
             {
@@ -120,6 +124,12 @@ namespace DomainTest
         [TestMethod]
         public void ClientPasswordBelowCharLimit_ThrowException()
         {
+            Client aClient = new Client()
+            {
+                Username = ValidUsername,
+                Password = PasswordBelowCharLimit,
+                RegisterDate = testDate
+            };
 
             try
             {
@@ -136,6 +146,12 @@ namespace DomainTest
         [TestMethod]
         public void ClientPasswordAboveCharLimit_ThrowException()
         {
+            Client aClient = new Client()
+            {
+                Username = ValidUsername,
+                Password = PasswordAboveCharLimit,
+                RegisterDate = testDate
+            };
 
             try
             {
@@ -152,6 +168,12 @@ namespace DomainTest
         [TestMethod]
         public void ClientUsernameNotAlphanumeric_ThrowException()
         {
+            Client aClient = new Client()
+            {
+                Username = UsernameNotAlphanumeric,
+                Password = ValidPassword,
+                RegisterDate = testDate
+            };
 
             try
             {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Domain;
 using Logic;
 
 namespace Interface
@@ -33,7 +34,11 @@ namespace Interface
         {
             try
             {
-                Instance.InstanceClientLogic.ValidateUsername(txtUseraname.Text);
+                Client aClient = new Client()
+                {
+                    Username = txtUseraname.Text
+                };
+                aClient.ValidateUsername();
                 lblUsernameMessage.Text = "";
             }
             catch (Exception ex)
@@ -46,7 +51,11 @@ namespace Interface
         {
             try
             {
-                Instance.InstanceClientLogic.ValidatePassword(txtPassword.Text);
+                Client aClient = new Client()
+                {
+                    Username = txtPassword.Text
+                };
+                aClient.ValidatePassword();
                 Instance.InstanceClientLogic.ValidateConfirmPassword(txtPassword.Text, txtVerifyPassword.Text);
                 lblPasswordMessage.Text = "";
             }
