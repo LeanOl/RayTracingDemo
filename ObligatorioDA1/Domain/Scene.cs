@@ -49,6 +49,8 @@ namespace Domain
 
         public void UpdateCameraSettings(Vector lookFrom, Vector lookAt, int fov, double aperture)
         {
+            if (aperture < 0)
+                throw new System.ArgumentOutOfRangeException("Aperture", "Aperture must be a positive number");
             CameraLookFrom = lookFrom;
             CameraLookAt = lookAt;
             CameraFov = fov;
