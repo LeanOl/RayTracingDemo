@@ -4,7 +4,12 @@ namespace Domain
 {
     public class NoDefocusCamera : Camera
     {
-        private void CalculateValues()
+
+        public NoDefocusCamera()
+        {
+            CalculateValues();
+        }
+        protected override void CalculateValues()
         {
             decimal theta = FieldOfView * (decimal)Math.PI / 180;
             decimal heightHalf = (decimal)Math.Tan((double)theta / 2);
@@ -20,7 +25,7 @@ namespace Domain
 
         public override Ray GetRay(decimal u, decimal v)
         {
-            CalculateValues();
+            
             Vector horizontalPosition = _horizontal.Multiply(u);
             Vector verticalPosition = _vertical.Multiply(v);
 
