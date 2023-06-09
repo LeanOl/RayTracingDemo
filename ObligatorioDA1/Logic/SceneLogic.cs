@@ -11,7 +11,7 @@ namespace Logic
         public void CreateEmptyScene(Client proprietary)
         {
             Scene emptyScene;
-            Camera sceneCamera = new Camera();
+            Camera sceneCamera = new NoDefocusCamera();
             Bitmap defaultPreview = new Bitmap(300, 200);
             Graphics gfx = Graphics.FromImage(defaultPreview);
             gfx.Clear(Color.Gray);
@@ -22,7 +22,6 @@ namespace Logic
             {
                 Name = sceneDefaultName,
                 Proprietary = proprietary,
-                Camera = sceneCamera,
                 CreationDate = System.DateTime.Now,
                 LastModified = System.DateTime.Now,
                 LastRendered = System.DateTime.Now,
@@ -69,26 +68,39 @@ namespace Logic
             scene.RemovePositionedModel(model);
         }
 
-        public void UpdateCameraSettings(Scene scene, Vector lookFrom, Vector lookAt, int fov)
+        public void UpdateCameraSettings(Scene scene, Vector lookFrom, Vector lookAt, int fov,double aperture)
         {
-            ValidateFov(fov);
-            scene.UpdateCameraSettings(lookFrom, lookAt, fov);
+            
+            scene.UpdateCameraSettings(lookFrom, lookAt, fov, aperture);
         }
 
-        private void ValidateFov(int fov)
+        public void UpdatePreviewNoDefocus(Scene scene)
         {
-            if (fov < 1 || fov > 160)
-                throw new System.ArgumentOutOfRangeException("FieldOfView", "FOV must be between 1 and 160");
+            scene.RenderPreviewNoDefocus();
         }
 
-        public void UpdatePreview(Scene scene)
+        public void UpdatePreviewDefocus(Scene scene)
         {
-            scene.RenderPreview();
+            scene.RenderPreviewDefocus();
         }
-
         public void DeleteScene(Scene testScene)
         {
             _repository.Delete(testScene);
+        }
+
+        public void SavePreviewAsPpm(Scene scene, string path)
+        {
+            scene.SavePreviewAsPpm(path);
+        }
+
+        public void SavePreviewAsPng(Scene scene, string path)
+        {
+            scene.SavePreviewAsPng(path);
+        }
+
+        public void SavePreviewAsJpg(Scene scene, string path)
+        {
+            scene.SavePreviewAsJpg(path);
         }
     }
 }

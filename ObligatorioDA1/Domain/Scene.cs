@@ -11,7 +11,11 @@ namespace Domain
         public string Name { get; set; }
         public DateTime CreationDate { get; set; }
         public List<PositionedModel> ModelList { get; set; }
-        public Camera Camera { get; set; }
+        public int CameraFov { get; set; } = -1;
+        public Vector CameraLookFrom { get; set; }
+        public Vector CameraLookAt { get; set; }
+        public double CameraAperture { get; set; } = -1;
+        public Camera ActiveCamera { get; set; }
         public DateTime LastModified { get; set; }
         public DateTime LastRendered { get; set; }
 
@@ -43,17 +47,70 @@ namespace Domain
             ModelList.Remove(model);
         }
 
-        public void UpdateCameraSettings(Vector lookFrom, Vector lookAt, int fov)
+        public void UpdateCameraSettings(Vector lookFrom, Vector lookAt, int fov, double aperture)
         {
-            Camera.LookFrom = lookFrom;
-            Camera.LookAt = lookAt;
-            Camera.FieldOfView = fov;
+            ValidateFov(fov);
+            ValidateAperture(aperture);
+            CameraLookFrom = lookFrom;
+            CameraLookAt = lookAt;
+            CameraFov = fov;
+            CameraAperture = Math.Truncate(aperture*10) / 10;
         }
 
-        public void RenderPreview()
+        private void ValidateAperture(double aperture)
         {
+            if (aperture < 0 || aperture > 3)
+                throw new System.ArgumentOutOfRangeException("Aperture", "Aperture must be a between 0 and 3");
+        }
+        private void ValidateFov(int fov)
+        {
+            if (fov < 1 || fov > 160)
+                throw new System.ArgumentOutOfRangeException("FieldOfView", "FOV must be between 1 and 160");
+        }
+
+        public void RenderPreviewNoDefocus()
+        {
+            ActiveCamera = new NoDefocusCamera();
+
+            if (CameraFov != -1)
+                ActiveCamera.FieldOfView = CameraFov;
+            if (CameraLookFrom != null)
+                ActiveCamera.LookFrom = CameraLookFrom;
+            if(CameraLookAt != null)
+                ActiveCamera.LookAt = CameraLookAt;
+
             GraphicsEngine graphics = new GraphicsEngine();
             Preview= graphics.RenderScene(this);
+        }
+
+        public void RenderPreviewDefocus()
+        {
+            ActiveCamera = new DefocusCamera();
+            if (CameraFov != -1)
+                ActiveCamera.FieldOfView = CameraFov;
+            if (CameraLookFrom != null)
+                ActiveCamera.LookFrom = CameraLookFrom;
+            if (CameraLookAt != null)
+                ActiveCamera.LookAt = CameraLookAt;
+            if (CameraAperture != -1)
+                ActiveCamera.Aperture = CameraAperture;
+            GraphicsEngine graphics = new GraphicsEngine();
+            Preview = graphics.RenderScene(this);
+        }
+
+        public void SavePreviewAsJpg(string path)
+        {
+            Utilities.ImageSaver.SaveImageAsJpg(path, Preview);
+        }
+
+        public void SavePreviewAsPng(string path)
+        {
+            Utilities.ImageSaver.SaveImageAsPng(path, Preview);
+        }
+
+        public void SavePreviewAsPpm(string path)
+        {
+            Utilities.ImageSaver.SaveImageAsPpm(path, Preview);
         }
     }
 }

@@ -108,7 +108,7 @@ namespace Domain
                     {
                         decimal u = (column + (decimal)random.NextDouble()) / _resolution;
                         decimal v = (row + (decimal)random.NextDouble()) / _height;
-                        Ray ray = testScene.Camera.GetRay(u, v);
+                        Ray ray = testScene.ActiveCamera.GetRay(u, v);
                         Color obtainedColor = ObtainColor(ray, _maxDepth, testScene.ModelList);
                         pixelColor.AddTo(new Vector
                             { X = obtainedColor.R / 255m, Y = obtainedColor.G / 255m, Z = obtainedColor.B / 255m });
