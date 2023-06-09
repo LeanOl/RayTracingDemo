@@ -11,7 +11,12 @@ namespace Domain
         private Vector _vectorV;
         public Random Random { get; set; } = RandomGenerator.RandomInstance;
 
-        private void CalculateValues()
+
+        public DefocusCamera()
+        {
+            CalculateValues();
+        }
+        protected override void CalculateValues()
         {
             _focalDistance = LookFrom.Subtract(LookAt).Length();
             _lensRadius = (decimal)Aperture / 2;
@@ -33,7 +38,7 @@ namespace Domain
 
         public override Ray GetRay(decimal u, decimal v)
         {
-            CalculateValues();
+            
             Vector randomVector = Vector.RandomInUnitSphere(Random).Multiply(_lensRadius);
             Vector offset = _vectorU.Multiply(randomVector.X).Add(_vectorV.Multiply(randomVector.Y));
             Vector horizontalPosition = _horizontal.Multiply(u);
