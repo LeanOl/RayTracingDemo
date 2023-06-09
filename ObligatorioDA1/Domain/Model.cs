@@ -1,3 +1,4 @@
+using System;
 using System.Drawing;
 
 namespace Domain
@@ -9,6 +10,12 @@ namespace Domain
         public Figure Figure { get; set; }
         public Material Material { get; set; }
         public Image Preview { get; set; }
+
+        private const string EmptyNameMessage = "Model name should not be empty";
+        private const string NullFigureMessage = "Figure should not be null";
+        private const string DulplicateNameMessage = "There is already a model with this name";
+        private const string NameEndsOrStartsWhitespaceMessage = "Model name should not start or end with whitespaces";
+        private const string NullMaterialMessage = "Material should not be null";
 
         public HitRecord Hit(Ray ray, decimal tMin, decimal tMax, Vector position)
         {
@@ -67,6 +74,46 @@ namespace Domain
             };
             Preview = graphics.RenderModel(positionedPreview);
         }
+
+        public void Validate()
+        {
+            ValidateName();
+            ValidateMaterial();
+            ValidateFigure();
+        }
+
+        private void ValidateMaterial()
+        {
+            if (Material == null)
+                throw new ArgumentException(NullMaterialMessage);
+        }
+
+        private void ValidateFigure()
+        {
+            if (Figure == null)
+                throw new ArgumentException(NullFigureMessage);
+        }
+
+        private void ValidateName()
+        {
+            ValidateEmptyName();
+            ValidateWhitespaces();
+        }
+
+        private void ValidateWhitespaces()
+        {
+            if (Name.StartsWith(" ") || Name.EndsWith(" "))
+                throw new ArgumentException(NameEndsOrStartsWhitespaceMessage);
+        }
+
+        private void ValidateEmptyName()
+        {
+            if (string.IsNullOrWhiteSpace(Name))
+            {
+                throw new ArgumentException(EmptyNameMessage);
+            }
+        }
+
     }
     
     

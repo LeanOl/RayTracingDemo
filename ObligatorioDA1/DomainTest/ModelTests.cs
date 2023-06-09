@@ -92,7 +92,7 @@ namespace DomainTest
             Model model = new Model()
             {
                 Proprietary = _proprietary,
-                Name = NameEmpty,
+                Name = NameThatEndsWithSpaces,
                 Figure = _figure,
                 Material = _material,
             };
