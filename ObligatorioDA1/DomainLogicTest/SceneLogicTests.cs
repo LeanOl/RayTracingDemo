@@ -9,8 +9,20 @@ namespace DomainLogicTest
     [TestClass]
     public class SceneLogicTests
     {
-        SceneLogic _logic = new SceneLogic();
+        SceneLogic _logic;
         private Client _proprietary = new Client { Username = "John" };
+
+        [TestInitialize]
+        public void Initialize()
+        {
+            _logic = SceneLogic.Instance;
+        }
+
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            SceneLogic.Reset();
+        }
         [TestMethod]
         public void CreateEmptySceneSuccessfully()
         {

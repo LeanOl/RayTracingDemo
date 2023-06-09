@@ -32,8 +32,14 @@ namespace LogicTest
                 Password = password,
                 RegisterDate = testDate
             };
-            _logic = new MaterialLogic();
+            _logic = MaterialLogic.Instance;
             
+        }
+
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            MaterialLogic.Reset();
         }
 
         [TestMethod]

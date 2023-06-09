@@ -16,10 +16,15 @@ namespace DomainLogicTest
         public void Initialize()
         {
             _proprietary = new Client{Username = "John"};
-            _modelLogic = new ModelLogic();
+            _modelLogic = ModelLogic.Instance;
             _figure = new Sphere{ Name = "Figure1"};
             _material = new Lambertian { Name = "Material1"};
 
+        }
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            ModelLogic.Reset();
         }
         [TestMethod]
         public void CreateModelOk()

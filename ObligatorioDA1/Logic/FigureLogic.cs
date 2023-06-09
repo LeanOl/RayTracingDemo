@@ -10,11 +10,17 @@ namespace Logic
     {
         private FigureRepository _repository;
 
-        public FigureLogic()
+        private FigureLogic()
         {
             _repository = new FigureRepository();
         }
+        public static FigureLogic Instance { get; } = new FigureLogic();
 
+        public static void Reset()
+        {
+            Instance._repository = new FigureRepository();
+        }
+        
         public void CreateFigure(Figure aFigure)
         {
             if (ValidFigure(aFigure))

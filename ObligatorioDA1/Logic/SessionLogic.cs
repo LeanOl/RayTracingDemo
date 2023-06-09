@@ -9,12 +9,17 @@ namespace Logic
         private Session _session;
         
 
-        public SessionLogic(ClientLogic clientLogic)
+        private SessionLogic()
         {
-            _clientLogic=clientLogic;
+            _clientLogic=ClientLogic.Instance;
             _session = new Session();
         }
+        public static SessionLogic Instance { get; } = new SessionLogic();
 
+        public static void Reset()
+        {
+            Instance._session = new Session();
+        }
 
         public void LogIn(string username, string password)
         {

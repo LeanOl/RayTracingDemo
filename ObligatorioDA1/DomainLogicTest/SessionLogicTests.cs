@@ -28,10 +28,15 @@ namespace LogicTest
                 RegisterDate = testDate
             };
             
-            _clientLogic=new ClientLogic();
-            _sessionLogic=new SessionLogic(_clientLogic);
-            
-            
+            _clientLogic=ClientLogic.Instance;
+            _sessionLogic= SessionLogic.Instance;
+        }
+
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            ClientLogic.Reset();
+            SessionLogic.Reset();
         }
 
         [TestMethod]

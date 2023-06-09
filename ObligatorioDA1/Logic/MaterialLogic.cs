@@ -8,8 +8,20 @@ namespace Logic
 {
     public class MaterialLogic
     {
-        private MaterialRepository _repository = new MaterialRepository();
-        
+        private MaterialRepository _repository;
+
+        private MaterialLogic()
+        {
+            _repository=new MaterialRepository();
+        }
+
+        public static MaterialLogic Instance { get; } = new MaterialLogic();
+
+        public static void Reset()
+        {
+            Instance._repository = new MaterialRepository();
+        }
+
         public void CreateLambertian(Client proprietary, string name, Color color)
         {
             

@@ -7,7 +7,19 @@ namespace Logic
 {
     public class SceneLogic
     {
-        private SceneRepository _repository = new SceneRepository();
+        private SceneRepository _repository;
+
+        private SceneLogic()
+        {
+            _repository = new SceneRepository();
+        }
+
+        public static SceneLogic Instance { get; } = new SceneLogic();
+
+        public static void Reset()
+        {
+            Instance._repository = new SceneRepository();
+        }
         public void CreateEmptyScene(Client proprietary)
         {
             Scene emptyScene;
