@@ -11,6 +11,13 @@ namespace DomainTest
         private Client _proprietary;
         private Figure _figure;
         private Material _material;
+        private const string ValidModelName = "Modelo";
+        private const string NameThatEndsWithSpaces = "Model1 ";
+        private const string NameEmpty = "";
+        private const string MessageNameThatEndsWithSpaces = "Model name should not start or end with whitespaces";
+        private const string MessageNameEmpty = "Model name should not be empty";
+        private const string MessageNullFigure = "Figure should not be null";
+        private const string MessageNullMaterial = "Material should not be null";
 
         [TestInitialize]
         public void Initialize()
@@ -77,6 +84,95 @@ namespace DomainTest
             };
             model.GeneratePreview();
             Assert.IsNotNull(model.Preview);
+        }
+
+        [TestMethod]
+        public void ModelNameEndsWhitespace_ThrowException()
+        {
+            Model model = new Model()
+            {
+                Proprietary = _proprietary,
+                Name = NameEmpty,
+                Figure = _figure,
+                Material = _material,
+            };
+
+            try
+            {
+                model.Validate();
+                Assert.Fail("Should throw exception");
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual(MessageNameThatEndsWithSpaces, e.Message);
+            }
+        }
+
+        [TestMethod]
+        public void ModelFigureNull_ThrowException()
+        {
+            Model model = new Model()
+            {
+                Proprietary = _proprietary,
+                Name = ValidModelName,
+                Figure = null,
+                Material = _material,
+            };
+
+            try
+            {
+                model.Validate();
+                Assert.Fail("Should throw exception");
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual(MessageNullFigure, e.Message);
+            }
+
+        }
+
+        [TestMethod]
+        public void CreateModelEmptyName_ThrowException()
+        {
+            Model model = new Model()
+            {
+                Proprietary = _proprietary,
+                Name = NameEmpty,
+                Figure = _figure,
+                Material = _material,
+            };
+            try
+            {
+                model.Validate();
+                Assert.Fail("Should throw exception");
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual(MessageNameEmpty, e.Message);
+            }
+        }
+
+        [TestMethod]
+        public void ModelMaterialNull_ThrowException()
+        {
+            Model model = new Model()
+            {
+                Proprietary = _proprietary,
+                Name = ValidModelName,
+                Figure = _figure,
+                Material = null,
+            };
+
+            try
+            {
+                model.Validate();
+                Assert.Fail("Should throw exception");
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual(MessageNullMaterial, e.Message);
+            }
+
         }
     }
 }

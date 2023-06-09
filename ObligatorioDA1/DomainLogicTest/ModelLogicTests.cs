@@ -29,40 +29,11 @@ namespace DomainLogicTest
         }
 
         [TestMethod]
-        
-        public void CreateModelEmptyName_ThrowException()
-        {
-            try
-            {
-                _modelLogic.CreateModel("", _proprietary, _figure, _material);
-                Assert.Fail("Should throw exception");
-            }
-            catch (Exception e)
-            {
-                Assert.AreEqual("Model name should not be empty", e.Message);
-            }
-        }
-
-        [TestMethod]
         public void ModelNameStartsWhitespace_ThrowException()
         {
             try
             {
                 _modelLogic.CreateModel(" Model1", _proprietary, _figure, _material);
-                Assert.Fail("Should throw exception");
-            }
-            catch (Exception e)
-            {
-                Assert.AreEqual("Model name should not start or end with whitespaces", e.Message);
-            }
-        }
-
-        [TestMethod]
-        public void ModelNameEndsWhitespace_ThrowException()
-        {
-            try
-            {
-                _modelLogic.CreateModel("Model1 ", _proprietary, _figure, _material);
                 Assert.Fail("Should throw exception");
             }
             catch (Exception e)
@@ -83,36 +54,6 @@ namespace DomainLogicTest
             catch (Exception e)
             {
                 Assert.AreEqual("There is already a model with this name", e.Message);
-            }
-        
-        }
-
-        [TestMethod]
-        public void ModelFigureNull_ThrowException()
-        {
-            try
-            {
-                _modelLogic.CreateModel("Model1", _proprietary, null, _material);
-                Assert.Fail("Should throw exception");
-            }
-            catch (Exception e)
-            {
-                Assert.AreEqual("Figure should not be null", e.Message);
-            }
-        
-        }
-
-        [TestMethod]
-        public void ModelMaterialNull_ThrowException()
-        {
-            try
-            {
-                _modelLogic.CreateModel("Model1", _proprietary, _figure, null);
-                Assert.Fail("Should throw exception");
-            }
-            catch (Exception e)
-            {
-                Assert.AreEqual("Material should not be null", e.Message);
             }
         
         }
