@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using Domain;
+using Logic;
 
 namespace Interface
 {
@@ -16,7 +17,7 @@ namespace Interface
         {
             try
             {
-                Client proprietary = Instance.InstanceSessionLogic.GetActiveUser();
+                Client proprietary = SessionLogic.Instance.GetActiveUser();
                 int red = int.Parse(txtRed.Text);
                 int green = int.Parse(txtGreen.Text);
                 int blue = int.Parse(txtBlue.Text);
@@ -24,7 +25,7 @@ namespace Interface
                 Color materialColor = Color.FromArgb(red, green, blue);
                 if (rbLambertian.Checked)
                 {
-                    Instance.InstanceMaterialLogic.CreateLambertian(proprietary, materialName,materialColor);
+                    MaterialLogic.Instance.CreateLambertian(proprietary, materialName,materialColor);
                 }
                 else
                 {
@@ -36,7 +37,7 @@ namespace Interface
                         Roughness=roughness,
                         Proprietary=proprietary
                     };
-                    Instance.InstanceMaterialLogic.CreateMetallic(aMetallic);
+                    MaterialLogic.Instance.CreateMetallic(aMetallic);
                 }
 
                 UserControl aMaterialList = new MaterialList();

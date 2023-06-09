@@ -31,13 +31,13 @@ namespace LogicTest
         [TestInitialize]
         public void TestInit()
         {
-            logic = new ClientLogic();
+            logic = ClientLogic.Instance;
         }
 
         [TestCleanup]
         public void Cleanup()
         {
-            logic = null;
+            ClientLogic.Reset();
         }
      
         [TestMethod]

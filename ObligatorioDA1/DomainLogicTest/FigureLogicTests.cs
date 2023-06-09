@@ -12,6 +12,7 @@ namespace LogicTest
     {
         private Client aClient;
         private Figure aFigure;
+        private FigureLogic logic;
         private const string validFigureName = "Ball";
         private const string validUsername = "John";
         private decimal validRadius = 5;
@@ -32,6 +33,13 @@ namespace LogicTest
                 Name = validFigureName,
                 Radius = validRadius
             };
+            logic = FigureLogic.Instance;
+        }
+
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            FigureLogic.Reset();
         }
          
         [TestMethod]
@@ -39,7 +47,6 @@ namespace LogicTest
         {
             Exception exceptionCaught = null;
             bool figureWasCreated = false;
-            FigureLogic logic = new FigureLogic();
              
             try
             {
@@ -62,7 +69,6 @@ namespace LogicTest
             //Initialized on true to prevent the test from succeding on accident
             bool figureWasCreated = true; 
 
-            FigureLogic logic = new FigureLogic();
 
             try
             {
@@ -81,7 +87,7 @@ namespace LogicTest
         public void FigureAlreadyExistsError(){
             Exception exceptionCaught = null;
 
-            FigureLogic logic = new FigureLogic();
+
             logic.CreateFigure(aFigure);
 
             try
@@ -102,7 +108,7 @@ namespace LogicTest
         public void RemoveAFigureSuccessfully()
         {
             bool itExists = false;
-            FigureLogic logic = new FigureLogic();
+
 
             logic.CreateFigure(aFigure);
             
@@ -121,8 +127,6 @@ namespace LogicTest
         {
 
             Exception exceptionCaught = null;
-
-            FigureLogic logic = new FigureLogic();
 
             logic.CreateFigure(aFigure);
 
@@ -150,7 +154,6 @@ namespace LogicTest
         [TestMethod]
         public void GetFiguresByClientSuccessfully()
         {
-            FigureLogic logic = new FigureLogic();
             List<Figure> repositoryCollection = logic.GetFiguresByClient(aClient);
 
             List<Figure> figureCollection = new List<Figure>();

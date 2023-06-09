@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Domain;
+using Logic;
 
 namespace Interface
 {
@@ -41,7 +42,7 @@ namespace Interface
             flpModels.Parent = this;
             flpPositionedModels.Parent = this;
             Client proprietary = SceneToEdit.Proprietary;
-            List<Model> availableModels = Instance.InstanceModelLogic.GetClientModels(proprietary);
+            List<Model> availableModels = ModelLogic.Instance.GetClientModels(proprietary);
             List<PositionedModel> sceneModels = SceneToEdit.ModelList;
             foreach (Model model in availableModels)
             {
@@ -62,7 +63,7 @@ namespace Interface
 
         private void btnRender_Click(object sender, EventArgs e)
         {
-            Instance.InstanceSceneLogic.UpdatePreviewNoDefocus(SceneToEdit);
+            SceneLogic.Instance.UpdatePreviewNoDefocus(SceneToEdit);
             picRenderedImage.Image = SceneToEdit.Preview;
             lblLastRendered.Text = SceneToEdit.LastRendered.ToString();
             lblOutdatedWarning.Visible= false;
@@ -99,7 +100,7 @@ namespace Interface
                 decimal lookAtZ = Convert.ToDecimal(txtLookAtZ.Text);
                 Vector lookAt = new Vector { X = lookAtX, Y = lookAtY, Z = lookAtZ };
                 double aperture = Convert.ToDouble(txtAperture.Text);
-                Instance.InstanceSceneLogic.UpdateCameraSettings(SceneToEdit, lookFrom, lookAt, fov, aperture);
+                SceneLogic.Instance.UpdateCameraSettings(SceneToEdit, lookFrom, lookAt, fov, aperture);
                 ClearTextboxes();
                 SceneToEdit.LastModified = DateTime.Now;
                 lblOutdatedWarning.Visible = true;
@@ -127,7 +128,7 @@ namespace Interface
 
         private void btnRenderDefocus_Click(object sender, EventArgs e)
         {
-            Instance.InstanceSceneLogic.UpdatePreviewDefocus(SceneToEdit);
+            SceneLogic.Instance.UpdatePreviewDefocus(SceneToEdit);
             picRenderedImage.Image = SceneToEdit.Preview;
             lblLastRendered.Text = SceneToEdit.LastRendered.ToString();
             lblOutdatedWarning.Visible = false;
@@ -145,13 +146,13 @@ namespace Interface
                 switch (saveFileDialog1.FilterIndex)
                 {
                     case 1:
-                        Instance.InstanceSceneLogic.SavePreviewAsJpg(SceneToEdit, saveFileDialog1.FileName);
+                        SceneLogic.Instance.SavePreviewAsJpg(SceneToEdit, saveFileDialog1.FileName);
                         break;
                     case 2:
-                        Instance.InstanceSceneLogic.SavePreviewAsPng(SceneToEdit, saveFileDialog1.FileName);
+                        SceneLogic.Instance.SavePreviewAsPng(SceneToEdit, saveFileDialog1.FileName);
                         break;
                     case 3:
-                        Instance.InstanceSceneLogic.SavePreviewAsPpm(SceneToEdit, saveFileDialog1.FileName);
+                        SceneLogic.Instance.SavePreviewAsPpm(SceneToEdit, saveFileDialog1.FileName);
                         break;
                 }
 

@@ -7,9 +7,19 @@ namespace Logic
 {
     public class ModelLogic
     {
-        private ModelRepository _modelRepository = new ModelRepository();
+        private ModelRepository _modelRepository;
         private const string DuplicateNameMessage = "There is already a model with this name";
 
+        private ModelLogic()
+        {
+            _modelRepository = new ModelRepository();
+        }
+        public static ModelLogic Instance { get; } = new ModelLogic();
+
+        public static void Reset()
+        {
+            Instance._modelRepository = new ModelRepository();
+        }
 
         public void CreateModel(string name, Client proprietary, Figure figure, Material material)
         {

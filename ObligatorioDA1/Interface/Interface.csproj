@@ -77,7 +77,6 @@
     <Compile Include="FigureListElement.Designer.cs">
       <DependentUpon>FigureListElement.cs</DependentUpon>
     </Compile>
-    <Compile Include="Instance.cs" />
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>

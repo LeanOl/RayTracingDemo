@@ -16,8 +16,8 @@ namespace Interface
         {
             try
             {
-                Instance.InstanceClientLogic.ValidateConfirmPassword(txtPassword.Text, txtVerifyPassword.Text);
-                Instance.InstanceClientLogic.CreateClient(txtUseraname.Text,txtPassword.Text);
+                ClientLogic.Instance.ValidateConfirmPassword(txtPassword.Text, txtVerifyPassword.Text);
+                ClientLogic.Instance.CreateClient(txtUseraname.Text,txtPassword.Text);
                 SignIn signIn = new SignIn();
                 Hide();
                 signIn.Show();
@@ -53,10 +53,10 @@ namespace Interface
             {
                 Client aClient = new Client()
                 {
-                    Username = txtPassword.Text
+                    Password = txtPassword.Text
                 };
                 aClient.ValidatePassword();
-                Instance.InstanceClientLogic.ValidateConfirmPassword(txtPassword.Text, txtVerifyPassword.Text);
+                ClientLogic.Instance.ValidateConfirmPassword(txtPassword.Text, txtVerifyPassword.Text);
                 lblPasswordMessage.Text = "";
             }
             catch (PasswordMismatchException ex)
@@ -75,7 +75,7 @@ namespace Interface
         {
             try
             {
-                Instance.InstanceClientLogic.ValidateConfirmPassword(txtPassword.Text,txtVerifyPassword.Text);
+                ClientLogic.Instance.ValidateConfirmPassword(txtPassword.Text,txtVerifyPassword.Text);
                 lblConfirmPasswordMessage.Text = "";
             }
             catch (Exception ex)

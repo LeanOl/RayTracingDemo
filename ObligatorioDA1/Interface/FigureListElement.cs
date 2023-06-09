@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Domain;
+using Logic;
 
 namespace Interface
 {
@@ -34,7 +35,7 @@ namespace Interface
         {
             try
             {
-                Instance.InstanceFigureLogic.RemoveFigure(_figure.Name , _figure.Propietary.Username);
+                FigureLogic.Instance.RemoveFigure(_figure.Name , _figure.Propietary.Username);
                 Dispose();
             }catch (Exception ex)
             {

@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using Domain;
+using Logic;
 
 namespace Interface
 {
@@ -41,7 +42,7 @@ namespace Interface
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            Instance.InstanceSceneLogic.DeleteScene(_scene);
+            SceneLogic.Instance.DeleteScene(_scene);
             Dispose();
         }
     }

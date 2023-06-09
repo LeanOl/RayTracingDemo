@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Domain;
+using Logic;
 
 namespace Interface
 {
@@ -29,7 +30,7 @@ namespace Interface
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            Instance.InstanceSceneLogic.DeleteModelFromScene(ParentScene, PositionedModelToDisplay);
+            SceneLogic.Instance.DeleteModelFromScene(ParentScene, PositionedModelToDisplay);
             EditScene editScene = Parent.Parent as EditScene;
             editScene.MakeWarningVisible();
             Dispose();

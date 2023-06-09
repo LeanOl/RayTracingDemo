@@ -11,14 +11,18 @@ namespace Logic
     public class ClientLogic
     {
         private ClientRepository _repository;
-
-        public ClientLogic()
+        
+        private ClientLogic()
         {
             _repository=new ClientRepository();
         }
-       
+       public static ClientLogic Instance { get; } = new ClientLogic();
 
-        public void CreateClient(string username,string password )
+       public static void Reset()
+       {
+           Instance._repository = new ClientRepository();
+       }
+       public void CreateClient(string username,string password )
         {
             
             ValidateDuplicateUsername(username);
