@@ -35,7 +35,7 @@ namespace Domain
 
         public override void Validate()
         {
-            ValidateName(Name);
+            ValidateName();
             ValidateRoughness(this);
         }
         private static void ValidateRoughness(Metallic testMaterial)

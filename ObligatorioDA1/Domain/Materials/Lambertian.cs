@@ -15,7 +15,7 @@ namespace Domain
 
         public override void Validate()
         {
-            ValidateName(this.Name);
+            ValidateName();
         }
     }
 }

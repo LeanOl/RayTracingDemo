@@ -34,25 +34,24 @@ namespace Domain
 
         public abstract void Validate();
 
-        protected void ValidateName(string name)
+        protected void ValidateName()
         {
-            ValidateEmptyName(name);
-            ValidateStartsOrEndsWithWhitespace(name);
-            
+            ValidateEmptyName();
+            ValidateStartsOrEndsWithWhitespace();
         }
 
-        private void ValidateStartsOrEndsWithWhitespace(string name)
+        private void ValidateStartsOrEndsWithWhitespace()
         {
-            if (name.StartsWith(" ") || name.EndsWith(" "))
+            if (Name.StartsWith(" ") || Name.EndsWith(" "))
             {
 
                 throw new ArgumentException(NameStartsWithWhitespaceMessage);
             }
         }
 
-        private void ValidateEmptyName(string name)
+        private void ValidateEmptyName()
         {
-            if (String.IsNullOrWhiteSpace(name))
+            if (String.IsNullOrWhiteSpace(Name))
             {
                 throw new ArgumentException(FigureNameEmptyMessage);
             }
