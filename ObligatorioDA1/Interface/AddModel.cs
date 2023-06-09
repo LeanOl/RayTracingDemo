@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Domain;
+using Logic;
 
 namespace Interface
 {
@@ -13,19 +14,19 @@ namespace Interface
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Client user = Instance.InstanceSessionLogic.GetActiveUser();
+            Client user = SessionLogic.Instance.GetActiveUser();
             try
             {
                 if (chkPreview.Checked)
                 {
-                    Instance.InstanceModelLogic.CreateModelWithPreview(txtName.Text,
+                    ModelLogic.Instance.CreateModelWithPreview(txtName.Text,
                         user,
                         cbxFigure.SelectedValue as Figure,
                         cbxMaterial.SelectedValue as Material);
                 }
                 else
                 {
-                    Instance.InstanceModelLogic.CreateModel(txtName.Text,
+                    ModelLogic.Instance.CreateModel(txtName.Text,
                         user,
                         cbxFigure.SelectedValue as Figure,
                         cbxMaterial.SelectedValue as Material);
@@ -52,11 +53,11 @@ namespace Interface
 
         private void AddModel_Load(object sender, EventArgs e)
         {
-            Client user = Instance.InstanceSessionLogic.GetActiveUser();
-            cbxFigure.DataSource = Instance.InstanceFigureLogic.GetFiguresByClient(user);
+            Client user = SessionLogic.Instance.GetActiveUser();
+            cbxFigure.DataSource = FigureLogic.Instance.GetFiguresByClient(user);
             cbxFigure.DisplayMember = "Name";
             cbxFigure.ValueMember = null;
-            cbxMaterial.DataSource = Instance.InstanceMaterialLogic.GetClientMaterials(user);
+            cbxMaterial.DataSource = MaterialLogic.Instance.GetClientMaterials(user);
             cbxMaterial.DisplayMember = "Name";
             cbxFigure.ValueMember = null;
         }

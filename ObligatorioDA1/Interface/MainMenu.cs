@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Logic;
 
 namespace Interface
 {
@@ -13,7 +14,7 @@ namespace Interface
 
         private void btnSignOut_Click(object sender, EventArgs e)
         {
-            Instance.InstanceSessionLogic.LogOut();
+            SessionLogic.Instance.LogOut();
             SignIn signIn = new SignIn();
             Hide();
             signIn.Show();

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Domain;
+using Logic;
 
 namespace Interface
 {
@@ -31,8 +32,8 @@ namespace Interface
 
         private void FigureList_Load(object sender, EventArgs e)
         {
-            Client activeUser = Instance.InstanceSessionLogic.GetActiveUser();
-            List<Figure> figures = Instance.InstanceFigureLogic.GetFiguresByClient(activeUser);
+            Client activeUser = SessionLogic.Instance.GetActiveUser();
+            List<Figure> figures = FigureLogic.Instance.GetFiguresByClient(activeUser);
 
             foreach (Figure figure in figures)
             {

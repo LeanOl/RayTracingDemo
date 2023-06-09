@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Domain;
+using Logic;
 
 namespace Interface
 {
@@ -15,8 +16,8 @@ namespace Interface
 
         private void btnAddNewScene_Click(object sender, EventArgs e)
         {
-            Client proprietary = Instance.InstanceSessionLogic.GetActiveUser();
-            Instance.InstanceSceneLogic.CreateEmptyScene(proprietary);
+            Client proprietary = SessionLogic.Instance.GetActiveUser();
+            SceneLogic.Instance.CreateEmptyScene(proprietary);
             LoadScenePanel();
             //UserControl anEditScene = new EditScene();
             //Parent.Controls.Add(anEditScene);
@@ -32,8 +33,8 @@ namespace Interface
         private void LoadScenePanel()
         {
             flpMaterials.Controls.Clear();
-            Client activeUser = Instance.InstanceSessionLogic.GetActiveUser();
-            List<Scene> scenes = Instance.InstanceSceneLogic.GetClientScenes(activeUser);
+            Client activeUser = SessionLogic.Instance.GetActiveUser();
+            List<Scene> scenes = SceneLogic.Instance.GetClientScenes(activeUser);
             scenes = scenes.OrderByDescending(scene => scene.LastModified).ToList();
             foreach (var scene in scenes)
             {

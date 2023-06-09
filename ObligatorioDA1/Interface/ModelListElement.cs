@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Domain;
+using Logic;
 
 namespace Interface
 {
@@ -27,7 +28,7 @@ namespace Interface
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            Instance.InstanceModelLogic.DeleteModel(_model);
+            ModelLogic.Instance.DeleteModel(_model);
             Dispose();
         }
     }

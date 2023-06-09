@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Logic;
 
 namespace Interface
 {
@@ -29,7 +30,7 @@ namespace Interface
             {
                 string username = txtUseraname.Text;
                 string password = txtPassword.Text;
-                Instance.InstanceSessionLogic.LogIn(username,password);
+                SessionLogic.Instance.LogIn(username,password);
                 MainMenu menu = new MainMenu();
                 Hide();
                 menu.Show();

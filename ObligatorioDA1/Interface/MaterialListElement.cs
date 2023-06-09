@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Domain;
+using Logic;
 
 namespace Interface
 {
@@ -35,7 +36,7 @@ namespace Interface
         private void btnDelete_Click(object sender, EventArgs e)
         {
             
-            Instance.InstanceMaterialLogic.DeleteMaterial(_material);
+            MaterialLogic.Instance.DeleteMaterial(_material);
             Dispose();
         }
     }

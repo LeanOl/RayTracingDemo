@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Domain;
+using Logic;
 
 namespace Interface
 {
@@ -16,7 +17,7 @@ namespace Interface
             
             try
             {
-                Client proprietary = Instance.InstanceSessionLogic.GetActiveUser();
+                Client proprietary = SessionLogic.Instance.GetActiveUser();
                 string name = txtFigureName.Text;
                 decimal radius = decimal.Parse(txtFigureRadius.Text);
 
@@ -27,7 +28,8 @@ namespace Interface
                     Radius = radius
                 };
             
-                Instance.InstanceFigureLogic.CreateSphere(aSphere);
+                FigureLogic.Instance.CreateSphere(aSphere);
+
 
                 UserControl aFigureList = new FigureList();
                 Parent.Controls.Add(aFigureList);

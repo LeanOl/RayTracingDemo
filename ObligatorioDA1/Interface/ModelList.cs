@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Logic;
 
 namespace Interface
 {
@@ -21,8 +22,8 @@ namespace Interface
 
         private void ModelList_Load(object sender, EventArgs e)
         {
-            Client activeUser = Instance.InstanceSessionLogic.GetActiveUser();
-            List<Model> models = Instance.InstanceModelLogic.GetClientModels(activeUser);
+            Client activeUser = SessionLogic.Instance.GetActiveUser();
+            List<Model> models = ModelLogic.Instance.GetClientModels(activeUser);
             foreach (var model in models)
             {
                 ModelListElement newModel = new ModelListElement(model);
