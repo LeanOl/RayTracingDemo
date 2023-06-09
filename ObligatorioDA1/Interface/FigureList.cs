@@ -24,11 +24,6 @@ namespace Interface
 
         }
 
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void FigureList_Load(object sender, EventArgs e)
         {
             Client activeUser = Instance.InstanceSessionLogic.GetActiveUser();

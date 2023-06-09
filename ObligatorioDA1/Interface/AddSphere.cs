@@ -27,7 +27,7 @@ namespace Interface
                     Radius = radius
                 };
             
-                Instance.InstanceFigureLogic.CreateSphere(aSphere);
+                Instance.InstanceFigureLogic.CreateFigure(aSphere);
 
                 UserControl aFigureList = new FigureList();
                 Parent.Controls.Add(aFigureList);

@@ -28,12 +28,6 @@ namespace Logic
             return _repository.FigureExists(name, username);
         }
 
-        public void CreateSphere(Sphere aSphere)
-        {
-            aSphere.Validate();
-            CreateFigure(aSphere);
-        }
-
         public void RemoveFigure(string name, string username)
         {
             _repository.RemoveFigureByName(name, username);

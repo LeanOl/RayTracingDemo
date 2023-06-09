@@ -49,7 +49,6 @@
             this.flpFigures.Name = "flpFigures";
             this.flpFigures.Size = new System.Drawing.Size(362, 241);
             this.flpFigures.TabIndex = 1;
-            this.flpFigures.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // FigureList
             // 
