@@ -8,7 +8,7 @@ namespace Domain
         protected Vector _horizontal;
         protected Vector _vertical;
 
-
+        public Guid CameraId { get; set; }
         private Vector _lookFrom = new Vector { X = 0, Y = 2, Z = 0 };
         public Vector LookFrom
         {

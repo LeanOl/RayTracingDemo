@@ -29,7 +29,7 @@ namespace LogicTest
             };
             aFigure = new Sphere()
             {
-                Propietary = aClient,
+                Proprietary = aClient,
                 Name = validFigureName,
                 Radius = validRadius
             };
@@ -51,7 +51,7 @@ namespace LogicTest
             try
             {
                 logic.CreateFigure(aFigure);
-                figureWasCreated = logic.FigureExists(aFigure.Name, aFigure.Propietary.Username);
+                figureWasCreated = logic.FigureExists(aFigure.Name, aFigure.Proprietary.Username);
             }catch (Exception ex)
             {
                 exceptionCaught = ex;
@@ -72,7 +72,7 @@ namespace LogicTest
 
             try
             {
-                figureWasCreated = logic.FigureExists(aFigure.Name, aFigure.Propietary.Username);
+                figureWasCreated = logic.FigureExists(aFigure.Name, aFigure.Proprietary.Username);
             }
             catch (Exception ex)
             {
@@ -112,12 +112,12 @@ namespace LogicTest
 
             logic.CreateFigure(aFigure);
             
-            itExists = logic.FigureExists(aFigure.Name, aFigure.Propietary.Username);
+            itExists = logic.FigureExists(aFigure.Name, aFigure.Proprietary.Username);
             Assert.IsTrue(itExists);
 
-            logic.RemoveFigure(aFigure.Name, aFigure.Propietary.Username);
+            logic.RemoveFigure(aFigure.Name, aFigure.Proprietary.Username);
  
-            itExists = logic.FigureExists(aFigure.Name, aFigure.Propietary.Username);
+            itExists = logic.FigureExists(aFigure.Name, aFigure.Proprietary.Username);
             Assert.IsFalse(itExists);
 
         }
@@ -130,19 +130,19 @@ namespace LogicTest
 
             logic.CreateFigure(aFigure);
 
-            bool itExists = logic.FigureExists(aFigure.Name, aFigure.Propietary.Username);
+            bool itExists = logic.FigureExists(aFigure.Name, aFigure.Proprietary.Username);
             Assert.IsTrue(itExists);
 
             try
             {
-                logic.RemoveFigure(aFigure.Name, aFigure.Propietary.Username);
+                logic.RemoveFigure(aFigure.Name, aFigure.Proprietary.Username);
             }
             catch (Exception ex)
             {
                 exceptionCaught = ex;
             }
 
-            itExists = logic.FigureExists(aFigure.Name, aFigure.Propietary.Username);
+            itExists = logic.FigureExists(aFigure.Name, aFigure.Proprietary.Username);
             Assert.IsTrue(itExists);
 
             Assert.IsNotNull(exceptionCaught);

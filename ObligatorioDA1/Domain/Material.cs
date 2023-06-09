@@ -1,10 +1,13 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
 
 namespace Domain
 {
     public abstract class Material
     {
+        
+        public Guid MaterialId { get; set; }
         public Client Proprietary { get; set; }
         public string Name { get; set; }
         public Color Color { get; set; }

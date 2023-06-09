@@ -32,13 +32,13 @@ namespace LogicTest
         {
             Sphere aSphere = new Sphere()
             {
-                Propietary = someClient,
+                Proprietary = someClient,
                 Name = validName,
                 Radius = validRadius
             };
 
             Assert.IsNotNull(aSphere);
-            Assert.AreEqual(someClient, aSphere.Propietary);
+            Assert.AreEqual(someClient, aSphere.Proprietary);
             Assert.AreEqual(validName, aSphere.Name);
             Assert.AreEqual(validRadius, aSphere.Radius);
         }
@@ -48,7 +48,7 @@ namespace LogicTest
         {
             Sphere aSphere = new Sphere()
             {
-                Propietary = someClient,
+                Proprietary = someClient,
                 Name = validName,
                 Radius = 0.5m
             };
@@ -67,7 +67,7 @@ namespace LogicTest
         {
             Sphere aSphere = new Sphere()
             {
-                Propietary = someClient,
+                Proprietary = someClient,
                 Name = validName,
                 Radius = 0.5m
             };
@@ -86,7 +86,7 @@ namespace LogicTest
         {
             Sphere aSphere = new Sphere()
                         {
-                Propietary = someClient,
+                Proprietary = someClient,
                 Name = validName,
                 Radius = 0.5m
             };
@@ -119,7 +119,7 @@ namespace LogicTest
         {
             Sphere aSphere = new Sphere()
             {
-                Propietary = someClient,
+                Proprietary = someClient,
                 Name = validName,
                 Radius = 0.5m
             };
@@ -137,7 +137,7 @@ namespace LogicTest
         {
             Sphere aSphere = new Sphere()
             {
-                Propietary = someClient,
+                Proprietary = someClient,
                 Name = validName,
                 Radius = 0.5m
             };
@@ -156,7 +156,7 @@ namespace LogicTest
         {
             Figure aSphere = new Sphere()
             {
-                Propietary = someClient,
+                Proprietary = someClient,
                 Name = validName,
                 Radius = 0.5m
             };
@@ -172,7 +172,7 @@ namespace LogicTest
 
             Sphere invalidFigure = new Sphere()
             {
-                Propietary = someClient,
+                Proprietary = someClient,
                 Name = "",
                 Radius = validRadius
             };
@@ -199,7 +199,7 @@ namespace LogicTest
 
             Sphere invalidFigure = new Sphere()
             {
-                Propietary = someClient,
+                Proprietary = someClient,
                 Name = "   ball",
                 Radius = validRadius
             };
@@ -226,7 +226,7 @@ namespace LogicTest
 
             Sphere invalidFigure = new Sphere()
             {
-                Propietary = someClient,
+                Proprietary = someClient,
                 Name = "   ball  ",
                 Radius = validRadius
             };
@@ -253,7 +253,7 @@ namespace LogicTest
 
             Sphere invalidFigure = new Sphere()
             {
-                Propietary = someClient,
+                Proprietary = someClient,
                 Name = "ball    ",
                 Radius = validRadius
             };
@@ -280,7 +280,7 @@ namespace LogicTest
 
             Sphere invalidFigure = new Sphere()
             {
-                Propietary = someClient,
+                Proprietary = someClient,
                 Name = validFigureName,
                 Radius = negativeRadius
             };

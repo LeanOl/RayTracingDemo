@@ -1,10 +1,12 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
 
 namespace Domain
 {
     public class Model
     {
+        public Guid ModelId { get; set; }
         public Client Proprietary { get; set; }
         public string Name { get; set; }
         public Figure Figure { get; set; }

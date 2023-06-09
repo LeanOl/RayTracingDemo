@@ -48,7 +48,7 @@ namespace Logic
         {
             aFigure.Validate();
 
-            if (_repository.FigureExists(aFigure.Name, aFigure.Propietary.Username))
+            if (_repository.FigureExists(aFigure.Name, aFigure.Proprietary.Username))
             {
                 string figureAlreadyExistsMessage = "A figure with that name already exists";
                 throw new ElementAlreadyExistsException(figureAlreadyExistsMessage);

@@ -25,7 +25,7 @@ namespace RepositoryTests
             };
             aFigure = new Sphere()
             {
-                Propietary = aClient,
+                Proprietary = aClient,
                 Name = ValidFigureName,
                 Radius = ValidRadius
             };
@@ -40,7 +40,7 @@ namespace RepositoryTests
             Figure storedFigure = repository.GetFigureByName(ValidFigureName);
 
             Assert.IsNotNull(storedFigure);
-            Assert.AreEqual(aClient.Username, storedFigure.Propietary.Username);
+            Assert.AreEqual(aClient.Username, storedFigure.Proprietary.Username);
             Assert.AreEqual(ValidFigureName, storedFigure.Name);
             Assert.AreEqual(ValidRadius, ((Sphere)storedFigure).Radius);
         }
@@ -60,7 +60,7 @@ namespace RepositoryTests
             FigureRepository repository = new FigureRepository();
             repository.AddFigure(aFigure);
 
-            Assert.IsTrue(repository.FigureExists(ValidFigureName, aFigure.Propietary.Username));
+            Assert.IsTrue(repository.FigureExists(ValidFigureName, aFigure.Proprietary.Username));
         }
 
         [TestMethod]
@@ -69,11 +69,11 @@ namespace RepositoryTests
             FigureRepository repository = new FigureRepository();
             repository.AddFigure(aFigure);
 
-            Assert.IsTrue(repository.FigureExists(ValidFigureName, aFigure.Propietary.Username));
+            Assert.IsTrue(repository.FigureExists(ValidFigureName, aFigure.Proprietary.Username));
 
-            repository.RemoveFigureByName(ValidFigureName, aFigure.Propietary.Username);
+            repository.RemoveFigureByName(ValidFigureName, aFigure.Proprietary.Username);
 
-            Assert.IsFalse(repository.FigureExists(ValidFigureName, aFigure.Propietary.Username));
+            Assert.IsFalse(repository.FigureExists(ValidFigureName, aFigure.Proprietary.Username));
         }
     
 

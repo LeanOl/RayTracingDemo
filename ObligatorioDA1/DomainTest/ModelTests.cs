@@ -34,7 +34,7 @@ namespace DomainTest
             };
              _figure = new Sphere()
             {
-                Propietary = _proprietary,
+                Proprietary = _proprietary,
                 Name = "Figura",
                 Radius = 12
             };

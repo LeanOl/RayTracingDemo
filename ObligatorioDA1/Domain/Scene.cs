@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
 
 namespace Domain
 {
     public class Scene
     {
+        
+        public Guid SceneId { get; set; }
         public Image Preview { get; set; }
         public Client Proprietary { get; set; }
         public string Name { get; set; }

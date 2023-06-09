@@ -23,7 +23,7 @@ namespace Interface
 
                 Sphere aSphere = new Sphere()
                 {
-                    Propietary = proprietary,
+                    Proprietary = proprietary,
                     Name = name,
                     Radius = radius
                 };
