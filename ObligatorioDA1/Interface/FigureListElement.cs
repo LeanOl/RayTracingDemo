@@ -35,7 +35,7 @@ namespace Interface
         {
             try
             {
-                FigureLogic.Instance.RemoveFigure(_figure.Name , _figure.Propietary.Username);
+                FigureLogic.Instance.RemoveFigure(_figure.Name , _figure.Proprietary.Username);
                 Dispose();
             }catch (Exception ex)
             {

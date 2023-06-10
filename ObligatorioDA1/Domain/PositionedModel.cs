@@ -1,9 +1,11 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 
 namespace Domain
 {
     public class PositionedModel
     {
+        public Guid PositionedModelId { get; set; }
         public Vector Position { get; set; }
         public Model Model { get; set; }
 

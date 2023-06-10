@@ -1,10 +1,13 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain
 {
     public abstract class Figure
     {
-        public Client Propietary { get; set; }
+        
+        public Guid FigureId { get; set; }
+        public virtual Client Proprietary { get; set; }
         public string Name { get; set; }
 
         public abstract HitRecord Hit(Ray aRay, decimal tMin, decimal tMax, Vector center);

@@ -15,7 +15,7 @@ namespace Interface
             {
                 _model = value;
                 lblModelName.Text = value.Name;
-                picPreview.Image = value.Preview;
+                picPreview.Image = value.GetPreview();
             }
             get => _model;
 

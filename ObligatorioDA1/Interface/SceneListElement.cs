@@ -17,7 +17,8 @@ namespace Interface
                 _scene = value;
                 lblSceneName.Text = value.Name;
                 lblLastModification.Text = value.LastModified.ToString();
-                Image generatedPreview = value.Preview.GetThumbnailImage(75, 
+                Image previewImage = value.GetPreviewImage();
+                Image generatedPreview = previewImage.GetThumbnailImage(75, 
                                                      50, () => false, 
                                             IntPtr.Zero);
                 picPreview.Image = generatedPreview;

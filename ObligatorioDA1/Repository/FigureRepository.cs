@@ -41,12 +41,12 @@ namespace Repository
 
         public List<Figure> GetFiguresByClient(Client client)
         {
-            return _figures.FindAll(figure => figure.Propietary.Equals(client));
+            return _figures.FindAll(figure => figure.Proprietary.Equals(client));
         }
 
         private bool figureNameAndUsernameMatch(Figure aFigure, string name, string username)
         {
-            string figureClientUsername = aFigure.Propietary.Username;
+            string figureClientUsername = aFigure.Proprietary.Username;
             string figureName = aFigure.Name;
 
             return ((figureName == name) && (figureClientUsername == username));

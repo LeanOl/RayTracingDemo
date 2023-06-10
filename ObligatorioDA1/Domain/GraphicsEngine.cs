@@ -68,6 +68,10 @@ namespace Domain
                 if (depth > 0)
                 {
                     Ray scatteredRay = hitModel.Scatter(hitRecord,ray);
+                    if(scatteredRay == null)
+                    {
+                        return Color.FromArgb(0, 0, 0);
+                    }
                     Color color = ObtainColor(scatteredRay, depth - 1, elements);
                     Color attenuation = hitModel.GetColor();
                     int red = (int)(((color.R / 255m) * (attenuation.R / 255m)) * 255);
@@ -95,7 +99,7 @@ namespace Domain
             ;
         }
 
-        public Bitmap RenderScene(Scene testScene)
+        public string RenderScene(Scene testScene)
         {
             Bitmap bitmapToReturn = new Bitmap(_resolution, _height);
             Random random = new Random();
@@ -122,11 +126,11 @@ namespace Domain
                 }
             }
             bitmapToReturn.RotateFlip(RotateFlipType.RotateNoneFlipY);
-            return bitmapToReturn;
+            return Utilities.ImageConverter.ConvertToPpm(bitmapToReturn);
         }
         
 
-        public Bitmap RenderModel(PositionedModel positionedModel)
+        public string RenderModel(PositionedModel positionedModel)
         {
             Bitmap bitmapToReturn = new Bitmap(_resolution, _height);
             Vector vectorHorizontal = new Vector { X = 4, Y = 0, Z = 0 };
@@ -162,7 +166,7 @@ namespace Domain
                 }
             }
             bitmapToReturn.RotateFlip(RotateFlipType.RotateNoneFlipY);
-            return bitmapToReturn;
+            return Utilities.ImageConverter.ConvertToPpm(bitmapToReturn);
         }
 
         private Color ObtainColor(Ray ray, int depth, PositionedModel model)
@@ -185,6 +189,8 @@ namespace Domain
                 if (depth > 0)
                 {
                     Ray scatteredRay = hitModel.Scatter(hitRecord,ray);
+                    if(scatteredRay == null)
+                        return Color.Black;
                     Color color = ObtainColor(scatteredRay, depth - 1, model);
                     Color attenuation = hitModel.GetColor();
                     int red = (int)(((color.R / 255m) * (attenuation.R / 255m)) * 255);

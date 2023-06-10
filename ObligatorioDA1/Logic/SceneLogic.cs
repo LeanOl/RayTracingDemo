@@ -27,6 +27,7 @@ namespace Logic
             Bitmap defaultPreview = new Bitmap(300, 200);
             Graphics gfx = Graphics.FromImage(defaultPreview);
             gfx.Clear(Color.Gray);
+            string defaultPreviewPpm= Domain.Utilities.ImageConverter.ConvertToPpm(defaultPreview);
             string sceneDefaultName= GenerateSceneDefaultName(proprietary);
             
 
@@ -38,7 +39,7 @@ namespace Logic
                 LastModified = System.DateTime.Now,
                 LastRendered = System.DateTime.Now,
                 ModelList = new List<PositionedModel>(),
-                Preview = defaultPreview
+                Preview = defaultPreviewPpm
             };
             _repository.Add(emptyScene);
             

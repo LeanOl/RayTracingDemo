@@ -17,7 +17,7 @@ namespace Interface
                 lblModelName.Text = value.Name;
                 lblFigure.Text = value.Figure.Name;
                 lblMaterial.Text = value.Material.Name;
-                picPreview.Image = value.Preview;
+                picPreview.Image = value.GetPreview();
             }
         }
         public ModelListElement(Model model)
