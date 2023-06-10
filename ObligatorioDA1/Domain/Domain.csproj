@@ -60,6 +60,7 @@
     <Compile Include="Ray.cs" />
     <Compile Include="Scene.cs" />
     <Compile Include="Session.cs" />
+    <Compile Include="Utilities\ImageConverter.cs" />
     <Compile Include="Utilities\ImageSaver.cs" />
     <Compile Include="Utilities\RandomGenerator.cs" />
     <Compile Include="Vector.cs" />

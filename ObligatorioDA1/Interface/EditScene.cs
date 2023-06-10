@@ -15,7 +15,7 @@ namespace Interface
                 _sceneToEdit = value;
                 lblSceneName.Text = value.Name;
                 lblLastRendered.Text = value.LastRendered.ToString();
-                picRenderedImage.Image = value.Preview;
+                picRenderedImage.Image = value.GetPreviewImage();
                 if(value.LastModified > value.LastRendered)
                     lblOutdatedWarning.Visible = true;
 
@@ -64,7 +64,7 @@ namespace Interface
         private void btnRender_Click(object sender, EventArgs e)
         {
             SceneLogic.Instance.UpdatePreviewNoDefocus(SceneToEdit);
-            picRenderedImage.Image = SceneToEdit.Preview;
+            picRenderedImage.Image = SceneToEdit.GetPreviewImage();
             lblLastRendered.Text = SceneToEdit.LastRendered.ToString();
             lblOutdatedWarning.Visible= false;
         }
@@ -129,7 +129,7 @@ namespace Interface
         private void btnRenderDefocus_Click(object sender, EventArgs e)
         {
             SceneLogic.Instance.UpdatePreviewDefocus(SceneToEdit);
-            picRenderedImage.Image = SceneToEdit.Preview;
+            picRenderedImage.Image = SceneToEdit.GetPreviewImage();
             lblLastRendered.Text = SceneToEdit.LastRendered.ToString();
             lblOutdatedWarning.Visible = false;
         }

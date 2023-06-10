@@ -17,8 +17,8 @@ namespace Repository
         public DbSet<Material> Materials { get; set; }
         public DbSet<Model> Models { get; set; }
         public DbSet<Scene> Scenes { get; set; }
-
-       
+        
+        
     }
 
 }

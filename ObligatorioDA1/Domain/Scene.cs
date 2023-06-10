@@ -9,7 +9,7 @@ namespace Domain
     {
         
         public Guid SceneId { get; set; }
-        public Image Preview { get; set; }
+        public string Preview { get; set; }
         public Client Proprietary { get; set; }
         public string Name { get; set; }
         public DateTime CreationDate { get; set; }
@@ -103,17 +103,24 @@ namespace Domain
 
         public void SavePreviewAsJpg(string path)
         {
-            Utilities.ImageSaver.SaveImageAsJpg(path, Preview);
+            Bitmap previewBitmap = Utilities.ImageConverter.PpmToBitmap(Preview);
+            Utilities.ImageSaver.SaveImageAsJpg(path, previewBitmap);
         }
 
         public void SavePreviewAsPng(string path)
         {
-            Utilities.ImageSaver.SaveImageAsPng(path, Preview);
+            Bitmap previewBitmap = Utilities.ImageConverter.PpmToBitmap(Preview);
+            Utilities.ImageSaver.SaveImageAsPng(path, previewBitmap);
         }
 
         public void SavePreviewAsPpm(string path)
         {
             Utilities.ImageSaver.SaveImageAsPpm(path, Preview);
+        }
+
+        public Image GetPreviewImage()
+        {
+            return Utilities.ImageConverter.PpmToBitmap(Preview);
         }
     }
 }

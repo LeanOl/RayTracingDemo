@@ -11,7 +11,7 @@ namespace Domain
         public string Name { get; set; }
         public Figure Figure { get; set; }
         public Material Material { get; set; }
-        public Image Preview { get; set; }
+        public string Preview { get; set; }
 
         private const string EmptyNameMessage = "Model name should not be empty";
         private const string NullFigureMessage = "Figure should not be null";
@@ -116,7 +116,12 @@ namespace Domain
             }
         }
 
+        public Image GetPreview()
+        {
+            return Utilities.ImageConverter.PpmToBitmap(Preview);
+        }
+
     }
-    
-    
+
+
 }

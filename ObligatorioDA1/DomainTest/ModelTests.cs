@@ -58,7 +58,7 @@ namespace DomainTest
                 Name="Modelo",
                 Figure=_figure,
                 Material=_material,
-                Preview= preview
+                Preview= null
 
             };
             Assert.IsNotNull(model);
@@ -80,7 +80,7 @@ namespace DomainTest
                 Name = "Modelo",
                 Figure = _figure,
                 Material = _material,
-                Preview = preview
+                Preview = null
             };
             model.GeneratePreview();
             Assert.IsNotNull(model.Preview);

@@ -10,9 +10,9 @@ namespace Domain.Utilities
             image.Save(path, System.Drawing.Imaging.ImageFormat.Jpeg);
         }
 
-        public static void SaveImageAsPpm(string path, Image image)
+        public static void SaveImageAsPpm(string path, string image)
         {
-            ConvertToPpm(image,path);
+            File.WriteAllText(path,image);
         }
 
         public static void SaveImageAsPng(string path, Image image)
@@ -37,5 +37,6 @@ namespace Domain.Utilities
                 }
             }
         }
+        
     }
 }

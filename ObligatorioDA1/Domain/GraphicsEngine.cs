@@ -99,7 +99,7 @@ namespace Domain
             ;
         }
 
-        public Bitmap RenderScene(Scene testScene)
+        public string RenderScene(Scene testScene)
         {
             Bitmap bitmapToReturn = new Bitmap(_resolution, _height);
             Random random = new Random();
@@ -126,11 +126,11 @@ namespace Domain
                 }
             }
             bitmapToReturn.RotateFlip(RotateFlipType.RotateNoneFlipY);
-            return bitmapToReturn;
+            return Utilities.ImageConverter.ConvertToPpm(bitmapToReturn);
         }
         
 
-        public Bitmap RenderModel(PositionedModel positionedModel)
+        public string RenderModel(PositionedModel positionedModel)
         {
             Bitmap bitmapToReturn = new Bitmap(_resolution, _height);
             Vector vectorHorizontal = new Vector { X = 4, Y = 0, Z = 0 };
@@ -166,7 +166,7 @@ namespace Domain
                 }
             }
             bitmapToReturn.RotateFlip(RotateFlipType.RotateNoneFlipY);
-            return bitmapToReturn;
+            return Utilities.ImageConverter.ConvertToPpm(bitmapToReturn);
         }
 
         private Color ObtainColor(Ray ray, int depth, PositionedModel model)

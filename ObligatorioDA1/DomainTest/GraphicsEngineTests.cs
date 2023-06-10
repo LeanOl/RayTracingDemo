@@ -2,8 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using Domain;
+using Domain.Utilities;
 using System.IO;
+using Domain;
 
 namespace DomainTest
 {
@@ -75,7 +76,9 @@ namespace DomainTest
                 Resolution=75,
                 SamplesPerPixel=10
             };
-            Bitmap bitmap = engine.RenderModel(testPositionedModel);
+            string reneredPpm = engine.RenderModel(testPositionedModel);
+            
+            Bitmap bitmap = Domain.Utilities.ImageConverter.PpmToBitmap(reneredPpm);
             Assert.IsNotNull(bitmap);
         }
        
@@ -83,6 +86,7 @@ namespace DomainTest
         [TestMethod]
         public void RenderSceneSuccessfully()
         {
+
             Material aLamberitan = new Lambertian { Color = Color.FromArgb(178, 178, 25) };
             Figure aSphere = new Sphere { Radius = 2000 };
             Model aModel = new Model { Figure = aSphere, Material = aLamberitan };
@@ -95,7 +99,8 @@ namespace DomainTest
             Scene testScene= new Scene { ModelList= elements,ActiveCamera = testCamera};
             
             GraphicsEngine engine = new GraphicsEngine{MaxDepth = 3,Resolution = 45,SamplesPerPixel = 10};
-            Bitmap bitmap = engine.RenderScene(testScene);
+            string renderedPpm = engine.RenderScene(testScene);
+            Bitmap bitmap = Domain.Utilities.ImageConverter.PpmToBitmap(renderedPpm);
             Bitmap expectedBitmap = PpmToBitmap("resources/expectedPpm.ppm");
             double acceptedDifference=300;
             Assert.IsTrue(BitmapCompare(bitmap, expectedBitmap) < acceptedDifference); ;
@@ -124,7 +129,8 @@ namespace DomainTest
             Scene testScene = new Scene { ModelList = elements, ActiveCamera = testCamera };
 
             GraphicsEngine engine = new GraphicsEngine { MaxDepth = 50, Resolution = 45, SamplesPerPixel = 20 };
-            Bitmap bitmap = engine.RenderScene(testScene);
+            string renderedPpm = engine.RenderScene(testScene);
+            Bitmap bitmap = Domain.Utilities.ImageConverter.PpmToBitmap(renderedPpm);
             Bitmap expectedBitmap = PpmToBitmap("resources/expectedPpmMetallic.ppm");
             double acceptedDifference = 300;
             Assert.IsTrue(BitmapCompare(bitmap, expectedBitmap) < acceptedDifference); ;
