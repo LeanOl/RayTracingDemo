@@ -18,6 +18,7 @@ namespace Domain
         public Vector CameraLookFrom { get; set; }
         public Vector CameraLookAt { get; set; }
         public double CameraAperture { get; set; } = -1;
+        [NotMapped]
         public Camera ActiveCamera { get; set; }
         public DateTime LastModified { get; set; }
         public DateTime LastRendered { get; set; }

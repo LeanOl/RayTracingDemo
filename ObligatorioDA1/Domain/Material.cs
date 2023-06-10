@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
 
 namespace Domain
@@ -12,6 +11,7 @@ namespace Domain
         public int ColorB { get; set; }
         public Client Proprietary { get; set; }
         public string Name { get; set; }
+        [System.ComponentModel.DataAnnotations.Schema.NotMapped]
         public Color Color
         {
             get => Color.FromArgb(ColorR, ColorG, ColorB);
