@@ -6,11 +6,23 @@ namespace Domain
 {
     public abstract class Material
     {
-        
         public Guid MaterialId { get; set; }
+        public int ColorR { get; set; }
+        public int ColorG { get; set; }
+        public int ColorB { get; set; }
         public Client Proprietary { get; set; }
         public string Name { get; set; }
-        public Color Color { get; set; }
+        public Color Color
+        {
+            get => Color.FromArgb(ColorR, ColorG, ColorB);
+            set
+            {
+                ColorR = value.R;
+                ColorG = value.G;
+                ColorB = value.B;
+            }
+        }
+
 
         private const string FigureNameEmptyMessage = "Figure name should not be empty";
         private const string NameStartsWithWhitespaceMessage = "Figure name should not start or end with whitespaces";

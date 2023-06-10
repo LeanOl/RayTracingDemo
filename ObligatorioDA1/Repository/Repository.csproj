@@ -55,9 +55,9 @@
     <Compile Include="FigureRepository.cs" />
     <Compile Include="ClientRepository.cs" />
     <Compile Include="MaterialRepository.cs" />
-    <Compile Include="Migrations\202306100003420_migration-1.cs" />
-    <Compile Include="Migrations\202306100003420_migration-1.designer.cs">
-      <DependentUpon>202306100003420_migration-1.cs</DependentUpon>
+    <Compile Include="Migrations\202306100035152_migration-1.cs" />
+    <Compile Include="Migrations\202306100035152_migration-1.designer.cs">
+      <DependentUpon>202306100035152_migration-1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelRepository.cs" />
@@ -76,8 +76,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202306100003420_migration-1.resx">
-      <DependentUpon>202306100003420_migration-1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202306100035152_migration-1.resx">
+      <DependentUpon>202306100035152_migration-1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

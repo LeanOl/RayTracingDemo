@@ -36,6 +36,9 @@
                 c => new
                     {
                         MaterialId = c.Guid(nullable: false),
+                        ColorR = c.Int(nullable: false),
+                        ColorG = c.Int(nullable: false),
+                        ColorB = c.Int(nullable: false),
                         Name = c.String(),
                         Roughness = c.Decimal(precision: 18, scale: 2),
                         Discriminator = c.String(nullable: false, maxLength: 128),
