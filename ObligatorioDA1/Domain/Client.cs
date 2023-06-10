@@ -105,7 +105,7 @@ namespace Domain
 
         public override int GetHashCode()
         {
-            return Username.GetHashCode();
+            return ClientId.GetHashCode();
         }
     }
     
