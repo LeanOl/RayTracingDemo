@@ -4,6 +4,9 @@ using System;
 using System.Drawing;
 using Logic;
 using System.Collections.Generic;
+using Repository;
+using Repository.DBRepository;
+using System.Data.Entity;
 
 namespace LogicTest
 {
@@ -12,6 +15,7 @@ namespace LogicTest
     {
         private Client _someClient;
         private MaterialLogic _logic;
+        private RayTracingContext _context;
         private Color _color;
         private const string ValidName = "Figure";
         private const string EmptyNameMessage = "Figure name should not be empty";
@@ -32,14 +36,19 @@ namespace LogicTest
                 Password = password,
                 RegisterDate = testDate
             };
-            _logic = MaterialLogic.Instance;
-            
+
+            Database.SetInitializer(new DropCreateDatabaseAlways<RayTracingContext>());
+            _context = new RayTracingContext();
+            _context.Database.Initialize(true);
+            IMaterialRepository repository = new MaterialDBRepository(_context);
+            _logic = new MaterialLogic(repository);
+
         }
 
         [TestCleanup]
         public void TestCleanup()
         {
-            MaterialLogic.Reset();
+            _context.Dispose();
         }
 
         [TestMethod]
@@ -109,10 +118,15 @@ namespace LogicTest
                 Color = materialColor
 
             };
-            _logic.CreateLambertian(_someClient,"Material1",materialColor);
-            _logic.CreateLambertian(_someClient, "Material2", materialColor);
-
-
+            Material someMaterial2 = new Lambertian()
+            {
+                Proprietary = _someClient,
+                Name = "Material2",
+                Color = materialColor
+            };
+            _context.Materials.Add(someMaterial);
+            _context.Materials.Add(someMaterial2);
+            _context.SaveChanges();
             _logic.DeleteMaterial(someMaterial);
             CollectionAssert.DoesNotContain(_logic.GetClientMaterials(_someClient), someMaterial);
         }
