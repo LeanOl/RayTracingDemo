@@ -5,7 +5,7 @@ using Domain;
 namespace Repository
 {
     
-    public class ClientRepository
+    public class ClientRepository : IClientRepository
     {
          private List<Client> Clients { get; set; }
          public ClientRepository()

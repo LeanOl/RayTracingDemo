@@ -85,32 +85,11 @@
                         CameraAperture = c.Double(nullable: false),
                         LastModified = c.DateTime(nullable: false),
                         LastRendered = c.DateTime(nullable: false),
-                        ActiveCamera_CameraId = c.Guid(),
                         Proprietary_ClientId = c.Guid(),
                     })
                 .PrimaryKey(t => t.SceneId)
-                .ForeignKey("dbo.Cameras", t => t.ActiveCamera_CameraId)
                 .ForeignKey("dbo.Clients", t => t.Proprietary_ClientId)
-                .Index(t => t.ActiveCamera_CameraId)
                 .Index(t => t.Proprietary_ClientId);
-            
-            CreateTable(
-                "dbo.Cameras",
-                c => new
-                    {
-                        CameraId = c.Guid(nullable: false),
-                        LookFrom_X = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        LookFrom_Y = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        LookFrom_Z = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        LookAt_X = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        LookAt_Y = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        LookAt_Z = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        FieldOfView = c.Int(nullable: false),
-                        AspectRatio = c.Double(nullable: false),
-                        Aperture = c.Double(nullable: false),
-                        Discriminator = c.String(nullable: false, maxLength: 128),
-                    })
-                .PrimaryKey(t => t.CameraId);
             
             CreateTable(
                 "dbo.PositionedModels",
@@ -136,7 +115,6 @@
             DropForeignKey("dbo.Scenes", "Proprietary_ClientId", "dbo.Clients");
             DropForeignKey("dbo.PositionedModels", "Scene_SceneId", "dbo.Scenes");
             DropForeignKey("dbo.PositionedModels", "Model_ModelId", "dbo.Models");
-            DropForeignKey("dbo.Scenes", "ActiveCamera_CameraId", "dbo.Cameras");
             DropForeignKey("dbo.Models", "Proprietary_ClientId", "dbo.Clients");
             DropForeignKey("dbo.Models", "Material_MaterialId", "dbo.Materials");
             DropForeignKey("dbo.Models", "Figure_FigureId", "dbo.Figures");
@@ -145,14 +123,12 @@
             DropIndex("dbo.PositionedModels", new[] { "Scene_SceneId" });
             DropIndex("dbo.PositionedModels", new[] { "Model_ModelId" });
             DropIndex("dbo.Scenes", new[] { "Proprietary_ClientId" });
-            DropIndex("dbo.Scenes", new[] { "ActiveCamera_CameraId" });
             DropIndex("dbo.Models", new[] { "Proprietary_ClientId" });
             DropIndex("dbo.Models", new[] { "Material_MaterialId" });
             DropIndex("dbo.Models", new[] { "Figure_FigureId" });
             DropIndex("dbo.Materials", new[] { "Proprietary_ClientId" });
             DropIndex("dbo.Figures", new[] { "Proprietary_ClientId" });
             DropTable("dbo.PositionedModels");
-            DropTable("dbo.Cameras");
             DropTable("dbo.Scenes");
             DropTable("dbo.Models");
             DropTable("dbo.Materials");
