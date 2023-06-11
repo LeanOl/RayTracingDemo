@@ -20,6 +20,7 @@ namespace Repository.DBRepository
 
         public void Add(Material someMaterial)
         {
+            _context.Clients.Attach(someMaterial.Proprietary);
             _context.Materials.Add(someMaterial);
             _context.SaveChanges();
         }

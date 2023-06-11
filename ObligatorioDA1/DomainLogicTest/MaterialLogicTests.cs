@@ -42,6 +42,8 @@ namespace LogicTest
             _context.Database.Initialize(true);
             IMaterialRepository repository = new MaterialDBRepository(_context);
             _logic = new MaterialLogic(repository);
+            _context.Clients.Add(_someClient); 
+            _context.SaveChanges();
 
         }
 

@@ -33,6 +33,8 @@ namespace RepositoryTests.DBRepositoryTests
                 Password = password,
                 RegisterDate = testDate
             };
+            _testContext.Clients.Add(_someClient);
+            _testContext.SaveChanges();
         }
 
         [TestCleanup]

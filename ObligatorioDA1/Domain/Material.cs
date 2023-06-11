@@ -1,5 +1,8 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
+using System.Runtime.CompilerServices;
 
 namespace Domain
 {
@@ -9,7 +12,7 @@ namespace Domain
         public int ColorR { get; set; }
         public int ColorG { get; set; }
         public int ColorB { get; set; }
-        public Client Proprietary { get; set; }
+        public virtual Client Proprietary { get; set; } 
         public string Name { get; set; }
         [System.ComponentModel.DataAnnotations.Schema.NotMapped]
         public Color Color
