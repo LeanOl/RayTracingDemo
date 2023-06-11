@@ -5,7 +5,7 @@ namespace Domain
 {
     public abstract class Material
     {
-        public Guid MaterialId { get; set; }
+        public Guid MaterialId { get; set; } = Guid.NewGuid();
         public int ColorR { get; set; }
         public int ColorG { get; set; }
         public int ColorB { get; set; }

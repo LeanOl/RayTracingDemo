@@ -5,6 +5,7 @@ using System;
 using System.Data.Entity;
 using System.Drawing;
 using Domain;
+using System.Collections.Generic;
 
 namespace RepositoryTests.DBRepositoryTests
 {
@@ -51,6 +52,33 @@ namespace RepositoryTests.DBRepositoryTests
             };
             _materialDBRepository.Add(someMaterial);
             Assert.AreEqual(someMaterial, _materialDBRepository.GetByName("New Material"));
+        }
+
+        [TestMethod]
+        public void GetMaterialsByClientSuccessfully()
+        {
+            List<Material> clientMaterials = new List<Material>();
+            Color materialColor = Color.FromArgb(205, 215, 235);
+            Material someMaterial = new Lambertian()
+            {
+                Proprietary = _someClient,
+                Name = "New Material",
+                Color = materialColor
+
+            };
+            _materialDBRepository.Add(someMaterial);
+            clientMaterials.Add(someMaterial);
+            Material someMaterial2 = new Lambertian()
+            {
+                Proprietary = _someClient,
+                Name = "New Material2",
+                Color = materialColor
+
+            };
+            _materialDBRepository.Add(someMaterial2);
+            clientMaterials.Add(someMaterial2);
+
+            CollectionAssert.AreEquivalent(clientMaterials, _materialDBRepository.GetMaterialsByClient(_someClient));
         }
 
     }

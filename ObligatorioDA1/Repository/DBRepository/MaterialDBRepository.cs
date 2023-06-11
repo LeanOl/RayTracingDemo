@@ -31,7 +31,7 @@ namespace Repository.DBRepository
 
         public List<Material> GetMaterialsByClient(Client someClient)
         {
-            throw new System.NotImplementedException();
+            return _context.Materials.Where(material => material.Proprietary.ClientId == someClient.ClientId).ToList();
         }
 
         public void Delete(Material materialToDelete)
