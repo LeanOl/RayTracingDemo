@@ -4,7 +4,7 @@ using Domain;
 
 namespace Repository
 {
-    public class MaterialRepository
+    public class MaterialRepository : IMaterialRepository
     {
         private List<Material> Materials { get;} = new List<Material>();
         public void Add(Material someMaterial)

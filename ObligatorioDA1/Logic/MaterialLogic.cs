@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using Repository;
+using Repository.DBRepository;
 
 namespace Logic
 {
     public class MaterialLogic
     {
-        private MaterialRepository _repository;
+        private IMaterialRepository _repository;
 
         private MaterialLogic()
         {
-            _repository=new MaterialRepository();
+            _repository=new MaterialDBRepository();
+        }
+        public MaterialLogic(IMaterialRepository repository)
+        {
+            _repository = repository;
         }
 
         public static MaterialLogic Instance { get; } = new MaterialLogic();
