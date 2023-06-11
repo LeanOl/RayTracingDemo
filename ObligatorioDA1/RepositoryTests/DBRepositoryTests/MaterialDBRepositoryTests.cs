@@ -81,5 +81,32 @@ namespace RepositoryTests.DBRepositoryTests
             CollectionAssert.AreEquivalent(clientMaterials, _materialDBRepository.GetMaterialsByClient(_someClient));
         }
 
+        [TestMethod]
+        public void DeleteMaterialSuccessfully()
+        {
+            Color materialColor = Color.FromArgb(205, 215, 235);
+            Material someMaterial = new Lambertian()
+            {
+                Proprietary = _someClient,
+                Name = "New Material",
+                Color = materialColor
+
+            };
+            _materialDBRepository.Add(someMaterial);
+
+            Material someMaterial2 = new Lambertian()
+            {
+                Proprietary = _someClient,
+                Name = "New Material2",
+                Color = materialColor
+
+            };
+            _materialDBRepository.Add(someMaterial2);
+
+
+            _materialDBRepository.Delete(someMaterial);
+            CollectionAssert.DoesNotContain(_materialDBRepository.GetMaterialsByClient(_someClient), someMaterial);
+        }
+
     }
 }

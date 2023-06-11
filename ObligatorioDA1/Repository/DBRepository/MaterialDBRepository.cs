@@ -36,7 +36,8 @@ namespace Repository.DBRepository
 
         public void Delete(Material materialToDelete)
         {
-            throw new System.NotImplementedException();
+            _context.Materials.Remove(materialToDelete);
+            _context.SaveChanges();
         }
     }
 }
