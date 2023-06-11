@@ -1,7 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Data.Entity;
 using Domain;
 using Logic;
+using Repository;
+using Repository.DBRepository;
 
 namespace LogicTest
 {
@@ -9,6 +12,7 @@ namespace LogicTest
     public class ClientLogicTests
     {
         private ClientLogic logic;
+        private RayTracingContext _context ;
         private const string ValidUsername = "John";
         private const string UsernameBelowCharLimit = "A5";
         private const string UsernameAboveCharLimit = "abcdefdsddessssasddeeeeeeeeeeeee";
@@ -31,13 +35,17 @@ namespace LogicTest
         [TestInitialize]
         public void TestInit()
         {
-            logic = ClientLogic.Instance;
+            Database.SetInitializer(new DropCreateDatabaseAlways<RayTracingContext>());
+            _context = new RayTracingContext();
+            _context.Database.Initialize(true);
+            IClientRepository repository = new ClientDBRepository(_context);
+            logic = new ClientLogic(repository);
         }
 
         [TestCleanup]
         public void Cleanup()
         {
-            ClientLogic.Reset();
+          _context.Dispose();
         }
      
         [TestMethod]

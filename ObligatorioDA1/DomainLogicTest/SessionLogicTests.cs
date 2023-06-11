@@ -1,8 +1,11 @@
 ﻿
 using System;
+using System.Data.Entity;
 using Domain;
 using Logic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Repository.DBRepository;
+using Repository;
 
 namespace LogicTest
 {
@@ -12,6 +15,7 @@ namespace LogicTest
         private Client _aClient;
         private ClientLogic _clientLogic;
         private SessionLogic _sessionLogic;
+        private RayTracingContext _context;
         const string Username = "John";
         const string Password = "Abc12345";
         const string WrongCredentialsMessage = "Incorrect user or password";
@@ -27,8 +31,13 @@ namespace LogicTest
                 Password = Password,
                 RegisterDate = testDate
             };
+
+            Database.SetInitializer(new DropCreateDatabaseAlways<RayTracingContext>());
+            _context = new RayTracingContext();
+            _context.Database.Initialize(true);
+            IClientRepository repository = new ClientDBRepository(_context);
             
-            _clientLogic=ClientLogic.Instance;
+            _clientLogic = new ClientLogic(repository); ;
             _sessionLogic= SessionLogic.Instance;
         }
 

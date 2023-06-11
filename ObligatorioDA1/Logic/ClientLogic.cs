@@ -2,6 +2,7 @@
 using System.Data;
 using Domain;
 using Repository;
+using Repository.DBRepository;
 
 
 namespace Logic
@@ -9,17 +10,23 @@ namespace Logic
     
     public class ClientLogic
     {
-        private ClientRepository _repository;
+        private IClientRepository _repository;
+
         
-        private ClientLogic()
+        public ClientLogic()
         {
-            _repository=new ClientRepository();
+            _repository=new ClientDBRepository();
+        }
+
+        public ClientLogic(IClientRepository repository)
+        {
+            _repository = repository;
         }
        public static ClientLogic Instance { get; } = new ClientLogic();
 
        public static void Reset()
        {
-           Instance._repository = new ClientRepository();
+           Instance._repository = new ClientDBRepository();
        }
        public void CreateClient(string username,string password )
         {

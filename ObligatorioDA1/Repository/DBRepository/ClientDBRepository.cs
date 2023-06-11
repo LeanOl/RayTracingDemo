@@ -11,7 +11,11 @@ namespace Repository.DBRepository
         {
             _context = context;
         }
-        
+
+        public ClientDBRepository()
+        {
+            _context = new RayTracingContext();
+        }
 
         public void AddClient(Client aClient)
         {

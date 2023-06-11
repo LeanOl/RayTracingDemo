@@ -5,7 +5,7 @@ namespace Domain
 {
     public class Client
     {
-        public Guid ClientId { get; set; }
+        public Guid ClientId { get; set; } = Guid.NewGuid();
         public string Username { get; set; }
         public string Password { get; set; }
         public DateTime RegisterDate { get; set; }
