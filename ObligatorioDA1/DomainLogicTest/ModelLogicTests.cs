@@ -2,6 +2,9 @@
 using System;
 using Domain;
 using Logic;
+using Repository;
+using Repository.DBRepository;
+using System.Data.Entity;
 
 namespace DomainLogicTest
 {
@@ -12,19 +15,36 @@ namespace DomainLogicTest
         private Client _proprietary;
         private Figure _figure;
         private Material _material;
+        private RayTracingContext _context;
+
         [TestInitialize]
         public void Initialize()
         {
-            _proprietary = new Client{Username = "John"};
-            _modelLogic = ModelLogic.Instance;
+            _proprietary = new Client
+            {
+                Username = "John" ,
+                RegisterDate = DateTime.Now
+                
+            };
             _figure = new Sphere{ Name = "Figure1"};
             _material = new Lambertian { Name = "Material1"};
+
+            
+            Database.SetInitializer(new DropCreateDatabaseAlways<RayTracingContext>());
+            _context = new RayTracingContext();
+            _context.Database.Initialize(true);
+            IModelRepository repository = new ModelDbRepository(_context);
+            _modelLogic = new ModelLogic(repository);
+            _context.Clients.Add(_proprietary);
+            _context.Figures.Add(_figure);
+            _context.Materials.Add(_material);
+            _context.SaveChanges();
 
         }
         [TestCleanup]
         public void TestCleanup()
         {
-            ModelLogic.Reset();
+           _context.Dispose();
         }
         [TestMethod]
         public void CreateModelOk()

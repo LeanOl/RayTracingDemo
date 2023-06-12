@@ -61,6 +61,7 @@
     <Compile Include="ClientRepositoryTest.cs" />
     <Compile Include="DBRepositoryTests\ClientDBRepositoryTests.cs" />
     <Compile Include="DBRepositoryTests\MaterialDBRepositoryTests.cs" />
+    <Compile Include="DBRepositoryTests\ModelDbRepositoryTests.cs" />
     <Compile Include="MaterialRepositoryTest.cs" />
     <Compile Include="FigureRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

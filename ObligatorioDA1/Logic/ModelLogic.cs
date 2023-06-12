@@ -2,17 +2,23 @@
 using System.Collections.Generic;
 using Domain;
 using Repository;
+using Repository.DBRepository;
 
 namespace Logic
 {
     public class ModelLogic
     {
-        private ModelRepository _modelRepository;
+        private IModelRepository _modelRepository;
         private const string DuplicateNameMessage = "There is already a model with this name";
 
         private ModelLogic()
         {
             _modelRepository = new ModelRepository();
+        }
+
+        public ModelLogic(IModelRepository modelRepository)
+        {
+            _modelRepository = modelRepository;
         }
         public static ModelLogic Instance { get; } = new ModelLogic();
 

@@ -15,7 +15,7 @@ namespace Logic
         
         public ClientLogic()
         {
-            _repository=new ClientDBRepository();
+            _repository=new ClientDbRepository();
         }
 
         public ClientLogic(IClientRepository repository)
@@ -26,7 +26,7 @@ namespace Logic
 
        public static void Reset()
        {
-           Instance._repository = new ClientDBRepository();
+           Instance._repository = new ClientDbRepository();
        }
        public void CreateClient(string username,string password )
         {

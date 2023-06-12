@@ -4,7 +4,7 @@ using Domain;
 
 namespace Repository
 {
-    public class ModelRepository
+    public class ModelRepository : IModelRepository
     {
         private List<Model> models=new List<Model>();
         public Model GetModelByName(string name)

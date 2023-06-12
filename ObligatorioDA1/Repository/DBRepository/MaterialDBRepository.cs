@@ -4,17 +4,17 @@ using Domain;
 
 namespace Repository.DBRepository
 {
-    public class MaterialDBRepository : IMaterialRepository
+    public class MaterialDbRepository : IMaterialRepository
     {
         private RayTracingContext _context;
-        public MaterialDBRepository(RayTracingContext context)
+        public MaterialDbRepository(RayTracingContext context)
         {
             _context = context;
         }
 
-        public MaterialDBRepository()
+        public MaterialDbRepository()
         {
-            _context = new RayTracingContext();
+            _context = RayTracingContext.Instance;
         }
 
 

@@ -19,7 +19,7 @@ namespace RepositoryTests.DBRepositoryTests
             Database.SetInitializer(new DropCreateDatabaseAlways<RayTracingContext>());
             _testContext = new RayTracingContext();
             _testContext.Database.Initialize(true);
-            _clientDBRepository = new ClientDBRepository(_testContext);
+            _clientDBRepository = new ClientDbRepository(_testContext);
         }
 
         [TestCleanup]

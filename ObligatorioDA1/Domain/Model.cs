@@ -5,7 +5,7 @@ namespace Domain
 {
     public class Model
     {
-        public Guid ModelId { get; set; }
+        public Guid ModelId { get; set; } = Guid.NewGuid();
         public Client Proprietary { get; set; }
         public string Name { get; set; }
         public Figure Figure { get; set; }
@@ -117,7 +117,15 @@ namespace Domain
 
         public Image GetPreview()
         {
-            return Utilities.ImageConverter.PpmToBitmap(Preview);
+            try
+            {
+                return Utilities.ImageConverter.PpmToBitmap(Preview);
+            }
+            catch (ArgumentNullException e)
+            {
+                return new Bitmap(1,1);
+            }
+            
         }
 
     }

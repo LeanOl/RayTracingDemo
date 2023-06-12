@@ -13,7 +13,7 @@ namespace Logic
 
         private MaterialLogic()
         {
-            _repository=new MaterialDBRepository();
+            _repository=new MaterialDbRepository();
         }
         public MaterialLogic(IMaterialRepository repository)
         {

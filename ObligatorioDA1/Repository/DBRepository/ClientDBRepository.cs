@@ -3,18 +3,18 @@ using Domain;
 
 namespace Repository.DBRepository
 {
-    public class ClientDBRepository : IClientRepository
+    public class ClientDbRepository : IClientRepository
     {
         private RayTracingContext _context;
 
-        public ClientDBRepository(RayTracingContext context)
+        public ClientDbRepository(RayTracingContext context)
         {
             _context = context;
         }
 
-        public ClientDBRepository()
+        public ClientDbRepository()
         {
-            _context = new RayTracingContext();
+            _context = RayTracingContext.Instance;
         }
 
         public void AddClient(Client aClient)

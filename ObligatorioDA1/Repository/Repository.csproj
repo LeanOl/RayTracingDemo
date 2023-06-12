@@ -52,12 +52,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBRepository\ClientDBRepository.cs" />
-    <Compile Include="DBRepository\MaterialDBRepository.cs" />
+    <Compile Include="DBRepository\ClientDbRepository.cs" />
+    <Compile Include="DBRepository\MaterialDbRepository.cs" />
+    <Compile Include="DBRepository\ModelDbRepository.cs" />
     <Compile Include="FigureRepository.cs" />
     <Compile Include="ClientRepository.cs" />
     <Compile Include="IClientRepository.cs" />
     <Compile Include="IMaterialRepository.cs" />
+    <Compile Include="IModelRepository.cs" />
     <Compile Include="MaterialRepository.cs" />
     <Compile Include="Migrations\202306102218193_migration-1.cs" />
     <Compile Include="Migrations\202306102218193_migration-1.designer.cs">
