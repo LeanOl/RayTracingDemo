@@ -81,5 +81,23 @@ namespace RepositoryTests.DBRepositoryTests
             _modelDbRepository.AddModel(model);
             CollectionAssert.AreEquivalent(models, _modelDbRepository.GetClientModels(_someClient));
         }
+
+        [TestMethod]
+        public void DeleteMaterialOk()
+        {
+            Model model = new Model
+            {
+                Name = "Model",
+                Proprietary = _someClient,
+                Figure = _someFigure,
+                Material = _someMaterial
+            };
+
+            _modelDbRepository.AddModel(model);
+
+            _modelDbRepository.DeleteModel(model);
+            Assert.IsNull(_modelDbRepository.GetModelByName("Model"));
+        }
+        
     }
 }

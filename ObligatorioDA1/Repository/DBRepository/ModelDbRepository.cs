@@ -38,7 +38,8 @@ namespace Repository.DBRepository
 
         public void DeleteModel(Model testModel)
         {
-            throw new System.NotImplementedException();
+           _context.Models.Remove(testModel);
+           _context.SaveChanges();
         }
     }
 }
