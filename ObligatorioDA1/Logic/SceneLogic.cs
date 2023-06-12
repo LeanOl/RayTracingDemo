@@ -51,7 +51,7 @@ namespace Logic
             if (_repository.GetByName(sceneDefaultName,proprietary) != null)
             {
                 int i = 1;
-                while (_repository.GetByName(sceneDefaultName + " " + i) != null)
+                while (_repository.GetByName(sceneDefaultName + " " + i,proprietary) != null)
                 {
                     i++;
                 }

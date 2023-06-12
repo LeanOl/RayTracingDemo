@@ -4,7 +4,7 @@ using Domain;
 
 namespace Repository
 {
-    public class SceneRepository
+    public class SceneRepository : ISceneRepository
     {
         private List<Scene> _scenes = new List<Scene>();
         public void Add(Scene testScene)
@@ -17,7 +17,7 @@ namespace Repository
             return _scenes.FirstOrDefault(x => x.Name == newScene);
         }
 
-        public object GetByName(string sceneDefaultName, Client proprietary)
+        public Scene GetByName(string sceneDefaultName, Client proprietary)
         {
             return _scenes.FirstOrDefault(x => 
                 x.Name == sceneDefaultName &&

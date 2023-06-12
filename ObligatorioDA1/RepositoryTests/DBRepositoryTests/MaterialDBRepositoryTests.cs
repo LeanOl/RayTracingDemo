@@ -10,7 +10,7 @@ using System.Collections.Generic;
 namespace RepositoryTests.DBRepositoryTests
 {
     [TestClass]
-    public class MaterialDBRepositoryTests
+    public class MaterialDbRepositoryTests
     {
         private IMaterialRepository _materialDBRepository;
         private Client _someClient;

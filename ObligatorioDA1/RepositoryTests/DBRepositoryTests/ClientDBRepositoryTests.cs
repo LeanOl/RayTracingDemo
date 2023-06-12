@@ -8,7 +8,7 @@ using Repository.DBRepository;
 namespace RepositoryTests.DBRepositoryTests
 {
     [TestClass]
-    public class ClientDBRepositoryTests
+    public class ClientDbRepositoryTests
     {
         private IClientRepository _clientDBRepository;
         private static RayTracingContext _testContext;
