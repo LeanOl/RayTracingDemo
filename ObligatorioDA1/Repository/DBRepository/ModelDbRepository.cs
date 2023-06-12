@@ -33,7 +33,7 @@ namespace Repository.DBRepository
 
         public List<Model> GetClientModels(Client proprietary)
         {
-            throw new System.NotImplementedException();
+            return _context.Models.Where(model => model.Proprietary.ClientId == proprietary.ClientId).ToList();
         }
 
         public void DeleteModel(Model testModel)

@@ -2,6 +2,7 @@
 using Repository.DBRepository;
 using Repository;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using Domain;
 
@@ -61,6 +62,24 @@ namespace RepositoryTests.DBRepositoryTests
             };
             _modelDbRepository.AddModel(model);
             Assert.AreEqual(model, _modelDbRepository.GetModelByName("Model"));
+        }
+
+        [TestMethod]
+        public void GetClientModelsOk()
+        {
+            Model model = new Model
+            {
+                Name = "Model",
+                Proprietary = _someClient,
+                Figure = _someFigure,
+                Material = _someMaterial
+            };
+            List<Model> models = new List<Model>
+            {
+                model
+            };
+            _modelDbRepository.AddModel(model);
+            CollectionAssert.AreEquivalent(models, _modelDbRepository.GetClientModels(_someClient));
         }
     }
 }
