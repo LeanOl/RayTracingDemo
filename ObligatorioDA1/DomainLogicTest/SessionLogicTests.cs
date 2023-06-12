@@ -35,7 +35,7 @@ namespace LogicTest
             Database.SetInitializer(new DropCreateDatabaseAlways<RayTracingContext>());
             _context = new RayTracingContext();
             _context.Database.Initialize(true);
-            IClientRepository repository = new ClientDBRepository(_context);
+            IClientRepository repository = new ClientDbRepository(_context);
             
             _clientLogic = new ClientLogic(repository); ;
             _sessionLogic= SessionLogic.Instance;

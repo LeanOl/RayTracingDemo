@@ -22,7 +22,7 @@ namespace RepositoryTests.DBRepositoryTests
             Database.SetInitializer(new DropCreateDatabaseAlways<RayTracingContext>());
             _testContext = new RayTracingContext();
             _testContext.Database.Initialize(true);
-            _materialDBRepository = new MaterialDBRepository(_testContext);
+            _materialDBRepository = new MaterialDbRepository(_testContext);
             DateTime testDate = DateTime.Now;
             const string username = "John";
             const string password = "Abc12345";

@@ -40,7 +40,7 @@ namespace LogicTest
             Database.SetInitializer(new DropCreateDatabaseAlways<RayTracingContext>());
             _context = new RayTracingContext();
             _context.Database.Initialize(true);
-            IMaterialRepository repository = new MaterialDBRepository(_context);
+            IMaterialRepository repository = new MaterialDbRepository(_context);
             _logic = new MaterialLogic(repository);
             _context.Clients.Add(_someClient); 
             _context.SaveChanges();

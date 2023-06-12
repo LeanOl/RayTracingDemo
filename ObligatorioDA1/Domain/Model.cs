@@ -5,7 +5,7 @@ namespace Domain
 {
     public class Model
     {
-        public Guid ModelId { get; set; }
+        public Guid ModelId { get; set; } = Guid.NewGuid();
         public Client Proprietary { get; set; }
         public string Name { get; set; }
         public Figure Figure { get; set; }
