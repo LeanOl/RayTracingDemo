@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Domain;
 using Repository;
+using Repository.DBRepository;
 
 namespace Logic
 {

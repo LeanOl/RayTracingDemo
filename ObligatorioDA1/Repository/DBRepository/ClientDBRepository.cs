@@ -14,7 +14,7 @@ namespace Repository.DBRepository
 
         public ClientDbRepository()
         {
-            _context = new RayTracingContext();
+            _context = RayTracingContext.Instance;
         }
 
         public void AddClient(Client aClient)

@@ -14,7 +14,7 @@ namespace Repository.DBRepository
 
         public MaterialDbRepository()
         {
-            _context = new RayTracingContext();
+            _context = RayTracingContext.Instance;
         }
 
 

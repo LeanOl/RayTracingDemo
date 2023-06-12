@@ -117,7 +117,15 @@ namespace Domain
 
         public Image GetPreview()
         {
-            return Utilities.ImageConverter.PpmToBitmap(Preview);
+            try
+            {
+                return Utilities.ImageConverter.PpmToBitmap(Preview);
+            }
+            catch (ArgumentNullException e)
+            {
+                return new Bitmap(1,1);
+            }
+            
         }
 
     }

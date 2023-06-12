@@ -15,7 +15,7 @@ namespace Repository.DBRepository
 
         public ModelDbRepository()
         {
-            _context = new RayTracingContext();
+            _context = RayTracingContext.Instance;
         }
         public Model GetModelByName(string name)
         {
