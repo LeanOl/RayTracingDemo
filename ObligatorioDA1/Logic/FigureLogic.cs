@@ -2,6 +2,7 @@
 using Exceptions;
 using Repository;
 using System.Collections.Generic;
+using Repository.DBRepository;
 
 namespace Logic
 {
@@ -11,7 +12,7 @@ namespace Logic
 
         public FigureLogic()
         {
-            _repository = new FigureRepository();
+            _repository = new FigureDBRepository();
         }
 
         public FigureLogic(IFigureRepository repository)

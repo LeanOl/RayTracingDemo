@@ -16,11 +16,12 @@ namespace Repository.DBRepository
 
         public FigureDBRepository()
         {
-            _context = new RayTracingContext();
+            _context = RayTracingContext.Instance;
         }
 
         public void AddFigure(Figure aFigure)
         {
+            _context.Clients.Attach(aFigure.Proprietary);
             _context.Figures.Add(aFigure);
             _context.SaveChanges();
         }

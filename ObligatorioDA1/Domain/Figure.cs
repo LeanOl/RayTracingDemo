@@ -5,7 +5,7 @@ namespace Domain
     public abstract class Figure
     {
         
-        public Guid FigureId { get; set; }
+        public Guid FigureId { get; set; } = Guid.NewGuid();
         public virtual Client Proprietary { get; set; }
         public string Name { get; set; }
 

@@ -47,6 +47,9 @@ namespace LogicTest
                 Name = validFigureName,
                 Radius = validRadius
             };
+
+            _context.Clients.Add(aClient);
+            _context.SaveChanges();
         }
 
         [TestCleanup]
