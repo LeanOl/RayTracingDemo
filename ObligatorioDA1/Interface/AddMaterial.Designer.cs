@@ -2,15 +2,8 @@
 {
     partial class AddMaterial
     {
-        /// <summary> 
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,10 +15,6 @@
 
         #region Component Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             this.txtMaterialName = new System.Windows.Forms.TextBox();
@@ -46,73 +35,55 @@
             this.txtRoughness = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // txtMaterialName
-            // 
+        
             this.txtMaterialName.Location = new System.Drawing.Point(196, 78);
             this.txtMaterialName.Name = "txtMaterialName";
             this.txtMaterialName.Size = new System.Drawing.Size(135, 20);
             this.txtMaterialName.TabIndex = 1;
-            // 
-            // lblMaterialName
-            // 
+
             this.lblMaterialName.AutoSize = true;
             this.lblMaterialName.Location = new System.Drawing.Point(193, 51);
             this.lblMaterialName.Name = "lblMaterialName";
             this.lblMaterialName.Size = new System.Drawing.Size(35, 13);
             this.lblMaterialName.TabIndex = 2;
             this.lblMaterialName.Text = "Name";
-            // 
-            // txtRed
-            // 
+
             this.txtRed.Location = new System.Drawing.Point(196, 148);
             this.txtRed.Name = "txtRed";
             this.txtRed.Size = new System.Drawing.Size(73, 20);
             this.txtRed.TabIndex = 3;
-            // 
-            // label1
-            // 
+
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(193, 123);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(27, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "Red";
-            // 
-            // txtGreen
-            // 
+
             this.txtGreen.Location = new System.Drawing.Point(275, 148);
             this.txtGreen.Name = "txtGreen";
             this.txtGreen.Size = new System.Drawing.Size(73, 20);
             this.txtGreen.TabIndex = 5;
-            // 
-            // label2
-            // 
+
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(272, 123);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "Green";
-            // 
-            // txtBlue
-            // 
+
             this.txtBlue.Location = new System.Drawing.Point(354, 148);
             this.txtBlue.Name = "txtBlue";
             this.txtBlue.Size = new System.Drawing.Size(73, 20);
             this.txtBlue.TabIndex = 7;
-            // 
-            // label3
-            // 
+
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(351, 123);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(28, 13);
             this.label3.TabIndex = 8;
             this.label3.Text = "Blue";
-            // 
-            // btnAdd
-            // 
+
             this.btnAdd.Location = new System.Drawing.Point(196, 250);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(80, 34);
@@ -121,9 +92,7 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.TextChanged += new System.EventHandler(this.btnAdd_TextChanged);
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnCancel
-            // 
+
             this.btnCancel.Location = new System.Drawing.Point(354, 250);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(80, 34);
@@ -131,9 +100,7 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // lblErrorMessage
-            // 
+
             this.lblErrorMessage.AutoSize = true;
             this.lblErrorMessage.BackColor = System.Drawing.Color.Transparent;
             this.lblErrorMessage.ForeColor = System.Drawing.Color.Red;
@@ -142,9 +109,7 @@
             this.lblErrorMessage.Size = new System.Drawing.Size(82, 13);
             this.lblErrorMessage.TabIndex = 11;
             this.lblErrorMessage.Text = "                         ";
-            // 
-            // rbMetallic
-            // 
+
             this.rbMetallic.AutoSize = true;
             this.rbMetallic.Location = new System.Drawing.Point(37, 65);
             this.rbMetallic.Name = "rbMetallic";
@@ -153,9 +118,7 @@
             this.rbMetallic.Text = "Metallic";
             this.rbMetallic.UseVisualStyleBackColor = true;
             this.rbMetallic.CheckedChanged += new System.EventHandler(this.rbMetallic_CheckedChanged);
-            // 
-            // rbLambertian
-            // 
+
             this.rbLambertian.AutoSize = true;
             this.rbLambertian.Checked = true;
             this.rbLambertian.Location = new System.Drawing.Point(37, 42);
@@ -165,9 +128,7 @@
             this.rbLambertian.TabStop = true;
             this.rbLambertian.Text = "Lambertian";
             this.rbLambertian.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
+ 
             this.groupBox1.Controls.Add(this.rbMetallic);
             this.groupBox1.Controls.Add(this.rbLambertian);
             this.groupBox1.Location = new System.Drawing.Point(455, 45);
@@ -176,9 +137,7 @@
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select material Type";
-            // 
-            // lblRoughness
-            // 
+
             this.lblRoughness.AutoSize = true;
             this.lblRoughness.Location = new System.Drawing.Point(198, 185);
             this.lblRoughness.Name = "lblRoughness";
@@ -186,17 +145,13 @@
             this.lblRoughness.TabIndex = 16;
             this.lblRoughness.Text = "Roughness";
             this.lblRoughness.Visible = false;
-            // 
-            // txtRoughness
-            // 
+
             this.txtRoughness.Location = new System.Drawing.Point(196, 210);
             this.txtRoughness.Name = "txtRoughness";
             this.txtRoughness.Size = new System.Drawing.Size(73, 20);
             this.txtRoughness.TabIndex = 17;
             this.txtRoughness.Visible = false;
-            // 
-            // AddMaterial
-            // 
+
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.txtRoughness);
