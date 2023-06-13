@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Domain;
+using Exceptions;
 using Logic;
 
 namespace Interface
@@ -28,8 +29,16 @@ namespace Interface
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            ModelLogic.Instance.DeleteModel(_model);
-            Dispose();
+            try
+            {
+                ModelLogic.Instance.DeleteModel(_model);
+                Dispose();
+            }
+            catch (CannotDeleteException exception)
+            {
+                MessageBox.Show(exception.Message,
+                    "Error: Element used in a scene");
+            }
         }
     }
 }
