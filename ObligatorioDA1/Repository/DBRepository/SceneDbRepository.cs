@@ -62,5 +62,7 @@ namespace Repository.DBRepository
             _context.Entry(testScene).State = EntityState.Modified;
             _context.SaveChanges();
         }
+
+       
     }
 }

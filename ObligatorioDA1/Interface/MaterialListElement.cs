@@ -35,9 +35,17 @@ namespace Interface
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            try
+            {
+                MaterialLogic.Instance.DeleteMaterial(_material);
+                Dispose();
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(ex.Message);
+            }
             
-            MaterialLogic.Instance.DeleteMaterial(_material);
-            Dispose();
+            
         }
     }
 }

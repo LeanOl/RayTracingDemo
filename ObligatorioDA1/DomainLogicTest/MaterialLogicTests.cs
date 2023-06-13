@@ -41,7 +41,9 @@ namespace LogicTest
             _context = new RayTracingContext();
             _context.Database.Initialize(true);
             IMaterialRepository repository = new MaterialDbRepository(_context);
-            _logic = new MaterialLogic(repository);
+            IModelRepository modelRepository= new ModelDbRepository(_context);
+            ModelLogic modelLogic = new ModelLogic(modelRepository);
+            _logic = new MaterialLogic(repository,modelLogic);
             _context.Clients.Add(_someClient); 
             _context.SaveChanges();
 
@@ -147,6 +149,47 @@ namespace LogicTest
             Assert.AreEqual(testMaterial, _logic.GetMaterialByName(ValidName));
         }
 
+        [TestMethod]
+        public void DeleteMaterialUsedByModel_ThrowException()
+        {
+            Material someMaterial = new Lambertian()
+            {
+                Proprietary = _someClient,
+                Name = "Material1",
+                Color = _color
+            };
+            _context.Materials.Add(someMaterial);
+
+            Figure someFigure = new Sphere()
+            {
+                Name = "Sphere1",
+                Proprietary = _someClient,
+                Radius = 1
+            };
+            _context.Figures.Add(someFigure);
+
+            Model someModel = new Model()
+            {
+                Proprietary = _someClient,
+                Name = "Model1",
+                Material = someMaterial,
+                Figure = someFigure
+            };
+            _context.Models.Add(someModel);
+
+            _context.SaveChanges();
+
+            try
+            {
+                _logic.DeleteMaterial(someMaterial);
+                Assert.Fail("Should throw exception");
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual("This material is used by a model", ex.Message);
+            }
+
+        }
         
 
         

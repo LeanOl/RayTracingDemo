@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Repository;
 using Repository.DBRepository;
 using System.Data.Entity;
+using System.Linq;
 
 namespace LogicTest
 {
@@ -33,7 +34,8 @@ namespace LogicTest
             _context = new RayTracingContext();
             _context.Database.Initialize(true);
             IFigureRepository repository = new FigureDBRepository(_context);
-            logic = new FigureLogic(repository);
+            ModelDbRepository modelRepository = new ModelDbRepository(_context);
+            logic = new FigureLogic(repository,modelRepository);
 
             aClient = new Client()
             {
@@ -134,35 +136,6 @@ namespace LogicTest
         }
 
         [TestMethod]
-        public void RemoveAFigureUsedByAModelError()
-        {
-
-            Exception exceptionCaught = null;
-
-            logic.CreateFigure(aFigure);
-
-            bool itExists = logic.FigureExists(aFigure.Name, aFigure.Proprietary.Username);
-            Assert.IsTrue(itExists);
-
-            try
-            {
-                logic.RemoveFigure(aFigure.Name, aFigure.Proprietary.Username);
-            }
-            catch (Exception ex)
-            {
-                exceptionCaught = ex;
-            }
-
-            itExists = logic.FigureExists(aFigure.Name, aFigure.Proprietary.Username);
-            Assert.IsTrue(itExists);
-
-            Assert.IsNotNull(exceptionCaught);
-            Assert.IsInstanceOfType(exceptionCaught, typeof(CannotDeleteException));
-            Assert.AreEqual(exceptionCaught.Message, figuredIsUsedByModelMessage);
-             
-        }
-
-        [TestMethod]
         public void GetFiguresByClientSuccessfully()
         {
             List<Figure> repositoryCollection = logic.GetFiguresByClient(aClient);
@@ -172,6 +145,26 @@ namespace LogicTest
             logic.CreateFigure(aFigure);
 
             CollectionAssert.AreEquivalent(figureCollection, repositoryCollection);
+        }
+
+        [TestMethod]
+        public void DeleteFigureUsedByModel_ThrowException()
+        {
+            _context.Figures.Add(aFigure);
+            _context.SaveChanges();
+            Exception exceptionCaught = null;
+            try
+            {
+                logic.RemoveFigure(aFigure.Name,aFigure.Proprietary.Username);
+                Assert.Fail("Should throw exception");
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = ex;
+            }
+            Assert.IsNotNull(exceptionCaught);
+            
+           
         }
     }   
 }

@@ -26,5 +26,15 @@ namespace Repository
         {
             models.Remove(testModel);
         }
+
+        public bool IsMaterialUsed(Material materialToDelete)
+        {
+           return models.Any(model => model.Material.Equals(materialToDelete));
+        }
+
+        public bool IsFigureUsed(string name, string username)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

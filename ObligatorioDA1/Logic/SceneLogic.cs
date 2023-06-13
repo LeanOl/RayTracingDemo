@@ -125,5 +125,12 @@ namespace Logic
         {
             scene.SavePreviewAsJpg(path);
         }
+
+        public bool IsModelUsed(Model model)
+        {
+            List<Scene> userScenes = _repository.GetScenesByClient(model.Proprietary);
+
+            return userScenes.Exists(scene => scene.ModelList.Exists(positionedModel => positionedModel.Model.ModelId == model.ModelId));
+        }
     }
 }

@@ -45,5 +45,15 @@ namespace Repository.DBRepository
            _context.Models.Remove(testModel);
            _context.SaveChanges();
         }
+
+        public bool IsMaterialUsed(Material materialToDelete)
+        {
+            return _context.Models.Any(model => model.Material.MaterialId == materialToDelete.MaterialId);
+        }
+
+        public bool IsFigureUsed(string name, string username)
+        {
+            return _context.Models.Any(model => model.Figure.Name == name && model.Proprietary.Username == username);
+        }
     }
 }
