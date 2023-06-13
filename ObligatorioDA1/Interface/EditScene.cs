@@ -39,47 +39,71 @@ namespace Interface
 
         private void EditScene_Load(object sender, EventArgs e)
         {
-            flpModels.Parent = this;
-            flpPositionedModels.Parent = this;
-            Client proprietary = SceneToEdit.Proprietary;
-            List<Model> availableModels = ModelLogic.Instance.GetClientModels(proprietary);
-            List<PositionedModel> sceneModels = SceneToEdit.ModelList;
-            foreach (Model model in availableModels)
+            try
             {
-               SceneModelListElement newElement = new SceneModelListElement(model);
-               newElement.ParentScene = SceneToEdit;
-               flpModels.Controls.Add(newElement);
-               
-               
-            }
+                flpModels.Parent = this;
+                flpPositionedModels.Parent = this;
+                Client proprietary = SceneToEdit.Proprietary;
+                List<Model> availableModels = ModelLogic.Instance.GetClientModels(proprietary);
+                List<PositionedModel> sceneModels = SceneToEdit.ModelList;
+                foreach (Model model in availableModels)
+                {
+                    SceneModelListElement newElement = new SceneModelListElement(model);
+                    newElement.ParentScene = SceneToEdit;
+                    flpModels.Controls.Add(newElement);
 
-            foreach (PositionedModel model in sceneModels)
-            {
-                PositionedSceneElement newElement = new PositionedSceneElement(model);
-                newElement.ParentScene = SceneToEdit;
-                flpPositionedModels.Controls.Add(newElement);
+
+                }
+
+                foreach (PositionedModel model in sceneModels)
+                {
+                    PositionedSceneElement newElement = new PositionedSceneElement(model);
+                    newElement.ParentScene = SceneToEdit;
+                    flpPositionedModels.Controls.Add(newElement);
+                }
             }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            
         }
 
         private void btnRender_Click(object sender, EventArgs e)
         {
-            SceneLogic.Instance.UpdatePreviewNoDefocus(SceneToEdit);
-            picRenderedImage.Image = SceneToEdit.GetPreviewImage();
-            SceneLogic.Instance.UpdateScene(SceneToEdit);
-            lblLastRendered.Text = SceneToEdit.LastRendered.ToString();
-            lblOutdatedWarning.Visible= false;
+            try
+            {
+                SceneLogic.Instance.UpdatePreviewNoDefocus(SceneToEdit);
+                picRenderedImage.Image = SceneToEdit.GetPreviewImage();
+                SceneLogic.Instance.UpdateScene(SceneToEdit);
+                lblLastRendered.Text = SceneToEdit.LastRendered.ToString();
+                lblOutdatedWarning.Visible = false;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+           
         }
 
         public void UpdatePositionedModels()
         {
-            flpPositionedModels.Controls.Clear();
-            List<PositionedModel> sceneModels = SceneToEdit.ModelList;
-            foreach (PositionedModel model in sceneModels)
+            try
             {
-                PositionedSceneElement newElement = new PositionedSceneElement(model);
-                newElement.ParentScene = SceneToEdit;
-                flpPositionedModels.Controls.Add(newElement);
+                flpPositionedModels.Controls.Clear();
+                List<PositionedModel> sceneModels = SceneToEdit.ModelList;
+                foreach (PositionedModel model in sceneModels)
+                {
+                    PositionedSceneElement newElement = new PositionedSceneElement(model);
+                    newElement.ParentScene = SceneToEdit;
+                    flpPositionedModels.Controls.Add(newElement);
+                }
             }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            
         }
 
         public void MakeWarningVisible()

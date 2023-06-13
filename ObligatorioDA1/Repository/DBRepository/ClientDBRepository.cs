@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Domain;
+using Exceptions;
 
 namespace Repository.DBRepository
 {
@@ -19,13 +21,29 @@ namespace Repository.DBRepository
 
         public void AddClient(Client aClient)
         {
-            _context.Clients.Add(aClient);
-            _context.SaveChanges();
+            try
+            {
+                _context.Clients.Add(aClient);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new DatabaseException("Database error",e);
+            }
+            
         }
 
         public Client GetClientByUsername(string username)
         {
-            return _context.Clients.FirstOrDefault(aClient => aClient.Username == username);
+            try
+            {
+                return _context.Clients.FirstOrDefault(aClient => aClient.Username == username);
+            }
+            catch (Exception e)
+            {
+                throw new DatabaseException("Database error",e);
+            }
+            
         }
     }
 }

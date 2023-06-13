@@ -39,6 +39,16 @@ namespace Interface
                 MessageBox.Show(exception.Message,
                     "Error: Element used in a scene");
             }
+            catch (DatabaseException exception)
+            {
+                MessageBox.Show(exception.Message,
+                    "Error: Database error");
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message,
+                    "Error");
+            }
         }
     }
 }

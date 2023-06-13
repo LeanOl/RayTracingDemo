@@ -22,13 +22,22 @@ namespace Interface
 
         private void MaterialList_Load(object sender, EventArgs e)
         {
-            Client activeUser = SessionLogic.Instance.GetActiveUser();
-            List<Material> materials= MaterialLogic.Instance.GetClientMaterials(activeUser);
-            foreach (var material in materials)
+            try
             {
-                MaterialListElement newMaterial = new MaterialListElement(material);
-                flpMaterials.Controls.Add(newMaterial);
+                Client activeUser = SessionLogic.Instance.GetActiveUser();
+                List<Material> materials = MaterialLogic.Instance.GetClientMaterials(activeUser);
+                foreach (var material in materials)
+                {
+                    MaterialListElement newMaterial = new MaterialListElement(material);
+                    flpMaterials.Controls.Add(newMaterial);
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            
             
         }
     }

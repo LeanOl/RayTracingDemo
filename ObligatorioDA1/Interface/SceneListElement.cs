@@ -33,10 +33,18 @@ namespace Interface
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            Control parentControl = Parent.Parent;
-            parentControl.Controls.Clear();
-            UserControl anEditScene = new EditScene(_scene);
-            parentControl.Controls.Add(anEditScene);
+            try
+            {
+                Control parentControl = Parent.Parent;
+                parentControl.Controls.Clear();
+                UserControl anEditScene = new EditScene(_scene);
+                parentControl.Controls.Add(anEditScene);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+            
             
             
         }

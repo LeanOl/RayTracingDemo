@@ -27,13 +27,21 @@ namespace Interface
 
         private void FigureList_Load(object sender, EventArgs e)
         {
-            Client activeUser = SessionLogic.Instance.GetActiveUser();
-            List<Figure> figures = FigureLogic.Instance.GetFiguresByClient(activeUser);
 
-            foreach (Figure figure in figures)
+            try
             {
-                FigureListElement newFigure = new FigureListElement(figure);
-                flpFigures.Controls.Add(newFigure);
+                Client activeUser = SessionLogic.Instance.GetActiveUser();
+                List<Figure> figures = FigureLogic.Instance.GetFiguresByClient(activeUser);
+
+                foreach (Figure figure in figures)
+                {
+                    FigureListElement newFigure = new FigureListElement(figure);
+                    flpFigures.Controls.Add(newFigure);
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
             }
         }
     }
