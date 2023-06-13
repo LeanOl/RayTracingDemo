@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Domain;
+using Exceptions;
 
 namespace Repository.DBRepository
 {
@@ -20,25 +22,59 @@ namespace Repository.DBRepository
 
         public void Add(Material someMaterial)
         {
-            _context.Clients.Attach(someMaterial.Proprietary);
-            _context.Materials.Add(someMaterial);
-            _context.SaveChanges();
+            try
+            {
+                _context.Clients.Attach(someMaterial.Proprietary);
+                _context.Materials.Add(someMaterial);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new DatabaseException("Database error", e);
+            }
+
         }
 
         public Material GetByName(string name)
         {
-            return _context.Materials.FirstOrDefault(material => material.Name == name);
+            try
+            {
+                return _context.Materials.FirstOrDefault(material => material.Name == name);
+            }
+            catch (Exception e)
+            {
+                throw new DatabaseException("Database error", e);
+            }
+            
         }
 
         public List<Material> GetMaterialsByClient(Client someClient)
         {
-            return _context.Materials.Where(material => material.Proprietary.ClientId == someClient.ClientId).ToList();
+            try
+            {
+                return _context.Materials.Where(material => 
+                        material.Proprietary.ClientId == someClient.ClientId
+                        )
+                    .ToList();
+            }
+            catch (Exception e)
+            {
+                throw new DatabaseException("Database error", e);
+            }
         }
 
         public void Delete(Material materialToDelete)
         {
-            _context.Materials.Remove(materialToDelete);
-            _context.SaveChanges();
+            try
+            {
+                _context.Materials.Remove(materialToDelete);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new DatabaseException("Database error", e);
+            }
+            
         }
     }
 }
