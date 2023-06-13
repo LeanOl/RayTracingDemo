@@ -10,14 +10,17 @@ namespace Logic
     public class MaterialLogic
     {
         private IMaterialRepository _repository;
+        private ModelLogic _modelLogic;
 
         private MaterialLogic()
         {
             _repository=new MaterialDbRepository();
+            _modelLogic = ModelLogic.Instance;
         }
-        public MaterialLogic(IMaterialRepository repository)
+        public MaterialLogic(IMaterialRepository repository, ModelLogic modelLogic)
         {
             _repository = repository;
+            _modelLogic = modelLogic;
         }
 
         public static MaterialLogic Instance { get; } = new MaterialLogic();
@@ -63,7 +66,7 @@ namespace Logic
 
         public void DeleteMaterial(Material materialToDelete)
         {
-            if(ModelLogic.Instance.IsMaterialUsed(materialToDelete))
+            if(_modelLogic.IsMaterialUsed(materialToDelete))
                 throw new ConstraintException("This material is used by a model");
             _repository.Delete(materialToDelete);
         }

@@ -41,7 +41,9 @@ namespace LogicTest
             _context = new RayTracingContext();
             _context.Database.Initialize(true);
             IMaterialRepository repository = new MaterialDbRepository(_context);
-            _logic = new MaterialLogic(repository);
+            IModelRepository modelRepository= new ModelDbRepository(_context);
+            ModelLogic modelLogic = new ModelLogic(modelRepository);
+            _logic = new MaterialLogic(repository,modelLogic);
             _context.Clients.Add(_someClient); 
             _context.SaveChanges();
 
