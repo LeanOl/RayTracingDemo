@@ -65,6 +65,7 @@ namespace Interface
         {
             SceneLogic.Instance.UpdatePreviewNoDefocus(SceneToEdit);
             picRenderedImage.Image = SceneToEdit.GetPreviewImage();
+            SceneLogic.Instance.UpdateScene(SceneToEdit);
             lblLastRendered.Text = SceneToEdit.LastRendered.ToString();
             lblOutdatedWarning.Visible= false;
         }
@@ -103,6 +104,7 @@ namespace Interface
                 SceneLogic.Instance.UpdateCameraSettings(SceneToEdit, lookFrom, lookAt, fov, aperture);
                 ClearTextboxes();
                 SceneToEdit.LastModified = DateTime.Now;
+                SceneLogic.Instance.UpdateScene(SceneToEdit);
                 lblOutdatedWarning.Visible = true;
             }
             catch (ArgumentOutOfRangeException ex)
@@ -124,11 +126,13 @@ namespace Interface
             txtLookAtX.Text = "";
             txtLookAtY.Text = "";
             txtLookAtZ.Text = "";
+            txtAperture.Text = "";
         }
 
         private void btnRenderDefocus_Click(object sender, EventArgs e)
         {
             SceneLogic.Instance.UpdatePreviewDefocus(SceneToEdit);
+            SceneLogic.Instance.UpdateScene(SceneToEdit);
             picRenderedImage.Image = SceneToEdit.GetPreviewImage();
             lblLastRendered.Text = SceneToEdit.LastRendered.ToString();
             lblOutdatedWarning.Visible = false;

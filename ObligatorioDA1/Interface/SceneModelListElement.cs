@@ -2,6 +2,7 @@
 using Microsoft.VisualBasic;
 using System.Windows.Forms;
 using Domain;
+using Logic;
 
 namespace Interface
 {
@@ -40,6 +41,7 @@ namespace Interface
                 Vector position = new Vector { X = x, Y = y, Z = z };
                 ParentScene.AddPositionedModel(ModelToDisplay, position);
                 ParentScene.LastModified = DateTime.Now;
+                SceneLogic.Instance.UpdateScene(ParentScene);
                 EditScene editScene = Parent.Parent as EditScene;
                 editScene.UpdatePositionedModels();
                 editScene.MakeWarningVisible();

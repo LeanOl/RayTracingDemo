@@ -31,6 +31,7 @@ namespace Interface
         private void btnDelete_Click(object sender, EventArgs e)
         {
             SceneLogic.Instance.DeleteModelFromScene(ParentScene, PositionedModelToDisplay);
+            SceneLogic.Instance.UpdateScene(ParentScene);
             EditScene editScene = Parent.Parent as EditScene;
             editScene.MakeWarningVisible();
             Dispose();

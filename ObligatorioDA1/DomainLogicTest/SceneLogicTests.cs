@@ -3,6 +3,9 @@ using System;
 using Domain;
 using Logic;
 using System.Collections.Generic;
+using Repository;
+using Repository.DBRepository;
+using System.Data.Entity;
 
 namespace DomainLogicTest
 {
@@ -10,18 +13,72 @@ namespace DomainLogicTest
     public class SceneLogicTests
     {
         SceneLogic _logic;
-        private Client _proprietary = new Client { Username = "John" };
+        private Client _proprietary ;
+        private Figure _someFigure ;
+        private Material _someMaterial;
+        private Model _someModel;
+        private PositionedModel _somePositionedModel ;
+        private RayTracingContext _context;
+
 
         [TestInitialize]
         public void Initialize()
         {
-            _logic = SceneLogic.Instance;
+            _proprietary = new Client
+            {
+                Username = "John",
+                Password = "John123",
+                RegisterDate = DateTime.Now
+            };
+            _someFigure = new Sphere
+            {
+                Name = "Sphere",
+                Radius = 1,
+                Proprietary = _proprietary
+            };
+            _someMaterial = new Lambertian
+            {
+                Name = "Lambertian",
+                Color = System.Drawing.Color.FromArgb(255, 255, 255),
+                Proprietary = _proprietary
+            };
+            _someModel = new Model
+            {
+                Name = "Model",
+                Proprietary = _proprietary,
+                Figure = _someFigure,
+                Material = _someMaterial
+            };
+            _somePositionedModel = new PositionedModel
+            {
+                Model = _someModel,
+                Position = new Vector
+                {
+                    X = 0,
+                    Y = 0,
+                    Z = 0
+                }
+            };
+
+            Database.SetInitializer(new DropCreateDatabaseAlways<RayTracingContext>());
+            _context = new RayTracingContext();
+            _context.Database.Initialize(true);
+            ISceneRepository repository = new SceneDbRepository(_context);
+            _logic = new SceneLogic(repository);
+
+            _context.Clients.Add(_proprietary);
+            _context.Figures.Add(_someFigure);
+            _context.Materials.Add(_someMaterial);
+            _context.Models.Add(_someModel);
+            _context.SaveChanges();
+
+            
         }
 
         [TestCleanup]
         public void TestCleanup()
         {
-            SceneLogic.Reset();
+            _context.Dispose();
         }
         [TestMethod]
         public void CreateEmptySceneSuccessfully()

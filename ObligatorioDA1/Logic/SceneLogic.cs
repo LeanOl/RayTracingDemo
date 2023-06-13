@@ -2,16 +2,22 @@
 using System.Drawing;
 using Domain;
 using Repository;
+using Repository.DBRepository;
 
 namespace Logic
 {
     public class SceneLogic
     {
-        private SceneRepository _repository;
+        private ISceneRepository _repository;
 
         private SceneLogic()
         {
-            _repository = new SceneRepository();
+            _repository = new SceneDbRepository();
+        }
+
+        public SceneLogic(ISceneRepository repository)
+        {
+            _repository = repository;
         }
 
         public static SceneLogic Instance { get; } = new SceneLogic();
@@ -51,7 +57,7 @@ namespace Logic
             if (_repository.GetByName(sceneDefaultName,proprietary) != null)
             {
                 int i = 1;
-                while (_repository.GetByName(sceneDefaultName + " " + i) != null)
+                while (_repository.GetByName(sceneDefaultName + " " + i,proprietary) != null)
                 {
                     i++;
                 }
@@ -61,6 +67,10 @@ namespace Logic
             return sceneDefaultName;
         }
 
+        public void UpdateScene(Scene testScene)
+        {
+            _repository.Update(testScene);
+        }
         public Scene GetSceneByName(string emptyScene)
         {
             return _repository.GetByName(emptyScene);

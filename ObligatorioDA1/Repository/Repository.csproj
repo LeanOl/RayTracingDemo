@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -55,6 +55,7 @@
     <Compile Include="DBRepository\ClientDbRepository.cs" />
     <Compile Include="DBRepository\MaterialDbRepository.cs" />
     <Compile Include="DBRepository\ModelDbRepository.cs" />
+    <Compile Include="DBRepository\SceneDbRepository.cs" />
     <Compile Include="DBRepository\FigureDBRepository.cs" />
     <Compile Include="FigureRepository.cs" />
     <Compile Include="ClientRepository.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="IFigureRepository.cs" />
     <Compile Include="IMaterialRepository.cs" />
     <Compile Include="IModelRepository.cs" />
+    <Compile Include="ISceneRepository.cs" />
     <Compile Include="MaterialRepository.cs" />
     <Compile Include="Migrations\202306102218193_migration-1.cs" />
     <Compile Include="Migrations\202306102218193_migration-1.designer.cs">

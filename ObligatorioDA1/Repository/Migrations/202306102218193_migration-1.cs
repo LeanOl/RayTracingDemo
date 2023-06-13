@@ -55,9 +55,9 @@
                         ModelId = c.Guid(nullable: false),
                         Name = c.String(),
                         Preview = c.String(),
-                        Figure_FigureId = c.Guid(),
-                        Material_MaterialId = c.Guid(),
-                        Proprietary_ClientId = c.Guid(),
+                        Figure_FigureId = c.Guid(nullable:false),
+                        Material_MaterialId = c.Guid(nullable: false),
+                        Proprietary_ClientId = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => t.ModelId)
                 .ForeignKey("dbo.Figures", t => t.Figure_FigureId)
