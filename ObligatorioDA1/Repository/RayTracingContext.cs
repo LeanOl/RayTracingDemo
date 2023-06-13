@@ -7,7 +7,7 @@ namespace Repository
     {
         public RayTracingContext() : base()
         {
-
+            
         }
 
         public static RayTracingContext Instance { get; }= new RayTracingContext();

@@ -4,7 +4,7 @@ using Domain;
 
 namespace Repository
 {
-    public class FigureRepository
+    public class FigureRepository : IFigureRepository
     {
         private List<Figure> _figures { get; set; }
 
@@ -17,7 +17,7 @@ namespace Repository
             _figures.Add(aFigure);
         }
 
-        public Figure GetFigureByName(string name)
+        public Figure GetFigureByNameAndUsername(string name, string username)
         {
             return _figures.FirstOrDefault(aFigure => aFigure.Name == name);
         }
@@ -36,7 +36,7 @@ namespace Repository
 
         public void RemoveFigureByName(string name, string username)
         {
-            _figures.Remove(GetFigureByName(name));
+            _figures.Remove(GetFigureByNameAndUsername(name,username));
         }
 
         public List<Figure> GetFiguresByClient(Client client)

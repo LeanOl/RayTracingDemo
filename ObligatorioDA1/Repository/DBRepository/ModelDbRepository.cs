@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using Domain;
 
@@ -33,7 +34,10 @@ namespace Repository.DBRepository
 
         public List<Model> GetClientModels(Client proprietary)
         {
-            return _context.Models.Where(model => model.Proprietary.ClientId == proprietary.ClientId).ToList();
+            return _context.Models.Where(model => model.Proprietary.ClientId == proprietary.ClientId)
+                .Include(model=> model.Material)
+                .Include(model => model.Figure )
+                .ToList();
         }
 
         public void DeleteModel(Model testModel)

@@ -2,17 +2,24 @@
 using Exceptions;
 using Repository;
 using System.Collections.Generic;
+using Repository.DBRepository;
 
 namespace Logic
 {
     public class FigureLogic
     {
-        private FigureRepository _repository;
+        private IFigureRepository _repository;
 
-        private FigureLogic()
+        public FigureLogic()
         {
-            _repository = new FigureRepository();
+            _repository = new FigureDBRepository();
         }
+
+        public FigureLogic(IFigureRepository repository)
+        {
+            _repository = repository;
+        }
+
         public static FigureLogic Instance { get; } = new FigureLogic();
 
         public static void Reset()
