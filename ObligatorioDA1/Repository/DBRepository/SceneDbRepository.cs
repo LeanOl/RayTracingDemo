@@ -42,7 +42,8 @@ namespace Repository.DBRepository
 
         public void Delete(Scene testScene)
         {
-            throw new System.NotImplementedException();
+            _context.Scenes.Remove(testScene);
+            _context.SaveChanges();
         }
     }
 }
