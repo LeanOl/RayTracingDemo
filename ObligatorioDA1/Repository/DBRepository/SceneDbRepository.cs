@@ -30,12 +30,14 @@ namespace Repository.DBRepository
 
         public Scene GetByName(string sceneDefaultName, Client proprietary)
         {
-            throw new System.NotImplementedException();
+            return _context.Scenes.FirstOrDefault(x =>
+                x.Name == sceneDefaultName &&
+                x.Proprietary.Equals(proprietary));
         }
 
         public List<Scene> GetScenesByClient(Client someClient)
         {
-            throw new System.NotImplementedException();
+            return _context.Scenes.Where(x => x.Proprietary.ClientId == someClient.ClientId).ToList();
         }
 
         public void Delete(Scene testScene)

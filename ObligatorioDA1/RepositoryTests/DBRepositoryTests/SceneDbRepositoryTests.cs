@@ -100,5 +100,41 @@ namespace RepositoryTests.DBRepositoryTests
             Scene sceneFromDb = _repository.GetByName("Scene");
             Assert.AreEqual(scene, sceneFromDb);
         }
+
+        [TestMethod]
+        public void GetScenesByClientSuccessfully()
+        {
+            Scene scene = new Scene
+            {
+                Name = "Scene",
+                Proprietary = _someClient,
+                ModelList = new List<PositionedModel>
+                {
+                    _somePositionedModel
+                },
+                CreationDate = DateTime.Now,
+                LastModified = DateTime.Now,
+                LastRendered = DateTime.Now,
+                CameraLookFrom = new Vector
+                {
+                    X = 0,
+                    Y = 0,
+                    Z = 0
+                },
+                CameraLookAt = new Vector
+                {
+                    X = 0,
+                    Y = 0,
+                    Z = 0
+                }
+            };
+            List<Scene> scenes = new List<Scene>
+            {
+                scene
+            };
+            _repository.Add(scene);
+            List<Scene> scenesFromDb = _repository.GetScenesByClient(_someClient);
+            CollectionAssert.AreEquivalent( scenes, scenesFromDb);
+        }
     }
 }

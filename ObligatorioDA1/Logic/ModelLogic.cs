@@ -13,7 +13,7 @@ namespace Logic
 
         private ModelLogic()
         {
-            _modelRepository = new ModelRepository();
+            _modelRepository = new ModelDbRepository();
         }
 
         public ModelLogic(IModelRepository modelRepository)

@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 
 namespace Domain
@@ -8,7 +9,9 @@ namespace Domain
         public Guid ModelId { get; set; } = Guid.NewGuid();
         public Client Proprietary { get; set; }
         public string Name { get; set; }
+        [Required]
         public Figure Figure { get; set; }
+        [Required]
         public Material Material { get; set; }
         public string Preview { get; set; }
 
