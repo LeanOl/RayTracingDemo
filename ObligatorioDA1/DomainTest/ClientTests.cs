@@ -19,7 +19,6 @@ namespace DomainTest
         private const string PasswordAboveCharLimit = "Ab1Ab1Ab1Ab1Ab1Ab1Ab1Ab1Ab1Ab1Ab1Ab1Ab1Ab1Ab1Ab1";
         private const string UsernameBelowCharLimitMessage = "Username has to be at least 3 characters long";
         private const string UsernameAboveCharLimitMessage = "Username has to be at most 20 characters long";
-        private const string UsernameDuplicatedMessage = "The Username already exists";
         private const string UsernameNotAlphanumericMessage = "Username has to be alphanumeric";
         private const string PasswordWithNoCapsMessage = "Your password has to have at least 1 Capital letter";
         private const string PasswordWithNoNumberMessage = "Your password has to have at least 1 number";
