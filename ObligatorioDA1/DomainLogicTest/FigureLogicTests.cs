@@ -4,17 +4,23 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Logic;
 using System.Collections.Generic;
+using Repository;
+using Repository.DBRepository;
+using System.Data.Entity;
 
 namespace LogicTest
 {
     [TestClass]
     public class FigureLogicTests
     {
+        private FigureLogic logic;
+        private RayTracingContext _context;
+
         private Client aClient;
         private Figure aFigure;
-        private FigureLogic logic;
         private const string validFigureName = "Ball";
         private const string validUsername = "John";
+        private const string validPassword = "Abc12345";
         private decimal validRadius = 5;
        
         private const string figureAlreadyExistsMessage = "A figure with that name already exists";
@@ -23,9 +29,17 @@ namespace LogicTest
         [TestInitialize]
         public void initialize()
         {
+            Database.SetInitializer(new DropCreateDatabaseAlways<RayTracingContext>());
+            _context = new RayTracingContext();
+            _context.Database.Initialize(true);
+            IFigureRepository repository = new FigureDBRepository(_context);
+            logic = new FigureLogic(repository);
+
             aClient = new Client()
             {
-                Username = validUsername
+                Username = validUsername,
+                Password = validPassword,
+                RegisterDate = DateTime.Now
             };
             aFigure = new Sphere()
             {
@@ -33,7 +47,6 @@ namespace LogicTest
                 Name = validFigureName,
                 Radius = validRadius
             };
-            logic = FigureLogic.Instance;
         }
 
         [TestCleanup]
@@ -65,10 +78,7 @@ namespace LogicTest
         public void CheckIfFigureDoesNotExist()
         {
             Exception exceptionCaught = null;
-
-            //Initialized on true to prevent the test from succeding on accident
             bool figureWasCreated = true; 
-
 
             try
             {
@@ -86,7 +96,6 @@ namespace LogicTest
         [TestMethod]
         public void FigureAlreadyExistsError(){
             Exception exceptionCaught = null;
-
 
             logic.CreateFigure(aFigure);
 
@@ -109,15 +118,14 @@ namespace LogicTest
         {
             bool itExists = false;
 
-
             logic.CreateFigure(aFigure);
             
-            itExists = logic.FigureExists(aFigure.Name, aFigure.Proprietary.Username);
+            itExists = logic.FigureExists(aFigure.Name, validUsername);
             Assert.IsTrue(itExists);
 
-            logic.RemoveFigure(aFigure.Name, aFigure.Proprietary.Username);
+            logic.RemoveFigure(aFigure.Name, validUsername);
  
-            itExists = logic.FigureExists(aFigure.Name, aFigure.Proprietary.Username);
+            itExists = logic.FigureExists(aFigure.Name, validUsername);
             Assert.IsFalse(itExists);
 
         }

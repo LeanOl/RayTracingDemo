@@ -55,6 +55,7 @@
     <Compile Include="DBRepository\ClientDbRepository.cs" />
     <Compile Include="DBRepository\MaterialDbRepository.cs" />
     <Compile Include="DBRepository\ModelDbRepository.cs" />
+    <Compile Include="DBRepository\FigureDBRepository.cs" />
     <Compile Include="FigureRepository.cs" />
     <Compile Include="ClientRepository.cs" />
     <Compile Include="IClientRepository.cs" />
