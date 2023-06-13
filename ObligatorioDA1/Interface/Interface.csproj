@@ -163,39 +163,50 @@
     </Compile>
     <EmbeddedResource Include="AddMaterial.resx">
       <DependentUpon>AddMaterial.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="AddModel.resx">
       <DependentUpon>AddModel.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="EditScene.resx">
       <DependentUpon>EditScene.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="AddSphere.resx">
       <DependentUpon>AddSphere.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FigureList.resx">
       <DependentUpon>FigureList.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FigureListElement.resx">
       <DependentUpon>FigureListElement.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MaterialList.resx">
       <DependentUpon>MaterialList.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MaterialListElement.resx">
       <DependentUpon>MaterialListElement.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ModelList.resx">
       <DependentUpon>ModelList.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ModelListElement.resx">
       <DependentUpon>ModelListElement.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="PositionedSceneElement.resx">
       <DependentUpon>PositionedSceneElement.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

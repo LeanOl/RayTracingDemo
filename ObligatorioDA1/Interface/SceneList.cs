@@ -19,9 +19,6 @@ namespace Interface
             Client proprietary = SessionLogic.Instance.GetActiveUser();
             SceneLogic.Instance.CreateEmptyScene(proprietary);
             LoadScenePanel();
-            //UserControl anEditScene = new EditScene();
-            //Parent.Controls.Add(anEditScene);
-            //Parent.Controls.Remove(this);
         }
 
         private void SceneList_Load(object sender, EventArgs e)
