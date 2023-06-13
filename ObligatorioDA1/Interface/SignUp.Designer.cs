@@ -120,7 +120,7 @@
             this.lblSignUpMessage.Size = new System.Drawing.Size(43, 13);
             this.lblSignUpMessage.TabIndex = 12;
             this.lblSignUpMessage.Text = "            ";
-3
+
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(719, 346);
