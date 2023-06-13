@@ -5,7 +5,7 @@ namespace Domain
 {
     public class PositionedModel
     {
-        public Guid PositionedModelId { get; set; }
+        public Guid PositionedModelId { get; set; } = Guid.NewGuid();
         public Vector Position { get; set; }
         public Model Model { get; set; }
 
