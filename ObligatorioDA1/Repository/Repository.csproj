@@ -53,9 +53,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBRepository\ClientDBRepository.cs" />
+    <Compile Include="DBRepository\FigureDBRepository.cs" />
     <Compile Include="FigureRepository.cs" />
     <Compile Include="ClientRepository.cs" />
     <Compile Include="IClientRepository.cs" />
+    <Compile Include="IFigureRepository.cs" />
     <Compile Include="MaterialRepository.cs" />
     <Compile Include="Migrations\202306102218193_migration-1.cs" />
     <Compile Include="Migrations\202306102218193_migration-1.designer.cs">

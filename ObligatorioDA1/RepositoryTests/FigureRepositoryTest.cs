@@ -37,8 +37,7 @@ namespace RepositoryTests
         {
             FigureRepository repository = new FigureRepository();
             repository.AddFigure(aFigure);
-            Figure storedFigure = repository.GetFigureByName(ValidFigureName);
-
+            Figure storedFigure = repository.GetFigureByNameAndUsername(aFigure.Name, aFigure.Proprietary.Username);
             Assert.IsNotNull(storedFigure);
             Assert.AreEqual(aClient.Username, storedFigure.Proprietary.Username);
             Assert.AreEqual(ValidFigureName, storedFigure.Name);
