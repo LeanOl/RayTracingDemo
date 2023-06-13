@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using Domain;
+using Exceptions;
 
 namespace Repository.DBRepository
 {
@@ -21,13 +23,29 @@ namespace Repository.DBRepository
 
         public void AddFigure(Figure aFigure)
         {
-            _context.Clients.Attach(aFigure.Proprietary);
-            _context.Figures.Add(aFigure);
-            _context.SaveChanges();
+            try
+            {
+                _context.Clients.Attach(aFigure.Proprietary);
+                _context.Figures.Add(aFigure);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new DatabaseException("Database error",e);
+            }
+            
         }
         public Figure GetFigureByNameAndUsername(string name, string username)
         {
-            return _context.Figures.FirstOrDefault(aFigure => aFigure.Name == name && aFigure.Proprietary.Username == username);
+            try
+            {
+                return _context.Figures.FirstOrDefault(aFigure => aFigure.Name == name && aFigure.Proprietary.Username == username);
+            }
+            catch (Exception e)
+            {
+                throw new DatabaseException("Database error",e);
+            }
+            
         }
         public bool FigureExists(string name, string username)
         {
@@ -45,16 +63,31 @@ namespace Repository.DBRepository
 
         public void RemoveFigureByName(string name, string username)
         {
-            Figure aFigure = _context.Figures.FirstOrDefault(figure => figure.Name == name && figure.Proprietary.Username == username);
-            if (aFigure != null)
+            try
             {
-                _context.Figures.Remove(aFigure);
-                _context.SaveChanges();
+                Figure aFigure = _context.Figures.FirstOrDefault(figure => figure.Name == name && figure.Proprietary.Username == username);
+                if (aFigure != null)
+                {
+                    _context.Figures.Remove(aFigure);
+                    _context.SaveChanges();
+                }
             }
+            catch (Exception e)
+            {
+                throw new DatabaseException("Database error",e);
+            }
+            
         }
         public List<Figure> GetFiguresByClient(Client client)
         {
-            return _context.Figures.ToList();
+            try
+            {
+                return _context.Figures.Where(figure => figure.Proprietary.ClientId == client.ClientId).ToList();
+            }
+            catch (Exception e)
+            {
+                throw new DatabaseException("Database error",e);
+            }
         }
     }
 }
