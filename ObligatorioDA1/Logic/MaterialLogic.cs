@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using Exceptions;
 using Repository;
 using Repository.DBRepository;
 
@@ -66,9 +67,14 @@ namespace Logic
 
         public void DeleteMaterial(Material materialToDelete)
         {
-            if(_modelLogic.IsMaterialUsed(materialToDelete))
-                throw new ConstraintException("This material is used by a model");
+            ValidateUsed(materialToDelete);
             _repository.Delete(materialToDelete);
+        }
+
+        private void ValidateUsed(Material materialToDelete)
+        {
+            if (_modelLogic.IsMaterialUsed(materialToDelete))
+                throw new CannotDeleteException("This material is used by a model");
         }
 
         public void CreateMetallic(Metallic testMaterial)

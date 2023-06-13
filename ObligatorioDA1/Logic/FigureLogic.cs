@@ -44,9 +44,14 @@ namespace Logic
 
         public void RemoveFigure(string name, string username)
         {
-            if(_modelLogic.IsFigureUsed(name,username))
-                throw new ElementAlreadyExistsException("This figure is used in a model");
+            ValidateUsed(name, username);
             _repository.RemoveFigureByName(name, username);
+        }
+
+        private void ValidateUsed(string name, string username)
+        {
+            if (_modelLogic.IsFigureUsed(name, username))
+                throw new CannotDeleteException("This figure is used in a model");
         }
 
         public List<Figure> GetFiguresByClient(Client proprietary)
