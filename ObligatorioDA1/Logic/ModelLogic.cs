@@ -82,5 +82,10 @@ namespace Logic
         {
             _modelRepository.DeleteModel(getModelByName);
         }
+
+        public bool IsMaterialUsed(Material materialToDelete)
+        {
+            return _modelRepository.IsMaterialUsed(materialToDelete);
+        }
     }
 }

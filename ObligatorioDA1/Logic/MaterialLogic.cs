@@ -63,6 +63,8 @@ namespace Logic
 
         public void DeleteMaterial(Material materialToDelete)
         {
+            if(ModelLogic.Instance.IsMaterialUsed(materialToDelete))
+                throw new ConstraintException("This material is used by a model");
             _repository.Delete(materialToDelete);
         }
 

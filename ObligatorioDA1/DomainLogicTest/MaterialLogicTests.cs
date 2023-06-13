@@ -147,6 +147,47 @@ namespace LogicTest
             Assert.AreEqual(testMaterial, _logic.GetMaterialByName(ValidName));
         }
 
+        [TestMethod]
+        public void DeleteMaterialUsedByModel_ThrowException()
+        {
+            Material someMaterial = new Lambertian()
+            {
+                Proprietary = _someClient,
+                Name = "Material1",
+                Color = _color
+            };
+            _context.Materials.Add(someMaterial);
+
+            Figure someFigure = new Sphere()
+            {
+                Name = "Sphere1",
+                Proprietary = _someClient,
+                Radius = 1
+            };
+            _context.Figures.Add(someFigure);
+
+            Model someModel = new Model()
+            {
+                Proprietary = _someClient,
+                Name = "Model1",
+                Material = someMaterial,
+                Figure = someFigure
+            };
+            _context.Models.Add(someModel);
+
+            _context.SaveChanges();
+
+            try
+            {
+                _logic.DeleteMaterial(someMaterial);
+                Assert.Fail("Should throw exception");
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual("This material is used by a model", ex.Message);
+            }
+
+        }
         
 
         
