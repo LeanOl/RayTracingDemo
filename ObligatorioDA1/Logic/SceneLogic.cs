@@ -67,6 +67,10 @@ namespace Logic
             return sceneDefaultName;
         }
 
+        public void UpdateScene(Scene testScene)
+        {
+            _repository.Update(testScene);
+        }
         public Scene GetSceneByName(string emptyScene)
         {
             return _repository.GetByName(emptyScene);

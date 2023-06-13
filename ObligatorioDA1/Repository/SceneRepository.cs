@@ -33,5 +33,11 @@ namespace Repository
         {
             _scenes.Remove(testScene);
         }
+
+        public void Update(Scene testScene)
+        {
+            _scenes.Remove(testScene);
+            _scenes.Add(testScene);
+        }
     }
 }

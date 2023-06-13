@@ -10,5 +10,6 @@ namespace Repository
         Scene GetByName(string sceneDefaultName, Client proprietary);
         List<Scene> GetScenesByClient(Client someClient);
         void Delete(Scene testScene);
+        void Update(Scene testScene);
     }
 }
