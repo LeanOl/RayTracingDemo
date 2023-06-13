@@ -2,16 +2,22 @@
 using System.Drawing;
 using Domain;
 using Repository;
+using Repository.DBRepository;
 
 namespace Logic
 {
     public class SceneLogic
     {
-        private SceneRepository _repository;
+        private ISceneRepository _repository;
 
         private SceneLogic()
         {
-            _repository = new SceneRepository();
+            _repository = new SceneDbRepository();
+        }
+
+        public SceneLogic(ISceneRepository repository)
+        {
+            _repository = repository;
         }
 
         public static SceneLogic Instance { get; } = new SceneLogic();

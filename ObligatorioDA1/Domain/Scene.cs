@@ -8,16 +8,16 @@ namespace Domain
     public class Scene
     {
         
-        public Guid SceneId { get; set; }
+        public Guid SceneId { get; set; } = Guid.NewGuid();
         public string Preview { get; set; }
         public Client Proprietary { get; set; }
         public string Name { get; set; }
         public DateTime CreationDate { get; set; }
         public List<PositionedModel> ModelList { get; set; }
-        public int CameraFov { get; set; } = -1;
-        public Vector CameraLookFrom { get; set; }
-        public Vector CameraLookAt { get; set; }
-        public double CameraAperture { get; set; } = -1;
+        public int CameraFov { get; set; } = 30;
+        public Vector CameraLookFrom { get; set; } = new Vector { X = 0, Y = 2, Z = 0 };
+        public Vector CameraLookAt { get; set; }  = new Vector { X = 0, Y = 2, Z = 5 };
+        public double CameraAperture { get; set; } = 0.5;
         [NotMapped]
         public Camera ActiveCamera { get; set; }
         public DateTime LastModified { get; set; }
@@ -90,14 +90,11 @@ namespace Domain
         public void RenderPreviewDefocus()
         {
             ActiveCamera = new DefocusCamera();
-            if (CameraFov != -1)
-                ActiveCamera.FieldOfView = CameraFov;
-            if (CameraLookFrom != null)
-                ActiveCamera.LookFrom = CameraLookFrom;
-            if (CameraLookAt != null)
-                ActiveCamera.LookAt = CameraLookAt;
-            if (CameraAperture != -1)
-                ActiveCamera.Aperture = CameraAperture;
+            ActiveCamera.FieldOfView = CameraFov;
+            ActiveCamera.LookFrom = CameraLookFrom;
+            ActiveCamera.LookAt = CameraLookAt;
+            ActiveCamera.Aperture = CameraAperture;
+
             GraphicsEngine graphics = new GraphicsEngine();
             Preview = graphics.RenderScene(this);
         }

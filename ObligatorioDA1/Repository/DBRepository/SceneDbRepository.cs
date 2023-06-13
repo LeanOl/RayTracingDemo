@@ -7,6 +7,11 @@ namespace Repository.DBRepository
     public class SceneDbRepository : ISceneRepository
     {
         private RayTracingContext _context;
+
+        public SceneDbRepository()
+        {
+            _context = RayTracingContext.Instance;
+        }
         public SceneDbRepository(RayTracingContext context)
         {
             _context = context;
@@ -32,7 +37,7 @@ namespace Repository.DBRepository
         {
             return _context.Scenes.FirstOrDefault(x =>
                 x.Name == sceneDefaultName &&
-                x.Proprietary.Equals(proprietary));
+                x.Proprietary.ClientId == proprietary.ClientId);
         }
 
         public List<Scene> GetScenesByClient(Client someClient)
