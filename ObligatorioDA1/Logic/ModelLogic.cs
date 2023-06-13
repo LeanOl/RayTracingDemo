@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Domain;
+using Exceptions;
 using Repository;
 using Repository.DBRepository;
 
@@ -9,16 +10,23 @@ namespace Logic
     public class ModelLogic
     {
         private IModelRepository _modelRepository;
+        private SceneLogic _sceneLogic;
         private const string DuplicateNameMessage = "There is already a model with this name";
 
         private ModelLogic()
         {
             _modelRepository = new ModelDbRepository();
+            _sceneLogic = SceneLogic.Instance;
         }
 
         public ModelLogic(IModelRepository modelRepository)
         {
             _modelRepository = modelRepository;
+        }
+        public ModelLogic(IModelRepository modelRepository,SceneLogic sceneLogic)
+        {
+            _modelRepository = modelRepository;
+            _sceneLogic = sceneLogic;
         }
         public static ModelLogic Instance { get; } = new ModelLogic();
 
@@ -80,6 +88,8 @@ namespace Logic
 
         public void DeleteModel(Model getModelByName)
         {
+            if(_sceneLogic.IsModelUsed(getModelByName))
+                throw new CannotDeleteException("This model is used by a scene");
             _modelRepository.DeleteModel(getModelByName);
         }
 

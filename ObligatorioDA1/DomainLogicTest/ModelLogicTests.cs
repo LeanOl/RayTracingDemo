@@ -1,10 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 using Domain;
 using Logic;
 using Repository;
 using Repository.DBRepository;
 using System.Data.Entity;
+using System.Linq;
 
 namespace DomainLogicTest
 {
@@ -12,6 +14,7 @@ namespace DomainLogicTest
     public class ModelLogicTests
     {
         private ModelLogic _modelLogic;
+        private SceneLogic _sceneLogic;
         private Client _proprietary;
         private Figure _figure;
         private Material _material;
@@ -34,7 +37,9 @@ namespace DomainLogicTest
             _context = new RayTracingContext();
             _context.Database.Initialize(true);
             IModelRepository repository = new ModelDbRepository(_context);
-            _modelLogic = new ModelLogic(repository);
+            SceneDbRepository sceneDbRepository = new SceneDbRepository(_context);
+            _sceneLogic = new SceneLogic(sceneDbRepository);
+            _modelLogic = new ModelLogic(repository,_sceneLogic);
             _context.Clients.Add(_proprietary);
             _context.Figures.Add(_figure);
             _context.Materials.Add(_material);
@@ -101,9 +106,63 @@ namespace DomainLogicTest
         [TestMethod]
         public void DeleteModel()
         {
-            _modelLogic.CreateModel("Model1", _proprietary, _figure, _material);
-            _modelLogic.DeleteModel(_modelLogic.GetModelByName("Model1"));
-            Assert.IsNull(_modelLogic.GetModelByName("Model1"));
+            Model testModel = new Model()
+            {
+                Proprietary = _proprietary,
+                Name = "Model1",
+                Figure = _figure,
+                Material = _material
+            };
+            _context.Models.Add(testModel);
+            _context.SaveChanges();
+            _modelLogic.DeleteModel(testModel);
+            Assert.IsNull(_context.Models.FirstOrDefault(model => model.Name == "Model1"));
+        }
+
+        [TestMethod]
+        public void DeleteModelUsedByScene_ThrowException()
+        {
+            Model testModel = new Model()
+            {
+                Proprietary = _proprietary,
+                Name= "Model1",
+                Figure = _figure,
+                Material = _material
+            };
+
+            Scene testscene = new Scene
+            {
+                Proprietary = _proprietary,
+                ModelList = new List<PositionedModel>()
+                {
+                    new PositionedModel
+                    {
+                        Model = testModel,
+                        Position= new Vector
+                        {
+                            X=0,
+                            Y=0,
+                            Z=0
+                        }
+                    }
+                },
+                Name = "Scene1",
+                CreationDate = DateTime.Now,
+                LastModified = DateTime.Now,
+                LastRendered = DateTime.Now
+            };
+            _context.Models.Add(testModel);
+            _context.Scenes.Add(testscene);
+            _context.SaveChanges();
+            try
+            {
+                _modelLogic.DeleteModel(testModel);
+                Assert.Fail("Should throw exception");
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual("This model is used by a scene", e.Message);
+            }
         }
     }
 }
