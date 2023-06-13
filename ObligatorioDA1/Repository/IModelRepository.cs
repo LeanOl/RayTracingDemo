@@ -11,5 +11,6 @@ namespace Repository
         void DeleteModel(Model testModel);
 
         bool IsMaterialUsed(Material materialToDelete);
+        bool IsFigureUsed(string name, string username);
     }
 }

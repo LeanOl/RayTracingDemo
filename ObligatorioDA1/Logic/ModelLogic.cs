@@ -87,5 +87,10 @@ namespace Logic
         {
             return _modelRepository.IsMaterialUsed(materialToDelete);
         }
+
+        public bool IsFigureUsed(string name, string username)
+        {
+            return _modelRepository.IsFigureUsed(name, username);
+        }
     }
 }

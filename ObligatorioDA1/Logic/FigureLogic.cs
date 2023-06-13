@@ -9,15 +9,17 @@ namespace Logic
     public class FigureLogic
     {
         private IFigureRepository _repository;
+        private ModelLogic _modelLogic = ModelLogic.Instance;
 
         public FigureLogic()
         {
             _repository = new FigureDBRepository();
         }
 
-        public FigureLogic(IFigureRepository repository)
+        public FigureLogic(IFigureRepository repository, IModelRepository modelRepository)
         {
             _repository = repository;
+            _modelLogic = new ModelLogic(modelRepository);
         }
 
         public static FigureLogic Instance { get; } = new FigureLogic();
@@ -42,6 +44,8 @@ namespace Logic
 
         public void RemoveFigure(string name, string username)
         {
+            if(_modelLogic.IsFigureUsed(name,username))
+                throw new ElementAlreadyExistsException("This figure is used in a model");
             _repository.RemoveFigureByName(name, username);
         }
 
