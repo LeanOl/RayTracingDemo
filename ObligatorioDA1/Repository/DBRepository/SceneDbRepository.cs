@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using Domain;
+using Exceptions;
 
 namespace Repository.DBRepository
 {
@@ -20,49 +22,96 @@ namespace Repository.DBRepository
 
         public void Add(Scene testScene)
         {
-            _context.Clients.Attach(testScene.Proprietary);
-            foreach (var positionedModel in testScene.ModelList)
+            try
             {
-                _context.Models.Attach(positionedModel.Model);
+                _context.Clients.Attach(testScene.Proprietary);
+                foreach (var positionedModel in testScene.ModelList)
+                {
+                    _context.Models.Attach(positionedModel.Model);
+                }
+                _context.Scenes.Add(testScene);
+                _context.SaveChanges();
             }
-            _context.Scenes.Add(testScene);
-            _context.SaveChanges();
+            catch(Exception e)
+            {
+                throw new DatabaseException("Database error", e);   
+            }
+            
         }
 
         public Scene GetByName(string newScene)
         {
-            return _context.Scenes.FirstOrDefault(x => x.Name == newScene);
+            try
+            {
+                return _context.Scenes.FirstOrDefault(x =>
+                    x.Name == newScene);
+            }
+            catch (Exception e)
+            {
+                throw new DatabaseException("Database error", e);
+            }
+
+           
         }
 
         public Scene GetByName(string sceneDefaultName, Client proprietary)
         {
-            return _context.Scenes.FirstOrDefault(x =>
-                x.Name == sceneDefaultName &&
-                x.Proprietary.ClientId == proprietary.ClientId);
+            try
+            {
+                return _context.Scenes.FirstOrDefault(x =>
+                    x.Name == sceneDefaultName &&
+                    x.Proprietary.ClientId == proprietary.ClientId);
+            }
+            catch (Exception e)
+            {
+                throw new DatabaseException("Database error", e);
+            }
+            
         }
 
         public List<Scene> GetScenesByClient(Client someClient)
         {
-            return _context.Scenes.Where(x => x.Proprietary.ClientId == someClient.ClientId)
-                .Include(scene => scene.ModelList)
-                .Include(scene => scene.ModelList.Select(model => model.Model))
-                .Include(scene => scene.ModelList.Select(model => model.Model.Figure))
-                .Include(scene => scene.ModelList.Select(model => model.Model.Material))
-                .ToList();
+            try
+            {
+                return _context.Scenes.Where(x => x.Proprietary.ClientId == someClient.ClientId)
+                    .Include(scene => scene.ModelList)
+                    .Include(scene => scene.ModelList.Select(model => model.Model))
+                    .Include(scene => scene.ModelList.Select(model => model.Model.Figure))
+                    .Include(scene => scene.ModelList.Select(model => model.Model.Material))
+                    .ToList();
+            }
+            catch (Exception e)
+            {
+               throw new DatabaseException("Database error", e);
+            }
+            
         }
 
         public void Delete(Scene testScene)
         {
-            _context.Scenes.Remove(testScene);
-            _context.SaveChanges();
+            try
+            {
+                _context.Scenes.Remove(testScene);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new DatabaseException("Database error", e);
+            }
+            
         }
 
         public void Update(Scene testScene)
         {
-            _context.Entry(testScene).State = EntityState.Modified;
-            _context.SaveChanges();
+            try
+            {
+                _context.Entry(testScene).State = EntityState.Modified;
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new DatabaseException("Database error", e);
+            }
         }
-
-       
     }
 }

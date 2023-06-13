@@ -53,13 +53,22 @@ namespace Interface
 
         private void AddModel_Load(object sender, EventArgs e)
         {
-            Client user = SessionLogic.Instance.GetActiveUser();
-            cbxFigure.DataSource = FigureLogic.Instance.GetFiguresByClient(user);
-            cbxFigure.DisplayMember = "Name";
-            cbxFigure.ValueMember = null;
-            cbxMaterial.DataSource = MaterialLogic.Instance.GetClientMaterials(user);
-            cbxMaterial.DisplayMember = "Name";
-            cbxFigure.ValueMember = null;
+
+            try
+            {
+                Client user = SessionLogic.Instance.GetActiveUser();
+                cbxFigure.DataSource = FigureLogic.Instance.GetFiguresByClient(user);
+                cbxFigure.DisplayMember = "Name";
+                cbxFigure.ValueMember = null;
+                cbxMaterial.DataSource = MaterialLogic.Instance.GetClientMaterials(user);
+                cbxMaterial.DisplayMember = "Name";
+                cbxFigure.ValueMember = null;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            
         }
     }
 }

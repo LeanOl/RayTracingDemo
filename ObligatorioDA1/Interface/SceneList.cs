@@ -16,9 +16,18 @@ namespace Interface
 
         private void btnAddNewScene_Click(object sender, EventArgs e)
         {
-            Client proprietary = SessionLogic.Instance.GetActiveUser();
-            SceneLogic.Instance.CreateEmptyScene(proprietary);
-            LoadScenePanel();
+            try
+            {
+                Client proprietary = SessionLogic.Instance.GetActiveUser();
+                SceneLogic.Instance.CreateEmptyScene(proprietary);
+                LoadScenePanel();
+            }
+            catch(Exception exception)
+            {
+                MessageBox.Show(exception.Message,
+                    "Error");
+            }
+            
         }
 
         private void SceneList_Load(object sender, EventArgs e)
@@ -29,15 +38,24 @@ namespace Interface
 
         private void LoadScenePanel()
         {
-            flpMaterials.Controls.Clear();
-            Client activeUser = SessionLogic.Instance.GetActiveUser();
-            List<Scene> scenes = SceneLogic.Instance.GetClientScenes(activeUser);
-            scenes = scenes.OrderByDescending(scene => scene.LastModified).ToList();
-            foreach (var scene in scenes)
+            try
             {
-                SceneListElement newScene = new SceneListElement(scene);
-                flpMaterials.Controls.Add(newScene);
+                flpMaterials.Controls.Clear();
+                Client activeUser = SessionLogic.Instance.GetActiveUser();
+                List<Scene> scenes = SceneLogic.Instance.GetClientScenes(activeUser);
+                scenes = scenes.OrderByDescending(scene => scene.LastModified).ToList();
+                foreach (var scene in scenes)
+                {
+                    SceneListElement newScene = new SceneListElement(scene);
+                    flpMaterials.Controls.Add(newScene);
+                }
             }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+
+          
         }
     }
 }
