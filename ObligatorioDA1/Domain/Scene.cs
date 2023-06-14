@@ -76,14 +76,9 @@ namespace Domain
         public void RenderPreviewNoDefocus()
         {
             ActiveCamera = new NoDefocusCamera();
-
-            if (CameraFov != -1)
-                ActiveCamera.FieldOfView = CameraFov;
-            if (CameraLookFrom != null)
-                ActiveCamera.LookFrom = CameraLookFrom;
-            if(CameraLookAt != null)
-                ActiveCamera.LookAt = CameraLookAt;
-
+            ActiveCamera.FieldOfView = CameraFov;
+            ActiveCamera.LookFrom = CameraLookFrom;
+            ActiveCamera.LookAt = CameraLookAt;
             GraphicsEngine.GraphicsEngine graphics = new GraphicsEngine.GraphicsEngine();
             Preview= graphics.RenderScene(this);
         }
@@ -95,7 +90,6 @@ namespace Domain
             ActiveCamera.LookFrom = CameraLookFrom;
             ActiveCamera.LookAt = CameraLookAt;
             ActiveCamera.Aperture = CameraAperture;
-
             GraphicsEngine.GraphicsEngine graphics = new GraphicsEngine.GraphicsEngine();
             Preview = graphics.RenderScene(this);
         }
