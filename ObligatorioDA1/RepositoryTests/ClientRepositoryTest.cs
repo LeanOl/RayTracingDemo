@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Domain;
+using Domain.GraphicsEngine;
 using Repository;
 
 namespace RepositoryTests

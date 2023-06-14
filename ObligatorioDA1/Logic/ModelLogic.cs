@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Domain;
+using Domain.GraphicsEngine;
 using Exceptions;
 using Repository;
 using Repository.DBRepository;

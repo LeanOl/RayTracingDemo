@@ -1,9 +1,10 @@
-﻿using Domain;
+﻿using Domain.GraphicsEngine;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Repository;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using Domain;
 
 namespace RepositoryTests
 {

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using Domain;
+using Domain.GraphicsEngine;
 
 namespace DomainTest
 {
@@ -13,7 +14,6 @@ namespace DomainTest
         [TestMethod]
         public void CreateSceneSuccessfully()
         {
-            Image preview = null;
             Scene scene = new Scene()
             {
                 Proprietary = new Client(),
@@ -31,7 +31,6 @@ namespace DomainTest
         [TestMethod]
         public void AddPositionedModelToScene()
         {
-            Image preview = null;
             Scene scene = new Scene()
             {
                 Proprietary = new Client(),
@@ -52,7 +51,6 @@ namespace DomainTest
         [TestMethod]
         public void DeletePositionedModelFromScene()
         {
-            Image preview = null;
             Scene scene = new Scene()
             {
                 Proprietary = new Client(),
@@ -80,7 +78,6 @@ namespace DomainTest
         [TestMethod]
         public void ChangeCameraSettings()
         {
-            Image preview = null;
             Scene scene = new Scene()
             {
                 Proprietary = new Client(),

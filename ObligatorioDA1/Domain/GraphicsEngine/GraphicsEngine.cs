@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace Domain
+namespace Domain.GraphicsEngine
 {
     public class GraphicsEngine
     {

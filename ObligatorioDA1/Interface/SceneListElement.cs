@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using Domain;
+using Domain.GraphicsEngine;
 using Logic;
 
 namespace Interface

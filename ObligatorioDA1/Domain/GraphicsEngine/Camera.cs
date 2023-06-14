@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Domain
+namespace Domain.GraphicsEngine
 {
     public abstract class Camera
     {

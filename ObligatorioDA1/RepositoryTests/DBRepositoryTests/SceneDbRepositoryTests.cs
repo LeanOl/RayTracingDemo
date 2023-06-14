@@ -1,10 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using Domain;
 using Repository;
 using Repository.DBRepository;
 using System.Data.Entity;
+using Domain;
+using Domain.GraphicsEngine;
 
 namespace RepositoryTests.DBRepositoryTests
 {

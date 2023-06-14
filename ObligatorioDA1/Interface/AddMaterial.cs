@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using Domain;
+using Domain.GraphicsEngine;
 using Logic;
 
 namespace Interface
@@ -44,7 +45,7 @@ namespace Interface
                 Parent.Controls.Add(aMaterialList);
                 Parent.Controls.Remove(this);
             }
-            catch (FormatException ex)
+            catch (FormatException)
             {
                 lblErrorMessage.Text = "Colors should be numeric";
             }

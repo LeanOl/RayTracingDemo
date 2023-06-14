@@ -1,7 +1,7 @@
 ﻿using System;
 using Domain.Utilities;
 
-namespace Domain
+namespace Domain.GraphicsEngine
 {
     public class DefocusCamera : Camera
     {

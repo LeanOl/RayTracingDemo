@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using Domain;
+using Domain.GraphicsEngine;
 using Exceptions;
 
 namespace Repository.DBRepository

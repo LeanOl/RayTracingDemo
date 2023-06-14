@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using Domain;
+using Domain.GraphicsEngine;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DomainTest

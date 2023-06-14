@@ -1,8 +1,6 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
-using System.Runtime.CompilerServices;
+using Domain.GraphicsEngine;
 
 namespace Domain
 {

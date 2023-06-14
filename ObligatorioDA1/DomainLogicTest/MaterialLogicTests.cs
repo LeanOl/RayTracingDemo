@@ -1,4 +1,4 @@
-﻿using Domain;
+﻿using Domain.GraphicsEngine;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Drawing;
@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Repository;
 using Repository.DBRepository;
 using System.Data.Entity;
+using Domain;
 
 namespace LogicTest
 {

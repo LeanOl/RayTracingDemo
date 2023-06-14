@@ -1,7 +1,8 @@
-﻿using Domain;
+﻿using Domain.GraphicsEngine;
 using Exceptions;
 using Repository;
 using System.Collections.Generic;
+using Domain;
 using Repository.DBRepository;
 
 namespace Logic

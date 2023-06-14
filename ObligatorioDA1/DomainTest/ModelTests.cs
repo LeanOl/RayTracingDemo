@@ -2,6 +2,7 @@
 using System;
 using System.Drawing;
 using Domain;
+using Domain.GraphicsEngine;
 
 namespace DomainTest
 {
@@ -73,7 +74,6 @@ namespace DomainTest
         [TestMethod]
         public void GeneratePreviewOk()
         {
-            Image preview = null;
             Model model = new Model()
             {
                 Proprietary = _proprietary,

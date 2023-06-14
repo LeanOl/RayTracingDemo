@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Drawing;
+using Domain.GraphicsEngine;
 
 namespace Domain
 {
@@ -70,7 +71,7 @@ namespace Domain
                     Z = -1
                 }
             };
-            GraphicsEngine graphics = new GraphicsEngine
+            GraphicsEngine.GraphicsEngine graphics = new GraphicsEngine.GraphicsEngine
             {
                 Resolution = 75,
                 MaxDepth = 30,
@@ -124,7 +125,7 @@ namespace Domain
             {
                 return Utilities.ImageConverter.PpmToBitmap(Preview);
             }
-            catch (ArgumentNullException e)
+            catch (ArgumentNullException)
             {
                 return new Bitmap(1,1);
             }

@@ -4,8 +4,9 @@ using Repository;
 using System;
 using System.Data.Entity;
 using System.Drawing;
-using Domain;
+using Domain.GraphicsEngine;
 using System.Collections.Generic;
+using Domain;
 
 namespace RepositoryTests.DBRepositoryTests
 {

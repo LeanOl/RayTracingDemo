@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Domain;
+using Domain.GraphicsEngine;
 using Exceptions;
 using Logic;
 
