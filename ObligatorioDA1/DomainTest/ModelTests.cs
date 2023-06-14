@@ -73,7 +73,6 @@ namespace DomainTest
         [TestMethod]
         public void GeneratePreviewOk()
         {
-            Image preview = null;
             Model model = new Model()
             {
                 Proprietary = _proprietary,

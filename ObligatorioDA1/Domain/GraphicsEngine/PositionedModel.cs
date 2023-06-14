@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace Domain
+namespace Domain.GraphicsEngine
 {
     public class PositionedModel
     {

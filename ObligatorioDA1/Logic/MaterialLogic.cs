@@ -1,10 +1,11 @@
-﻿using Domain;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using Domain;
 using Exceptions;
 using Repository;
 using Repository.DBRepository;
+using Repository.InMemoryRepository;
 
 namespace Logic
 {

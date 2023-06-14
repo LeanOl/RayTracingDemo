@@ -1,5 +1,4 @@
-﻿using Domain;
-using Exceptions;
+﻿using Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Logic;
@@ -7,7 +6,7 @@ using System.Collections.Generic;
 using Repository;
 using Repository.DBRepository;
 using System.Data.Entity;
-using System.Linq;
+using Domain;
 
 namespace LogicTest
 {

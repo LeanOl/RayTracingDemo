@@ -44,7 +44,7 @@ namespace Interface
                 Parent.Controls.Add(aMaterialList);
                 Parent.Controls.Remove(this);
             }
-            catch (FormatException ex)
+            catch (FormatException)
             {
                 lblErrorMessage.Text = "Colors should be numeric";
             }

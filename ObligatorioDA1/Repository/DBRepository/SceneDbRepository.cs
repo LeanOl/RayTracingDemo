@@ -75,9 +75,6 @@ namespace Repository.DBRepository
             {
                 return _context.Scenes.Where(x => x.Proprietary.ClientId == someClient.ClientId)
                     .Include(scene => scene.ModelList)
-                    .Include(scene => scene.ModelList.Select(model => model.Model))
-                    .Include(scene => scene.ModelList.Select(model => model.Model.Figure))
-                    .Include(scene => scene.ModelList.Select(model => model.Model.Material))
                     .ToList();
             }
             catch (Exception e)

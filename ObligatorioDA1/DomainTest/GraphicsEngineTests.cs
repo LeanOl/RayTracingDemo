@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using Domain;
+using Domain.GraphicsEngine;
+using ImageConverter = Domain.Utilities.ImageConverter;
 
 namespace DomainTest
 {
@@ -77,7 +79,7 @@ namespace DomainTest
             };
             string reneredPpm = engine.RenderModel(testPositionedModel);
             
-            Bitmap bitmap = Domain.Utilities.ImageConverter.PpmToBitmap(reneredPpm);
+            Bitmap bitmap = ImageConverter.PpmToBitmap(reneredPpm);
             Assert.IsNotNull(bitmap);
         }
        
@@ -99,7 +101,7 @@ namespace DomainTest
             
             GraphicsEngine engine = new GraphicsEngine{MaxDepth = 3,Resolution = 45,SamplesPerPixel = 10};
             string renderedPpm = engine.RenderScene(testScene);
-            Bitmap bitmap = Domain.Utilities.ImageConverter.PpmToBitmap(renderedPpm);
+            Bitmap bitmap = ImageConverter.PpmToBitmap(renderedPpm);
             Bitmap expectedBitmap = PpmToBitmap("resources/expectedPpm.ppm");
             double acceptedDifference=300;
             Assert.IsTrue(BitmapCompare(bitmap, expectedBitmap) < acceptedDifference); ;
@@ -129,7 +131,7 @@ namespace DomainTest
 
             GraphicsEngine engine = new GraphicsEngine { MaxDepth = 50, Resolution = 45, SamplesPerPixel = 20 };
             string renderedPpm = engine.RenderScene(testScene);
-            Bitmap bitmap = Domain.Utilities.ImageConverter.PpmToBitmap(renderedPpm);
+            Bitmap bitmap = ImageConverter.PpmToBitmap(renderedPpm);
             Bitmap expectedBitmap = PpmToBitmap("resources/expectedPpmMetallic.ppm");
             double acceptedDifference = 300;
             Assert.IsTrue(BitmapCompare(bitmap, expectedBitmap) < acceptedDifference); ;

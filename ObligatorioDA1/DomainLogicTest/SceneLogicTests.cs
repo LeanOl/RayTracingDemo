@@ -1,11 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using Domain;
 using Logic;
 using System.Collections.Generic;
 using Repository;
 using Repository.DBRepository;
 using System.Data.Entity;
+using Domain;
+using Domain.GraphicsEngine;
 
 namespace DomainLogicTest
 {

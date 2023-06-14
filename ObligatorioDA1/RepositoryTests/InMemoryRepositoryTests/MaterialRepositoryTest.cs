@@ -1,11 +1,11 @@
-﻿using Domain;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Repository;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using Domain;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Repository.InMemoryRepository;
 
-namespace RepositoryTests
+namespace RepositoryTests.InMemoryRepositoryTests
 {
     [TestClass]
     public class MaterialRepositoryTest

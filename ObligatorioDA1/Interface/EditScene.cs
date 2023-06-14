@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Domain;
+using Domain.GraphicsEngine;
 using Logic;
 
 namespace Interface
@@ -131,7 +132,7 @@ namespace Interface
                 SceneLogic.Instance.UpdateScene(SceneToEdit);
                 lblOutdatedWarning.Visible = true;
             }
-            catch (ArgumentOutOfRangeException ex)
+            catch (ArgumentOutOfRangeException)
             {
                 MessageBox.Show("ERROR: FOV should be between 1 and 160");
             }

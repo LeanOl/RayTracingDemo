@@ -1,5 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Domain;
+﻿using Domain.GraphicsEngine;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DomainTest
 {

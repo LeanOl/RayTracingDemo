@@ -1,7 +1,7 @@
-﻿using Domain;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Domain;
 using Logic;
 
 namespace Interface

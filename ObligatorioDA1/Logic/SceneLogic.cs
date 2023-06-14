@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using Domain;
+using Domain.GraphicsEngine;
 using Repository;
 using Repository.DBRepository;
+using Repository.InMemoryRepository;
+using ImageConverter = Domain.Utilities.ImageConverter;
 
 namespace Logic
 {
@@ -33,7 +36,7 @@ namespace Logic
             Bitmap defaultPreview = new Bitmap(300, 200);
             Graphics gfx = Graphics.FromImage(defaultPreview);
             gfx.Clear(Color.Gray);
-            string defaultPreviewPpm= Domain.Utilities.ImageConverter.ConvertToPpm(defaultPreview);
+            string defaultPreviewPpm= ImageConverter.ConvertToPpm(defaultPreview);
             string sceneDefaultName= GenerateSceneDefaultName(proprietary);
             
 

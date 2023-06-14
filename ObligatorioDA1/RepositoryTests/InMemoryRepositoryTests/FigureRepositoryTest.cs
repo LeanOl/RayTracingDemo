@@ -1,9 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Collections.Generic;
 using Domain;
-using Repository;
-using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Repository.InMemoryRepository;
 
-namespace RepositoryTests
+namespace RepositoryTests.InMemoryRepositoryTests
 {
 
     [TestClass]

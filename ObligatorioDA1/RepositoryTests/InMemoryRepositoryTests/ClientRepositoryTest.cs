@@ -1,9 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using Domain;
-using Repository;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Repository.InMemoryRepository;
 
-namespace RepositoryTests
+namespace RepositoryTests.InMemoryRepositoryTests
 {
     [TestClass]
     public class ClientRepositoryTest

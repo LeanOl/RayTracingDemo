@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
+using Domain.GraphicsEngine;
 
 namespace Domain
 {
@@ -83,7 +84,7 @@ namespace Domain
             if(CameraLookAt != null)
                 ActiveCamera.LookAt = CameraLookAt;
 
-            GraphicsEngine graphics = new GraphicsEngine();
+            GraphicsEngine.GraphicsEngine graphics = new GraphicsEngine.GraphicsEngine();
             Preview= graphics.RenderScene(this);
         }
 
@@ -95,7 +96,7 @@ namespace Domain
             ActiveCamera.LookAt = CameraLookAt;
             ActiveCamera.Aperture = CameraAperture;
 
-            GraphicsEngine graphics = new GraphicsEngine();
+            GraphicsEngine.GraphicsEngine graphics = new GraphicsEngine.GraphicsEngine();
             Preview = graphics.RenderScene(this);
         }
 

@@ -2,7 +2,7 @@
 using System.Linq;
 using Domain;
 
-namespace Repository
+namespace Repository.InMemoryRepository
 {
     public class ModelRepository : IModelRepository
     {
