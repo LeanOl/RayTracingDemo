@@ -1,5 +1,4 @@
-﻿using Domain.GraphicsEngine;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Domain;
 

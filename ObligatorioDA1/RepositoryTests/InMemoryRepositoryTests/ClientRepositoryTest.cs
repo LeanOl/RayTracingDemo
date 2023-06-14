@@ -1,7 +1,6 @@
 ﻿using System;
 using Domain;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Repository;
 using Repository.InMemoryRepository;
 
 namespace RepositoryTests.InMemoryRepositoryTests

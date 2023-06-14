@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using Domain;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Repository;
 using Repository.InMemoryRepository;
 
 namespace RepositoryTests.InMemoryRepositoryTests

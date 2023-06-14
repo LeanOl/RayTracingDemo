@@ -1,6 +1,5 @@
 ﻿using System.Security.Authentication;
 using Domain;
-using Domain.GraphicsEngine;
 
 namespace Logic
 {

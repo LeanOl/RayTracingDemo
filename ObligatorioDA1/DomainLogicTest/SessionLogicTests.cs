@@ -2,7 +2,6 @@
 using System;
 using System.Data.Entity;
 using Domain;
-using Domain.GraphicsEngine;
 using Logic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Repository.DBRepository;
