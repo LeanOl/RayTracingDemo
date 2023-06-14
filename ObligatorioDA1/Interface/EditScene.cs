@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Domain;
+using Domain.GraphicsEngine;
+using Logic;
 
 namespace Interface
 {
@@ -20,7 +16,7 @@ namespace Interface
                 _sceneToEdit = value;
                 lblSceneName.Text = value.Name;
                 lblLastRendered.Text = value.LastRendered.ToString();
-                picRenderedImage.Image = value.Preview;
+                picRenderedImage.Image = value.GetPreviewImage();
                 if(value.LastModified > value.LastRendered)
                     lblOutdatedWarning.Visible = true;
 
@@ -44,46 +40,71 @@ namespace Interface
 
         private void EditScene_Load(object sender, EventArgs e)
         {
-            flpModels.Parent = this;
-            flpPositionedModels.Parent = this;
-            Client proprietary = SceneToEdit.Proprietary;
-            List<Model> availableModels = Instance.InstanceModelLogic.GetClientModels(proprietary);
-            List<PositionedModel> sceneModels = SceneToEdit.ModelList;
-            foreach (Model model in availableModels)
+            try
             {
-               SceneModelListElement newElement = new SceneModelListElement(model);
-               newElement.ParentScene = SceneToEdit;
-               flpModels.Controls.Add(newElement);
-               
-               
-            }
+                flpModels.Parent = this;
+                flpPositionedModels.Parent = this;
+                Client proprietary = SceneToEdit.Proprietary;
+                List<Model> availableModels = ModelLogic.Instance.GetClientModels(proprietary);
+                List<PositionedModel> sceneModels = SceneToEdit.ModelList;
+                foreach (Model model in availableModels)
+                {
+                    SceneModelListElement newElement = new SceneModelListElement(model);
+                    newElement.ParentScene = SceneToEdit;
+                    flpModels.Controls.Add(newElement);
 
-            foreach (PositionedModel model in sceneModels)
-            {
-                PositionedSceneElement newElement = new PositionedSceneElement(model);
-                newElement.ParentScene = SceneToEdit;
-                flpPositionedModels.Controls.Add(newElement);
+
+                }
+
+                foreach (PositionedModel model in sceneModels)
+                {
+                    PositionedSceneElement newElement = new PositionedSceneElement(model);
+                    newElement.ParentScene = SceneToEdit;
+                    flpPositionedModels.Controls.Add(newElement);
+                }
             }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            
         }
 
         private void btnRender_Click(object sender, EventArgs e)
         {
-            Instance.InstanceSceneLogic.UpdatePreview(SceneToEdit);
-            picRenderedImage.Image = SceneToEdit.Preview;
-            lblLastRendered.Text = SceneToEdit.LastRendered.ToString();
-            lblOutdatedWarning.Visible= false;
+            try
+            {
+                SceneLogic.Instance.UpdatePreviewNoDefocus(SceneToEdit);
+                picRenderedImage.Image = SceneToEdit.GetPreviewImage();
+                SceneLogic.Instance.UpdateScene(SceneToEdit);
+                lblLastRendered.Text = SceneToEdit.LastRendered.ToString();
+                lblOutdatedWarning.Visible = false;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+           
         }
 
         public void UpdatePositionedModels()
         {
-            flpPositionedModels.Controls.Clear();
-            List<PositionedModel> sceneModels = SceneToEdit.ModelList;
-            foreach (PositionedModel model in sceneModels)
+            try
             {
-                PositionedSceneElement newElement = new PositionedSceneElement(model);
-                newElement.ParentScene = SceneToEdit;
-                flpPositionedModels.Controls.Add(newElement);
+                flpPositionedModels.Controls.Clear();
+                List<PositionedModel> sceneModels = SceneToEdit.ModelList;
+                foreach (PositionedModel model in sceneModels)
+                {
+                    PositionedSceneElement newElement = new PositionedSceneElement(model);
+                    newElement.ParentScene = SceneToEdit;
+                    flpPositionedModels.Controls.Add(newElement);
+                }
             }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            
         }
 
         public void MakeWarningVisible()
@@ -104,12 +125,14 @@ namespace Interface
                 decimal lookAtY = Convert.ToDecimal(txtLookAtY.Text);
                 decimal lookAtZ = Convert.ToDecimal(txtLookAtZ.Text);
                 Vector lookAt = new Vector { X = lookAtX, Y = lookAtY, Z = lookAtZ };
-                Instance.InstanceSceneLogic.UpdateCameraSettings(SceneToEdit, lookFrom, lookAt, fov);
+                double aperture = Convert.ToDouble(txtAperture.Text);
+                SceneLogic.Instance.UpdateCameraSettings(SceneToEdit, lookFrom, lookAt, fov, aperture);
                 ClearTextboxes();
                 SceneToEdit.LastModified = DateTime.Now;
+                SceneLogic.Instance.UpdateScene(SceneToEdit);
                 lblOutdatedWarning.Visible = true;
             }
-            catch (ArgumentOutOfRangeException ex)
+            catch (ArgumentOutOfRangeException)
             {
                 MessageBox.Show("ERROR: FOV should be between 1 and 160");
             }
@@ -128,6 +151,45 @@ namespace Interface
             txtLookAtX.Text = "";
             txtLookAtY.Text = "";
             txtLookAtZ.Text = "";
+            txtAperture.Text = "";
+        }
+
+        private void btnRenderDefocus_Click(object sender, EventArgs e)
+        {
+            SceneLogic.Instance.UpdatePreviewDefocus(SceneToEdit);
+            SceneLogic.Instance.UpdateScene(SceneToEdit);
+            picRenderedImage.Image = SceneToEdit.GetPreviewImage();
+            lblLastRendered.Text = SceneToEdit.LastRendered.ToString();
+            lblOutdatedWarning.Visible = false;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "JPeg Image |*.jpg|Png Image|*.png|Ppm Image|*.ppm";
+            saveFileDialog1.Title = "Save an Image File";
+            saveFileDialog1.ShowDialog();
+            try
+            {
+
+                switch (saveFileDialog1.FilterIndex)
+                {
+                    case 1:
+                        SceneLogic.Instance.SavePreviewAsJpg(SceneToEdit, saveFileDialog1.FileName);
+                        break;
+                    case 2:
+                        SceneLogic.Instance.SavePreviewAsPng(SceneToEdit, saveFileDialog1.FileName);
+                        break;
+                    case 3:
+                        SceneLogic.Instance.SavePreviewAsPpm(SceneToEdit, saveFileDialog1.FileName);
+                        break;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

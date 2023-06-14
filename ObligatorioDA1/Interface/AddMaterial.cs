@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Domain;
+using Logic;
 
 namespace Interface
 {
@@ -22,19 +17,34 @@ namespace Interface
         {
             try
             {
-                Client proprietary = Instance.InstanceSessionLogic.GetActiveUser();
+                Client proprietary = SessionLogic.Instance.GetActiveUser();
                 int red = int.Parse(txtRed.Text);
                 int green = int.Parse(txtGreen.Text);
                 int blue = int.Parse(txtBlue.Text);
                 string materialName = txtMaterialName.Text;
-
                 Color materialColor = Color.FromArgb(red, green, blue);
-                Instance.InstanceMaterialLogic.CreateLambertian(proprietary, materialName, materialColor);
+                if (rbLambertian.Checked)
+                {
+                    MaterialLogic.Instance.CreateLambertian(proprietary, materialName,materialColor);
+                }
+                else
+                {
+                    decimal roughness = decimal.Parse(txtRoughness.Text);
+                    Metallic aMetallic = new Metallic
+                    {
+                        Name= materialName,
+                        Color=materialColor,
+                        Roughness=roughness,
+                        Proprietary=proprietary
+                    };
+                    MaterialLogic.Instance.CreateMetallic(aMetallic);
+                }
+
                 UserControl aMaterialList = new MaterialList();
                 Parent.Controls.Add(aMaterialList);
                 Parent.Controls.Remove(this);
             }
-            catch (FormatException ex)
+            catch (FormatException)
             {
                 lblErrorMessage.Text = "Colors should be numeric";
             }
@@ -55,6 +65,21 @@ namespace Interface
         private void btnAdd_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void rbMetallic_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rbMetallic.Checked)
+            {
+                txtRoughness.Text = "";
+                txtRoughness.Visible = true;
+                lblRoughness.Visible = true;
+            }
+            else
+            {
+                txtRoughness.Visible = false;
+                lblRoughness.Visible = false;
+            }
         }
     }
 }

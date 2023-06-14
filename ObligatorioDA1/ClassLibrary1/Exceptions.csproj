@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CannotDeleteException.cs" />
+    <Compile Include="DatabaseException.cs" />
     <Compile Include="ElementAlreadyExistsException.cs" />
     <Compile Include="PasswordMismatchException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Domain;
 using Logic;
@@ -23,7 +17,8 @@ namespace Interface
                 _scene = value;
                 lblSceneName.Text = value.Name;
                 lblLastModification.Text = value.LastModified.ToString();
-                Image generatedPreview = value.Preview.GetThumbnailImage(75, 
+                Image previewImage = value.GetPreviewImage();
+                Image generatedPreview = previewImage.GetThumbnailImage(75, 
                                                      50, () => false, 
                                             IntPtr.Zero);
                 picPreview.Image = generatedPreview;
@@ -38,17 +33,25 @@ namespace Interface
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            Control parentControl = Parent.Parent;
-            parentControl.Controls.Clear();
-            UserControl anEditScene = new EditScene(_scene);
-            parentControl.Controls.Add(anEditScene);
+            try
+            {
+                Control parentControl = Parent.Parent;
+                parentControl.Controls.Clear();
+                UserControl anEditScene = new EditScene(_scene);
+                parentControl.Controls.Add(anEditScene);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+            
             
             
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            Instance.InstanceSceneLogic.DeleteScene(_scene);
+            SceneLogic.Instance.DeleteScene(_scene);
             Dispose();
         }
     }

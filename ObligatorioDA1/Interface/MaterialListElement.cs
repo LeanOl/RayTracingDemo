@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Domain;
+using Logic;
 
 namespace Interface
 {
@@ -24,6 +18,12 @@ namespace Interface
                 lblRed.Text = value.Color.R.ToString();
                 lblGreen.Text= value.Color.G.ToString();
                 picColorPreview.BackColor = value.Color;
+                if (_material is Metallic)
+                {
+                    Metallic aMetallic = _material as Metallic;
+                    lblRoughness.Text = $@"Roughness: {aMetallic.Roughness}";
+                }
+                lblType.Text= value.GetType().Name;
             }
         }
         public MaterialListElement(Material material)
@@ -35,9 +35,17 @@ namespace Interface
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            try
+            {
+                MaterialLogic.Instance.DeleteMaterial(_material);
+                Dispose();
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(ex.Message);
+            }
             
-            Instance.InstanceMaterialLogic.DeleteMaterial(_material);
-            Dispose();
+            
         }
     }
 }

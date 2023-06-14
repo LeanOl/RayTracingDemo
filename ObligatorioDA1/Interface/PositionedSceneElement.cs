@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Domain;
+using Domain.GraphicsEngine;
+using Logic;
 
 namespace Interface
 {
@@ -36,10 +31,19 @@ namespace Interface
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            Instance.InstanceSceneLogic.DeleteModelFromScene(ParentScene, PositionedModelToDisplay);
-            EditScene editScene = Parent.Parent as EditScene;
-            editScene.MakeWarningVisible();
-            Dispose();
+            try
+            {
+                SceneLogic.Instance.DeleteModelFromScene(ParentScene, PositionedModelToDisplay);
+                SceneLogic.Instance.UpdateScene(ParentScene);
+                EditScene editScene = Parent.Parent as EditScene;
+                editScene.MakeWarningVisible();
+                Dispose();
+            }
+            catch(Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            
         }
     }
 }

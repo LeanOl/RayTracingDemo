@@ -1,22 +1,39 @@
-﻿using Domain;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
-using System.Linq;
+using Domain;
+using Exceptions;
 using Repository;
+using Repository.DBRepository;
+using Repository.InMemoryRepository;
 
 namespace Logic
 {
     public class MaterialLogic
     {
-        private MaterialRepository _repository = new MaterialRepository();
-        private const string FigureNameEmptyMessage = "Figure name should not be empty";
-        private const string NameStartsWithWhitespaceMessage = "Figure name should not start or end with whitespaces";
+        private IMaterialRepository _repository;
+        private ModelLogic _modelLogic;
+
+        private MaterialLogic()
+        {
+            _repository=new MaterialDbRepository();
+            _modelLogic = ModelLogic.Instance;
+        }
+        public MaterialLogic(IMaterialRepository repository, ModelLogic modelLogic)
+        {
+            _repository = repository;
+            _modelLogic = modelLogic;
+        }
+
+        public static MaterialLogic Instance { get; } = new MaterialLogic();
+
+        public static void Reset()
+        {
+            Instance._repository = new MaterialRepository();
+        }
+
         public void CreateLambertian(Client proprietary, string name, Color color)
         {
-            ValidateName(name,proprietary);
             
             Material materialToAdd = new Lambertian()
             {
@@ -24,6 +41,8 @@ namespace Logic
                 Name = name,
                 Color = color
             };
+            materialToAdd.Validate();
+            ValidateDuplicateName(proprietary, name);
             _repository.Add(materialToAdd);
         }
 
@@ -35,29 +54,7 @@ namespace Logic
                 throw new DuplicateNameException("There is already a figure with this name");
         }
 
-        private void ValidateName(string name,Client proprietary)
-        {
-            ValidateEmptyName(name);
-            ValidateStartsOrEndsWithWhitespace(name);
-            ValidateDuplicateName(proprietary, name);
-        }
-
-        private void ValidateStartsOrEndsWithWhitespace(string name)
-        {
-            if (name.StartsWith(" ") || name.EndsWith(" "))
-            {
-                
-                throw new ArgumentException(NameStartsWithWhitespaceMessage);
-            }
-        }
-
-        private void ValidateEmptyName(string name)
-        {
-            if (String.IsNullOrWhiteSpace(name))
-            {
-                throw new ArgumentException(FigureNameEmptyMessage);
-            }
-        }
+        
 
         public Material GetMaterialByName(string name)
         {
@@ -71,7 +68,22 @@ namespace Logic
 
         public void DeleteMaterial(Material materialToDelete)
         {
+            ValidateUsed(materialToDelete);
             _repository.Delete(materialToDelete);
         }
+
+        private void ValidateUsed(Material materialToDelete)
+        {
+            if (_modelLogic.IsMaterialUsed(materialToDelete))
+                throw new CannotDeleteException("This material is used by a model");
+        }
+
+        public void CreateMetallic(Metallic testMaterial)
+        {
+            testMaterial.Validate();
+            _repository.Add(testMaterial);
+        }
+
+
     }
 }

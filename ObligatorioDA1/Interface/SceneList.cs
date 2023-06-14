@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Domain;
+using Logic;
 
 namespace Interface
 {
@@ -20,12 +16,18 @@ namespace Interface
 
         private void btnAddNewScene_Click(object sender, EventArgs e)
         {
-            Client proprietary = Instance.InstanceSessionLogic.GetActiveUser();
-            Instance.InstanceSceneLogic.CreateEmptyScene(proprietary);
-            LoadScenePanel();
-            //UserControl anEditScene = new EditScene();
-            //Parent.Controls.Add(anEditScene);
-            //Parent.Controls.Remove(this);
+            try
+            {
+                Client proprietary = SessionLogic.Instance.GetActiveUser();
+                SceneLogic.Instance.CreateEmptyScene(proprietary);
+                LoadScenePanel();
+            }
+            catch(Exception exception)
+            {
+                MessageBox.Show(exception.Message,
+                    "Error");
+            }
+            
         }
 
         private void SceneList_Load(object sender, EventArgs e)
@@ -36,15 +38,24 @@ namespace Interface
 
         private void LoadScenePanel()
         {
-            flpMaterials.Controls.Clear();
-            Client activeUser = Instance.InstanceSessionLogic.GetActiveUser();
-            List<Scene> scenes = Instance.InstanceSceneLogic.GetClientScenes(activeUser);
-            scenes = scenes.OrderByDescending(scene => scene.LastModified).ToList();
-            foreach (var scene in scenes)
+            try
             {
-                SceneListElement newScene = new SceneListElement(scene);
-                flpMaterials.Controls.Add(newScene);
+                flpMaterials.Controls.Clear();
+                Client activeUser = SessionLogic.Instance.GetActiveUser();
+                List<Scene> scenes = SceneLogic.Instance.GetClientScenes(activeUser);
+                scenes = scenes.OrderByDescending(scene => scene.LastModified).ToList();
+                foreach (var scene in scenes)
+                {
+                    SceneListElement newScene = new SceneListElement(scene);
+                    flpMaterials.Controls.Add(newScene);
+                }
             }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+
+          
         }
     }
 }

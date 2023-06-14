@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Domain;
+using Logic;
 
 namespace Interface
 {
@@ -30,20 +25,23 @@ namespace Interface
 
         }
 
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void FigureList_Load(object sender, EventArgs e)
         {
-            Client activeUser = Instance.InstanceSessionLogic.GetActiveUser();
-            List<Figure> figures = Instance.InstanceFigureLogic.GetFiguresByClient(activeUser);
 
-            foreach (Figure figure in figures)
+            try
             {
-                FigureListElement newFigure = new FigureListElement(figure);
-                flpFigures.Controls.Add(newFigure);
+                Client activeUser = SessionLogic.Instance.GetActiveUser();
+                List<Figure> figures = FigureLogic.Instance.GetFiguresByClient(activeUser);
+
+                foreach (Figure figure in figures)
+                {
+                    FigureListElement newFigure = new FigureListElement(figure);
+                    flpFigures.Controls.Add(newFigure);
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
             }
         }
     }

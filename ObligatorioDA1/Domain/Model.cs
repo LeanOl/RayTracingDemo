@@ -1,23 +1,35 @@
+using System;
+using System.ComponentModel.DataAnnotations;
 using System.Drawing;
+using Domain.GraphicsEngine;
 
 namespace Domain
 {
     public class Model
     {
+        public Guid ModelId { get; set; } = Guid.NewGuid();
         public Client Proprietary { get; set; }
         public string Name { get; set; }
+        [Required]
         public Figure Figure { get; set; }
+        [Required]
         public Material Material { get; set; }
-        public Image Preview { get; set; }
+        public string Preview { get; set; }
+
+        private const string EmptyNameMessage = "Model name should not be empty";
+        private const string NullFigureMessage = "Figure should not be null";
+        private const string DulplicateNameMessage = "There is already a model with this name";
+        private const string NameEndsOrStartsWhitespaceMessage = "Model name should not start or end with whitespaces";
+        private const string NullMaterialMessage = "Material should not be null";
 
         public HitRecord Hit(Ray ray, decimal tMin, decimal tMax, Vector position)
         {
             return Figure.Hit(ray, tMin, tMax, position);
         }
 
-        public Ray Scatter( HitRecord hitRecord)
+        public Ray Scatter(HitRecord hitRecord, Ray ray)
         {
-            return Material.Scatter( hitRecord);
+            return Material.Scatter( hitRecord,ray);
         }
 
         public Color GetColor()
@@ -59,7 +71,7 @@ namespace Domain
                     Z = -1
                 }
             };
-            GraphicsEngine graphics = new GraphicsEngine
+            GraphicsEngine.GraphicsEngine graphics = new GraphicsEngine.GraphicsEngine
             {
                 Resolution = 75,
                 MaxDepth = 30,
@@ -67,7 +79,60 @@ namespace Domain
             };
             Preview = graphics.RenderModel(positionedPreview);
         }
+
+        public void Validate()
+        {
+            ValidateName();
+            ValidateMaterial();
+            ValidateFigure();
+        }
+
+        private void ValidateMaterial()
+        {
+            if (Material == null)
+                throw new ArgumentException(NullMaterialMessage);
+        }
+
+        private void ValidateFigure()
+        {
+            if (Figure == null)
+                throw new ArgumentException(NullFigureMessage);
+        }
+
+        private void ValidateName()
+        {
+            ValidateEmptyName();
+            ValidateWhitespaces();
+        }
+
+        private void ValidateWhitespaces()
+        {
+            if (Name.StartsWith(" ") || Name.EndsWith(" "))
+                throw new ArgumentException(NameEndsOrStartsWhitespaceMessage);
+        }
+
+        private void ValidateEmptyName()
+        {
+            if (string.IsNullOrWhiteSpace(Name))
+            {
+                throw new ArgumentException(EmptyNameMessage);
+            }
+        }
+
+        public Image GetPreview()
+        {
+            try
+            {
+                return Utilities.ImageConverter.PpmToBitmap(Preview);
+            }
+            catch (ArgumentNullException)
+            {
+                return new Bitmap(1,1);
+            }
+            
+        }
+
     }
-    
-    
+
+
 }

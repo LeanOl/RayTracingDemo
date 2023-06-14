@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Domain;
 using Logic;
 
 namespace Interface
@@ -22,8 +16,8 @@ namespace Interface
         {
             try
             {
-                Instance.InstanceClientLogic.ValidateConfirmPassword(txtPassword.Text, txtVerifyPassword.Text);
-                Instance.InstanceClientLogic.CreateClient(txtUseraname.Text,txtPassword.Text);
+                ClientLogic.Instance.ValidateConfirmPassword(txtPassword.Text, txtVerifyPassword.Text);
+                ClientLogic.Instance.CreateClient(txtUseraname.Text,txtPassword.Text);
                 SignIn signIn = new SignIn();
                 Hide();
                 signIn.Show();
@@ -40,7 +34,11 @@ namespace Interface
         {
             try
             {
-                Instance.InstanceClientLogic.ValidateUsername(txtUseraname.Text);
+                Client aClient = new Client()
+                {
+                    Username = txtUseraname.Text
+                };
+                aClient.ValidateUsername();
                 lblUsernameMessage.Text = "";
             }
             catch (Exception ex)
@@ -53,8 +51,12 @@ namespace Interface
         {
             try
             {
-                Instance.InstanceClientLogic.ValidatePassword(txtPassword.Text);
-                Instance.InstanceClientLogic.ValidateConfirmPassword(txtPassword.Text, txtVerifyPassword.Text);
+                Client aClient = new Client()
+                {
+                    Password = txtPassword.Text
+                };
+                aClient.ValidatePassword();
+                ClientLogic.Instance.ValidateConfirmPassword(txtPassword.Text, txtVerifyPassword.Text);
                 lblPasswordMessage.Text = "";
             }
             catch (PasswordMismatchException ex)
@@ -73,7 +75,7 @@ namespace Interface
         {
             try
             {
-                Instance.InstanceClientLogic.ValidateConfirmPassword(txtPassword.Text,txtVerifyPassword.Text);
+                ClientLogic.Instance.ValidateConfirmPassword(txtPassword.Text,txtVerifyPassword.Text);
                 lblConfirmPasswordMessage.Text = "";
             }
             catch (Exception ex)

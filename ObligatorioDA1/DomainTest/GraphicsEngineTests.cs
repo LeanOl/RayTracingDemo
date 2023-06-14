@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using Domain;
 using System.IO;
+using Domain;
+using Domain.GraphicsEngine;
+using ImageConverter = Domain.Utilities.ImageConverter;
 
 namespace DomainTest
 {
@@ -75,7 +77,9 @@ namespace DomainTest
                 Resolution=75,
                 SamplesPerPixel=10
             };
-            Bitmap bitmap = engine.RenderModel(testPositionedModel);
+            string reneredPpm = engine.RenderModel(testPositionedModel);
+            
+            Bitmap bitmap = ImageConverter.PpmToBitmap(reneredPpm);
             Assert.IsNotNull(bitmap);
         }
        
@@ -83,6 +87,7 @@ namespace DomainTest
         [TestMethod]
         public void RenderSceneSuccessfully()
         {
+
             Material aLamberitan = new Lambertian { Color = Color.FromArgb(178, 178, 25) };
             Figure aSphere = new Sphere { Radius = 2000 };
             Model aModel = new Model { Figure = aSphere, Material = aLamberitan };
@@ -91,17 +96,47 @@ namespace DomainTest
             {
                 aPositionedModel
             };
-            Camera testCamera = new Camera();
-            Scene testScene= new Scene { ModelList= elements,Camera = testCamera};
+            Camera testCamera = new NoDefocusCamera();
+            Scene testScene= new Scene { ModelList= elements,ActiveCamera = testCamera};
             
             GraphicsEngine engine = new GraphicsEngine{MaxDepth = 3,Resolution = 45,SamplesPerPixel = 10};
-            Bitmap bitmap = engine.RenderScene(testScene);
+            string renderedPpm = engine.RenderScene(testScene);
+            Bitmap bitmap = ImageConverter.PpmToBitmap(renderedPpm);
             Bitmap expectedBitmap = PpmToBitmap("resources/expectedPpm.ppm");
-            double acceptedDifference=1000;
+            double acceptedDifference=300;
+            Assert.IsTrue(BitmapCompare(bitmap, expectedBitmap) < acceptedDifference); ;
+        }
+        [TestMethod]
+        public void RenderMetallicMaterial()
+        {
+            
+            Material aLamberitan = new Lambertian { Color = Color.FromArgb(178, 178, 25) };
+            Figure aSphere = new Sphere { Radius = 2000 };
+            Model aModel = new Model { Figure = aSphere, Material = aLamberitan };
+            PositionedModel aPositionedModel = new PositionedModel { Model = aModel, Position = new Vector { X = 0, Y = -2000m, Z = -1 } };
+
+            Material aMetallic = new Metallic { Color = Color.FromArgb(25, 51, 127), Roughness= 0.0m };
+            Figure aSphere1 = new Sphere { Radius = 1.15m };
+            Model aModel1 = new Model { Figure = aSphere1, Material = aMetallic };
+            PositionedModel aPositionedModel1 = new PositionedModel { Model = aModel1, Position = new Vector { X = 0, Y = 2, Z = 5 } };
+
+            List<PositionedModel> elements = new List<PositionedModel>
+            {
+                aPositionedModel,
+                aPositionedModel1
+                
+            };
+            Camera testCamera = new NoDefocusCamera();
+            Scene testScene = new Scene { ModelList = elements, ActiveCamera = testCamera };
+
+            GraphicsEngine engine = new GraphicsEngine { MaxDepth = 50, Resolution = 45, SamplesPerPixel = 20 };
+            string renderedPpm = engine.RenderScene(testScene);
+            Bitmap bitmap = ImageConverter.PpmToBitmap(renderedPpm);
+            Bitmap expectedBitmap = PpmToBitmap("resources/expectedPpmMetallic.ppm");
+            double acceptedDifference = 300;
             Assert.IsTrue(BitmapCompare(bitmap, expectedBitmap) < acceptedDifference); ;
         }
 
-       
         double BitmapCompare(Bitmap bmp1, Bitmap bmp2)
             {
                 if (bmp1.Width != bmp2.Width || bmp1.Height != bmp2.Height)

@@ -2,15 +2,9 @@
 {
     partial class AddSphere
     {
-        /// <summary> 
-        /// Required designer variable.
-        /// </summary>
+
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,10 +16,6 @@
 
         #region Component Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
@@ -38,41 +28,31 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.lblErrorMessage = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // txtFigureName
-            // 
+
             this.txtFigureName.Location = new System.Drawing.Point(53, 51);
             this.txtFigureName.Name = "txtFigureName";
             this.txtFigureName.Size = new System.Drawing.Size(135, 20);
             this.txtFigureName.TabIndex = 0;
-            // 
-            // lblFigureName
-            // 
+
             this.lblFigureName.AutoSize = true;
             this.lblFigureName.Location = new System.Drawing.Point(53, 32);
             this.lblFigureName.Name = "lblFigureName";
             this.lblFigureName.Size = new System.Drawing.Size(35, 13);
             this.lblFigureName.TabIndex = 1;
             this.lblFigureName.Text = "Name";
-            // 
-            // txtFigureRadius
-            // 
+
             this.txtFigureRadius.Location = new System.Drawing.Point(56, 107);
             this.txtFigureRadius.Name = "txtFigureRadius";
             this.txtFigureRadius.Size = new System.Drawing.Size(135, 20);
             this.txtFigureRadius.TabIndex = 2;
-            // 
-            // lblFigureRadius
-            // 
+
             this.lblFigureRadius.AutoSize = true;
             this.lblFigureRadius.Location = new System.Drawing.Point(53, 91);
             this.lblFigureRadius.Name = "lblFigureRadius";
             this.lblFigureRadius.Size = new System.Drawing.Size(40, 13);
             this.lblFigureRadius.TabIndex = 3;
             this.lblFigureRadius.Text = "Radius";
-            // 
-            // btnAdd
-            // 
+
             this.btnAdd.Location = new System.Drawing.Point(97, 194);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(80, 34);
@@ -80,9 +60,7 @@
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnCancel
-            // 
+
             this.btnCancel.Location = new System.Drawing.Point(324, 194);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(80, 34);
@@ -90,23 +68,17 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // contextMenuStrip1
-            // 
+
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // lblErrorMessage
-            // 
+
             this.lblErrorMessage.AutoSize = true;
             this.lblErrorMessage.ForeColor = System.Drawing.Color.Red;
             this.lblErrorMessage.Location = new System.Drawing.Point(94, 299);
             this.lblErrorMessage.Name = "lblErrorMessage";
             this.lblErrorMessage.Size = new System.Drawing.Size(0, 13);
             this.lblErrorMessage.TabIndex = 6;
-            // 
-            // AddSphere
-            // 
+
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.lblErrorMessage);

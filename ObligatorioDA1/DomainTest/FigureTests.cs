@@ -1,6 +1,7 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Domain;
+using Domain.GraphicsEngine;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LogicTest
 {
@@ -12,6 +13,11 @@ namespace LogicTest
         private const string validName = "Ball";
         private const int validRadius = 10;
         private const string someUsername = "Pepito";
+        private const string validFigureName = "Ball";
+        private const decimal negativeRadius = -5;
+        private const string invalidRadiusMessage = "Radius must be a positive decimal number";
+        private const string invalidEmptyNameMessage = "The name must not be empty";
+        private const string invalidNameWithSpacesMessage = "Name must not start or end with spaces";
 
         [TestInitialize]
         public void TestInit()
@@ -27,13 +33,13 @@ namespace LogicTest
         {
             Sphere aSphere = new Sphere()
             {
-                Propietary = someClient,
+                Proprietary = someClient,
                 Name = validName,
                 Radius = validRadius
             };
 
             Assert.IsNotNull(aSphere);
-            Assert.AreEqual(someClient, aSphere.Propietary);
+            Assert.AreEqual(someClient, aSphere.Proprietary);
             Assert.AreEqual(validName, aSphere.Name);
             Assert.AreEqual(validRadius, aSphere.Radius);
         }
@@ -43,7 +49,7 @@ namespace LogicTest
         {
             Sphere aSphere = new Sphere()
             {
-                Propietary = someClient,
+                Proprietary = someClient,
                 Name = validName,
                 Radius = 0.5m
             };
@@ -62,7 +68,7 @@ namespace LogicTest
         {
             Sphere aSphere = new Sphere()
             {
-                Propietary = someClient,
+                Proprietary = someClient,
                 Name = validName,
                 Radius = 0.5m
             };
@@ -81,7 +87,7 @@ namespace LogicTest
         {
             Sphere aSphere = new Sphere()
                         {
-                Propietary = someClient,
+                Proprietary = someClient,
                 Name = validName,
                 Radius = 0.5m
             };
@@ -114,7 +120,7 @@ namespace LogicTest
         {
             Sphere aSphere = new Sphere()
             {
-                Propietary = someClient,
+                Proprietary = someClient,
                 Name = validName,
                 Radius = 0.5m
             };
@@ -132,7 +138,7 @@ namespace LogicTest
         {
             Sphere aSphere = new Sphere()
             {
-                Propietary = someClient,
+                Proprietary = someClient,
                 Name = validName,
                 Radius = 0.5m
             };
@@ -151,7 +157,7 @@ namespace LogicTest
         {
             Figure aSphere = new Sphere()
             {
-                Propietary = someClient,
+                Proprietary = someClient,
                 Name = validName,
                 Radius = 0.5m
             };
@@ -160,5 +166,140 @@ namespace LogicTest
             
         }
 
+        [TestMethod]
+        public void InvalidEmptyNameError()
+        {
+            Exception exceptionCaught = null;
+
+            Sphere invalidFigure = new Sphere()
+            {
+                Proprietary = someClient,
+                Name = "",
+                Radius = validRadius
+            };
+
+            try
+            {
+                invalidFigure.Validate();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = ex;
+            }
+
+            Assert.IsNotNull(exceptionCaught);
+            Assert.IsInstanceOfType(exceptionCaught, typeof(ArgumentException));
+            Assert.AreEqual(exceptionCaught.Message, invalidEmptyNameMessage);
+
+        }
+
+        [TestMethod]
+        public void InvalidNameWithSpacesInBeginning()
+        {
+            Exception exceptionCaught = null;
+
+            Sphere invalidFigure = new Sphere()
+            {
+                Proprietary = someClient,
+                Name = "   ball",
+                Radius = validRadius
+            };
+
+            try
+            {
+                invalidFigure.Validate();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = ex;
+            }
+
+            Assert.IsNotNull(exceptionCaught);
+            Assert.IsInstanceOfType(exceptionCaught, typeof(ArgumentException));
+            Assert.AreEqual(exceptionCaught.Message, invalidNameWithSpacesMessage);
+
+        }
+
+        [TestMethod]
+        public void InvalidNameWithSpacesInBeginningOrEndError()
+        {
+            Exception exceptionCaught = null;;
+
+            Sphere invalidFigure = new Sphere()
+            {
+                Proprietary = someClient,
+                Name = "   ball  ",
+                Radius = validRadius
+            };
+
+            try
+            {
+                invalidFigure.Validate();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = ex;
+            }
+
+            Assert.IsNotNull(exceptionCaught);
+            Assert.IsInstanceOfType(exceptionCaught, typeof(ArgumentException));
+            Assert.AreEqual(exceptionCaught.Message, invalidNameWithSpacesMessage);
+
+        }
+
+        [TestMethod]
+        public void InvalidNameWithSpacesInEnd()
+        {
+            Exception exceptionCaught = null;
+
+            Sphere invalidFigure = new Sphere()
+            {
+                Proprietary = someClient,
+                Name = "ball    ",
+                Radius = validRadius
+            };
+
+            try
+            {
+                invalidFigure.Validate();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = ex;
+            }
+
+            Assert.IsNotNull(exceptionCaught);
+            Assert.IsInstanceOfType(exceptionCaught, typeof(ArgumentException));
+            Assert.AreEqual(exceptionCaught.Message, invalidNameWithSpacesMessage);
+
+        }
+
+        [TestMethod]
+        public void InvalidRadiusError()
+        {
+            Exception exceptionCaught = null;
+
+            Sphere invalidFigure = new Sphere()
+            {
+                Proprietary = someClient,
+                Name = validFigureName,
+                Radius = negativeRadius
+            };
+
+            try
+            {
+                invalidFigure.Validate();
+
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = ex;
+            }
+
+            Assert.IsNotNull(exceptionCaught);
+            Assert.IsInstanceOfType(exceptionCaught, typeof(ArgumentException));
+            Assert.AreEqual(exceptionCaught.Message, invalidRadiusMessage);
+
+        }
     }
 }

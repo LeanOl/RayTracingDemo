@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Domain;
+using Exceptions;
+using Logic;
 
 namespace Interface
 {
@@ -23,7 +18,7 @@ namespace Interface
                 lblModelName.Text = value.Name;
                 lblFigure.Text = value.Figure.Name;
                 lblMaterial.Text = value.Material.Name;
-                picPreview.Image = value.Preview;
+                picPreview.Image = value.GetPreview();
             }
         }
         public ModelListElement(Model model)
@@ -34,8 +29,26 @@ namespace Interface
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            Instance.InstanceModelLogic.DeleteModel(_model);
-            Dispose();
+            try
+            {
+                ModelLogic.Instance.DeleteModel(_model);
+                Dispose();
+            }
+            catch (CannotDeleteException exception)
+            {
+                MessageBox.Show(exception.Message,
+                    "Error: Element used in a scene");
+            }
+            catch (DatabaseException exception)
+            {
+                MessageBox.Show(exception.Message,
+                    "Error: Database error");
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message,
+                    "Error");
+            }
         }
     }
 }

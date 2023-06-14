@@ -1,13 +1,8 @@
-﻿using Domain;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Domain;
+using Logic;
 
 namespace Interface
 {
@@ -27,13 +22,21 @@ namespace Interface
 
         private void ModelList_Load(object sender, EventArgs e)
         {
-            Client activeUser = Instance.InstanceSessionLogic.GetActiveUser();
-            List<Model> models = Instance.InstanceModelLogic.GetClientModels(activeUser);
-            foreach (var model in models)
+            try
             {
-                ModelListElement newModel = new ModelListElement(model);
-                flpModels.Controls.Add(newModel);
+                Client activeUser = SessionLogic.Instance.GetActiveUser();
+                List<Model> models = ModelLogic.Instance.GetClientModels(activeUser);
+                foreach (var model in models)
+                {
+                    ModelListElement newModel = new ModelListElement(model);
+                    flpModels.Controls.Add(newModel);
+                }
             }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+           
         }
     }
 }

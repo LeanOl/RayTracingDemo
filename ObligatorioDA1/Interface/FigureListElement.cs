@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Domain;
+using Logic;
 
 namespace Interface
 {
@@ -41,7 +35,7 @@ namespace Interface
         {
             try
             {
-                Instance.InstanceFigureLogic.RemoveFigure(_figure.Name , _figure.Propietary.Username);
+                FigureLogic.Instance.RemoveFigure(_figure.Name , _figure.Proprietary.Username);
                 Dispose();
             }catch (Exception ex)
             {

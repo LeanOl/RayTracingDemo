@@ -1,7 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Domain;
-using static System.Collections.Specialized.BitVector32;
 
 namespace DomainTest
 {

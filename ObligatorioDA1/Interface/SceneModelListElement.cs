@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.VisualBasic;
 using System.Windows.Forms;
 using Domain;
-using System.Reflection;
+using Domain.GraphicsEngine;
+using Logic;
 
 namespace Interface
 {
@@ -23,7 +17,7 @@ namespace Interface
             {
                 _model = value;
                 lblModelName.Text = value.Name;
-                picPreview.Image = value.Preview;
+                picPreview.Image = value.GetPreview();
             }
             get => _model;
 
@@ -37,18 +31,30 @@ namespace Interface
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            string inputX = Interaction.InputBox("Enter the X coordinate", "X coordinate", "0", 0, 0);
-            decimal x = Convert.ToDecimal(inputX);
-            string inputY = Interaction.InputBox("Enter the Y coordinate", "Y coordinate", "0", 0, 0);
-            decimal y = Convert.ToDecimal(inputY);
-            string inputZ = Interaction.InputBox("Enter the Z coordinate", "Z coordinate", "0", 0, 0);
-            decimal z = Convert.ToDecimal(inputZ);
-            Vector position = new Vector{X=x,Y=y,Z=z};
-            ParentScene.AddPositionedModel(ModelToDisplay,position);
-            ParentScene.LastModified = DateTime.Now;
-            EditScene editScene= Parent.Parent as EditScene;
-            editScene.UpdatePositionedModels();
-            editScene.MakeWarningVisible();
+            try
+            {
+                string inputX = Interaction.InputBox("Enter the X coordinate", "X coordinate", "0", 0, 0);
+                decimal x = Convert.ToDecimal(inputX);
+                string inputY = Interaction.InputBox("Enter the Y coordinate", "Y coordinate", "0", 0, 0);
+                decimal y = Convert.ToDecimal(inputY);
+                string inputZ = Interaction.InputBox("Enter the Z coordinate", "Z coordinate", "0", 0, 0);
+                decimal z = Convert.ToDecimal(inputZ);
+                Vector position = new Vector { X = x, Y = y, Z = z };
+                ParentScene.AddPositionedModel(ModelToDisplay, position);
+                ParentScene.LastModified = DateTime.Now;
+                SceneLogic.Instance.UpdateScene(ParentScene);
+                EditScene editScene = Parent.Parent as EditScene;
+                editScene.UpdatePositionedModels();
+                editScene.MakeWarningVisible();
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Invalid coordinates");
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
     }
