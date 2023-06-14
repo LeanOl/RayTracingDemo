@@ -6,6 +6,7 @@ using Domain;
 using Exceptions;
 using Repository;
 using Repository.DBRepository;
+using Repository.InMemoryRepository;
 
 namespace Logic
 {

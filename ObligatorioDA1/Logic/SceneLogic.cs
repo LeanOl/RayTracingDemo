@@ -4,6 +4,7 @@ using Domain;
 using Domain.GraphicsEngine;
 using Repository;
 using Repository.DBRepository;
+using Repository.InMemoryRepository;
 using ImageConverter = Domain.Utilities.ImageConverter;
 
 namespace Logic

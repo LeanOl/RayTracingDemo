@@ -57,23 +57,23 @@
     <Compile Include="DBRepository\ModelDbRepository.cs" />
     <Compile Include="DBRepository\SceneDbRepository.cs" />
     <Compile Include="DBRepository\FigureDBRepository.cs" />
-    <Compile Include="FigureRepository.cs" />
-    <Compile Include="ClientRepository.cs" />
+    <Compile Include="InMemoryRepository\FigureRepository.cs" />
+    <Compile Include="InMemoryRepository\ClientRepository.cs" />
     <Compile Include="IClientRepository.cs" />
     <Compile Include="IFigureRepository.cs" />
     <Compile Include="IMaterialRepository.cs" />
     <Compile Include="IModelRepository.cs" />
     <Compile Include="ISceneRepository.cs" />
-    <Compile Include="MaterialRepository.cs" />
+    <Compile Include="InMemoryRepository\MaterialRepository.cs" />
     <Compile Include="Migrations\202306102218193_migration-1.cs" />
     <Compile Include="Migrations\202306102218193_migration-1.designer.cs">
       <DependentUpon>202306102218193_migration-1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="ModelRepository.cs" />
+    <Compile Include="InMemoryRepository\ModelRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RayTracingContext.cs" />
-    <Compile Include="SceneRepository.cs" />
+    <Compile Include="InMemoryRepository\SceneRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ClassLibrary1\Exceptions.csproj">
@@ -94,6 +94,7 @@
       <DependentUpon>202306102218193_migration-1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

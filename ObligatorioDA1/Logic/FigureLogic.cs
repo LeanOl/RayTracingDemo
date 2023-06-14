@@ -4,6 +4,7 @@ using Repository;
 using System.Collections.Generic;
 using Domain;
 using Repository.DBRepository;
+using Repository.InMemoryRepository;
 
 namespace Logic
 {
