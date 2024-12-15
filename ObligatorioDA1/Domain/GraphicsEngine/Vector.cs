@@ -4,9 +4,9 @@ namespace Domain.GraphicsEngine
 {
     public class Vector
     {
-        public decimal X { get; set; }
-        public decimal Y { get; set; }
-        public decimal Z { get; set; }
+        public double X { get; set; }
+        public double Y { get; set; }
+        public double Z { get; set; }
 
         public Vector Add(Vector vectorToAdd)
         {
@@ -30,7 +30,7 @@ namespace Domain.GraphicsEngine
             return resultVector;
         }
 
-        public Vector Multiply(decimal multiplicand)
+        public Vector Multiply(double multiplicand)
         {
             Vector resultVector = new Vector
             {
@@ -41,7 +41,7 @@ namespace Domain.GraphicsEngine
             return resultVector;
         }
 
-        public Vector Divide(decimal divisor)
+        public Vector Divide(double divisor)
         {
             Vector resultVector = new Vector
             {
@@ -60,14 +60,14 @@ namespace Domain.GraphicsEngine
             Z += addedVector.Z;
         }
 
-        public decimal SquaredLength()
+        public double SquaredLength()
         {
             return X * X + Y * Y + Z * Z;
         }
 
-        public decimal Length()
+        public double Length()
         {
-            return (decimal)System.Math.Sqrt((double)SquaredLength());
+            return System.Math.Sqrt(SquaredLength());
         }
 
         public Vector Unit()
@@ -75,16 +75,16 @@ namespace Domain.GraphicsEngine
             return Length() != 0 ? Divide(Length()) : new Vector{ X = 0, Y = 0, Z = 0 };
         }
 
-        public decimal DotProduct(Vector vector2)
+        public double DotProduct(Vector vector2)
         {
             return X * vector2.X + Y * vector2.Y + Z * vector2.Z;
         }
 
         public Vector CrossProduct(Vector vector2)
         {
-            decimal x = Y * vector2.Z - Z * vector2.Y;
-            decimal y = Z * vector2.X - X * vector2.Z;
-            decimal z = X * vector2.Y - Y * vector2.X;
+            double x = Y * vector2.Z - Z * vector2.Y;
+            double y = Z * vector2.X - X * vector2.Z;
+            double z = X * vector2.Y - Y * vector2.X;
             return new Vector
             {
                 X = x,
@@ -101,9 +101,9 @@ namespace Domain.GraphicsEngine
             {
                 Vector tempVector = new Vector
                 {
-                    X = (decimal)randomGenerator.NextDouble(),
-                    Y = (decimal)randomGenerator.NextDouble(),
-                    Z = (decimal)randomGenerator.NextDouble()
+                    X = randomGenerator.NextDouble(),
+                    Y = randomGenerator.NextDouble(),
+                    Z = randomGenerator.NextDouble()
                 };
                 randomVector = tempVector.Multiply(2).Subtract(new Vector { X = 1, Y = 1, Z = 1 });
             } while (randomVector.SquaredLength() >= 1);

@@ -4,7 +4,7 @@ using System.Data.Entity;
 using Domain;
 using Logic;
 using Repository;
-using Repository.DBRepository;
+using Repository.InMemoryRepository;
 
 namespace LogicTest
 {
@@ -20,10 +20,8 @@ namespace LogicTest
         [TestInitialize]
         public void TestInit()
         {
-            Database.SetInitializer(new DropCreateDatabaseAlways<RayTracingContext>());
-            _context = new RayTracingContext();
-            _context.Database.Initialize(true);
-            IClientRepository repository = new ClientDbRepository(_context);
+
+            ClientRepository repository = new ClientRepository();
             logic = new ClientLogic(repository);
         }
 

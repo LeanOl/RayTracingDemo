@@ -15,7 +15,7 @@ namespace Logic
 
         private SceneLogic()
         {
-            _repository = new SceneDbRepository();
+            _repository = new SceneRepository();
         }
 
         public SceneLogic(ISceneRepository repository)

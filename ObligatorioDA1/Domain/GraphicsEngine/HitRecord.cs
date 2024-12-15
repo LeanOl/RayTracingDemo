@@ -2,7 +2,7 @@
 {
     public class HitRecord
     {
-        public decimal T;
+        public double T;
         public Vector IntersectionPoint;
         public Vector Normal;
     }

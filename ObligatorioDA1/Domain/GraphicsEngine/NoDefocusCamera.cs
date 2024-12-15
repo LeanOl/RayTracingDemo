@@ -11,9 +11,9 @@ namespace Domain.GraphicsEngine
         }
         protected override void CalculateValues()
         {
-            decimal theta = FieldOfView * (decimal)Math.PI / 180;
-            decimal heightHalf = (decimal)Math.Tan((double)theta / 2);
-            decimal widthHalf = (decimal)AspectRatio * heightHalf;
+            double theta = FieldOfView *Math.PI / 180;
+            double heightHalf = Math.Tan(theta / 2);
+            double widthHalf = AspectRatio * heightHalf;
             Vector vectorW = LookFrom.Subtract(LookAt).Unit();
             Vector vectorU = Up.CrossProduct(vectorW).Unit();
             Vector vectorV = vectorW.CrossProduct(vectorU);
@@ -23,7 +23,7 @@ namespace Domain.GraphicsEngine
             _vertical = vectorV.Multiply(2 * heightHalf);
         }
 
-        public override Ray GetRay(decimal u, decimal v)
+        public override Ray GetRay(double u, double v)
         {
             
             Vector horizontalPosition = _horizontal.Multiply(u);

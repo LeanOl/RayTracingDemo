@@ -9,7 +9,7 @@ namespace Domain.GraphicsEngine
         public Vector Position { get; set; }
         public Model Model { get; set; }
 
-        public HitRecord Hit(Ray ray, decimal tMin, decimal tMax,Vector position)
+        public HitRecord Hit(Ray ray, double tMin, double tMax,Vector position)
         {
             return Model.Hit(ray, tMin, tMax, position);
         }

@@ -69,7 +69,7 @@ namespace Domain.GraphicsEngine
 
         protected abstract void CalculateValues();
 
-        public abstract Ray GetRay(decimal u, decimal v);
+        public abstract Ray GetRay(double u, double v);
 
     }
 }

@@ -19,7 +19,7 @@ namespace Interface
             {
                 Client proprietary = SessionLogic.Instance.GetActiveUser();
                 string name = txtFigureName.Text;
-                decimal radius = decimal.Parse(txtFigureRadius.Text);
+                double radius = double.Parse(txtFigureRadius.Text);
 
                 Sphere aSphere = new Sphere()
                 {

@@ -16,7 +16,7 @@ namespace Logic
 
         private ModelLogic()
         {
-            _modelRepository = new ModelDbRepository();
+            _modelRepository = new ModelRepository();
             _sceneLogic = SceneLogic.Instance;
         }
 

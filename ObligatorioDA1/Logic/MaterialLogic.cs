@@ -16,7 +16,7 @@ namespace Logic
 
         private MaterialLogic()
         {
-            _repository=new MaterialDbRepository();
+            _repository=new MaterialRepository();
             _modelLogic = ModelLogic.Instance;
         }
         public MaterialLogic(IMaterialRepository repository, ModelLogic modelLogic)

@@ -2,7 +2,6 @@
 using Repository;
 using System.Collections.Generic;
 using Domain;
-using Repository.DBRepository;
 using Repository.InMemoryRepository;
 
 namespace Logic
@@ -14,7 +13,7 @@ namespace Logic
 
         public FigureLogic()
         {
-            _repository = new FigureDBRepository();
+            _repository = new FigureRepository();
         }
 
         public FigureLogic(IFigureRepository repository, IModelRepository modelRepository)

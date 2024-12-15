@@ -7,7 +7,7 @@ namespace Domain
     public class Metallic:Material
     {
         private Random _random = RandomGenerator.RandomInstance;
-        public decimal Roughness { get; set; }
+        public double Roughness { get; set; }
         public override Ray Scatter(HitRecord hitRecord, Ray rayIn)
         {
             Ray rayScattered = new Ray
@@ -31,7 +31,7 @@ namespace Domain
 
         private Vector Reflect(Vector vectorV, Vector vectorN)
         {
-            decimal dotN = vectorN.DotProduct(vectorV);
+            double dotN = vectorN.DotProduct(vectorV);
             return vectorV.Subtract(vectorN.Multiply(2 * dotN));
         }
 

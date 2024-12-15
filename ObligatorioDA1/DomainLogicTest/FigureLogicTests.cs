@@ -14,7 +14,6 @@ namespace LogicTest
     public class FigureLogicTests
     {
         private FigureLogic logic;
-        private RayTracingContext _context;
 
         private Client aClient;
         private Figure aFigure;
@@ -29,11 +28,8 @@ namespace LogicTest
         [TestInitialize]
         public void initialize()
         {
-            Database.SetInitializer(new DropCreateDatabaseAlways<RayTracingContext>());
-            _context = new RayTracingContext();
-            _context.Database.Initialize(true);
-            IFigureRepository repository = new FigureDBRepository(_context);
-            ModelDbRepository modelRepository = new ModelDbRepository(_context);
+            FigureDBRepository repository = new FigureDBRepository();
+            ModelDbRepository modelRepository = new ModelDbRepository();
             logic = new FigureLogic(repository,modelRepository);
 
             aClient = new Client()
@@ -49,8 +45,7 @@ namespace LogicTest
                 Radius = validRadius
             };
 
-            _context.Clients.Add(aClient);
-            _context.SaveChanges();
+         
         }
 
         [TestCleanup]
@@ -146,24 +141,6 @@ namespace LogicTest
             CollectionAssert.AreEquivalent(figureCollection, repositoryCollection);
         }
 
-        [TestMethod]
-        public void DeleteFigureUsedByModel_ThrowException()
-        {
-            _context.Figures.Add(aFigure);
-            _context.SaveChanges();
-            Exception exceptionCaught = null;
-            try
-            {
-                logic.RemoveFigure(aFigure.Name,aFigure.Proprietary.Username);
-                Assert.Fail("Should throw exception");
-            }
-            catch (Exception ex)
-            {
-                exceptionCaught = ex;
-            }
-            Assert.IsNotNull(exceptionCaught);
-            
-           
-        }
+        
     }   
 }

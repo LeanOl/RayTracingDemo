@@ -11,7 +11,7 @@ namespace RepositoryTests.InMemoryRepositoryTests
     {
         private const string ValidFigureName = "Ball";
         private const string ValidUsername = "John";
-        private decimal ValidRadius = 5;
+        private double ValidRadius = 5;
 
         private Client aClient;
         private Figure aFigure;

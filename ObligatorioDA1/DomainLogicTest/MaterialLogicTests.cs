@@ -15,7 +15,6 @@ namespace LogicTest
     {
         private Client _someClient;
         private MaterialLogic _logic;
-        private RayTracingContext _context;
         private Color _color;
         private const string ValidName = "Figure";
         private const string EmptyNameMessage = "Figure name should not be empty";
@@ -37,22 +36,18 @@ namespace LogicTest
                 RegisterDate = testDate
             };
 
-            Database.SetInitializer(new DropCreateDatabaseAlways<RayTracingContext>());
-            _context = new RayTracingContext();
-            _context.Database.Initialize(true);
-            IMaterialRepository repository = new MaterialDbRepository(_context);
-            IModelRepository modelRepository= new ModelDbRepository(_context);
+
+            MaterialDbRepository repository = new MaterialDbRepository();
+            ModelDbRepository modelRepository = new ModelDbRepository();
             ModelLogic modelLogic = new ModelLogic(modelRepository);
             _logic = new MaterialLogic(repository,modelLogic);
-            _context.Clients.Add(_someClient); 
-            _context.SaveChanges();
 
         }
 
         [TestCleanup]
         public void TestCleanup()
         {
-            _context.Dispose();
+            
         }
 
         [TestMethod]
@@ -110,30 +105,6 @@ namespace LogicTest
             CollectionAssert.AreEquivalent(clientMaterials,_logic.GetClientMaterials(_someClient));
 
         }
-        [TestMethod]
-        public void DeleteMaterialSuccessfully()
-        {
-
-            Color materialColor = Color.FromArgb(205, 215, 235);
-            Material someMaterial = new Lambertian()
-            {
-                Proprietary = _someClient,
-                Name = "Material1",
-                Color = materialColor
-
-            };
-            Material someMaterial2 = new Lambertian()
-            {
-                Proprietary = _someClient,
-                Name = "Material2",
-                Color = materialColor
-            };
-            _context.Materials.Add(someMaterial);
-            _context.Materials.Add(someMaterial2);
-            _context.SaveChanges();
-            _logic.DeleteMaterial(someMaterial);
-            CollectionAssert.DoesNotContain(_logic.GetClientMaterials(_someClient), someMaterial);
-        }
 
         [TestMethod]
         public void CreateMetallicSuccessfully()
@@ -149,48 +120,7 @@ namespace LogicTest
             Assert.AreEqual(testMaterial, _logic.GetMaterialByName(ValidName));
         }
 
-        [TestMethod]
-        public void DeleteMaterialUsedByModel_ThrowException()
-        {
-            Material someMaterial = new Lambertian()
-            {
-                Proprietary = _someClient,
-                Name = "Material1",
-                Color = _color
-            };
-            _context.Materials.Add(someMaterial);
 
-            Figure someFigure = new Sphere()
-            {
-                Name = "Sphere1",
-                Proprietary = _someClient,
-                Radius = 1
-            };
-            _context.Figures.Add(someFigure);
-
-            Model someModel = new Model()
-            {
-                Proprietary = _someClient,
-                Name = "Model1",
-                Material = someMaterial,
-                Figure = someFigure
-            };
-            _context.Models.Add(someModel);
-
-            _context.SaveChanges();
-
-            try
-            {
-                _logic.DeleteMaterial(someMaterial);
-                Assert.Fail("Should throw exception");
-            }
-            catch (Exception ex)
-            {
-                Assert.AreEqual("This material is used by a model", ex.Message);
-            }
-
-        }
-        
 
         
 

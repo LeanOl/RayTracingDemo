@@ -22,7 +22,7 @@ namespace Domain
         private const string NameEndsOrStartsWhitespaceMessage = "Model name should not start or end with whitespaces";
         private const string NullMaterialMessage = "Material should not be null";
 
-        public HitRecord Hit(Ray ray, decimal tMin, decimal tMax, Vector position)
+        public HitRecord Hit(Ray ray, double tMin, double tMax, Vector position)
         {
             return Figure.Hit(ray, tMin, tMax, position);
         }

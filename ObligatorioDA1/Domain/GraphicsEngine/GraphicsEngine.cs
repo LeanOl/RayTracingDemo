@@ -51,10 +51,10 @@ namespace Domain.GraphicsEngine
         {
             HitRecord hitRecord = null;
             PositionedModel hitModel = null;
-            decimal tMax = decimal.MaxValue;
+            double tMax = double.MaxValue;
             foreach (PositionedModel model in elements)
             {
-                HitRecord hit = model.Hit(ray, 0.001m, tMax, model.Position);
+                HitRecord hit = model.Hit(ray, 0.001, tMax, model.Position);
                 if (hit != null)
                 {
                     tMax = hit.T;
@@ -74,9 +74,9 @@ namespace Domain.GraphicsEngine
                     }
                     Color color = ObtainColor(scatteredRay, depth - 1, elements);
                     Color attenuation = hitModel.GetColor();
-                    int red = (int)(((color.R / 255m) * (attenuation.R / 255m)) * 255);
-                    int green = (int)(((color.G / 255m) * (attenuation.G / 255m)) * 255);
-                    int blue = (int)(((color.B / 255m) * (attenuation.B / 255m)) * 255);
+                    int red = (int)(((color.R / 255) * (attenuation.R / 255)) * 255);
+                    int green = (int)(((color.G / 255) * (attenuation.G / 255)) * 255);
+                    int blue = (int)(((color.B / 255) * (attenuation.B / 255)) * 255);
                     return Color.FromArgb(red, green, blue);
                 }
                 else
@@ -87,9 +87,9 @@ namespace Domain.GraphicsEngine
             else
             {
                 Vector directionUnit = ray.Direction.Unit();
-                decimal posY = 0.5m * (directionUnit.Y + 1);
+                double posY = 0.5 * (directionUnit.Y + 1);
                 Vector colorStart = new Vector { X = 1, Y = 1, Z = 1 };
-                Vector colorEnd = new Vector { X = 0.5m, Y = 0.7m, Z = 1 };
+                Vector colorEnd = new Vector { X = 0.5, Y = 0.7, Z = 1 };
                 Vector colorToReturn = colorStart.Multiply(1 - posY).Add(colorEnd.Multiply(posY));
                 return Color.FromArgb((int)(colorToReturn.X * 255), (int)(colorToReturn.Y * 255),
                     (int)(colorToReturn.Z * 255));
@@ -110,14 +110,14 @@ namespace Domain.GraphicsEngine
                     Vector pixelColor= new Vector{X=0,Y=0,Z=0};
                     for (int sample = 0; sample < _samplesPerPixel; sample++)
                     {
-                        decimal u = (column + (decimal)random.NextDouble()) / _resolution;
-                        decimal v = (row + (decimal)random.NextDouble()) / _height;
+                        double u = (column + random.NextDouble()) / _resolution;
+                        double v = (row + random.NextDouble()) / _height;
                         Ray ray = testScene.ActiveCamera.GetRay(u, v);
                         Color obtainedColor = ObtainColor(ray, _maxDepth, testScene.ModelList);
                         pixelColor.AddTo(new Vector
-                            { X = obtainedColor.R / 255m, Y = obtainedColor.G / 255m, Z = obtainedColor.B / 255m });
+                            { X = obtainedColor.R / 255, Y = obtainedColor.G / 255, Z = obtainedColor.B / 255 });
                     }
-                    pixelColor=pixelColor.Divide((decimal)_samplesPerPixel);
+                    pixelColor=pixelColor.Divide(_samplesPerPixel);
                     int red = (int)(pixelColor.X * 255);
                     int green = (int)(pixelColor.Y * 255);
                     int blue = (int)(pixelColor.Z * 255);
@@ -146,8 +146,8 @@ namespace Domain.GraphicsEngine
                     Vector pixelColor = new Vector { X = 0, Y = 0, Z = 0 };
                     for (int sample = 0; sample < _samplesPerPixel; sample++)
                     {
-                        decimal u = (column + (decimal)random.NextDouble()) / _resolution;
-                        decimal v = (row + (decimal)random.NextDouble()) / _height;
+                        double u = (column + random.NextDouble()) / _resolution;
+                        double v = (row + random.NextDouble()) / _height;
                        
                         Vector horizontalPosition = vectorHorizontal.Multiply(u);
                         Vector verticalPosition = vectorVertical.Multiply(v);
@@ -155,9 +155,9 @@ namespace Domain.GraphicsEngine
                         Ray ray = new Ray{Origin = origin , Direction = pointPosition};
                         Color obtainedColor = ObtainColor(ray, _maxDepth, positionedModel);
                         pixelColor.AddTo(new Vector
-                            { X = obtainedColor.R / 255m, Y = obtainedColor.G / 255m, Z = obtainedColor.B / 255m });
+                            { X = obtainedColor.R / 255, Y = obtainedColor.G / 255, Z = obtainedColor.B / 255 });
                     }
-                    pixelColor = pixelColor.Divide((decimal)_samplesPerPixel);
+                    pixelColor = pixelColor.Divide(_samplesPerPixel);
                     int red = (int)(pixelColor.X * 255);
                     int green = (int)(pixelColor.Y * 255);
                     int blue = (int)(pixelColor.Z * 255);
@@ -173,9 +173,9 @@ namespace Domain.GraphicsEngine
         {
             HitRecord hitRecord = null;
             PositionedModel hitModel = null;
-            decimal tMax = decimal.MaxValue;
+            double tMax = double.MaxValue;
             
-            HitRecord hit = model.Hit(ray, 0.001m, tMax, model.Position);
+            HitRecord hit = model.Hit(ray, 0.001, tMax, model.Position);
             if (hit != null)
             {
                 tMax = hit.T;
@@ -193,9 +193,9 @@ namespace Domain.GraphicsEngine
                         return Color.Black;
                     Color color = ObtainColor(scatteredRay, depth - 1, model);
                     Color attenuation = hitModel.GetColor();
-                    int red = (int)(((color.R / 255m) * (attenuation.R / 255m)) * 255);
-                    int green = (int)(((color.G / 255m) * (attenuation.G / 255m)) * 255);
-                    int blue = (int)(((color.B / 255m) * (attenuation.B / 255m)) * 255);
+                    int red = (int)(((color.R / 255) * (attenuation.R / 255)) * 255);
+                    int green = (int)(((color.G / 255) * (attenuation.G / 255)) * 255);
+                    int blue = (int)(((color.B / 255) * (attenuation.B / 255)) * 255);
                     return Color.FromArgb(red, green, blue);
                 }
                 else
@@ -206,9 +206,9 @@ namespace Domain.GraphicsEngine
             else
             {
                 Vector directionUnit = ray.Direction.Unit();
-                decimal posY = 0.5m * (directionUnit.Y + 1);
+                double posY = 0.5 * (directionUnit.Y + 1);
                 Vector colorStart = new Vector { X = 1, Y = 1, Z = 1 };
-                Vector colorEnd = new Vector { X = 0.5m, Y = 0.7m, Z = 1 };
+                Vector colorEnd = new Vector { X = 0.5, Y = 0.7, Z = 1 };
                 Vector colorToReturn = colorStart.Multiply(1 - posY).Add(colorEnd.Multiply(posY));
                 return Color.FromArgb((int)(colorToReturn.X * 255), (int)(colorToReturn.Y * 255),
                     (int)(colorToReturn.Z * 255));

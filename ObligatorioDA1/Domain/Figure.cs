@@ -10,7 +10,7 @@ namespace Domain
         public virtual Client Proprietary { get; set; }
         public string Name { get; set; }
 
-        public abstract HitRecord Hit(Ray aRay, decimal tMin, decimal tMax, Vector center);
+        public abstract HitRecord Hit(Ray aRay, double tMin, double tMax, Vector center);
 
         public abstract Figure GeneratePreviewFigure();
 

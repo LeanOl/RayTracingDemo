@@ -29,7 +29,7 @@ namespace Interface
                 }
                 else
                 {
-                    decimal roughness = decimal.Parse(txtRoughness.Text);
+                    double roughness = double.Parse(txtRoughness.Text);
                     Metallic aMetallic = new Metallic
                     {
                         Name= materialName,

@@ -117,13 +117,13 @@ namespace Interface
             try
             {
                 int fov = Convert.ToInt32(txtFov.Text);
-                decimal lookFromX = Convert.ToDecimal(txtLookFromX.Text);
-                decimal lookFromY = Convert.ToDecimal(txtLookFromY.Text);
-                decimal lookFromZ = Convert.ToDecimal(txtLookFromZ.Text);
+                double lookFromX = Convert.ToDouble(txtLookFromX.Text);
+                double lookFromY = Convert.ToDouble(txtLookFromY.Text);
+                double lookFromZ = Convert.ToDouble(txtLookFromZ.Text);
                 Vector lookFrom= new Vector{X= lookFromX, Y= lookFromY, Z= lookFromZ};
-                decimal lookAtX = Convert.ToDecimal(txtLookAtX.Text);
-                decimal lookAtY = Convert.ToDecimal(txtLookAtY.Text);
-                decimal lookAtZ = Convert.ToDecimal(txtLookAtZ.Text);
+                double lookAtX = Convert.ToDouble(txtLookAtX.Text);
+                double lookAtY = Convert.ToDouble(txtLookAtY.Text);
+                double lookAtZ = Convert.ToDouble(txtLookAtZ.Text);
                 Vector lookAt = new Vector { X = lookAtX, Y = lookAtY, Z = lookAtZ };
                 double aperture = Convert.ToDouble(txtAperture.Text);
                 SceneLogic.Instance.UpdateCameraSettings(SceneToEdit, lookFrom, lookAt, fov, aperture);

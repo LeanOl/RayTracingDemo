@@ -5,7 +5,7 @@
         public Vector Origin { get; set; }
         public Vector Direction { get; set; }
 
-        public Vector PointAt(decimal t)
+        public Vector PointAt(double t)
         {
             Vector resultVector = new Vector
             {

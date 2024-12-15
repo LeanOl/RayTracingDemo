@@ -3,7 +3,7 @@ using System;
 using Logic;
 using System.Collections.Generic;
 using Repository;
-using Repository.DBRepository;
+using Repository.InMemoryRepository;
 using System.Data.Entity;
 using Domain;
 using Domain.GraphicsEngine;
@@ -19,7 +19,6 @@ namespace DomainLogicTest
         private Material _someMaterial;
         private Model _someModel;
         private PositionedModel _somePositionedModel ;
-        private RayTracingContext _context;
 
 
         [TestInitialize]
@@ -62,16 +61,9 @@ namespace DomainLogicTest
             };
 
             Database.SetInitializer(new DropCreateDatabaseAlways<RayTracingContext>());
-            _context = new RayTracingContext();
-            _context.Database.Initialize(true);
-            ISceneRepository repository = new SceneDbRepository(_context);
+            
+            SceneRepository repository = new SceneRepository();
             _logic = new SceneLogic(repository);
-
-            _context.Clients.Add(_proprietary);
-            _context.Figures.Add(_someFigure);
-            _context.Materials.Add(_someMaterial);
-            _context.Models.Add(_someModel);
-            _context.SaveChanges();
 
             
         }
@@ -79,7 +71,7 @@ namespace DomainLogicTest
         [TestCleanup]
         public void TestCleanup()
         {
-            _context.Dispose();
+            
         }
         [TestMethod]
         public void CreateEmptySceneSuccessfully()

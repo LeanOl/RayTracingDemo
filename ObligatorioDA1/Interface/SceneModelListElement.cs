@@ -34,11 +34,11 @@ namespace Interface
             try
             {
                 string inputX = Interaction.InputBox("Enter the X coordinate", "X coordinate", "0", 0, 0);
-                decimal x = Convert.ToDecimal(inputX);
+                double x = Convert.ToDouble(inputX);
                 string inputY = Interaction.InputBox("Enter the Y coordinate", "Y coordinate", "0", 0, 0);
-                decimal y = Convert.ToDecimal(inputY);
+                double y = Convert.ToDouble(inputY);
                 string inputZ = Interaction.InputBox("Enter the Z coordinate", "Z coordinate", "0", 0, 0);
-                decimal z = Convert.ToDecimal(inputZ);
+                double z = Convert.ToDouble(inputZ);
                 Vector position = new Vector { X = x, Y = y, Z = z };
                 ParentScene.AddPositionedModel(ModelToDisplay, position);
                 ParentScene.LastModified = DateTime.Now;

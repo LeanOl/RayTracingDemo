@@ -5,8 +5,8 @@ namespace Domain.GraphicsEngine
 {
     public class DefocusCamera : Camera
     {
-        private decimal _lensRadius;
-        private decimal _focalDistance;
+        private double _lensRadius;
+        private double _focalDistance;
         private Vector _vectorU;
         private Vector _vectorV;
         public Random Random { get; set; } = RandomGenerator.RandomInstance;
@@ -19,10 +19,10 @@ namespace Domain.GraphicsEngine
         protected override void CalculateValues()
         {
             _focalDistance = LookFrom.Subtract(LookAt).Length();
-            _lensRadius = (decimal)Aperture / 2;
-            decimal theta = FieldOfView * (decimal)Math.PI / 180;
-            decimal heightHalf = (decimal)Math.Tan((double)theta / 2);
-            decimal widthHalf = (decimal)AspectRatio * heightHalf;
+            _lensRadius = Aperture / 2;
+            double theta = FieldOfView * Math.PI / 180;
+            double heightHalf = Math.Tan((double)theta / 2);
+            double widthHalf = AspectRatio * heightHalf;
             Vector vectorW = LookFrom.Subtract(LookAt).Unit();
             Vector vectorU = Up.CrossProduct(vectorW).Unit();
             Vector vectorV = vectorW.CrossProduct(vectorU);
@@ -36,7 +36,7 @@ namespace Domain.GraphicsEngine
             
         }
 
-        public override Ray GetRay(decimal u, decimal v)
+        public override Ray GetRay(double u, double v)
         {
             
             Vector randomVector = Vector.RandomInUnitSphere(Random).Multiply(_lensRadius);

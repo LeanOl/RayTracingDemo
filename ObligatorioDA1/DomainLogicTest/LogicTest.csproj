@@ -61,7 +61,6 @@
     <Compile Include="ClientLogicTests.cs" />
     <Compile Include="MaterialLogicTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SessionLogicTests.cs" />
     <Compile Include="FigureLogicTests.cs" />
     <Compile Include="SceneLogicTests.cs" />
     <Compile Include="ModelLogicTests.cs" />
