@@ -74,9 +74,9 @@ namespace Domain.GraphicsEngine
                     }
                     Color color = ObtainColor(scatteredRay, depth - 1, elements);
                     Color attenuation = hitModel.GetColor();
-                    int red = (int)(((color.R / 255) * (attenuation.R / 255)) * 255);
-                    int green = (int)(((color.G / 255) * (attenuation.G / 255)) * 255);
-                    int blue = (int)(((color.B / 255) * (attenuation.B / 255)) * 255);
+                    int red = (int)(((color.R / 255d) * (attenuation.R / 255d)) * 255);
+                    int green = (int)(((color.G / 255d) * (attenuation.G / 255d)) * 255);
+                    int blue = (int)(((color.B / 255d) * (attenuation.B / 255d)) * 255);
                     return Color.FromArgb(red, green, blue);
                 }
                 else
@@ -115,9 +115,9 @@ namespace Domain.GraphicsEngine
                         Ray ray = testScene.ActiveCamera.GetRay(u, v);
                         Color obtainedColor = ObtainColor(ray, _maxDepth, testScene.ModelList);
                         pixelColor.AddTo(new Vector
-                            { X = obtainedColor.R / 255, Y = obtainedColor.G / 255, Z = obtainedColor.B / 255 });
+                            { X = obtainedColor.R / 255d, Y = obtainedColor.G / 255d, Z = obtainedColor.B / 255d });
                     }
-                    pixelColor=pixelColor.Divide(_samplesPerPixel);
+                    pixelColor=pixelColor.Divide((double)_samplesPerPixel);
                     int red = (int)(pixelColor.X * 255);
                     int green = (int)(pixelColor.Y * 255);
                     int blue = (int)(pixelColor.Z * 255);
@@ -155,7 +155,7 @@ namespace Domain.GraphicsEngine
                         Ray ray = new Ray{Origin = origin , Direction = pointPosition};
                         Color obtainedColor = ObtainColor(ray, _maxDepth, positionedModel);
                         pixelColor.AddTo(new Vector
-                            { X = obtainedColor.R / 255, Y = obtainedColor.G / 255, Z = obtainedColor.B / 255 });
+                            { X = obtainedColor.R / 255d, Y = obtainedColor.G / 255d, Z = obtainedColor.B / 255d });
                     }
                     pixelColor = pixelColor.Divide(_samplesPerPixel);
                     int red = (int)(pixelColor.X * 255);
@@ -193,9 +193,9 @@ namespace Domain.GraphicsEngine
                         return Color.Black;
                     Color color = ObtainColor(scatteredRay, depth - 1, model);
                     Color attenuation = hitModel.GetColor();
-                    int red = (int)(((color.R / 255) * (attenuation.R / 255)) * 255);
-                    int green = (int)(((color.G / 255) * (attenuation.G / 255)) * 255);
-                    int blue = (int)(((color.B / 255) * (attenuation.B / 255)) * 255);
+                    int red = (int)(((color.R / 255d) * (attenuation.R / 255d)) * 255);
+                    int green = (int)(((color.G / 255d) * (attenuation.G / 255d)) * 255);
+                    int blue = (int)(((color.B / 255d) * (attenuation.B / 255d)) * 255);
                     return Color.FromArgb(red, green, blue);
                 }
                 else
