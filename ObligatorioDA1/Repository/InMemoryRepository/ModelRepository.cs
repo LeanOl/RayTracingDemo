@@ -34,7 +34,7 @@ namespace Repository.InMemoryRepository
 
         public bool IsFigureUsed(string name, string username)
         {
-            throw new System.NotImplementedException();
+            return models.Any(model => model.Figure.Name == name && model.Figure.Proprietary.Username == username);
         }
     }
 }

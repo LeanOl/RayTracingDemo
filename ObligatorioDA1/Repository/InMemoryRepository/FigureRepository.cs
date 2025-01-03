@@ -19,7 +19,7 @@ namespace Repository.InMemoryRepository
 
         public Figure GetFigureByNameAndUsername(string name, string username)
         {
-            return _figures.FirstOrDefault(aFigure => aFigure.Name == name);
+            return _figures.FirstOrDefault(aFigure => aFigure.Name == name && aFigure.Proprietary.Username == username);
         }
 
         public bool FigureExists(string name, string username)

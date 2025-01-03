@@ -133,7 +133,9 @@ namespace Logic
         {
             List<Scene> userScenes = _repository.GetScenesByClient(model.Proprietary);
 
-            return userScenes.Exists(scene => scene.ModelList.Exists(positionedModel => positionedModel.Model.ModelId == model.ModelId));
+            return userScenes.Exists(scene => scene.ModelList.Exists(positionedModel =>
+                positionedModel.Model.Name == model.Name &&
+                positionedModel.Model.Proprietary.Username == model.Proprietary.Username));
         }
     }
 }
