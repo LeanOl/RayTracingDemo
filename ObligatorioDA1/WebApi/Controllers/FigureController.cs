@@ -19,7 +19,7 @@ namespace WebApi.Controllers
             try
             {
                 figureLogic.CreateFigure(newFigure.ToObject());
-                return Ok();
+                return Created();
             }
             catch (Exception ex)
             {

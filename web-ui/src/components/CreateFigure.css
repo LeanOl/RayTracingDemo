@@ -1,0 +1,25 @@
+.text-field {
+    color: white;
+}
+
+.text-field .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+    border-color: #333; /* Darker border color */
+}
+
+.text-field .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+    border-color: #333; /* Darker border color on hover */
+}
+
+.text-field .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #333; /* Darker border color when focused */
+}
+
+.text-field .MuiInputLabel-root {
+    color: white;
+}
+
+.text-field .MuiOutlinedInput-input {
+    color: white; /* Bright text color */
+    font-weight: bold; /* Increase font weight */
+    font-size: 1.1rem; /* Increase font size */
+}

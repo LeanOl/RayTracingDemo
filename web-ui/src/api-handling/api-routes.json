@@ -1,0 +1,6 @@
+{
+    "api-url": "https://localhost:7263",
+    "api-routes":{
+        "figure": "/api/figure"
+    }
+}

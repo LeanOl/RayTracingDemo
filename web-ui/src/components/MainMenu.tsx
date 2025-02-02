@@ -6,6 +6,7 @@ import CategoryIcon from '@mui/icons-material/Category';
 import FormatColorFillIcon from '@mui/icons-material/FormatColorFill';
 import {useRouter} from "next/navigation";
 
+
 import "./MainMenu.css";
 
 export default function MainMenu() {
