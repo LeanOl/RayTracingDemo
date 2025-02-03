@@ -16,6 +16,9 @@ export default function MainMenu() {
     const handleCreateFigureClick = () => {
         router.push('/create-figure');
     };
+    const handleViewFiguresClick = () => {
+        router.push('/view-figures');
+    }
 
     return (
         <div>
@@ -26,6 +29,9 @@ export default function MainMenu() {
         <div className="main-menu-buttons">
         <Button variant="outlined" startIcon={<CategoryIcon />} onClick={handleCreateFigureClick}>
             Create Figure
+        </Button>
+        <Button variant="outlined" startIcon={<CategoryIcon />} onClick={handleViewFiguresClick}>
+            View Created Figures
         </Button>
         <Button variant="outlined" startIcon={<FormatColorFillIcon/>}>
             Create Material

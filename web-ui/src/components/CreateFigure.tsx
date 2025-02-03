@@ -3,7 +3,7 @@
 import React from 'react';
 import { TextField, Button, Container, Typography } from '@mui/material';
 import { useRouter } from "next/navigation";
-import { createFigure } from '../api-handling/figure';
+import { createFigure } from '../api-handling/figureHandler';
 import { useSnackbar } from "./SnackbarProvider";
 import './CreateFigure.css';
 
