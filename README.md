@@ -5,4 +5,5 @@ Simple project that allows you to figures with different materials and render th
 
 Project made with React for the frontend and C# .NET for the backend
 
+Currently unfinished(WIP)
 
