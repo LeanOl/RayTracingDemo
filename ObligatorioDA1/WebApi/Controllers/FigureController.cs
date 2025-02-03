@@ -28,16 +28,17 @@ namespace WebApi.Controllers
         }
 
         [HttpDelete]
-        public IActionResult DeleteSphere([FromBody] DeleteFigureRequest deleteFigure)
+        public IActionResult DeleteSphere([FromQuery] string name, string username)
         {
-            if (deleteFigure == null)
+            if (name == null || username == null)
             {
                 return BadRequest();
             }
             FigureLogic figureLogic = FigureLogic.Instance;
+            
             try
             {
-                figureLogic.RemoveFigure(deleteFigure.Name, deleteFigure.Username);
+                figureLogic.RemoveFigure(name, username);
                 return Ok();
             }
             catch (Exception ex)
@@ -48,13 +49,14 @@ namespace WebApi.Controllers
 
         [HttpGet]
 
-        public IActionResult GetFiguresByClient([FromBody] ProprietaryRequest client)
+        public IActionResult GetFiguresByClient([FromQuery] string username)
         {
-            if (client == null)
+            if (username == null)
             {
                 return BadRequest();
             }
             FigureLogic figureLogic = FigureLogic.Instance;
+            ProprietaryRequest client = new ProprietaryRequest { Username = username };
             try
             {
                 var proprietary = client.ToObject();
